@@ -1,0 +1,15 @@
+
+起動オプション
+
+○起動ディレクトリの指定
+ /d [dir_name]
+ 例: /d d:\tmp
+
+○行番号の指定
+ [file_name] /r[n]
+ 例: c:\tmp\test.txt /r20   (カーソルを20行目に移動)
+
+○編集モードの指定
+ /m [txt|html|cpp|java|perl|sql]
+ 例: c:\tmp\test.txt /m html   (htmlモード)
+

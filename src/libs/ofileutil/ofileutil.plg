@@ -1,0 +1,69 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: ofileutil - Win32 Release--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F3.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /GX /O2 /I "../ostrutil" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Release/ofileutil/ofileutil.pch" /Yu"stdafx.h" /Fo"../../../obj/Release/ofileutil/" /Fd"../../../obj/Release/ofileutil/" /FD /c 
+"D:\develop2\src\libs\ofileutil\fileutil.cpp"
+"D:\develop2\src\libs\ofileutil\winutil.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F3.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F4.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /GX /O2 /I "../ostrutil" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Release/ofileutil/ofileutil.pch" /Yc"stdafx.h" /Fo"../../../obj/Release/ofileutil/" /Fd"../../../obj/Release/ofileutil/" /FD /c 
+"D:\develop2\src\libs\ofileutil\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F4.tmp" 
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe -lib /nologo /out:"../../../lib/Release\ofileutil.lib"  \develop2\obj\Release\ofileutil\fileutil.obj \develop2\obj\Release\ofileutil\StdAfx.obj \develop2\obj\Release\ofileutil\winutil.obj " の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+fileutil.cpp
+winutil.cpp
+ｺｰﾄﾞを生成中...
+ﾗｲﾌﾞﾗﾘを作成中...
+
+
+
+<h3>結果</h3>
+ofileutil.lib - ｴﾗｰ 0、警告 0
+<h3>
+--------------------構成: ofileutil - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F7.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "../ostrutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Debug/ofileutil/ofileutil.pch" /Yu"stdafx.h" /Fo"../../../obj/Debug/ofileutil/" /Fd"../../../obj/Debug/ofileutil/" /FD /GZ /c 
+"D:\develop2\src\libs\ofileutil\fileutil.cpp"
+"D:\develop2\src\libs\ofileutil\winutil.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F7.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F8.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "../ostrutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Debug/ofileutil/ofileutil.pch" /Yc"stdafx.h" /Fo"../../../obj/Debug/ofileutil/" /Fd"../../../obj/Debug/ofileutil/" /FD /GZ /c 
+"D:\develop2\src\libs\ofileutil\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP6F8.tmp" 
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe -lib /nologo /out:"../../../lib/Debug\ofileutil.lib"  \develop2\obj\Debug\ofileutil\fileutil.obj \develop2\obj\Debug\ofileutil\StdAfx.obj \develop2\obj\Debug\ofileutil\winutil.obj " の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+fileutil.cpp
+winutil.cpp
+ｺｰﾄﾞを生成中...
+ﾗｲﾌﾞﾗﾘを作成中...
+
+
+
+<h3>結果</h3>
+ofileutil.lib - ｴﾗｰ 0、警告 0
+</pre>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: ostrutil - Win32 Release--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2F3.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /O2 /D "WIN32" /D "NDEBUG" /D "_LIB" /D "_UNICODE" /Fp"../../../obj/Release/ostrutil/ostrutil.pch" /YX /Fo"../../../obj/Release/ostrutil/" /Fd"../../../obj/Release/ostrutil/" /FD /c 
+"D:\develop3\src\libs\ostrutil\bm_search.c"
+"D:\develop3\src\libs\ostrutil\check_kanji.c"
+"D:\develop3\src\libs\ostrutil\hankaku.c"
+"D:\develop3\src\libs\ostrutil\lexer.c"
+"D:\develop3\src\libs\ostrutil\mbutil.c"
+"D:\develop3\src\libs\ostrutil\ohash.c"
+"D:\develop3\src\libs\ostrutil\ommgr.c"
+"D:\develop3\src\libs\ostrutil\oscheme.c"
+"D:\develop3\src\libs\ostrutil\ostrutil.c"
+"D:\develop3\src\libs\ostrutil\parser.c"
+"D:\develop3\src\libs\ostrutil\regexp.c"
+"D:\develop3\src\libs\ostrutil\regexp_str.c"
+"D:\develop3\src\libs\ostrutil\replace.c"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2F3.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2F4.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Release\ostrutil.lib" 
+\develop3\obj\Release\ostrutil\bm_search.obj
+\develop3\obj\Release\ostrutil\check_kanji.obj
+\develop3\obj\Release\ostrutil\hankaku.obj
+\develop3\obj\Release\ostrutil\lexer.obj
+\develop3\obj\Release\ostrutil\mbutil.obj
+\develop3\obj\Release\ostrutil\ohash.obj
+\develop3\obj\Release\ostrutil\ommgr.obj
+\develop3\obj\Release\ostrutil\oscheme.obj
+\develop3\obj\Release\ostrutil\ostrutil.obj
+\develop3\obj\Release\ostrutil\parser.obj
+\develop3\obj\Release\ostrutil\regexp.obj
+\develop3\obj\Release\ostrutil\regexp_str.obj
+\develop3\obj\Release\ostrutil\replace.obj
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "xilink6.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2F4.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+bm_search.c
+check_kanji.c
+hankaku.c
+lexer.c
+mbutil.c
+ohash.c
+ommgr.c
+oscheme.c
+D:\develop3\src\libs\ostrutil\oscheme.c(979) : warning C4102: 'E4' : ﾗﾍﾞﾙは 1 度も参照されません。
+D:\develop3\src\libs\ostrutil\oscheme.c(971) : warning C4102: 'E1' : ﾗﾍﾞﾙは 1 度も参照されません。
+ostrutil.c
+parser.c
+regexp.c
+regexp_str.c
+replace.c
+ﾗｲﾌﾞﾗﾘを作成中...
+xilib: executing 'C:\PROGRA~1\MICROS~3\VC98\Bin\lib.exe'
+<h3>
+--------------------構成: octrllib - Win32 Release--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FA.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /O2 /I "../ostrutil" /I "../ofileutil" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../obj/Release/otrllib/octrllib.pch" /Yu"stdafx.h" /Fo"../../../obj/Release/otrllib/" /Fd"../../../obj/Release/otrllib/" /FD /c 
+"D:\develop3\src\libs\octrllib\CloseBtn.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistData.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistEditCtrl.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistListMaker.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistWnd.cpp"
+"D:\develop3\src\libs\octrllib\colorutil.cpp"
+"D:\develop3\src\libs\octrllib\ComboBoxUtil.cpp"
+"D:\develop3\src\libs\octrllib\CommonCancelDlg.cpp"
+"D:\develop3\src\libs\octrllib\DispColorData.cpp"
+"D:\develop3\src\libs\octrllib\EditableGridData.cpp"
+"D:\develop3\src\libs\octrllib\EditCtrl.cpp"
+"D:\develop3\src\libs\octrllib\EditData.cpp"
+"D:\develop3\src\libs\octrllib\editdispdata.cpp"
+"D:\develop3\src\libs\octrllib\EditRowBuffer.cpp"
+"D:\develop3\src\libs\octrllib\EditRowData.cpp"
+"D:\develop3\src\libs\octrllib\expsplit.cpp"
+"D:\develop3\src\libs\octrllib\FastIniFile.cpp"
+"D:\develop3\src\libs\octrllib\FileTabCtrl.cpp"
+"D:\develop3\src\libs\octrllib\FontWidth.cpp"
+"D:\develop3\src\libs\octrllib\GridCtrl.cpp"
+"D:\develop3\src\libs\octrllib\griddata.cpp"
+"D:\develop3\src\libs\octrllib\GridDispData.cpp"
+"D:\develop3\src\libs\octrllib\Indenter.cpp"
+"D:\develop3\src\libs\octrllib\InputDlg.cpp"
+"D:\develop3\src\libs\octrllib\IntArray.cpp"
+"D:\develop3\src\libs\octrllib\LanguageSetting.cpp"
+"D:\develop3\src\libs\octrllib\ListCtrlUtil.cpp"
+"D:\develop3\src\libs\octrllib\MemoryPool.cpp"
+"D:\develop3\src\libs\octrllib\octrl_util.cpp"
+"D:\develop3\src\libs\octrllib\ogrep_util.cpp"
+"D:\develop3\src\libs\octrllib\OWinApp.cpp"
+"D:\develop3\src\libs\octrllib\owinutil.cpp"
+"D:\develop3\src\libs\octrllib\PlacesBarFileDlg.cpp"
+"D:\develop3\src\libs\octrllib\printeditdata.cpp"
+"D:\develop3\src\libs\octrllib\PtrGridData.cpp"
+"D:\develop3\src\libs\octrllib\Renderer.cpp"
+"D:\develop3\src\libs\octrllib\ScrollWnd.cpp"
+"D:\develop3\src\libs\octrllib\StrGridData.cpp"
+"D:\develop3\src\libs\octrllib\StrToken.cpp"
+"D:\develop3\src\libs\octrllib\ToolTipEx.cpp"
+"D:\develop3\src\libs\octrllib\Undo.cpp"
+"D:\develop3\src\libs\octrllib\UnicodeArchive.cpp"
+"D:\develop3\src\libs\octrllib\wheelsplit.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FA.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FB.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /O2 /I "../ostrutil" /I "../ofileutil" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../obj/Release/otrllib/octrllib.pch" /Yc"stdafx.h" /Fo"../../../obj/Release/otrllib/" /Fd"../../../obj/Release/otrllib/" /FD /c 
+"D:\develop3\src\libs\octrllib\StdAfx.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FB.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FC.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Release\octrllib.lib" 
+\develop3\obj\Release\otrllib\CloseBtn.obj
+\develop3\obj\Release\otrllib\CodeAssistData.obj
+\develop3\obj\Release\otrllib\CodeAssistEditCtrl.obj
+\develop3\obj\Release\otrllib\CodeAssistListMaker.obj
+\develop3\obj\Release\otrllib\CodeAssistWnd.obj
+\develop3\obj\Release\otrllib\colorutil.obj
+\develop3\obj\Release\otrllib\ComboBoxUtil.obj
+\develop3\obj\Release\otrllib\CommonCancelDlg.obj
+\develop3\obj\Release\otrllib\DispColorData.obj
+\develop3\obj\Release\otrllib\EditableGridData.obj
+\develop3\obj\Release\otrllib\EditCtrl.obj
+\develop3\obj\Release\otrllib\EditData.obj
+\develop3\obj\Release\otrllib\editdispdata.obj
+\develop3\obj\Release\otrllib\EditRowBuffer.obj
+\develop3\obj\Release\otrllib\EditRowData.obj
+\develop3\obj\Release\otrllib\expsplit.obj
+\develop3\obj\Release\otrllib\FastIniFile.obj
+\develop3\obj\Release\otrllib\FileTabCtrl.obj
+\develop3\obj\Release\otrllib\FontWidth.obj
+\develop3\obj\Release\otrllib\GridCtrl.obj
+\develop3\obj\Release\otrllib\griddata.obj
+\develop3\obj\Release\otrllib\GridDispData.obj
+\develop3\obj\Release\otrllib\Indenter.obj
+\develop3\obj\Release\otrllib\InputDlg.obj
+\develop3\obj\Release\otrllib\IntArray.obj
+\develop3\obj\Release\otrllib\LanguageSetting.obj
+\develop3\obj\Release\otrllib\ListCtrlUtil.obj
+\develop3\obj\Release\otrllib\MemoryPool.obj
+\develop3\obj\Release\otrllib\octrl_util.obj
+\develop3\obj\Release\otrllib\ogrep_util.obj
+\develop3\obj\Release\otrllib\OWinApp.obj
+\develop3\obj\Release\otrllib\owinutil.obj
+\develop3\obj\Release\otrllib\PlacesBarFileDlg.obj
+\develop3\obj\Release\otrllib\printeditdata.obj
+\develop3\obj\Release\otrllib\PtrGridData.obj
+\develop3\obj\Release\otrllib\Renderer.obj
+\develop3\obj\Release\otrllib\ScrollWnd.obj
+\develop3\obj\Release\otrllib\StdAfx.obj
+\develop3\obj\Release\otrllib\StrGridData.obj
+\develop3\obj\Release\otrllib\StrToken.obj
+\develop3\obj\Release\otrllib\ToolTipEx.obj
+\develop3\obj\Release\otrllib\Undo.obj
+\develop3\obj\Release\otrllib\UnicodeArchive.obj
+\develop3\obj\Release\otrllib\wheelsplit.obj
+\develop3\lib\Release\ostrutil.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "xilink6.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FC.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+CloseBtn.cpp
+CodeAssistData.cpp
+CodeAssistEditCtrl.cpp
+CodeAssistListMaker.cpp
+CodeAssistWnd.cpp
+colorutil.cpp
+ComboBoxUtil.cpp
+CommonCancelDlg.cpp
+DispColorData.cpp
+EditableGridData.cpp
+EditCtrl.cpp
+EditData.cpp
+editdispdata.cpp
+EditRowBuffer.cpp
+EditRowData.cpp
+expsplit.cpp
+FastIniFile.cpp
+FileTabCtrl.cpp
+FontWidth.cpp
+GridCtrl.cpp
+ｺｰﾄﾞを生成中...
+ｺﾝﾊﾟｲﾙ中...
+griddata.cpp
+GridDispData.cpp
+Indenter.cpp
+InputDlg.cpp
+IntArray.cpp
+LanguageSetting.cpp
+ListCtrlUtil.cpp
+MemoryPool.cpp
+octrl_util.cpp
+ogrep_util.cpp
+D:\develop3\src\libs\octrllib\ogrep_util.cpp(64) : warning C4530: C++ 例外処理を使っていますが、ｱﾝﾜｲﾝﾄﾞ ｾﾏﾝﾃｨｸｽは有効にはなりません。-GX を指定してください。
+OWinApp.cpp
+owinutil.cpp
+PlacesBarFileDlg.cpp
+printeditdata.cpp
+PtrGridData.cpp
+Renderer.cpp
+ScrollWnd.cpp
+StrGridData.cpp
+StrToken.cpp
+ToolTipEx.cpp
+ｺｰﾄﾞを生成中...
+ｺﾝﾊﾟｲﾙ中...
+Undo.cpp
+UnicodeArchive.cpp
+wheelsplit.cpp
+ｺｰﾄﾞを生成中...
+ﾗｲﾌﾞﾗﾘを作成中...
+xilib: executing 'C:\PROGRA~1\MICROS~3\VC98\Bin\lib.exe'
+<h3>
+--------------------構成: ogrep - Win32 Release--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+Creating command line "rc.exe /l 0x411 /fo"../../../../obj/Release/ogrep/ogrep.res" /d "NDEBUG" "D:\develop3\src\tools\oedit\ogrep\ogrep.rc"" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FE.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /GX /O2 /I "../../../libs/ostrutil" /I "../../../libs/octrllib" /I "../../../libs/ofileutil" /I "../../common" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../../obj/Release/ogrep/ogrep.pch" /Yu"stdafx.h" /Fo"../../../../obj/Release/ogrep/" /Fd"../../../../obj/Release/ogrep/" /FD /c 
+"D:\develop3\src\tools\common\greputil.cpp"
+"D:\develop3\src\tools\oedit\ogrep\ogrep.cpp"
+"D:\develop3\src\tools\oedit\ogrep\ogrepDlg.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FE.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FF.tmp" を作成し、次の内容を記録します
+[
+/nologo /MT /W3 /GX /O2 /I "../../../libs/ostrutil" /I "../../../libs/octrllib" /I "../../../libs/ofileutil" /I "../../common" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../../obj/Release/ogrep/ogrep.pch" /Yc"stdafx.h" /Fo"../../../../obj/Release/ogrep/" /Fd"../../../../obj/Release/ogrep/" /FD /c 
+"D:\develop3\src\tools\oedit\ogrep\StdAfx.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP2FF.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP300.tmp" を作成し、次の内容を記録します
+[
+imm32.lib version.lib ostrutil.lib octrllib.lib ofileutil.lib /nologo /subsystem:windows /incremental:no /pdb:"../../../../exe/Release/oedit/ogrep.pdb" /machine:I386 /out:"../../../../exe/Release/oedit/ogrep.exe" /libpath:"../../../../lib/Release" 
+\develop3\obj\Release\ogrep\greputil.obj
+\develop3\obj\Release\ogrep\ogrep.obj
+\develop3\obj\Release\ogrep\ogrepDlg.obj
+\develop3\obj\Release\ogrep\StdAfx.obj
+\develop3\obj\Release\ogrep\ogrep.res
+\develop3\lib\Release\octrllib.lib
+\develop3\lib\Release\ostrutil.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "xilink6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP300.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ﾘｿｰｽをｺﾝﾊﾟｲﾙ中...
+ｺﾝﾊﾟｲﾙ中...
+StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+greputil.cpp
+ogrep.cpp
+ogrepDlg.cpp
+ｺｰﾄﾞを生成中...
+ﾘﾝｸ中...
+xilink6: executing 'C:\PROGRA~1\MICROS~3\VC98\Bin\link.exe'
+LINK : warning LNK4089: "OLEPRO32.DLL" へのすべての参照は /OPT:REF によって廃棄されます
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP302.bat" を作成し、次の内容を記録します
+[
+@echo off
+copy ..\..\..\..\exe\Release\oedit\ogrep.exe ..\..\..\..\exe\Release\otbedit\ogrep.exe
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP302.bat" の作成中
+
+        1 個のファイルをコピーしました。
+
+
+
+<h3>結果</h3>
+ogrep.exe - ｴﾗｰ 0、警告 4
+<h3>
+--------------------構成: ostrutil - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP303.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /D "WIN32" /D "_DEBUG" /D "_LIB" /D "_UNICODE" /Fp"../../../obj/Debug/ostrutil/ostrutil.pch" /YX /Fo"../../../obj/Debug/ostrutil/" /Fd"../../../obj/Debug/ostrutil/" /FD /GZ /c 
+"D:\develop3\src\libs\ostrutil\bm_search.c"
+"D:\develop3\src\libs\ostrutil\check_kanji.c"
+"D:\develop3\src\libs\ostrutil\hankaku.c"
+"D:\develop3\src\libs\ostrutil\lexer.c"
+"D:\develop3\src\libs\ostrutil\mbutil.c"
+"D:\develop3\src\libs\ostrutil\ohash.c"
+"D:\develop3\src\libs\ostrutil\ommgr.c"
+"D:\develop3\src\libs\ostrutil\oscheme.c"
+"D:\develop3\src\libs\ostrutil\ostrutil.c"
+"D:\develop3\src\libs\ostrutil\parser.c"
+"D:\develop3\src\libs\ostrutil\regexp.c"
+"D:\develop3\src\libs\ostrutil\regexp_str.c"
+"D:\develop3\src\libs\ostrutil\replace.c"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP303.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP304.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Debug\ostrutil.lib" 
+\develop3\obj\Debug\ostrutil\bm_search.obj
+\develop3\obj\Debug\ostrutil\check_kanji.obj
+\develop3\obj\Debug\ostrutil\hankaku.obj
+\develop3\obj\Debug\ostrutil\lexer.obj
+\develop3\obj\Debug\ostrutil\mbutil.obj
+\develop3\obj\Debug\ostrutil\ohash.obj
+\develop3\obj\Debug\ostrutil\ommgr.obj
+\develop3\obj\Debug\ostrutil\oscheme.obj
+\develop3\obj\Debug\ostrutil\ostrutil.obj
+\develop3\obj\Debug\ostrutil\parser.obj
+\develop3\obj\Debug\ostrutil\regexp.obj
+\develop3\obj\Debug\ostrutil\regexp_str.obj
+\develop3\obj\Debug\ostrutil\replace.obj
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "xilink6.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP304.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+bm_search.c
+check_kanji.c
+hankaku.c
+lexer.c
+mbutil.c
+ohash.c
+ommgr.c
+oscheme.c
+d:\develop3\src\libs\ostrutil\oscheme.c(979) : warning C4102: 'E4' : ﾗﾍﾞﾙは 1 度も参照されません。
+d:\develop3\src\libs\ostrutil\oscheme.c(971) : warning C4102: 'E1' : ﾗﾍﾞﾙは 1 度も参照されません。
+ostrutil.c
+parser.c
+regexp.c
+regexp_str.c
+replace.c
+ﾗｲﾌﾞﾗﾘを作成中...
+xilib: executing 'C:\PROGRA~1\MICROS~3\VC98\Bin\lib.exe'
+<h3>
+--------------------構成: octrllib - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP305.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /I "../ostrutil" /I "../ofileutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../obj/Debug/octrllib/octrllib.pch" /Yu"stdafx.h" /Fo"../../../obj/Debug/octrllib/" /Fd"../../../obj/Debug/octrllib/" /FD /GZ /c 
+"D:\develop3\src\libs\octrllib\CloseBtn.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistData.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistEditCtrl.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistListMaker.cpp"
+"D:\develop3\src\libs\octrllib\CodeAssistWnd.cpp"
+"D:\develop3\src\libs\octrllib\colorutil.cpp"
+"D:\develop3\src\libs\octrllib\ComboBoxUtil.cpp"
+"D:\develop3\src\libs\octrllib\CommonCancelDlg.cpp"
+"D:\develop3\src\libs\octrllib\DispColorData.cpp"
+"D:\develop3\src\libs\octrllib\EditableGridData.cpp"
+"D:\develop3\src\libs\octrllib\EditCtrl.cpp"
+"D:\develop3\src\libs\octrllib\EditData.cpp"
+"D:\develop3\src\libs\octrllib\editdispdata.cpp"
+"D:\develop3\src\libs\octrllib\EditRowBuffer.cpp"
+"D:\develop3\src\libs\octrllib\EditRowData.cpp"
+"D:\develop3\src\libs\octrllib\expsplit.cpp"
+"D:\develop3\src\libs\octrllib\FastIniFile.cpp"
+"D:\develop3\src\libs\octrllib\FileTabCtrl.cpp"
+"D:\develop3\src\libs\octrllib\FontWidth.cpp"
+"D:\develop3\src\libs\octrllib\GridCtrl.cpp"
+"D:\develop3\src\libs\octrllib\griddata.cpp"
+"D:\develop3\src\libs\octrllib\GridDispData.cpp"
+"D:\develop3\src\libs\octrllib\Indenter.cpp"
+"D:\develop3\src\libs\octrllib\InputDlg.cpp"
+"D:\develop3\src\libs\octrllib\IntArray.cpp"
+"D:\develop3\src\libs\octrllib\LanguageSetting.cpp"
+"D:\develop3\src\libs\octrllib\ListCtrlUtil.cpp"
+"D:\develop3\src\libs\octrllib\MemoryPool.cpp"
+"D:\develop3\src\libs\octrllib\octrl_util.cpp"
+"D:\develop3\src\libs\octrllib\ogrep_util.cpp"
+"D:\develop3\src\libs\octrllib\OWinApp.cpp"
+"D:\develop3\src\libs\octrllib\owinutil.cpp"
+"D:\develop3\src\libs\octrllib\PlacesBarFileDlg.cpp"
+"D:\develop3\src\libs\octrllib\printeditdata.cpp"
+"D:\develop3\src\libs\octrllib\PtrGridData.cpp"
+"D:\develop3\src\libs\octrllib\Renderer.cpp"
+"D:\develop3\src\libs\octrllib\ScrollWnd.cpp"
+"D:\develop3\src\libs\octrllib\StrGridData.cpp"
+"D:\develop3\src\libs\octrllib\StrToken.cpp"
+"D:\develop3\src\libs\octrllib\ToolTipEx.cpp"
+"D:\develop3\src\libs\octrllib\Undo.cpp"
+"D:\develop3\src\libs\octrllib\UnicodeArchive.cpp"
+"D:\develop3\src\libs\octrllib\wheelsplit.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP305.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP306.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /I "../ostrutil" /I "../ofileutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../obj/Debug/octrllib/octrllib.pch" /Yc"stdafx.h" /Fo"../../../obj/Debug/octrllib/" /Fd"../../../obj/Debug/octrllib/" /FD /GZ /c 
+"D:\develop3\src\libs\octrllib\StdAfx.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP306.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP307.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Debug\octrllib.lib" 
+\develop3\obj\Debug\octrllib\CloseBtn.obj
+\develop3\obj\Debug\octrllib\CodeAssistData.obj
+\develop3\obj\Debug\octrllib\CodeAssistEditCtrl.obj
+\develop3\obj\Debug\octrllib\CodeAssistListMaker.obj
+\develop3\obj\Debug\octrllib\CodeAssistWnd.obj
+\develop3\obj\Debug\octrllib\colorutil.obj
+\develop3\obj\Debug\octrllib\ComboBoxUtil.obj
+\develop3\obj\Debug\octrllib\CommonCancelDlg.obj
+\develop3\obj\Debug\octrllib\DispColorData.obj
+\develop3\obj\Debug\octrllib\EditableGridData.obj
+\develop3\obj\Debug\octrllib\EditCtrl.obj
+\develop3\obj\Debug\octrllib\EditData.obj
+\develop3\obj\Debug\octrllib\editdispdata.obj
+\develop3\obj\Debug\octrllib\EditRowBuffer.obj
+\develop3\obj\Debug\octrllib\EditRowData.obj
+\develop3\obj\Debug\octrllib\expsplit.obj
+\develop3\obj\Debug\octrllib\FastIniFile.obj
+\develop3\obj\Debug\octrllib\FileTabCtrl.obj
+\develop3\obj\Debug\octrllib\FontWidth.obj
+\develop3\obj\Debug\octrllib\GridCtrl.obj
+\develop3\obj\Debug\octrllib\griddata.obj
+\develop3\obj\Debug\octrllib\GridDispData.obj
+\develop3\obj\Debug\octrllib\Indenter.obj
+\develop3\obj\Debug\octrllib\InputDlg.obj
+\develop3\obj\Debug\octrllib\IntArray.obj
+\develop3\obj\Debug\octrllib\LanguageSetting.obj
+\develop3\obj\Debug\octrllib\ListCtrlUtil.obj
+\develop3\obj\Debug\octrllib\MemoryPool.obj
+\develop3\obj\Debug\octrllib\octrl_util.obj
+\develop3\obj\Debug\octrllib\ogrep_util.obj
+\develop3\obj\Debug\octrllib\OWinApp.obj
+\develop3\obj\Debug\octrllib\owinutil.obj
+\develop3\obj\Debug\octrllib\PlacesBarFileDlg.obj
+\develop3\obj\Debug\octrllib\printeditdata.obj
+\develop3\obj\Debug\octrllib\PtrGridData.obj
+\develop3\obj\Debug\octrllib\Renderer.obj
+\develop3\obj\Debug\octrllib\ScrollWnd.obj
+\develop3\obj\Debug\octrllib\StdAfx.obj
+\develop3\obj\Debug\octrllib\StrGridData.obj
+\develop3\obj\Debug\octrllib\StrToken.obj
+\develop3\obj\Debug\octrllib\ToolTipEx.obj
+\develop3\obj\Debug\octrllib\Undo.obj
+\develop3\obj\Debug\octrllib\UnicodeArchive.obj
+\develop3\obj\Debug\octrllib\wheelsplit.obj
+\develop3\lib\Debug\ostrutil.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "xilink6.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP307.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+CloseBtn.cpp
+CodeAssistData.cpp
+CodeAssistEditCtrl.cpp
+CodeAssistListMaker.cpp
+CodeAssistWnd.cpp
+colorutil.cpp
+ComboBoxUtil.cpp
+CommonCancelDlg.cpp
+DispColorData.cpp
+EditableGridData.cpp
+EditCtrl.cpp
+EditData.cpp
+editdispdata.cpp
+EditRowBuffer.cpp
+EditRowData.cpp
+expsplit.cpp
+FastIniFile.cpp
+d:\cpp_lib\stlport-5.1.5\stlport\stl\_string.h(466) : warning C4503: '__m_s<class stlp_std::priv::_Rb_tree<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > >,struct stlp_std::less<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > >,struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > >,struct stlp_std::priv::_S1st<struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > >,struct stlp_std::priv::_MapTraitsT<struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_s
+td::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > >,class stlp_std::allocator<struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > > > >' : 装飾された名前の長さが限界を越えました。名前は切り捨てられます。
+d:\cpp_lib\stlport-5.1.5\stlport\stl\_string.h(466) : warning C4503: '_Rb_tree<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > >,struct stlp_std::less<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > >,struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > >,struct stlp_std::priv::_S1st<struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > >,struct stlp_std::priv::_MapTraitsT<struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned sho
+rt>,class stlp_std::allocator<unsigned short> > > >,class stlp_std::allocator<struct stlp_std::pair<struct stlp_std::pair<class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> >,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > const ,class stlp_std::basic_string<unsigned short,class stlp_std::char_traits<unsigned short>,class stlp_std::allocator<unsigned short> > > > >' : 装飾された名前の長さが限界を越えました。名前は切り捨てられます。
+FileTabCtrl.cpp
+FontWidth.cpp
+GridCtrl.cpp
+ｺｰﾄﾞを生成中...
+ｺﾝﾊﾟｲﾙ中...
+griddata.cpp
+GridDispData.cpp
+Indenter.cpp
+InputDlg.cpp
+IntArray.cpp
+LanguageSetting.cpp
+ListCtrlUtil.cpp
+MemoryPool.cpp
+octrl_util.cpp
+ogrep_util.cpp
+D:\develop3\src\libs\octrllib\ogrep_util.cpp(64) : warning C4530: C++ 例外処理を使っていますが、ｱﾝﾜｲﾝﾄﾞ ｾﾏﾝﾃｨｸｽは有効にはなりません。-GX を指定してください。
+OWinApp.cpp
+owinutil.cpp
+PlacesBarFileDlg.cpp
+printeditdata.cpp
+PtrGridData.cpp
+Renderer.cpp
+ScrollWnd.cpp
+StrGridData.cpp
+StrToken.cpp
+ToolTipEx.cpp
+ｺｰﾄﾞを生成中...
+ｺﾝﾊﾟｲﾙ中...
+Undo.cpp
+UnicodeArchive.cpp
+wheelsplit.cpp
+ｺｰﾄﾞを生成中...
+ﾗｲﾌﾞﾗﾘを作成中...
+xilib: executing 'C:\PROGRA~1\MICROS~3\VC98\Bin\lib.exe'
+<h3>
+--------------------構成: ogrep - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+Creating command line "rc.exe /l 0x411 /fo"../../../../obj/Debug/ogrep/ogrep.res" /d "_DEBUG" "D:\develop3\src\tools\oedit\ogrep\ogrep.rc"" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30B.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "../../../libs/ostrutil" /I "../../../libs/octrllib" /I "../../../libs/ofileutil" /I "../../common" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../../obj/Debug/ogrep/ogrep.pch" /Yu"stdafx.h" /Fo"../../../../obj/Debug/ogrep/" /Fd"../../../../obj/Debug/ogrep/" /FD /GZ /c 
+"D:\develop3\src\tools\common\greputil.cpp"
+"D:\develop3\src\tools\oedit\ogrep\ogrep.cpp"
+"D:\develop3\src\tools\oedit\ogrep\ogrepDlg.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30B.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30C.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "../../../libs/ostrutil" /I "../../../libs/octrllib" /I "../../../libs/ofileutil" /I "../../common" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /Fp"../../../../obj/Debug/ogrep/ogrep.pch" /Yc"stdafx.h" /Fo"../../../../obj/Debug/ogrep/" /Fd"../../../../obj/Debug/ogrep/" /FD /GZ /c 
+"D:\develop3\src\tools\oedit\ogrep\StdAfx.cpp"
+]
+Creating command line "xicl6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30C.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30D.tmp" を作成し、次の内容を記録します
+[
+imm32.lib version.lib ostrutil.lib octrllib.lib ofileutil.lib /nologo /subsystem:windows /incremental:yes /pdb:"../../../../exe/Debug/oedit/ogrep.pdb" /debug /machine:I386 /out:"../../../../exe/Debug/oedit/ogrep.exe" /pdbtype:sept /libpath:"../../../../lib/Debug" 
+\develop3\obj\Debug\ogrep\greputil.obj
+\develop3\obj\Debug\ogrep\ogrep.obj
+\develop3\obj\Debug\ogrep\ogrepDlg.obj
+\develop3\obj\Debug\ogrep\StdAfx.obj
+\develop3\obj\Debug\ogrep\ogrep.res
+\develop3\lib\Debug\octrllib.lib
+\develop3\lib\Debug\ostrutil.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "xilink6.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30D.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ﾘｿｰｽをｺﾝﾊﾟｲﾙ中...
+ｺﾝﾊﾟｲﾙ中...
+StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+greputil.cpp
+ogrep.cpp
+ogrepDlg.cpp
+ｺｰﾄﾞを生成中...
+ﾘﾝｸ中...
+xilink6: executing 'C:\PROGRA~1\MICROS~3\VC98\Bin\link.exe'
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30F.bat" を作成し、次の内容を記録します
+[
+@echo off
+copy ..\..\..\..\exe\Debug\oedit\ogrep.exe ..\..\..\..\exe\Debug\otbedit\ogrep.exe
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP30F.bat" の作成中
+
+        1 個のファイルをコピーしました。
+
+
+
+<h3>結果</h3>
+ogrep.exe - ｴﾗｰ 0、警告 5
+</pre>
+</body>
+</html>

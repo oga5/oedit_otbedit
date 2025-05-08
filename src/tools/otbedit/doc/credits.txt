@@ -1,0 +1,11 @@
+
+# Credits
+本ソフトウェアは、以下のソフトウェアのソースコードの一部を利用して開発されています。
+詳細なライセンス情報については、docフォルダにある以下のファイルを参照してください。
+
+- PostgreSQL: LICENSE_PostgreSQL.txt
+- MiniSCHEME: LICENSE_MINISCHEME.txt
+- TinySCHEME: LICENSE_TINYSCHEME.txt
+- CSizingControlBar: LICENSE_CSizingControlBar.txt
+
+

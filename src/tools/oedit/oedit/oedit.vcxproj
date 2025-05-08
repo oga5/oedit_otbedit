@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{4B163644-DF0C-468D-941B-1CC9C3C94B05}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\..\exe\$(Configuration)\$(Platform)\$(TargetName)\</OutDir>
+    <IntDir>..\..\..\..\obj\$(Configuration)\$(Platform)\$(TargetName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\..\exe\$(Configuration)\$(Platform)\$(TargetName)\</OutDir>
+    <IntDir>..\..\..\..\obj\$(Configuration)\$(Platform)\$(TargetName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\..\exe\$(Configuration)\$(Platform)\$(TargetName)\</OutDir>
+    <IntDir>..\..\..\..\obj\$(Configuration)\$(Platform)\$(TargetName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\..\exe\$(Configuration)\$(Platform)\$(TargetName)\</OutDir>
+    <IntDir>..\..\..\..\obj\$(Configuration)\$(Platform)\$(TargetName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>.;../../common;../../common_editor;../../../libs/ostrutil;../../../libs/octrllib;../../../libs/ofileutil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>mkdir $(OutDir)data
+copy ..\data\*.txt $(OutDir)data
+copy ..\data\*.cfg $(OutDir)data
+mkdir $(OutDir)doc
+copy ..\doc\*.txt  $(OutDir)doc
+copy ..\..\..\libs\common_doc\*.txt $(OutDir)doc
+mkdir $(OutDir)scmlib
+copy ..\scmlib\*.scm $(OutDir)scmlib
+copy ..\..\..\libs\common_scmlib\*.* $(OutDir)scmlib
+</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../exe/Release/oedit\oedit.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <AdditionalLibraryDirectories>.\..\..\..\..\lib\$(Configuration)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>imm32.lib;version.lib;ostrutil.lib;octrllib.lib;ofileutil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>.;../../common;../../common_editor;../../../libs/ostrutil;../../../libs/octrllib;../../../libs/ofileutil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>mkdir $(OutDir)data
+copy ..\data\*.txt $(OutDir)data
+copy ..\data\*.cfg $(OutDir)data
+mkdir $(OutDir)doc
+copy ..\doc\*.txt  $(OutDir)doc
+copy ..\..\..\libs\common_doc\*.txt $(OutDir)doc
+mkdir $(OutDir)scmlib
+copy ..\scmlib\*.scm $(OutDir)scmlib
+copy ..\..\..\libs\common_scmlib\*.* $(OutDir)scmlib
+</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../exe/Release/oedit\oedit.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <AdditionalLibraryDirectories>.\..\..\..\..\lib\$(Configuration)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>imm32.lib;version.lib;ostrutil.lib;octrllib.lib;ofileutil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.;../../common;../../common_editor;../../../libs/ostrutil;../../../libs/octrllib;../../../libs/ofileutil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>mkdir $(OutDir)data
+copy ..\data\*.txt $(OutDir)data
+copy ..\data\*.cfg $(OutDir)data
+mkdir $(OutDir)doc
+copy ..\doc\*.txt  $(OutDir)doc
+copy ..\..\..\libs\common_doc\*.txt $(OutDir)doc
+mkdir $(OutDir)scmlib
+copy ..\scmlib\*.scm $(OutDir)scmlib
+copy ..\..\..\libs\common_scmlib\*.* $(OutDir)scmlib
+</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../exe/Debug/oedit\oedit.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <AdditionalLibraryDirectories>.\..\..\..\..\lib\$(Configuration)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>imm32.lib;version.lib;%(AdditionalDependencies);ofileutil.lib;ostrutil.lib;octrllib.lib;</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.;../../common;../../common_editor;../../../libs/ostrutil;../../../libs/octrllib;../../../libs/ofileutil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>mkdir $(OutDir)data
+copy ..\data\*.txt $(OutDir)data
+copy ..\data\*.cfg $(OutDir)data
+mkdir $(OutDir)doc
+copy ..\doc\*.txt  $(OutDir)doc
+copy ..\..\..\libs\common_doc\*.txt $(OutDir)doc
+mkdir $(OutDir)scmlib
+copy ..\scmlib\*.scm $(OutDir)scmlib
+copy ..\..\..\libs\common_scmlib\*.* $(OutDir)scmlib
+</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../exe/Debug/oedit\oedit.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <AdditionalLibraryDirectories>.\..\..\..\..\lib\$(Configuration)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>imm32.lib;version.lib;%(AdditionalDependencies);ofileutil.lib;ostrutil.lib;octrllib.lib;</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\AccelListIniFile.cpp" />
+    <ClCompile Include="..\..\common\ExtFileDialog.cpp" />
+    <ClCompile Include="..\..\common\greputil.cpp" />
+    <ClCompile Include="..\..\common\kbmacro.cpp" />
+    <ClCompile Include="..\..\common\scm_macro.cpp" />
+    <ClCompile Include="..\..\common\scm_macro_common.cpp" />
+    <ClCompile Include="..\..\common\TagJumpCommon.cpp" />
+    <ClCompile Include="..\..\common_editor\FileBookMarkDlg.cpp" />
+    <ClCompile Include="..\..\common_editor\FilterDlg.cpp" />
+    <ClCompile Include="..\..\common_editor\oeditapp2.cpp" />
+    <ClCompile Include="..\..\common_editor\ReplaceDlg.cpp" />
+    <ClCompile Include="..\..\common_editor\SearchDlg.cpp" />
+    <ClCompile Include="AcceleratorDlg.cpp" />
+    <ClCompile Include="ColorGridWnd.cpp" />
+    <ClCompile Include="CommonUtil.cpp" />
+    <ClCompile Include="EditorOptionFullScreen.cpp" />
+    <ClCompile Include="EditorOptionPage.cpp" />
+    <ClCompile Include="EditorOptionPage2.cpp" />
+    <ClCompile Include="LineJumpDlg.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="oedit.cpp" />
+    <ClCompile Include="oeditDoc.cpp" />
+    <ClCompile Include="oeditView.cpp" />
+    <ClCompile Include="OptionSheet.cpp" />
+    <ClCompile Include="PrintDlg.cpp" />
+    <ClCompile Include="SelectColorDlg.cpp" />
+    <ClCompile Include="SetupPage.cpp" />
+    <ClCompile Include="SetupPage2.cpp" />
+    <ClCompile Include="ShareData.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="oedit.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\common\AccelList.h" />
+    <ClInclude Include="..\..\common\ExtFileDialog.h" />
+    <ClInclude Include="..\..\common\greputil.h" />
+    <ClInclude Include="..\..\common\kbmacro.h" />
+    <ClInclude Include="..\..\common\scm_macro.h" />
+    <ClInclude Include="..\..\common\scm_macro_common.h" />
+    <ClInclude Include="..\..\common\TagJumpCommon.h" />
+    <ClInclude Include="..\..\common_editor\FileBookMarkDlg.h" />
+    <ClInclude Include="..\..\common_editor\FilterDlg.h" />
+    <ClInclude Include="..\..\common_editor\ReplaceDlg.h" />
+    <ClInclude Include="..\..\common_editor\SearchDlg.h" />
+    <ClInclude Include="..\..\common_editor\SearchDlgData.h" />
+    <ClInclude Include="AcceleratorDlg.h" />
+    <ClInclude Include="ColorGridWnd.h" />
+    <ClInclude Include="command_list.h" />
+    <ClInclude Include="CommonUtil.h" />
+    <ClInclude Include="default_accel.h" />
+    <ClInclude Include="EditorOptionFullScreen.h" />
+    <ClInclude Include="EditorOptionPage.h" />
+    <ClInclude Include="EditorOptionPage2.h" />
+    <ClInclude Include="global.h" />
+    <ClInclude Include="LineJumpDlg.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="oedit.h" />
+    <ClInclude Include="oeditDoc.h" />
+    <ClInclude Include="oeditView.h" />
+    <ClInclude Include="OptionSheet.h" />
+    <ClInclude Include="PrintDlg.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SelectColorDlg.h" />
+    <ClInclude Include="SetupPage.h" />
+    <ClInclude Include="SetupPage2.h" />
+    <ClInclude Include="ShareData.h" />
+    <ClInclude Include="StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\libs\common_scmlib\init.scm" />
+    <CustomBuild Include="..\..\..\libs\common_scmlib\srfi-11.scm" />
+    <CustomBuild Include="..\data\cpp.cfg" />
+    <CustomBuild Include="..\data\html.cfg" />
+    <CustomBuild Include="..\data\java.cfg" />
+    <CustomBuild Include="..\data\perl.cfg" />
+    <CustomBuild Include="..\data\scm.cfg" />
+    <CustomBuild Include="..\data\sql.cfg" />
+    <CustomBuild Include="..\data\text.cfg" />
+    <CustomBuild Include="..\scmlib\oedit.scm" />
+    <CustomBuild Include="res\cursor1.cur" />
+    <CustomBuild Include="res\oedit.rc2" />
+    <CustomBuild Include="res\spoit_cu.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\idr_main.ico" />
+    <Image Include="res\mainfram.bmp" />
+    <Image Include="res\oeditDoc.ico" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+    <Image Include="res\toolbar1_256.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\libs\common_doc\macro_ref.txt" />
+    <Text Include="..\..\..\libs\common_doc\regexp.txt" />
+    <Text Include="..\data\cpp.txt" />
+    <Text Include="..\data\html.txt" />
+    <Text Include="..\data\java.txt" />
+    <Text Include="..\data\languages_default.txt" />
+    <Text Include="..\data\perl.txt" />
+    <Text Include="..\data\scm.txt" />
+    <Text Include="..\data\sql.txt" />
+    <Text Include="..\data\text.txt" />
+    <Text Include="..\doc\credits.txt" />
+    <Text Include="..\doc\keyword.txt" />
+    <Text Include="..\doc\languages.txt" />
+    <Text Include="..\doc\LICENSE_BSD.txt" />
+    <Text Include="..\doc\LICENSE_CSizingControlBar.txt.txt" />
+    <Text Include="..\doc\LICENSE_MINISCHEME.txt" />
+    <Text Include="..\doc\LICENSE_PostgreSQL.txt" />
+    <Text Include="..\doc\LICENSE_TINYSCHEME.txt" />
+    <Text Include="..\doc\macro_oedit.txt" />
+    <Text Include="..\doc\option.txt" />
+    <Text Include="..\doc\shortcutkey.txt" />
+    <Text Include="ChangeLog.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

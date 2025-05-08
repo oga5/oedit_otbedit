@@ -1,0 +1,178 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: octrllib - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ogawa\AppData\Local\Temp\RSP26C0.tmp" with contents
+[
+/nologo /out:"../../../lib/Debug\octrllib.lib" 
+\data\develop3\obj\Debug\octrllib\CloseBtn.obj
+\data\develop3\obj\Debug\octrllib\CodeAssistData.obj
+\data\develop3\obj\Debug\octrllib\CodeAssistEditCtrl.obj
+\data\develop3\obj\Debug\octrllib\CodeAssistListMaker.obj
+\data\develop3\obj\Debug\octrllib\CodeAssistWnd.obj
+\data\develop3\obj\Debug\octrllib\colorutil.obj
+\data\develop3\obj\Debug\octrllib\ComboBoxUtil.obj
+\data\develop3\obj\Debug\octrllib\CommonCancelDlg.obj
+\data\develop3\obj\Debug\octrllib\DispColorData.obj
+\data\develop3\obj\Debug\octrllib\EditableGridData.obj
+\data\develop3\obj\Debug\octrllib\EditCtrl.obj
+\data\develop3\obj\Debug\octrllib\EditData.obj
+\data\develop3\obj\Debug\octrllib\editdispdata.obj
+\data\develop3\obj\Debug\octrllib\EditRowBuffer.obj
+\data\develop3\obj\Debug\octrllib\EditRowData.obj
+\data\develop3\obj\Debug\octrllib\expsplit.obj
+\data\develop3\obj\Debug\octrllib\FastIniFile.obj
+\data\develop3\obj\Debug\octrllib\FileTabCtrl.obj
+\data\develop3\obj\Debug\octrllib\FontWidth.obj
+\data\develop3\obj\Debug\octrllib\GridCtrl.obj
+\data\develop3\obj\Debug\octrllib\griddata.obj
+\data\develop3\obj\Debug\octrllib\GridDispData.obj
+\data\develop3\obj\Debug\octrllib\Indenter.obj
+\data\develop3\obj\Debug\octrllib\InputDlg.obj
+\data\develop3\obj\Debug\octrllib\IntArray.obj
+\data\develop3\obj\Debug\octrllib\LanguageSetting.obj
+\data\develop3\obj\Debug\octrllib\ListCtrlUtil.obj
+\data\develop3\obj\Debug\octrllib\MemoryPool.obj
+\data\develop3\obj\Debug\octrllib\octrl_util.obj
+\data\develop3\obj\Debug\octrllib\ogrep_util.obj
+\data\develop3\obj\Debug\octrllib\OWinApp.obj
+\data\develop3\obj\Debug\octrllib\owinutil.obj
+\data\develop3\obj\Debug\octrllib\PlacesBarFileDlg.obj
+\data\develop3\obj\Debug\octrllib\printeditdata.obj
+\data\develop3\obj\Debug\octrllib\PtrGridData.obj
+\data\develop3\obj\Debug\octrllib\Renderer.obj
+\data\develop3\obj\Debug\octrllib\ScrollWnd.obj
+\data\develop3\obj\Debug\octrllib\StdAfx.obj
+\data\develop3\obj\Debug\octrllib\StrGridData.obj
+\data\develop3\obj\Debug\octrllib\StrToken.obj
+\data\develop3\obj\Debug\octrllib\ToolTipEx.obj
+\data\develop3\obj\Debug\octrllib\Undo.obj
+\data\develop3\obj\Debug\octrllib\UnicodeArchive.obj
+\data\develop3\obj\Debug\octrllib\wheelsplit.obj
+\data\develop3\lib\Debug\ostrutil.lib
+]
+Creating command line "link.exe -lib @C:\Users\ogawa\AppData\Local\Temp\RSP26C0.tmp"
+<h3>Output Window</h3>
+Creating library...
+<h3>
+--------------------Configuration: ofileutil - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ogawa\AppData\Local\Temp\RSP2A3C.tmp" with contents
+[
+/nologo /out:"../../../lib/Debug\ofileutil.lib" 
+\data\develop3\obj\Debug\ofileutil\file_winutil.obj
+\data\develop3\obj\Debug\ofileutil\filenames.obj
+\data\develop3\obj\Debug\ofileutil\fileutil.obj
+\data\develop3\obj\Debug\ofileutil\StdAfx.obj
+\data\develop3\lib\Debug\ostrutil.lib
+]
+Creating command line "link.exe -lib @C:\Users\ogawa\AppData\Local\Temp\RSP2A3C.tmp"
+<h3>Output Window</h3>
+Creating library...
+<h3>
+--------------------Configuration: oedit - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ogawa\AppData\Local\Temp\RSP2B18.tmp" with contents
+[
+imm32.lib version.lib ostrutil.lib octrllib.lib ofileutil.lib /nologo /subsystem:windows /incremental:yes /pdb:"../../../../exe/Debug/oedit/oedit.pdb" /debug /machine:I386 /out:"../../../../exe/Debug/oedit/oedit.exe" /pdbtype:sept /libpath:"../../../../lib/debug" 
+\data\develop3\obj\Debug\oedit\AcceleratorDlg.obj
+\data\develop3\obj\Debug\oedit\AccelList.obj
+\data\develop3\obj\Debug\oedit\ColorGridWnd.obj
+\data\develop3\obj\Debug\oedit\CommonUtil.obj
+\data\develop3\obj\Debug\oedit\EditorOptionFullScreen.obj
+\data\develop3\obj\Debug\oedit\EditorOptionPage.obj
+\data\develop3\obj\Debug\oedit\EditorOptionPage2.obj
+\data\develop3\obj\Debug\oedit\ExtFileDialog.obj
+\data\develop3\obj\Debug\oedit\FilterDlg.obj
+\data\develop3\obj\Debug\oedit\greputil.obj
+\data\develop3\obj\Debug\oedit\kbmacro.obj
+\data\develop3\obj\Debug\oedit\LineJumpDlg.obj
+\data\develop3\obj\Debug\oedit\MainFrm.obj
+\data\develop3\obj\Debug\oedit\oedit.obj
+\data\develop3\obj\Debug\oedit\oeditapp2.obj
+\data\develop3\obj\Debug\oedit\oeditDoc.obj
+\data\develop3\obj\Debug\oedit\oeditView.obj
+\data\develop3\obj\Debug\oedit\OptionSheet.obj
+\data\develop3\obj\Debug\oedit\PrintDlg.obj
+\data\develop3\obj\Debug\oedit\ReplaceDlg.obj
+\data\develop3\obj\Debug\oedit\scm_macro.obj
+\data\develop3\obj\Debug\oedit\scm_macro_common.obj
+\data\develop3\obj\Debug\oedit\SearchDlg.obj
+\data\develop3\obj\Debug\oedit\SelectColorDlg.obj
+\data\develop3\obj\Debug\oedit\SetupPage.obj
+\data\develop3\obj\Debug\oedit\SetupPage2.obj
+\data\develop3\obj\Debug\oedit\ShareData.obj
+\data\develop3\obj\Debug\oedit\StdAfx.obj
+\data\develop3\obj\Debug\oedit\TagJumpCommon.obj
+\data\develop3\obj\Debug\oedit\oedit.res
+\data\develop3\lib\Debug\octrllib.lib
+\data\develop3\lib\Debug\ostrutil.lib
+\data\develop3\lib\Debug\ofileutil.lib
+]
+Creating command line "link.exe @C:\Users\ogawa\AppData\Local\Temp\RSP2B18.tmp"
+<h3>Output Window</h3>
+Linking...
+Creating temporary file "C:\Users\ogawa\AppData\Local\Temp\RSP2DF7.bat" with contents
+[
+@echo off
+mkdir ..\..\..\..\exe\Debug\oedit\data
+copy ..\data\*.txt ..\..\..\..\exe\Debug\oedit\data
+copy ..\data\*.cfg ..\..\..\..\exe\Debug\oedit\data
+mkdir ..\..\..\..\exe\Debug\oedit\doc
+copy ..\doc\*.txt  ..\..\..\..\exe\Debug\oedit\doc
+copy ..\..\..\libs\common_doc\*.txt ..\..\..\..\exe\Debug\oedit\doc
+mkdir ..\..\..\..\exe\Debug\oedit\scmlib
+copy ..\scmlib\*.scm ..\..\..\..\exe\Debug\oedit\scmlib
+copy ..\..\..\libs\common_scmlib\*.* ..\..\..\..\exe\Debug\oedit\scmlib
+]
+Creating command line "C:\Users\ogawa\AppData\Local\Temp\RSP2DF7.bat"
+
+サブディレクトリまたはファイル ..\..\..\..\exe\Debug\oedit\data は既に存在します。
+..\data\cpp.txt
+..\data\html.txt
+..\data\java.txt
+..\data\languages_default.txt
+..\data\perl.txt
+..\data\scm.txt
+..\data\sql.txt
+..\data\text.txt
+        8 個のファイルをコピーしました。
+..\data\cpp.cfg
+..\data\html.cfg
+..\data\java.cfg
+..\data\perl.cfg
+..\data\scm.cfg
+..\data\sql.cfg
+..\data\text.cfg
+        7 個のファイルをコピーしました。
+サブディレクトリまたはファイル ..\..\..\..\exe\Debug\oedit\doc は既に存在します。
+..\doc\keyword.txt
+..\doc\languages.txt
+..\doc\macro_oedit.txt
+..\doc\option.txt
+..\doc\shortcutkey.txt
+        5 個のファイルをコピーしました。
+..\..\..\libs\common_doc\macro_ref.txt
+..\..\..\libs\common_doc\regexp.txt
+        2 個のファイルをコピーしました。
+サブディレクトリまたはファイル ..\..\..\..\exe\Debug\oedit\scmlib は既に存在します。
+..\scmlib\f7-test.scm
+..\scmlib\oedit.scm
+        2 個のファイルをコピーしました。
+..\..\..\libs\common_scmlib\init.scm
+..\..\..\libs\common_scmlib\srfi-11.scm
+        2 個のファイルをコピーしました。
+
+
+
+<h3>Results</h3>
+oedit.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

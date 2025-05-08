@@ -1,0 +1,244 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 日本語 (日本) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 17, 1\r\n"
+    "#pragma code_page(932)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\oextreg.rc2""  // Microsoft Visual C++ 以外のツールで編集されたリソース\r\n"
+    "#include ""l.jpn\\afxres.rc""          // 標準のコンポーネント\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\oextreg.ico"
+
+IDI_TEXT_ICON           ICON                    "res\\icon1.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "oextregのﾊﾞｰｼﾞｮﾝ情報"
+FONT 9, "ＭＳ Ｐゴシック", 0, 0, 0x0
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "oextreg Version X.X.X.X",IDC_STATIC_VERSION,40,21,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2001-2025 A.Ogawa",IDC_STATIC,114,40,114,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_OEXTREG_DIALOG DIALOGEX 0, 0, 271, 167
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "関連付け"
+FONT 9, "ＭＳ Ｐゴシック", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_EXT_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | WS_BORDER | WS_TABSTOP,7,7,201,112
+    PUSHBUTTON      "追加",IDC_BTN_ADD,215,7,50,14
+    PUSHBUTTON      "変更",IDC_BTN_UPDATE,215,27,50,14,WS_DISABLED
+    PUSHBUTTON      "削除",IDC_BTN_DELETE,215,47,50,14,WS_DISABLED
+    CONTROL         ".txt",IDC_CHECK_TXT,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,227,84,28,13
+    CONTROL         ".java",IDC_CHECK_JAVA,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,227,102,28,13
+    PUSHBUTTON      "閉じる",IDCANCEL,215,146,50,14
+    GROUPBOX        "簡易追加",IDC_STATIC,215,72,50,48
+    CONTROL         "Internet Explorerのソースを表示するエディタに設定する",IDC_IE_SOURCE_VIEWER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,128,202,12
+END
+
+IDD_ADD_EXT DIALOG 0, 0, 239, 91
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "関連付けの追加"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,61,70,50,14,WS_DISABLED
+    PUSHBUTTON      "ｷｬﾝｾﾙ",IDCANCEL,127,70,50,14
+    EDITTEXT        IDC_EDIT_EXT,57,7,45,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FILE_TYPE_NAME,57,28,112,14,ES_AUTOHSCROLL
+    CONTROL         "ｴｸｽﾌﾟﾛｰﾗの右ｸﾘｯｸﾒﾆｭｰから新規作成できるようにする",IDC_CHECK_EXPLORER_RCLICK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,52,225,12
+    LTEXT           "拡張子",IDC_STATIC,7,7,46,13
+    LTEXT           "ファイル種別",IDC_STATIC,7,28,46,13
+    LTEXT           "例: .txt",IDC_STATIC,111,7,40,14
+    LTEXT           "例: ﾃｷｽﾄﾌｧｲﾙ",IDC_STATIC,177,28,55,13
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,1,0,0
+ PRODUCTVERSION 3,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041104b0"
+        BEGIN
+            VALUE "FileDescription", "oextreg MFC ｱﾌﾟﾘｹｰｼｮﾝ"
+            VALUE "FileVersion", "3.1.0.0"
+            VALUE "InternalName", "oextreg"
+            VALUE "LegalCopyright", "Copyright (C) 2001 - 2025 A.Ogawa"
+            VALUE "OriginalFilename", "oextreg.EXE"
+            VALUE "ProductName", "oextreg ｱﾌﾟﾘｹｰｼｮﾝ"
+            VALUE "ProductVersion", "3.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_OEXTREG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+
+    IDD_ADD_EXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 84
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "oextreg のﾊﾞｰｼﾞｮﾝ情報(&A)..."
+END
+
+#endif    // 日本語 (日本) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE 17, 1
+#pragma code_page(932)
+#endif //_WIN32
+#include "res\oextreg.rc2"  // Microsoft Visual C++ 以外のツールで編集されたリソース
+#include "l.jpn\afxres.rc"          // 標準のコンポーネント
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

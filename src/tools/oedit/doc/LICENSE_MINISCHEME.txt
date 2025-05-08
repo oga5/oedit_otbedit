@@ -1,0 +1,13 @@
+/*
+ *      ---------- Mini-Scheme Interpreter Version 0.85 ----------
+ *
+ *                coded by Atsushi Moriwaki (11/5/1989)
+ *
+ *            E-MAIL :  moriwaki@kurims.kurims.kyoto-u.ac.jp
+ *
+ *               THIS SOFTWARE IS IN THE PUBLIC DOMAIN
+ *               ------------------------------------
+ * This software is completely free to copy, modify and/or re-distribute.
+ * But I would appreciate it if you left my name on the code as the author.
+ *
+ */

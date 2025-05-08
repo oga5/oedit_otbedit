@@ -1,0 +1,1623 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 日本語 (日本) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 17, 1\r\n"
+    "#pragma code_page(932)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\oedit.rc2""  // Microsoft Visual C++ 以外のツールで編集されたリソース\r\n"
+    "#include ""l.jpn\\afxres.rc""          // 標準のコンポーネント\r\n"
+    "#include ""l.jpn\\afxprint.rc""        // 印刷/印刷プレビュー リソース\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\idr_main.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDR_EDIT_MODE           BITMAP                  "res\\toolbar1.bmp"
+
+IDB_TOOLBAR1_256        BITMAP                  "res\\toolbar1_256.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_EDIT_UNDO
+    BUTTON      ID_EDIT_REDO
+    SEPARATOR
+    BUTTON      ID_SEARCH
+    BUTTON      ID_SEARCH_NEXT
+    BUTTON      ID_SEARCH_PREV
+    BUTTON      ID_REPLACE
+    BUTTON      ID_SEARCH_FILE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_LINE_MODE_NORMAL
+    BUTTON      ID_LINE_MODE_LEN
+    BUTTON      ID_LINE_MODE_RIGHT
+    SEPARATOR
+    BUTTON      ID_SHOW_TOPMOST
+    SEPARATOR
+    BUTTON      ID_REC_KBMACRO
+    BUTTON      ID_PLAY_KBMACRO
+END
+
+IDR_EDIT_MODE TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_COLOR_INPUT
+    BUTTON      ID_VIEW_BROWSER_01
+    BUTTON      ID_VIEW_BROWSER_02
+    BUTTON      ID_VIEW_BROWSER_03
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "ファイル(&F)"
+    BEGIN
+        MENUITEM "新規ファイル(&N)",                  ID_FILE_NEW
+        MENUITEM "開く(&O)...",                   ID_FILE_OPEN
+        MENUITEM "閉じる(&C)",                     ID_FILE_CLOSE
+        MENUITEM "すべて閉じる(&C)",                  ID_FILE_CLOSE_ALL
+        MENUITEM "上書き保存(&S)",                   ID_FILE_SAVE
+        MENUITEM "名前を付けて保存(&A)...",             ID_FILE_SAVE_AS
+        MENUITEM "すべて保存(&L)",                   ID_FILE_SAVE_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "ファイルフォーマットの設定(文字コード,改行)...",  ID_SET_FILE_FORMAT
+        MENUITEM SEPARATOR
+        MENUITEM "読みなおす",                       ID_FILE_RELOAD
+        POPUP "文字コードを指定して読みなおす"
+        BEGIN
+            MENUITEM "自動判別",                        ID_FILE_LOAD_AUTO
+            MENUITEM SEPARATOR
+            MENUITEM "SJIS",                        ID_FILE_LOAD_SJIS
+            MENUITEM "EUC",                         ID_FILE_LOAD_EUC
+            MENUITEM "JIS",                         ID_FILE_LOAD_JIS
+            MENUITEM "UNICODE",                     ID_FILE_LOAD_UNICODE
+            MENUITEM "UNICODE(no signature)",       ID_FILE_LOAD_UNICODE_NO_SIGNATURE
+            MENUITEM "UTF16BE",                     ID_FILE_LOAD_UTF16BE
+            MENUITEM "UTF16BE(no signature)",       ID_FILE_LOAD_UTF16BE_NO_SIGNATURE
+            MENUITEM "UTF8",                        ID_FILE_LOAD_UTF8
+            MENUITEM "UTF8(no signature)",          ID_FILE_LOAD_UTF8_NO_SIGNATURE
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "挿入...",                       ID_FILE_INSERT
+        MENUITEM SEPARATOR
+        MENUITEM "印刷(&P)...",                   ID_FILE_PRINT
+        MENUITEM SEPARATOR
+        MENUITEM "お気に入り...",                    34207
+        MENUITEM SEPARATOR
+        MENUITEM "最近使ったファイル",                   ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "アプリケーションの終了(&X)",             ID_APP_EXIT
+    END
+    POPUP "編集(&E)"
+    BEGIN
+        MENUITEM "元に戻す(&U)",                    ID_EDIT_UNDO
+        MENUITEM "やり直し(&R)",                    ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "切り取り(&T)",                    ID_EDIT_CUT
+        MENUITEM "コピー(&C)",                     ID_EDIT_COPY
+        MENUITEM "貼り付け(&P)",                    ID_EDIT_PASTE
+        MENUITEM "削除(&D)",                      ID_EDIT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "すべて選択(&A)",                   ID_SELECT_ALL
+        MENUITEM "矩形選択",                        ID_BOX_SELECT
+        MENUITEM "矩形貼付",                        ID_BOX_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "タグジャンプ",                      ID_TAG_JUMP
+        MENUITEM SEPARATOR
+        MENUITEM "日付と時刻",                       ID_INSERT_DATE_TIME
+        MENUITEM SEPARATOR
+        POPUP "高度な操作"
+        BEGIN
+            MENUITEM "インデント",                       ID_EDIT_INDENT
+            MENUITEM "逆インデント",                      ID_EDIT_INDENT_REV
+            MENUITEM SEPARATOR
+            MENUITEM "コメントを挿入",                     ID_INSERT_COMMENT
+            MENUITEM "コメントを削除",                     ID_DELETE_COMMENT
+            MENUITEM SEPARATOR
+            MENUITEM "スペースをタブに変換",                  ID_SPACE_TO_TAB
+            MENUITEM "タブをスペースに変換",                  ID_TAB_TO_SPACE
+            MENUITEM SEPARATOR
+            MENUITEM "小文字に変換",                      ID_TO_LOWER
+            MENUITEM "大文字に変換",                      ID_TO_UPPER
+            MENUITEM SEPARATOR
+            MENUITEM "行を逆順にする",                     ID_EDIT_REVERSE_ROWS
+            MENUITEM "行をソート(昇順)",                   ID_EDIT_SORT_ROWS_ASC
+            MENUITEM "行をソート(降順)",                   ID_EDIT_SORT_ROWS_DESC
+            MENUITEM "重複行を削除",                      ID_EDIT_DEL_DUP_ROWS
+            MENUITEM SEPARATOR
+            MENUITEM "先頭の空白を削除",                    ID_DELETE_SPACE
+            MENUITEM "行末の空白を削除",                    ID_DELETE_SPACE_END
+            MENUITEM "> を挿入",                       ID_INSERT_GT
+            MENUITEM "> を削除",                       ID_DELETE_GT
+            MENUITEM SEPARATOR
+            MENUITEM "折り返し位置に改行を挿入",                ID_SPLIT_ROWS
+            MENUITEM "改行を削除",                       ID_JOIN_ROWS
+        END
+        POPUP "半角－全角変換"
+        BEGIN
+            MENUITEM "→全角",                         ID_HANKAKU_TO_ZENKAKU
+            MENUITEM "→全角(カタカナ)",                   ID_HANKAKU_TO_ZENKAKU_KATA
+            MENUITEM "→全角(英数)",                     ID_HANKAKU_TO_ZENKAKU_ALPHA
+            MENUITEM "→半角",                         ID_ZENKAKU_TO_HANKAKU
+            MENUITEM "→半角(カタカナ)",                   ID_ZENKAKU_TO_HANKAKU_KATA
+            MENUITEM "→半角(英数)",                     ID_ZENKAKU_TO_HANKAKU_ALPHA
+        END
+        POPUP "ブックマーク"
+        BEGIN
+            MENUITEM "ブックマークの設定/解除",                ID_SET_BOOK_MARK
+            MENUITEM "次のブックマーク",                    ID_JUMP_BOOK_MARK
+            MENUITEM "前のブックマーク",                    ID_JUMP_BOOK_MARK_BACK
+            MENUITEM "全てのブックマークを解除",                ID_CLEAR_ALL_BOOK_MARK
+        END
+    END
+    POPUP "検索(&S)"
+    BEGIN
+        MENUITEM "検索(&F)...",                   ID_SEARCH
+        MENUITEM "次を検索",                        ID_SEARCH_NEXT
+        MENUITEM "前を検索",                        ID_SEARCH_PREV
+        MENUITEM "置換(&E)...",                   ID_REPLACE
+        MENUITEM "フィルタ...",                     ID_FILTER
+        MENUITEM "検索文字列の強調表示を解除",               ID_CLEAR_SEARCH_TEXT
+        MENUITEM "ファイルから検索(&I)...",             ID_SEARCH_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "指定行へ移動(&J)...",               ID_LINE_JUMP
+    END
+    POPUP "表示(&V)"
+    BEGIN
+        POPUP "ツールバー"
+        BEGIN
+            MENUITEM "標準(&T)",                      ID_VIEW_TOOLBAR
+            MENUITEM "編集モード(&M)",                   ID_VIEW_TOOLBAR_EDIT_MODE
+        END
+        MENUITEM "ステータス バー(&S)",                ID_VIEW_STATUS_BAR
+        MENUITEM "ファイルリスト(&F)",                 ID_VIEW_FILE_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "折り返さない",                      ID_LINE_MODE_NORMAL
+        MENUITEM "指定桁数で折り返す",                   ID_LINE_MODE_LEN
+        MENUITEM "右端で折り返す",                     ID_LINE_MODE_RIGHT
+        MENUITEM SEPARATOR
+        MENUITEM "常に手前に表示",                     ID_SHOW_TOPMOST
+        MENUITEM "再描画",                         ID_REDRAW
+        MENUITEM "フォント設定...",                   ID_SET_FONT
+        MENUITEM "フォント設定(Tab)...",              ID_SET_FONT_TAB_CTRL
+        POPUP "文字サイズ"
+        BEGIN
+            MENUITEM "大きく",                         ID_FONT_SIZE_LARGE
+            MENUITEM "小さく",                         ID_FONT_SIZE_SMALL
+        END
+    END
+    POPUP "ツール(&T)"
+    BEGIN
+        POPUP "編集モード"
+        BEGIN
+            MENUITEM "編集モード1",                      ID_EDIT_MODE_1
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "マクロを実行(クリップボード)",             ID_SCM_EVAL_CLIPBOARD
+        MENUITEM "マクロを実行(選択範囲)",                ID_SCM_EVAL
+        MENUITEM "マクロを実行(ファイル)",                ID_SCM_LOAD_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "カラーデータ入力...",                 ID_COLOR_INPUT
+        MENUITEM "ブラウザで確認(Edge)",               ID_VIEW_BROWSER_01
+        MENUITEM "ブラウザで確認(Chrome)",             ID_VIEW_BROWSER_02
+        MENUITEM "ブラウザで確認(その他)",                ID_VIEW_BROWSER_03
+        MENUITEM SEPARATOR
+        MENUITEM "キー割り当て...",                   ID_ACCELERATOR
+        MENUITEM "オプション(&O)...",                ID_OPTION
+    END
+    POPUP "ウィンドウ(&W)"
+    BEGIN
+        MENUITEM "次のウィンドウ(&N)",                 ID_NEXT_WINDOW
+        MENUITEM "前のウィンドウ(&P)",                 ID_PREV_WINDOW
+        MENUITEM SEPARATOR
+        POPUP "タブの移動"
+        BEGIN
+            MENUITEM "左へ移動",                        ID_TAB_MOVE_LEFT
+            MENUITEM "右へ移動",                        ID_TAB_MOVE_RIGHT
+            MENUITEM "先頭へ移動",                       ID_TAB_MOVE_TOP
+            MENUITEM "最後へ移動",                       ID_TAB_MOVE_LAST
+        END
+        MENUITEM "タブをソート",                      ID_SORT_TAB
+    END
+    POPUP "ヘルプ(&H)"
+    BEGIN
+        MENUITEM "正規表現...",                     ID_SHOW_REGEXP_HELP
+        MENUITEM "Schemeリファレンス...",             ID_SHOW_SCHEME_HELP
+        MENUITEM "oeditマクロリファレンス...",           ID_SHOW_OEDITMACRO_HELP
+        MENUITEM "Credits...",                  ID_SHOW_CREDITS
+        MENUITEM SEPARATOR
+        MENUITEM "otbedit のバージョン情報(&A)...",     ID_APP_ABOUT
+    END
+END
+
+IDR_EDIT_MENU MENU
+BEGIN
+    POPUP "編集(&E)"
+    BEGIN
+        MENUITEM "元に戻す(&U)",                    ID_EDIT_UNDO
+        MENUITEM "やり直し(&R)",                    ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "切り取り(&T)",                    ID_EDIT_CUT
+        MENUITEM "コピー(&C)",                     ID_EDIT_COPY
+        MENUITEM "貼り付け(&P)",                    ID_EDIT_PASTE
+        MENUITEM "削除(&D)",                      ID_EDIT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "すべて選択(&A)",                   ID_SELECT_ALL
+        MENUITEM "矩形選択",                        ID_BOX_SELECT
+        MENUITEM SEPARATOR
+        POPUP "高度な操作"
+        BEGIN
+            MENUITEM "インデント(Tab)",                  ID_EDIT_INDENT
+            MENUITEM "逆インデント(Tab)",                 ID_EDIT_INDENT_REV
+            MENUITEM SEPARATOR
+            MENUITEM "インデント(Space)",                ID_EDIT_INDENT_SPACE
+            MENUITEM "逆インデント(Space)",               ID_EDIT_INDENT_SPACE_REV
+            MENUITEM SEPARATOR
+            MENUITEM "コメントを挿入",                     ID_INSERT_COMMENT
+            MENUITEM "コメントを削除",                     ID_DELETE_COMMENT
+            MENUITEM SEPARATOR
+            MENUITEM "スペースをタブに変換",                  ID_SPACE_TO_TAB
+            MENUITEM "タブをスペースに変換",                  ID_TAB_TO_SPACE
+            MENUITEM SEPARATOR
+            MENUITEM "小文字に変換",                      ID_TO_LOWER
+            MENUITEM "大文字に変換",                      ID_TO_UPPER
+            MENUITEM SEPARATOR
+            MENUITEM "行を逆順にする",                     ID_EDIT_REVERSE_ROWS
+            MENUITEM "行をソート(昇順)",                   ID_EDIT_SORT_ROWS_ASC
+            MENUITEM "行をソート(降順)",                   ID_EDIT_SORT_ROWS_DESC
+            MENUITEM "重複行を削除",                      ID_EDIT_DEL_DUP_ROWS
+            MENUITEM SEPARATOR
+            MENUITEM "先頭の空白を削除",                    ID_DELETE_SPACE
+            MENUITEM "行末の空白を削除",                    ID_DELETE_SPACE_END
+            MENUITEM "> を挿入",                       ID_INSERT_GT
+            MENUITEM "> を削除",                       ID_DELETE_GT
+            MENUITEM SEPARATOR
+            MENUITEM "折り返し位置に改行を挿入",                ID_SPLIT_ROWS
+            MENUITEM "改行を削除",                       ID_JOIN_ROWS
+        END
+        POPUP "半角－全角変換"
+        BEGIN
+            MENUITEM "→全角",                         ID_HANKAKU_TO_ZENKAKU
+            MENUITEM "→全角(カタカナ)",                   ID_HANKAKU_TO_ZENKAKU_KATA
+            MENUITEM "→全角(英数)",                     ID_HANKAKU_TO_ZENKAKU_ALPHA
+            MENUITEM "→半角",                         ID_ZENKAKU_TO_HANKAKU
+            MENUITEM "→半角(カタカナ)",                   ID_ZENKAKU_TO_HANKAKU_KATA
+            MENUITEM "→半角(英数)",                     ID_ZENKAKU_TO_HANKAKU_ALPHA
+        END
+        POPUP "ブックマーク"
+        BEGIN
+            MENUITEM "ブックマークの設定／解除",                ID_SET_BOOK_MARK
+            MENUITEM "次のブックマーク",                    ID_JUMP_BOOK_MARK
+            MENUITEM "前のブックマーク",                    ID_JUMP_BOOK_MARK_BACK
+            MENUITEM "全てのブックマークを解除",                ID_CLEAR_ALL_BOOK_MARK
+        END
+    END
+END
+
+IDR_DUMMY MENU
+BEGIN
+    POPUP "カーソル"
+    BEGIN
+        MENUITEM "一文字左へ",                       ID_CHAR_LEFT
+        MENUITEM "一文字右へ",                       ID_CHAR_RIGHT
+        MENUITEM "一行上へ",                        ID_LINE_UP
+        MENUITEM "一行下へ",                        ID_LINE_DOWN
+        MENUITEM "一単語左へ",                       ID_WORD_LEFT
+        MENUITEM "一単語右へ",                       ID_WORD_RIGHT
+        MENUITEM "一単語左へ(単語の両端で停止)",             ID_WORD_LEFT_STOP_WB
+        MENUITEM "一単語右へ(単語の両端で停止)",             ID_WORD_RIGHT_STOP_WB
+        MENUITEM "前のスペースへ",                     ID_SPACE_LEFT
+        MENUITEM "次のスペースへ",                     ID_SPACE_RIGHT
+        MENUITEM "行の先頭へ",                       ID_LINE_START
+        MENUITEM "行の末尾へ",                       ID_LINE_END
+        MENUITEM "テキストの先頭へ",                    ID_DOCUMENT_START
+        MENUITEM "テキストの末尾へ",                    ID_DOCUMENT_END
+        MENUITEM "一ページ上へ",                      ID_PAGE_UP
+        MENUITEM "一ページ下へ",                      ID_PAGE_DOWN
+        MENUITEM "選択範囲を一文字左へ",                  ID_CHAR_LEFT_EXTEND
+        MENUITEM "選択範囲を一文字右へ",                  ID_CHAR_RIGHT_EXTEND
+        MENUITEM "選択範囲を一行上へ",                   ID_LINE_UP_EXTEND
+        MENUITEM "選択範囲を一行下へ",                   ID_LINE_DOWN_EXTEND
+        MENUITEM "選択範囲を一単語左へ",                  ID_WORD_LEFT_EXTEND
+        MENUITEM "選択範囲を一単語右へ",                  ID_WORD_RIGHT_EXTEND
+        MENUITEM "選択範囲を一単語左へ(単語の両端で停止)",        ID_WORD_LEFT_STOP_WB_EXTEND
+        MENUITEM "選択範囲を一単語右へ(単語の両端で停止)",        ID_WORD_RIGHT_STOP_WB_EXTEND
+        MENUITEM "選択範囲を行の先頭へ",                  ID_LINE_START_EXTEND
+        MENUITEM "選択範囲を行の末尾へ",                  ID_LINE_END_EXTEND
+        MENUITEM "選択範囲をテキストの先頭へ",               ID_DOCUMENT_START_EXTEND
+        MENUITEM "選択範囲をテキストの末尾へ",               ID_DOCUMENT_END_EXTEND
+        MENUITEM "選択範囲を一ページ上へ",                 ID_PAGE_UP_EXTEND
+        MENUITEM "選択範囲を一ページ下へ",                 ID_PAGE_DOWN_EXTEND
+        MENUITEM "選択範囲を前のスペースへ",                ID_SPACE_LEFT_EXTEND
+        MENUITEM "選択範囲を次のスペースへ",                ID_SPACE_RIGHT_EXTEND
+        MENUITEM "一行上へスクロール",                   ID_SCROLL_UP
+        MENUITEM "一行下へスクロール",                   ID_SCROLL_DOWN
+        MENUITEM "一ページ上へスクロール",                 ID_SCROLL_PAGE_UP
+        MENUITEM "一ページ下へスクロール",                 ID_SCROLL_PAGE_DOWN
+        MENUITEM "最後の編集位置",                     ID_LAST_EDIT_POS
+        MENUITEM "ウィンドウの左端へ",                   ID_SPLIT_START
+        MENUITEM "ウィンドウの右端へ",                   ID_SPLIT_END
+        MENUITEM "選択範囲をウィンドウの左端へ",              ID_SPLIT_START_EXTEND
+        MENUITEM "選択範囲をウィンドウの右端へ",              ID_SPLIT_END_EXTEND
+        MENUITEM "対応する括弧に移動",                   ID_GO_MATCH_BRACKETS
+        MENUITEM "選択範囲を一文字左へ(矩形)",              ID_CHAR_LEFT_EXTEND_BOX
+        MENUITEM "選択範囲を一文字右へ(矩形)",              ID_CHAR_RIGHT_EXTEND_BOX
+        MENUITEM "選択範囲を一行上へ(矩形)",               ID_LINE_UP_EXTEND_BOX
+        MENUITEM "選択範囲を一行下へ(矩形)",               ID_LINE_DOWN_EXTEND_BOX
+    END
+    POPUP "編集"
+    BEGIN
+        MENUITEM "BackSpace",                   ID_EDIT_BACKSPACE
+        MENUITEM "キーワード補完",                     ID_KEYWORD_COMPLETION
+        MENUITEM "キーワード補完(逆)",                  ID_KEYWORD_COMPLETION_REV
+        MENUITEM "一行選択",                        ID_SELECT_ROW
+        MENUITEM "単語選択",                        ID_SELECT_WORD
+        MENUITEM "上書きモード／解除",                   ID_TOGGLE_OVERWRITE
+        MENUITEM "選択範囲を次のブックマークへ",              ID_JUMP_BOOK_MARK_EXTEND
+        MENUITEM "選択範囲を前のブックマークへ",              ID_JUMP_BOOK_MARK_BACK_EXTEND
+        MENUITEM "カーソル位置の単語の後ろを削除",             ID_EDIT_DELETE_WORD_AFTER_CURSOR
+        MENUITEM "カーソル位置の単語の前を削除",              ID_EDIT_DELETE_WORD_BEFORE_CURSOR
+        MENUITEM "リンクをコピー",                     ID_COPY_CLICKABLE_URL
+        MENUITEM "リンクを表示",                      ID_DO_CLICKABLE_URL
+        MENUITEM "現在行を切り取り",                    ID_EDIT_CUT_ROW
+        MENUITEM "現在行をコピー",                     ID_EDIT_COPY_ROW
+        MENUITEM "現在行を削除",                      ID_EDIT_DELETE_ROW
+        MENUITEM "現在行の下に貼り付け",                  ID_EDIT_PASTE_ROW
+        MENUITEM "現在行の上に貼り付け",                  ID_EDIT_PASTE_ROW_UP
+        MENUITEM "カーソルから後ろを削除",                 ID_EDIT_DELETE_AFTER_CURSOR
+        MENUITEM "カーソルから前を削除",                  ID_EDIT_DELETE_BEFORE_CURSOR
+        MENUITEM "行を結合",                        ID_EDIT_JOIN_ROW
+        MENUITEM "選択範囲の文字列で次を検索",               ID_SEARCH_SELECTED
+        MENUITEM "選択範囲の文字列で前を検索",               ID_SEARCH_SELECTED_PREV
+        MENUITEM "改行を挿入",                       ID_INPUT_RETURN
+        MENUITEM "<br>を挿入",                     ID_INPUT_BR
+        MENUITEM "括弧の対応を反転表示",                  ID_INVERT_BRACKETS
+    END
+    POPUP "ファイル"
+    BEGIN
+        MENUITEM "新しいウィンドウ(&N)",                ID_NEW_WINDOW
+    END
+    POPUP "ツール"
+    BEGIN
+        MENUITEM "キーボードマクロの記録/停止",              ID_REC_KBMACRO
+        MENUITEM "キーボードマクロの再生",                 ID_PLAY_KBMACRO
+        POPUP "キーボードマクロ(ファイル)"
+        BEGIN
+            MENUITEM "ファイルから実行...",                 ID_KBMACRO_PLAY
+            MENUITEM "ファイル読込...",                   ID_KBMACRO_LOAD
+            MENUITEM "ファイル保存...",                   ID_KBMACRO_SAVE
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "関連付け...",                     ID_EXT_REG
+    END
+    POPUP "編集モード"
+    BEGIN
+        MENUITEM "編集モード1",                      ID_EDIT_MODE_1
+        MENUITEM "編集モード2",                      ID_EDIT_MODE_2
+        MENUITEM "編集モード3",                      ID_EDIT_MODE_3
+        MENUITEM "編集モード4",                      ID_EDIT_MODE_4
+        MENUITEM "編集モード5",                      ID_EDIT_MODE_5
+        MENUITEM "編集モード6",                      ID_EDIT_MODE_6
+        MENUITEM "編集モード7",                      ID_EDIT_MODE_7
+        MENUITEM "編集モード8",                      ID_EDIT_MODE_8
+        MENUITEM "編集モード9",                      ID_EDIT_MODE_9
+        MENUITEM "編集モード10",                     ID_EDIT_MODE_10
+        MENUITEM "編集モード11",                     ID_EDIT_MODE_11
+        MENUITEM "編集モード12",                     ID_EDIT_MODE_12
+        MENUITEM "編集モード13",                     ID_EDIT_MODE_13
+        MENUITEM "編集モード14",                     ID_EDIT_MODE_14
+        MENUITEM "編集モード15",                     ID_EDIT_MODE_15
+    END
+    POPUP "オプション"
+    BEGIN
+        MENUITEM "行番号表示のON/OFF",                ID_TOGGLE_SHOW_ROW_NUM
+        MENUITEM "列番号表示のON/OFF",                ID_TOGGLE_SHOW_COL_NUM
+    END
+END
+
+IDR_TAB_MENU MENU
+BEGIN
+    POPUP "TAB"
+    BEGIN
+        MENUITEM "閉じる(&C)",                     ID_FILE_CLOSE
+        MENUITEM "上書き保存(&S)",                   ID_FILE_SAVE
+        MENUITEM "名前を付けて保存(&A)...",             ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        POPUP "タブの移動"
+        BEGIN
+            MENUITEM "左へ移動",                        ID_TAB_MOVE_LEFT
+            MENUITEM "右へ移動",                        ID_TAB_MOVE_RIGHT
+            MENUITEM "先頭へ移動",                       ID_TAB_MOVE_TOP
+            MENUITEM "最後へ移動",                       ID_TAB_MOVE_LAST
+        END
+        POPUP "タブを閉じる"
+        BEGIN
+            MENUITEM "左のタブを全て閉じる",                  ID_TAB_CLOSE_LEFT
+            MENUITEM "右のタブを全て閉じる",                  ID_TAB_CLOSE_RIGHT
+            MENUITEM "他のタブを全て閉じる",                  ID_TAB_CLOSE_OTHER
+        END
+    END
+END
+
+IDR_URL_MENU MENU
+BEGIN
+    MENUITEM "リンクを表示(Edge)",                ID_VIEW_CLICKABLE_URL_01
+    MENUITEM "リンクを表示(Chrome)",              ID_VIEW_CLICKABLE_URL_02
+    MENUITEM "リンクを表示(その他)",                 ID_VIEW_CLICKABLE_URL_03
+    MENUITEM "新しいウィンドウでリンクを表示(Edge)",       ID_VIEW_CLICKABLE_URL_01_NEW_WINDOW
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 59
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "otbeditのバージョン情報"
+FONT 9, "ＭＳ Ｐゴシック", 0, 0, 0x0
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "otbedit Version X.X.X.X",IDC_STATIC_VERSION,40,11,119,8,SS_NOPREFIX
+    RTEXT           "Copyright (C) 2001-2025 A.Ogawa",IDC_STATIC,107,50,121,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           "https://code73.mydns.jp/a_ogawa/",IDC_STATIC_URL,40,28,110,11
+END
+
+IDD_OPT_SETUP DIALOGEX 0, 0, 267, 303
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "設定"
+FONT 9, "ＭＳ Ｐゴシック", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_EDIT_INITIAL_DIR,14,10,204,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_INITIAL_DIR,224,10,14,14
+    COMBOBOX        IDC_COMBO_KANJI_CODE,53,47,79,55,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_LINE_TYPE,179,47,79,55,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_EDIT_MODE,53,64,79,55,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_FILE_OPEN_KANJI_CODE,53,103,79,55,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_BROWSER_01,50,142,168,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_BROWSER_01,223,142,14,14
+    EDITTEXT        IDC_EDIT_BROWSER_02,50,161,168,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_BROWSER_02,223,161,14,14
+    EDITTEXT        IDC_EDIT_BROWSER_03,50,181,167,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_BROWSER_03,223,181,14,14
+    CONTROL         "カレントディレクトリを検索フォルダに設定する",IDC_CHECK_OGREP_DIR_AS_CURRENT_DIR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,220,239,10
+    COMBOBOX        IDC_COMBO_FILE_LIST_FILTER,13,254,226,94,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,163,287,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "キャンセル",IDCANCEL,217,277,50,14,NOT WS_VISIBLE
+    GROUPBOX        "起動時のディレクトリ",IDC_STATIC,7,0,237,27
+    GROUPBOX        "ブラウザ",IDC_STATIC,6,128,237,73
+    LTEXT           "その他",IDC_STATIC,14,183,28,12
+    LTEXT           "Edge",IDC_STATIC,15,145,30,17
+    LTEXT           "ファイルリストに表示するファイル",IDC_STATIC,13,242,123,12
+    LTEXT           "文字コード",IDC_STATIC,13,47,37,12
+    LTEXT           "改行コード",IDC_STATIC,139,47,37,12
+    GROUPBOX        "新規作成時の設定",IDC_STATIC,7,32,255,49
+    LTEXT           "文字コード",IDC_STATIC,13,103,37,12
+    GROUPBOX        "ファイルオープン時の文字コード",IDC_STATIC,6,88,251,35
+    LTEXT           "編集モード",IDC_STATIC,13,64,37,12
+    GROUPBOX        "Grep",IDC_STATIC,6,207,251,29
+    LTEXT           "Chrome",IDC_STATIC,14,164,30,12
+END
+
+IDD_LINE_JUMP_DLG DIALOG 0, 0, 143, 59
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "指定行へ移動"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    EDITTEXT        IDC_EDIT_LINE_NO,55,16,56,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "OK",IDOK,14,38,50,14,WS_DISABLED
+    PUSHBUTTON      "キャンセル",IDCANCEL,78,38,50,14
+    LTEXT           "行番号",IDC_STATIC,19,17,30,12
+END
+
+IDD_ACCELERATOR_DLG DIALOG 0, 0, 319, 213
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "キー割り当て"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    CONTROL         "List1",IDC_LIST_CATEGORY,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,7,123,83
+    CONTROL         "List1",IDC_LIST_COMMAND,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,97,302,87
+    CONTROL         "List1",IDC_LIST_ACCEL,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,142,7,127,44
+    EDITTEXT        IDC_EDIT_NEW_KEY,142,64,127,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "割り当て",IDC_BTN_ADD,274,11,34,14,WS_DISABLED
+    PUSHBUTTON      "解除",IDC_BTN_DELETE,274,27,34,14,WS_DISABLED
+    DEFPUSHBUTTON   "OK",IDOK,99,192,50,14
+    PUSHBUTTON      "キャンセル",IDCANCEL,165,192,50,14
+    PUSHBUTTON      "デフォルトに戻す",IDC_BTN_DEFAULT,244,192,64,14
+    LTEXT           "新しいショートカットキーを入力",IDC_STATIC,142,54,114,10
+    LTEXT           "",IDC_STATIC_CURRENT_MENU,143,79,165,18
+END
+
+IDD_QUERY_CLOSE_DLG DIALOG 0, 0, 287, 77
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    DEFPUSHBUTTON   "はい(&Y)",IDOK,53,37,60,14
+    PUSHBUTTON      "いいえ(&N)",IDNO,119,37,60,14
+    PUSHBUTTON      "すべて保存",IDALLYES,53,56,60,14
+    PUSHBUTTON      "すべて保存しない",IDALLNO,119,56,60,14
+    PUSHBUTTON      "キャンセル",IDCANCEL,184,56,60,14
+    LTEXT           "Static",IDC_STATIC_MSG,39,7,241,23
+    ICON            IDR_MAINFRAME,IDC_STATIC_ICON,7,7,20,20
+END
+
+IDD_OPT_EDITOR2 DIALOG 0, 0, 271, 279
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "編集"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    COMBOBOX        IDC_COMBO_INDENT,62,15,193,77,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Tabでスペースを挿入",IDC_CHECK_TAB_AS_SPACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,35,84,13
+    CONTROL         "Drag&&Dropで編集",IDC_CHECK_DRAG_DROP_EDIT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,49,84,13
+    CONTROL         "Dragしないけど，他アプリからのDropは受け付ける",IDC_CHECK_TEXT_DROP_EDIT,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,63,215,13
+    CONTROL         "マウスで範囲選択したとき，クリップボードにコピーする",IDC_CHECK_MOUSE_SELECT_COPY,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,77,188,13
+    CONTROL         "選択範囲が無いときは，行全体をコピーする",IDC_CHECK_ROW_COPY_AT_NO_SEL,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,91,188,13
+    CONTROL         "コピーしたら選択範囲を解除する",IDC_CHECK_CLEAR_AFTER_COPY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,105,188,13
+    CONTROL         "キーワード補完で，補完候補をウィンドウ表示する",IDC_CHECK_KEYWORD_WINDOW,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,119,188,13
+    EDITTEXT        IDC_EDIT_BRACKETS_BLINK_TIME,130,142,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "ワードラップ",IDC_CHECK_ENABLE_WORD_WRAP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,175,156,10
+    CONTROL         "禁則処理を有効にする",IDC_CHECK_ENABLE_CONFINEMENT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,189,171,12
+    EDITTEXT        IDC_EDIT_FIRST_CONFINEMENT_STR,71,206,184,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LAST_CONFINEMENT_STR,71,223,184,13,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,130,251,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "キャンセル",IDCANCEL,212,251,50,14,NOT WS_VISIBLE
+    LTEXT           "インデント",IDC_STATIC,18,17,37,14
+    GROUPBOX        "禁則処理",IDC_STATIC,7,162,256,82
+    LTEXT           "行頭禁則文字",IDC_STATIC,18,206,47,13
+    LTEXT           "行末禁則文字",IDC_STATIC,18,223,47,13
+    LTEXT           "括弧入力時に反転表示する時間",IDC_STATIC,19,144,108,12
+    LTEXT           "msec (0-5,000: 0は反転しない)",IDC_STATIC,160,144,104,12
+END
+
+IDD_OPT_EDITOR DIALOG 0, 0, 270, 265
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "エディタ"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    EDITTEXT        IDC_EDIT_TABSTOP,54,9,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LINE_LEN,147,9,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ROW_SPACE,54,25,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHAR_SPACE,147,25,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_TOP_SPACE,54,41,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LEFT_SPACE,147,41,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_WHEEL_SCROLL_ROW,107,60,26,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "改行を表示",IDC_CHECK_SHOW_LINE_FEED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,7,52,11
+    CONTROL         "折り返し位置を表示",IDC_CHECK_SHOW_LINE_END,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,18,72,11
+    CONTROL         "TABを表示",IDC_CHECK_SHOW_TAB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,29,52,11
+    CONTROL         "行番号を表示",IDC_CHECK_SHOW_ROW_NUM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,40,52,11
+    CONTROL         "列番号を表示",IDC_CHECK_SHOW_COL_NUM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,51,52,11
+    CONTROL         "半角空白を表示",IDC_CHECK_SHOW_SPACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,62,61,11
+    CONTROL         "全角空白を表示",IDC_CHECK_SHOW_2BYTE_SPACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,73,61,11
+    CONTROL         "現在行に線を表示",IDC_CHECK_SHOW_ROW_LINE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,84,71,11
+    CONTROL         "罫線を表示",IDC_CHECK_SHOW_RULED_LINE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,95,73,11
+    CONTROL         "クリッカブルURL",IDC_CHECK_CLICKABLE_URL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,77,70,13
+    CONTROL         "編集行にマーク",IDC_CHECK_SHOW_EDIT_ROW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,100,77,71,11
+    CONTROL         "括弧を強調表示",IDC_CHECK_SHOW_BRACKETS_BOLD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,91,66,11
+    CONTROL         "",IDC_BTN_TEXT_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,55,118,28,13
+    CONTROL         "",IDC_BTN_BG_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,135,118,28,13
+    CONTROL         "",IDC_BTN_SEARCH_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,220,118,28,13
+    CONTROL         "",IDC_BTN_PEN_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,55,134,28,13
+    CONTROL         "",IDC_BTN_KEYWORD_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,135,134,28,13
+    CONTROL         "",IDC_BTN_KEYWORD2_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,220,134,28,13
+    CONTROL         "",IDC_BTN_COMMENT_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,55,150,28,13
+    CONTROL         "",IDC_BTN_QUOTE_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,135,150,28,13
+    CONTROL         "",IDC_BTN_SELECTED_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,220,150,28,13
+    CONTROL         "",IDC_BTN_OPERATOR_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,54,167,28,13
+    CONTROL         "",IDC_BTN_RULER_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,135,166,28,13
+    CONTROL         "",IDC_BTN_IME_CARET_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,220,166,28,13
+    CONTROL         "",IDC_BTN_RULED_LINE_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,54,184,28,13
+    PUSHBUTTON      "標準の設定",IDC_BTN_DEFAULT_COLOR,210,185,48,13
+    DEFPUSHBUTTON   "OK",IDOK,130,247,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "キャンセル",IDCANCEL,212,247,50,14,NOT WS_VISIBLE
+    GROUPBOX        "色の設定",IDC_STATIC,7,105,255,98
+    LTEXT           "タブストップ",IDC_STATIC,7,11,41,12
+    LTEXT           "テキスト",IDC_STATIC,15,118,37,12
+    LTEXT           "キーワード",IDC_STATIC,95,134,37,12
+    LTEXT           "コメント",IDC_STATIC,15,151,37,12
+    LTEXT           "背景",IDC_STATIC,95,118,37,12
+    LTEXT           "記号",IDC_STATIC,15,134,37,12
+    LTEXT           "定数",IDC_STATIC,95,151,37,12
+    LTEXT           "行間(pt)",IDC_STATIC,7,27,41,12
+    LTEXT           "文字間(pt)",IDC_STATIC,99,27,41,12
+    LTEXT           "上の余白(pt)",IDC_STATIC,7,43,43,12
+    LTEXT           "左の余白(pt)",IDC_STATIC,99,43,46,12
+    LTEXT           "折り返し桁数",IDC_STATIC,99,11,42,12
+    LTEXT           "検索結果",IDC_STATIC,180,118,37,12
+    LTEXT           "選択範囲",IDC_STATIC,179,151,37,12
+    LTEXT           "ルーラ",IDC_STATIC,95,167,37,12
+    LTEXT           "演算子",IDC_STATIC,14,168,37,12
+    LTEXT           "キーワード2",IDC_STATIC,180,134,37,12
+    LTEXT           "ホイールマウスのスクロール量",IDC_STATIC,7,62,95,12
+    LTEXT           "キャレット(IME有効時)",IDC_STATIC,179,167,37,17
+    LTEXT           "罫線",IDC_STATIC,14,185,37,12
+END
+
+IDD_PRINT_DLG DIALOG 0, 0, 279, 203
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "印刷"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    COMBOBOX        IDC_COMBO_PRINTER,47,15,174,98,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "プロパティ...",IDC_PRINTER_SETUP,225,15,40,14
+    EDITTEXT        IDC_EDIT_SPACE_TOP,66,65,22,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_SPACE_LEFT,40,89,22,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_SPACE_RIGHT,92,89,22,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_SPACE_BOTTOM,66,109,22,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "ファイル名を出力する",IDC_CHECK_PRINT_TITLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,157,44,100,12
+    CONTROL         "ページ番号を出力する",IDC_CHECK_PRINT_PAGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,157,57,100,12
+    CONTROL         "行番号を出力する",IDC_CHECK_PRINT_ROW_NUM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,157,70,100,12
+    CONTROL         "日時を出力する",IDC_CHECK_PRINT_DATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,157,83,100,12
+    CONTROL         "選択範囲を印刷する",IDC_CHECK_PRINT_SELECTED_AREA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,157,96,100,12
+    PUSHBUTTON      "設定",IDC_SET_FONT,209,159,24,14
+    DEFPUSHBUTTON   "OK",IDOK,91,182,50,14,WS_DISABLED
+    PUSHBUTTON      "キャンセル",IDCANCEL,157,182,50,14
+    LTEXT           "プリンタ",IDC_STATIC,7,17,31,12
+    GROUPBOX        "余白(mm: 0～50)",IDC_STATIC,7,41,136,101
+    LTEXT           "左端",IDC_STATIC,18,89,20,11
+    LTEXT           "右端",IDC_STATIC,119,89,20,11
+    LTEXT           "上端",IDC_STATIC,69,53,20,11
+    LTEXT           "下端",IDC_STATIC,69,129,20,11
+    LTEXT           "Static",IDC_STATIC_PAGE_INFO,151,127,121,13,SS_SUNKEN
+    LTEXT           "１ページに出力できる文字数",IDC_STATIC,151,113,121,13
+    LTEXT           "Static",IDC_STATIC_FONT,47,160,96,13,SS_SUNKEN
+    LTEXT           "Static",IDC_STATIC_FONT_SIZE,180,160,21,13,SS_SUNKEN
+    GROUPBOX        "フォント",IDC_STATIC,7,147,236,30
+    LTEXT           "フォント名",IDC_STATIC,12,160,32,13
+    LTEXT           "サイズ",IDC_STATIC,151,160,25,13
+END
+
+IDD_EXT_FILEDLG_SAVE DIALOG 0, 0, 200, 38
+STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    COMBOBOX        IDC_COMBO_KANJI_CODE,66,0,115,55,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "文字コード",IDC_STATIC_KANJI_CODE,7,0,37,12
+    COMBOBOX        IDC_COMBO_LINE_TYPE,66,18,115,55,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "改行コード",IDC_STATIC_LINE_TYPE,7,18,37,12
+END
+
+IDD_EXT_FILEDLG_OPEN DIALOG 0, 0, 200, 20
+STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    COMBOBOX        IDC_COMBO_KANJI_CODE,66,0,115,53,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "文字コード",IDC_STATIC_KANJI_CODE,7,0,37,12
+END
+
+IDD_FILE_FORMAT_DLG DIALOG 0, 0, 195, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ファイルフォーマットの設定"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,60,50,14
+    PUSHBUTTON      "キャンセル",IDCANCEL,105,60,50,14
+    LTEXT           "文字コード",IDC_STATIC,7,17,40,12
+    LTEXT           "改行コード",IDC_STATIC,7,41,40,12
+    COMBOBOX        IDC_COMBO_KANJI_CODE,60,15,114,60,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_LINE_TYPE,60,37,114,52,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_OPT_SETUP2 DIALOG 0, 0, 267, 289
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "設定(2)"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    CONTROL         "起動時にIMEを有効にする",IDC_CHECK_BOOT_ON_IME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,7,195,13
+    CONTROL         "ドキュメントを閉じる前に，変更を保存するか確認する",IDC_CHECK_SAVE_MODIFIED,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,20,195,13
+    CONTROL         "ウィンドウタイトルにファイルのフルパス名を表示する",IDC_CHECK_WINDOW_TITLE_IS_PATH_NAME,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,33,195,13
+    CONTROL         "文字の検索で，ファイルの最後まで検索したとき，メッセージを表示する",IDC_CHECK_SEARCH_LOOP_MSG,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,46,231,13
+    CONTROL         "文字の検索で，検索結果が見つかったとき検索ダイアログを閉じる",IDC_CHECK_SEARCH_DLG_CLOSE_AT_FOUND,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,59,231,13
+    CONTROL         "タブに親ディレクトリ名も表示する",IDC_CHECK_TAB_TITLE_IS_PATH_NAME,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,72,195,13
+    CONTROL         "タブを複数行にする",IDC_CHECK_TAB_MULTI_ROW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,85,195,13
+    CONTROL         "ホイールクリックで，タブを閉じる",IDC_CHECK_TAB_CLOSE_AT_MCLICK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,98,195,13
+    CONTROL         "タブの空きエリアのダブルクリックで，新しいタブを開く",IDC_CHECK_TAB_CREATE_AT_DBLCLICK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,111,195,13
+    CONTROL         "タブをDrag&&Dropで移動できるようにする",IDC_CHECK_TAB_DRAG_MOVE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,124,195,13
+    CONTROL         "タブに閉じるボタンを表示する",IDC_CHECK_CLOSE_BTN_ON_TAB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,137,195,13
+    CONTROL         "タブのツールチップでフルパスを表示する",IDC_CHECK_SHOW_TAB_TOOLTIP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,150,195,13
+    CONTROL         "２重起動を許可しない",IDC_CHECK_DISABLE_DOUBLE_BOOT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,163,195,13
+    CONTROL         "開いているファイルが１つのとき，タブを表示しない",IDC_CHECK_HIDE_TAB_BAR_AT_ONE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,176,195,13
+    CONTROL         "ダブルクリックでタグジャンプを有効にする",IDC_CHECK_ENABLE_TAG_JUMP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,189,231,13
+    LTEXT           "最近使ったファイルの保存数",IDC_STATIC,13,212,97,14
+    EDITTEXT        IDC_EDIT_MAX_MRU,117,210,25,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_BTN_TEXT_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,43,243,28,13
+    CONTROL         "",IDC_BTN_BK_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,106,243,28,13
+    CONTROL         "",IDC_BTN_BK_COLOR2,"Button",BS_OWNERDRAW | WS_TABSTOP,172,243,28,13
+    PUSHBUTTON      "標準の設定",IDC_BTN_DEFAULT_COLOR,208,243,48,13
+    LTEXT           "(0～16)",IDC_STATIC,150,214,35,12
+    DEFPUSHBUTTON   "OK",IDOK,162,261,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "キャンセル",IDCANCEL,210,261,50,14,NOT WS_VISIBLE
+    GROUPBOX        "タブの色の設定",IDC_STATIC,5,230,255,31
+    LTEXT           "テキスト",IDC_STATIC,13,243,29,12
+    LTEXT           "背景1",IDC_STATIC,81,243,21,12
+    LTEXT           "背景2",IDC_STATIC,147,243,21,12
+END
+
+IDD_SELECT_COLOR_DLG DIALOG 0, 0, 274, 169
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "色の選択"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    DEFPUSHBUTTON   "挿入",IDOK,79,148,50,14
+    PUSHBUTTON      "閉じる",IDCANCEL,145,148,50,14
+    PUSHBUTTON      "選択",IDC_SEL_COLOR_BTN,225,7,42,13
+    EDITTEXT        IDC_EDIT_RGB,200,53,67,13,ES_AUTOHSCROLL | ES_READONLY
+    COMBOBOX        IDC_COMBO_FORMAT,228,71,39,38,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "DATA",IDC_STATIC,199,42,21,9
+    LTEXT           "選択結果",IDC_STATIC_RESULT,205,89,62,12
+    LTEXT           "Format",IDC_STATIC,199,72,25,12
+END
+
+IDD_FILTER_DLG DIALOGEX 0, 0, 367, 94
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "フィルタ"
+FONT 9, "ＭＳ ゴシック", 0, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_COMBO_SEARCH_TEXT,52,6,252,66,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "正規表現(&E)",IDC_CHECK_REGEXP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,29,106,10
+    CONTROL         "大文字・小文字を区別する(&U)",IDC_CHECK_DISTINCT_LWR_UPR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,43,162,10
+    CONTROL         "英数字の全角・半角を区別する(&W)",IDC_CHECK_DISTINCT_WIDTH_ASCII,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,57,141,10
+    COMBOBOX        IDC_COMBO_ACTION,52,72,252,43,CBS_DROPDOWNLIST | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    DEFPUSHBUTTON   "検索(&F)",ID_BTN_NEXT,311,6,50,14
+    PUSHBUTTON      "実行(&R)",ID_BTN_FILTER,311,22,50,14
+    PUSHBUTTON      "閉じる",IDCANCEL,311,38,50,14
+    LTEXT           "検索文字列",IDC_STATIC,5,8,42,13
+    LTEXT           "条件",IDC_STATIC,6,74,42,13
+    PUSHBUTTON      "ダイアログの高さ計算用（非表示）",IDC_BTN_BOTTOM,214,77,151,14,NOT WS_VISIBLE
+END
+
+IDD_REPLACE_DLG DIALOGEX 0, 0, 385, 111
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "置換"
+FONT 9, "ＭＳ ゴシック", 0, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_COMBO_SEARCH_TEXT,70,11,244,66,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_REPLACE_TEXT,70,29,244,66,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "正規表現(&E)",IDC_CHECK_REGEXP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,52,102,10
+    CONTROL         "大文字・小文字を区別する(&U)",IDC_CHECK_DISTINCT_LWR_UPR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,68,122,10
+    CONTROL         "英数字の全角・半角を区別する(&W)",IDC_CHECK_DISTINCT_WIDTH_ASCII,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,83,141,10
+    CONTROL         "選択範囲",IDC_RADIO_SELECTED_AREA,"Button",BS_AUTORADIOBUTTON | WS_GROUP,208,60,60,9
+    CONTROL         "全体",IDC_RADIO_ALL,"Button",BS_AUTORADIOBUTTON,208,73,61,9
+    DEFPUSHBUTTON   "次を検索(&F)",ID_BTN_NEXT,321,7,57,14,WS_GROUP
+    PUSHBUTTON      "前を検索(&P)",ID_BTN_PREV,321,23,57,14
+    PUSHBUTTON      "置換(&R)",ID_BTN_REPLACE,321,39,57,14
+    PUSHBUTTON      "全て置換(&A)",ID_BTN_REPLACE_ALL,321,55,57,14
+    PUSHBUTTON      "閉じる",IDCANCEL,321,71,57,14
+    LTEXT           "検索文字列",IDC_STATIC,7,14,54,13
+    LTEXT           "置換後の文字列",IDC_STATIC,7,32,59,13
+    GROUPBOX        "範囲",IDC_STATIC,203,46,76,35
+    PUSHBUTTON      "ダイアログの高さ計算用（非表示）",IDC_BTN_BOTTOM,227,90,151,14,NOT WS_VISIBLE
+END
+
+IDD_SEARCH_DLG DIALOGEX 0, 0, 347, 80
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "検索"
+FONT 9, "ＭＳ ゴシック", 0, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_COMBO_SEARCH_TEXT,59,11,215,66,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "正規表現(&E)",IDC_CHECK_REGEXP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,31,141,10
+    CONTROL         "大文字・小文字を区別する(&U)",IDC_CHECK_DISTINCT_LWR_UPR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,44,141,10
+    CONTROL         "英数字の全角・半角を区別する(&W)",IDC_CHECK_DISTINCT_WIDTH_ASCII,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,57,141,10
+    DEFPUSHBUTTON   "次を検索(&F)",ID_BTN_NEXT,283,7,57,14
+    PUSHBUTTON      "前を検索(&P)",ID_BTN_PREV,283,23,57,14
+    PUSHBUTTON      "閉じる",IDCANCEL,283,39,57,14
+    LTEXT           "検索文字列",IDC_STATIC,7,13,45,13
+    PUSHBUTTON      "ダイアログの高さ計算用（非表示）",IDC_BTN_BOTTOM,190,59,151,14,NOT WS_VISIBLE
+END
+
+IDD_BOOKMARK_DLG DIALOGEX 0, 0, 367, 228
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "ファイルを開く",IDOK,112,206,59,15
+    PUSHBUTTON      "閉じる",IDCANCEL,197,206,50,14
+    PUSHBUTTON      "追加",IDC_BUTTON_ADD,308,7,52,16
+    PUSHBUTTON      "削除",IDC_BUTTON_DEL,308,26,52,16
+    PUSHBUTTON      "上へ",IDC_BUTTON_UP,308,45,52,16
+    PUSHBUTTON      "下へ",IDC_BUTTON_DOWN,308,64,52,16
+    CONTROL         "",IDC_LIST_BOOKMARK,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,293,193
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 8,0,0,0
+ PRODUCTVERSION 8,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041104b0"
+        BEGIN
+            VALUE "FileDescription", "otbedit"
+            VALUE "FileVersion", "8.0.0.0"
+            VALUE "InternalName", "otbedit"
+            VALUE "LegalCopyright", "Copyright (C) 2001-2025 A.Ogawa"
+            VALUE "OriginalFilename", "otbedit.EXE"
+            VALUE "ProductName", "otbedit アプリケーション"
+            VALUE "ProductVersion", "8.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+    END
+
+    IDD_OPT_SETUP, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 301
+    END
+
+    IDD_PRINT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 272
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 196
+    END
+
+    IDD_EXT_FILEDLG_SAVE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        BOTTOMMARGIN, 30
+    END
+
+    IDD_EXT_FILEDLG_OPEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        BOTTOMMARGIN, 12
+    END
+
+    IDD_FILE_FORMAT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 188
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 74
+    END
+
+    IDD_OPT_SETUP2, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 260
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 287
+    END
+
+    IDD_SELECT_COLOR_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 267
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    IDD_FILTER_DLG, DIALOG
+    BEGIN
+    END
+
+    IDD_REPLACE_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 378
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_SEARCH_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 340
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 73
+    END
+
+    IDD_BOOKMARK_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 360
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 221
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_OPT_EDITOR2 DLGINIT
+BEGIN
+    IDC_COMBO_INDENT, 0x403, 5, 0
+0xc882, 0xb582, "\000" 
+    IDC_COMBO_INDENT, 0x403, 15, 0
+0xa98e, 0xae93, 0x4383, 0x9383, 0x6683, 0x9383, 0x6783, "\000" 
+    IDC_COMBO_INDENT, 0x403, 29, 0
+0x5883, 0x7d83, 0x5b81, 0x6783, 0x4383, 0x9383, 0x6683, 0x9383, 0x6783, 
+0x4328, 0x2b2b, 0x4a2f, 0x7661, 0x2961, "\000" 
+    0
+END
+
+IDD_EXT_FILEDLG_SAVE DLGINIT
+BEGIN
+    IDC_COMBO_LINE_TYPE, 0x403, 1, 0
+"\000" 
+    0
+END
+
+IDD_SELECT_COLOR_DLG DLGINIT
+BEGIN
+    IDC_COMBO_FORMAT, 0x403, 5, 0
+0x5448, 0x4c4d, "\000" 
+    IDC_COMBO_FORMAT, 0x403, 4, 0
+0x5043, 0x0050, 
+    0
+END
+
+IDD_FILTER_DLG DLGINIT
+BEGIN
+    IDC_COMBO_ACTION, 0x403, 31, 0
+0x9f8c, 0xf58d, 0x8b8c, 0xca89, 0xc982, 0xea88, 0x7692, 0xb782, 0xe982, 
+0x738d, 0xf082, 0x8a92, 0x6f8f, 0xb782, 0xe982, "\000" 
+    IDC_COMBO_ACTION, 0x403, 31, 0
+0x9f8c, 0xf58d, 0x8b8c, 0xca89, 0xc982, 0xea88, 0x7692, 0xb782, 0xe982, 
+0x738d, 0xf082, 0xed8d, 0x9c8f, 0xb782, 0xe982, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_SPOIT_CURSOR        CURSOR                  "res\\cursor1.cur"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_SEARCH_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_REPLACE_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_FILTER_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_BOOKMARK_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_OPT_SETUP AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "otbedit\n\notbedit\nテキスト ファイル (*.txt)\n.txt\notbedit.Document\nテキスト ファイル"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "otbedit"
+    AFX_IDS_IDLEMESSAGE     " "
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "上書"
+    ID_INDICATOR_REC        "記録"
+    ID_INDICATOR_KANA       "カナ"
+    ID_INDICATOR_CURSOR_POS "カーソル位置"
+    ID_INDICATOR_FILE_TYPE  "漢字コード,改行"
+    ID_INDICATOR_BOX_SELECT "矩形"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "新規にファイルを作成\n新規ファイル"
+    ID_FILE_OPEN            "既存のファイルを開く\n開く"
+    ID_FILE_CLOSE           "作業中のファイルを閉じる\n閉じる"
+    ID_FILE_SAVE            "作業中のファイルを上書きして保存\n保存"
+    ID_FILE_SAVE_AS         "作業中のファイルを新しい名前で保存\n名前をつけて保存"
+    ID_FILE_PAGE_SETUP      "印刷オプションの変更\nページ レイアウトの設定"
+    ID_FILE_PRINT_SETUP     "プリンタ/印刷オプションの変更\n印刷設定"
+    ID_FILE_PRINT           "作業中のファイルを印刷\n印刷"
+    ID_FILE_PRINT_PREVIEW   "印刷イメージを表示\n印刷プレビュー"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "プログラムの情報、バージョンそして著作権を表示\nバージョン情報"
+    ID_APP_EXIT             "アプリケーションを終了し、ファイルの保存を指示\n終了"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "指定のファイルを開く(1)\nファイルを開く(1)"
+    ID_FILE_MRU_FILE2       "指定のファイルを開く(2)\nファイルを開く(2)"
+    ID_FILE_MRU_FILE3       "指定のファイルを開く(3)\nファイルを開く(3)"
+    ID_FILE_MRU_FILE4       "指定のファイルを開く(4)\nファイルを開く(4)"
+    ID_FILE_MRU_FILE5       "指定のファイルを開く(5)\nファイルを開く(5)"
+    ID_FILE_MRU_FILE6       "指定のファイルを開く(6)\nファイルを開く(6)"
+    ID_FILE_MRU_FILE7       "指定のファイルを開く(7)\nファイルを開く(7)"
+    ID_FILE_MRU_FILE8       "指定のファイルを開く(8)\nファイルを開く(8)"
+    ID_FILE_MRU_FILE9       "指定のファイルを開く(9)\nファイルを開く(9)"
+    ID_FILE_MRU_FILE10      "指定のファイルを開く(10)\nファイルを開く(10)"
+    ID_FILE_MRU_FILE11      "指定のファイルを開く(11)\nファイルを開く(11)"
+    ID_FILE_MRU_FILE12      "指定のファイルを開く(12)\nファイルを開く(12)"
+    ID_FILE_MRU_FILE13      "指定のファイルを開く(13)\nファイルを開く(13)"
+    ID_FILE_MRU_FILE14      "指定のファイルを開く(14)\nファイルを開く(14)"
+    ID_FILE_MRU_FILE15      "指定のファイルを開く(15)\nファイルを開く(15)"
+    ID_FILE_MRU_FILE16      "指定のファイルを開く(16)\nファイルを開く(16)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "作業中のウィンドウを分割\n分割"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "選択範囲を消去\n消去"
+    ID_EDIT_CLEAR_ALL       "すべて消去\nすべて消去"
+    ID_EDIT_COPY            "選択範囲をコピーしてクリップボードに保存\nコピー"
+    ID_EDIT_CUT             "選択範囲を切り取ってクリップボードに保存\n切り取り"
+    ID_EDIT_FIND            "指定した文字列の検索\n検索"
+    ID_EDIT_PASTE           "クリップボードの内容を貼り付け\n貼り付け"
+    ID_EDIT_REPEAT          "直前に行った動作を繰り返す\n繰り返し"
+    ID_EDIT_REPLACE         "指定した文字列を他の文字列で置換\n置換"
+    ID_EDIT_SELECT_ALL      "ファイル内のすべてを選択\nすべて選択"
+    ID_EDIT_UNDO            "直前に行った動作を元に戻す\n元に戻す"
+    ID_EDIT_REDO            "直前に行った動作を繰り返す\n繰り返す"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "ツール バーの 表示/非表示\nツール バーの表示切り替え"
+    ID_VIEW_STATUS_BAR      "ステータス バーの 表示/非表示\nステータス バーの表示切り替え"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "ウィンドウのサイズを変更"
+    AFX_IDS_SCMOVE          "ウィンドウの位置を変更"
+    AFX_IDS_SCMINIMIZE      "ウィンドウを最小化する"
+    AFX_IDS_SCMAXIMIZE      "ウィンドウを最大化する"
+    AFX_IDS_SCNEXTWINDOW    "次のウィンドウに切り替える"
+    AFX_IDS_SCPREVWINDOW    "前のウィンドウに切り替える"
+    AFX_IDS_SCCLOSE         "作業中のウィンドウを閉じ、変更したファイルの保存を指示"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "ウィンドウを通常のサイズに戻す"
+    AFX_IDS_SCTASKLIST      "アプリケーションの切り替え"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "印刷プレビュー モードの終わり\nプレビューのキャンセル"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SELECT_ALL           "ファイル全体を選択\nすべて選択"
+    ID_OPTION               "オプションの設定\nオプション"
+    ID_FONT                 "フォントを設定する\nフォント設定"
+    ID_SET_FONT             "フォント設定\nフォント設定"
+    ID_SEARCH               "文字列を検索する\n検索"
+END
+
+STRINGTABLE
+BEGIN
+    ID_DELETE_SPACE         "選択中の各行の,先頭の空白を削除\n先頭の空白を削除"
+    ID_DELETE_SPACE_END     "選択中の各行の,行末の空白を削除\n行末の空白を削除"
+    ID_INSERT_GT            "選択中の各行に,""> ""を挿入する\n> を挿入"
+    ID_DELETE_GT            "選択中の各行の先頭から,""> ""を削除する\n> を削除"
+    ID_INSERT_COMMENT       "選択中の各行に,コメント文字列を挿入\nコメントを挿入"
+    ID_DELETE_COMMENT       "選択中の各行に,コメント文字列を削除\nコメントを削除"
+END
+
+STRINGTABLE
+BEGIN
+    ID_REPLACE              "文字列を置換する\n置換"
+    ID_SEARCH_NEXT          "次の文字列を検索する\n次を検索"
+    ID_SEARCH_PREV          "前の文字列を検索する\n前を検索"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_INDENT          "選択範囲にタブを挿入\nインデント(Tab)"
+    ID_EDIT_INDENT_REV      "選択範囲からタブを削除\n逆インデント(Tab)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_TO_LOWER             "選択範囲を小文字に変換\n小文字に変換"
+    ID_TO_UPPER             "選択範囲を大文字に変換\n大文字に変換"
+    ID_EDIT_REVERSE_ROWS    "選択範囲の行を逆順にする\n行を逆順にする"
+    ID_EDIT_SORT_ROWS_ASC   "選択範囲の行を昇順にソートする\n行をソート(昇順)"
+    ID_EDIT_SORT_ROWS_DESC  "選択範囲の行を降順にソートする\n行をソート(降順)"
+    ID_ACCELERATOR          "ショートカットキーの割り当てを設定する\nキー割り当て"
+    ID_CHAR_LEFT            "カーソルを一文字左へ移動する\n一文字左へ"
+    ID_CHAR_RIGHT           "カーソルを一文字右へ移動する\n一文字右へ"
+    ID_CHAR_UP              "カーソルを一文字上へ移動\nCharUp"
+    ID_LINE_UP              "カーソルを一行上へ移動する\n一行上へ"
+    ID_LINE_DOWN            "カーソルを一行下へ移動する\n一行下へ"
+    ID_WORD_LEFT            "カーソルを一単語左へ移動する\n一単語左へ"
+END
+
+STRINGTABLE
+BEGIN
+    ID_LINE_START           "カーソルを行の先頭へ移動する\n行の先頭へ"
+    ID_LINE_END             "カーソルを行の末尾へ移動する\n行の末尾へ"
+    ID_DOCUMENT_START       "カーソルをテキストの先頭へ移動する\nテキストの先頭へ"
+    ID_LINE_MODE_NORMAL     "行を折り返さない\n折り返さない"
+    ID_LINE_MODE_RIGHT      "行をウィンドウの右端で折り返す\n右端で折り返す"
+    ID_LINE_MODE_LEN        "行を指定桁数で折り返す\n指定桁数で折り返す"
+    ID_DOCUMENT_END         "カーソルをテキストの末尾へ移動する\nテキストの末尾へ"
+    ID_CHAR_LEFT_EXTEND     "選択範囲を一文字左へ移動する\n選択範囲を一文字左へ"
+    ID_CHAR_RIGHT_EXTEND    "選択範囲を一文字右へ移動する\n選択範囲を一文字右へ"
+    ID_LINE_UP_EXTEND       "選択範囲を一行上へ移動する\n選択範囲を一行上へ"
+    ID_LINE_DOWN_EXTEND     "選択範囲を一行下へ移動する\n選択範囲を一行下へ"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WORD_LEFT_EXTEND     "選択範囲を一単語左へ移動する\n選択範囲を一単語左へ"
+    ID_EDIT_DELETE          "選択範囲を削除する\n削除"
+    ID_WORD_RIGHT           "カーソルを一単語右へ移動する\n一単語右へ"
+    ID_WORD_RIGHT_EXTEND    "選択範囲を一単語右へ移動する\n選択範囲を一単語右へ"
+    ID_LINE_START_EXTEND    "選択範囲を行の先頭へ移動する\n選択範囲を行の先頭へ"
+    ID_LINE_END_EXTEND      "選択範囲を行の末尾へ移動する\n選択範囲を行の末尾へ"
+    ID_DOCUMENT_START_EXTEND "選択範囲をテキストの先頭へ移動する\n選択範囲をテキストの先頭へ"
+    ID_DOCUMENT_END_EXTEND  "選択範囲をテキストの末尾へ移動する\n選択範囲をテキストの末尾へ"
+END
+
+STRINGTABLE
+BEGIN
+    ID_PAGE_UP              "カーソルを一ページ上へ移動する\n一ページ上へ"
+    ID_PAGE_DOWN            "カーソルを一ページ下へ移動する\n一ページ下へ"
+    ID_PAGE_UP_EXTEND       "選択範囲を一ページ上へ移動する\n選択範囲を一ページ上へ"
+    ID_WORD_RIGHT2          "カーソルを一単語右へ移動する\n一単語右へ"
+    ID_NEW_WINDOW           "新しいウィンドウを開く\n新しいウィンドウ"
+    ID_PAGE_DOWN_EXTEND     "選択範囲を一ページ下へ移動する\n選択範囲を一ページ下へ"
+    ID_EDIT_BACKSPACE       "BackSpace\nBackSpace"
+    ID_KEYWORD_COMPLETION   "キーワード補完する\nキーワード補完"
+    ID_KEYWORD_COMPLETION_REV "逆方向にキーワード補完する\nキーワード補完(逆)"
+    ID_VIEW_TOOLBAR_EDIT_MODE "編集モードツール バーの 表示/非表示\nツール バーの表示切り替え"
+    ID_COLOR_INPUT          "HTMLの色情報を入力する\nカラーデータ入力(HTML)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SCROLL_DOWN          "カーソルの位置を固定したまま,一行下へスクロール\n一行下へスクロール"
+    ID_SCROLL_UP            "カーソルの位置を固定したまま,一行上へスクロール\n一行上へスクロール"
+    ID_DOCUMENT_START_EXTEND2 "選択範囲をテキストの先頭へ移動する\n選択範囲をテキストの先頭へ"
+    ID_SCROLL_PAGE_UP       "カーソルの位置を固定したまま,一ページ上へスクロール\n一ページ上へスクロール"
+    ID_DOCUMENT_END_EXTEND2 "選択範囲をテキストの先頭へ移動する\n選択範囲をテキストの先頭へ"
+    ID_VIEW_BROWSER_03      "編集中のファイルをブラウザで確認する(その他)\nブラウザで確認(その他)"
+    ID_SCROLL_PAGE_DOWN     "カーソルの位置を固定したまま,一ページ下へスクロール\n一ページ下へスクロール"
+    ID_SELECT_ROW           "現在カーソルがある行を選択する\n一行選択"
+    ID_PAGE_UP2             "カーソルを一ページ上へ移動する\n一行ページへ"
+    ID_PAGE_DOWN2           "カーソルを一ページ下へ移動する\n一ページ下へ"
+    ID_CLEAR_SEARCH_TEXT    "検索文字列の強調表示を解除する\n検索文字列の強調表示を解除"
+    ID_FILE_LOAD_EUC        "EUCコードでファイルを読みなおす\nEUC"
+    ID_FILE_LOAD_SJIS       "SJISコードで,ファイルを読みなおす\nSJIS"
+    ID_FILE_LOAD_JIS        "JISコードでファイルを読みなおす\nJIS"
+END
+
+STRINGTABLE
+BEGIN
+    ID_KEYWORD_COMPLETION2  "キーワード補完する\nキーワード補完"
+    ID_KEYWORD_COMPLETION_REV2 "逆方向にキーワード補完\nキーワード補完(逆)"
+    ID_SET_FILE_FORMAT      "保存するときの文字コード,改行コードを設定する\nファイルフォーマットの設定"
+    ID_SEARCH_FILE          "複数のファイル内から文字列を検索します\nファイルから検索"
+    ID_LINE_JUMP            "指定した行へ移動する\n指定行へ移動"
+    ID_EXT_REG              "拡張子を関連付ける\n関連付け"
+    ID_BOX_SELECT           "次の範囲選択を,矩形選択にする\n矩形選択"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SET_BOOK_MARK        "ブックマークの設定/解除\nブックマークの設定/解除"
+    ID_JUMP_BOOK_MARK       "次のブックマーク位置を表示\n次のブックマーク"
+    ID_JUMP_BOOK_MARK_BACK  "前のブックマーク位置を表示\n前のブックマーク"
+    ID_CLEAR_ALL_BOOK_MARK  "ファイル内のすべてのブックマークを解除\nすべてのブックマークを解除"
+    ID_TOGGLE_OVERWRITE     "上書きモードに切り替える(解除する)\n上書きモード/解除"
+    ID_SHOW_TOPMOST         "ウィンドウを常に手前に表示\n常に手前に表示"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_WINDOW          "次のウィンドウに切り替える\n次のウィンドウ"
+    ID_PREV_WINDOW          "前のウィンドウに切り替える\n前のウィンドウ"
+    ID_TAB_MOVE_LEFT        "タブを左へ移動する\n左へ移動"
+    ID_TAB_MOVE_RIGHT       "タブを右へ移動する\n右へ移動"
+    ID_TAB_MOVE_TOP         "タブを先頭へ移動する\n先頭へ移動"
+    ID_TAB_MOVE_LAST        "タブを最後へ移動する\n最後へ移動"
+    ID_TAB_TO_SPACE         "行頭のタブをスペースに変換\nタブをスペースに変換"
+    ID_SPACE_TO_TAB         "行頭のスペースをタブに変換\nスペースをタブに変換"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_CLOSE_ALL       "すべてのファイルを閉じる\nすべて閉じる"
+    ID_VIEW_FILE_BAR        "ファイルリストの 表示/非表示\nファイルリストの表示切り替え"
+    ID_SORT_TAB             "タブをファイル名でソートする\nタブをソート"
+END
+
+STRINGTABLE
+BEGIN
+    ID_JUMP_BOOK_MARK_EXTEND "選択範囲を次のブックマークへ移動する\n選択範囲を次のブックマークへ"
+    ID_JUMP_BOOK_MARK_BACK_EXTEND "選択範囲を前のブックマークへ移動する\n選択範囲を前のブックマークへ"
+    ID_PLAY_KBMACRO         "キーボードマクロの再生\nキーボードマクロの再生"
+    ID_REC_KBMACRO          "キーボードマクロの記録/停止\nキーボードマクロの記録/停止"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_BROWSER_01      "編集中のファイルをブラウザで確認する(Edge)\nブラウザで確認(Edge)"
+    ID_EDIT_DELETE_ROW      "現在行を削除する\n現在行を削除"
+    ID_EDIT_DELETE_AFTER_CURSOR "カーソル位置から行末までを削除\nカーソルから後ろを削除"
+    ID_LAST_EDIT_POS        "カーソルを最後の編集位置へ移動する\n最後の編集位置"
+    ID_EDIT_CUT_ROW         "現在行を切り取ってクリップボードに保存\n現在行を切り取り"
+    ID_EDIT_COPY_ROW        "現在行をコピーしてクリップボードに保存\n現在行をコピー"
+    ID_EDIT_PASTE_ROW       "クリップボードの内容を現在行の下に貼り付ける\n現在行の下に貼り付け"
+    ID_EDIT_PASTE_ROW_UP    "クリップボードの内容を現在行の上に貼り付ける\n現在行の上に貼り付け"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SELECT_WORD          "カーソル位置の単語を選択する\n単語選択"
+    ID_COPY_CLICKABLE_URL   "リンク先のURLをコピーする\nリンクをコピー"
+    ID_DO_CLICKABLE_URL     "リンク先のURLを表示する\nリンクを表示"
+    ID_VIEW_CLICKABLE_URL_01 "リンク先のURLを表示する(Edge)\nリンクを表示(Edge)"
+    ID_VIEW_CLICKABLE_URL_02 "リンク先のURLを表示する(Chrome)\nリンクを表示(Chrome)"
+    ID_VIEW_CLICKABLE_URL_03 "リンク先のURLを表示する(その他)\nリンクを表示(その他)"
+    ID_VIEW_CLICKABLE_URL_01_NEW_WINDOW 
+                            "新しいウィンドウでリンク先のURLを表示する(Edge)\n新しいウィンドウでリンクを表示(Edge)"
+    ID_VIEW_CLICKABLE_URL_03_NEW_WINDOW 
+                            "新しいウィンドウでリンク先のURLを表示する(その他)\n新しいウィンドウでリンクを表示(その他)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SPLIT_START          "カーソルをウィンドウの左端へ移動する\nウィンドウの左端へ"
+    ID_SPLIT_END            "カーソルをウィンドウの右端へ移動する\nウィンドウの右端へ"
+    ID_SPLIT_START_EXTEND   "選択範囲をウィンドウの左端へ移動する\n選択範囲をウィンドウの左端へ"
+    ID_SPLIT_END_EXTEND     "選択範囲をウィンドウの右端へ移動する\n選択範囲をウィンドウの右端へ"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_LOAD_UNICODE    "UNICODEでファイルを読みなおす\nUNICODE"
+    ID_FILE_LOAD_UTF8       "UTF8でファイルを読みなおす\nUTF8"
+    ID_FILE_LOAD_AUTO       "文字コードを自動判別してファイルを読みなおす\n自動検出"
+    ID_FILE_RELOAD          "ファイルを読みなおす\n読みなおす"
+    ID_KBMACRO_SAVE         "キーボードマクロをファイルに保存\nファイル保存"
+    ID_KBMACRO_LOAD         "キーボードマクロをファイルから読込む\nファイル読込"
+    ID_KBMACRO_PLAY         "キーボードマクロをファイルから実行する\nファイルから実行"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_JOIN_ROW        "現在行と下の行を結合する\n行を結合"
+    ID_REDRAW               "画面を再描画する\n再描画"
+    ID_SEARCH_SELECTED      "選択範囲の文字列で次の文字列を検索する\n選択範囲の文字列で次を検索"
+    ID_HANKAKU_TO_ZENKAKU   "半角文字を全角文字に変換\n半角→全角"
+    ID_ZENKAKU_TO_HANKAKU   "全角文字を半角文字に変換\n全角→半角"
+    ID_HANKAKU_TO_ZENKAKU_KATA "半角カタカナを全角カタカナに変換\n半角→全角(カタカナ)"
+    ID_HANKAKU_TO_ZENKAKU_ALPHA "半角英数を全角英数に変換\n半角→全角(英数)"
+    ID_ZENKAKU_TO_HANKAKU_KATA "全角カタカナを半角カタカナに変換\n全角→半角(カタカナ)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_TAG_JUMP             "タグジャンプ\nタグジャンプ"
+    ID_INSERT_DATE_TIME     "日付と時刻を挿入します\n日付と時刻"
+    ID_FILTER               "検索条件に一致する行を抽出／削除する\nフィルタ"
+END
+
+STRINGTABLE
+BEGIN
+    ID_ZENKAKU_TO_HANKAKU_ALPHA "全角英数を半角英数に変換\n全角→半角(英数)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SPLIT_ROWS           "選択範囲の折り返し位置に改行を挿入する\n折り返し位置に改行を挿入"
+    ID_JOIN_ROWS            "選択範囲の改行を削除する\n改行を削除"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INPUT_RETURN         "改行を挿入する\n改行を挿入"
+    ID_FILE_INSERT          "現在位置にファイルを挿入\n挿入"
+    ID_EDIT_DELETE_BEFORE_CURSOR "カーソル位置から行頭までを削除\nカーソルから前を削除"
+    ID_INPUT_BR             "<br>を挿入する\n<br>を挿入"
+    ID_EDIT_DELETE_WORD_AFTER_CURSOR 
+                            "カーソル位置の単語の後ろを削除\nカーソル位置の単語の後ろを削除カーソル位置の単語の後ろを削除"
+    ID_EDIT_DELETE_WORD_BEFORE_CURSOR "カーソル位置の単語の前を削除\nカーソル位置の単語の前を削除"
+    ID_INVERT_BRACKETS      "カーソル位置に対応する括弧を反転表示\n括弧の対応を反転表示"
+    ID_GO_MATCH_BRACKETS    "カーソルを対応する括弧に移動する\n対応する括弧に移動"
+    ID_EDIT_INDENT_SPACE    "選択範囲に空白を挿入\nインデント(Space)"
+    ID_EDIT_INDENT_SPACE_REV "選択範囲から空白を削除\n逆インデント(Space)"
+    ID_SPACE_LEFT           "カーソルを前のスペース文字へ移動する\n前のスペースへ"
+    ID_SPACE_RIGHT          "カーソルを次のスペース文字へ移動する\n次のスペースへ"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_MODE_1          "編集モードを切り替える(1)\n編集モード1"
+    ID_EDIT_MODE_2          "編集モードを切り替える(2)\n編集モード2"
+    ID_EDIT_MODE_3          "編集モードを切り替える(3)\n編集モード3"
+    ID_EDIT_MODE_4          "編集モードを切り替える(4)\n編集モード4"
+    ID_EDIT_MODE_5          "編集モードを切り替える(5)\n編集モード5"
+    ID_EDIT_MODE_6          "編集モードを切り替える(6)\n編集モード6"
+    ID_EDIT_MODE_7          "編集モードを切り替える(7)\n編集モード7"
+    ID_EDIT_MODE_8          "編集モードを切り替える(8)\n編集モード8"
+    ID_EDIT_MODE_9          "編集モードを切り替える(9)\n編集モード9"
+    ID_EDIT_MODE_10         "編集モードを切り替える(10)\n編集モード10"
+    ID_EDIT_MODE_11         "編集モードを切り替える(11)\n編集モード11"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_MODE_12         "編集モードを切り替える(12)\n編集モード12"
+    ID_EDIT_MODE_13         "編集モードを切り替える(13)\n編集モード13"
+    ID_EDIT_MODE_14         "編集モードを切り替える(14)\n編集モード14"
+    ID_EDIT_MODE_15         "編集モードを切り替える(15)\n編集モード15"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_SAVE_ALL        "作業中のすべてのファイルを上書きして保存\nすべて保存"
+    ID_FILE_LOAD_UNICODE_NO_SIGNATURE 
+                            "UNICODE(no signature)でファイルを読みなおす\nUNICODE(no signature)"
+    ID_FILE_LOAD_UTF8_NO_SIGNATURE 
+                            "UTF8(no signature)でファイルを読みなおす\nUTF8(no signature)"
+    ID_SET_FONT_TAB_CTRL    "フォント設定(Tab)\nフォント設定(Tab)"
+    ID_FILE_BOOKMARK        "お気に入り(よく使うファイルを登録))\nお気に入り"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SPACE_LEFT_EXTEND    "選択範囲を前のスペース文字へ移動する\n選択範囲を前のスペースへ"
+    ID_SPACE_RIGHT_EXTEND   "選択範囲を次のスペース文字へ移動する\n選択範囲を次のスペースへ"
+    ID_TOGGLE_SHOW_ROW_NUM  "行番号表示のON/OFF\n行番号表示のON/OFF"
+    ID_TOGGLE_SHOW_COL_NUM  "列番号表示のON/OFF\n列番号表示のON/OFF"
+    ID_EDIT_DEL_DUP_ROWS    "選択範囲の重複する行を削除する\n重複行を削除"
+    ID_SHOW_REGEXP_HELP     "正規表現のヘルプを参照する\n正規表現..."
+    ID_SCM_EVAL             "選択範囲のマクロを実行\nマクロを実行(選択範囲)"
+    ID_SCM_LOAD_FILE        "マクロを実行(ファイル)\nマクロを実行(ファイル)"
+    ID_SHOW_SCHEME_HELP     "Schemeリファレンスを参照する\nSchemeリファレンス..."
+    ID_SHOW_OEDITMACRO_HELP "oeditマクロリファレンスを参照する\noeditマクロリファレンス..."
+    ID_SCM_EVAL_CLIPBOARD   "クリップボードのマクロを実行\nマクロを実行(クリップボード)"
+    ID_SEARCH_SELECTED_PREV "選択範囲の文字列で前の文字列を検索する\n選択範囲の文字列で前を検索"
+    ID_CHAR_LEFT_EXTEND_BOX "選択範囲を一文字左へ移動する(矩形)\n選択範囲を一文字左へ(矩形)"
+    ID_CHAR_RIGHT_EXTEND_BOX "選択範囲を一文字右へ移動する(矩形)\n選択範囲を一文字右へ(矩形)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_LINE_UP_EXTEND_BOX   "選択範囲を一行上へ移動する(矩形)\n選択範囲を一行上へ(矩形)"
+    ID_LINE_DOWN_EXTEND_BOX "選択範囲を一行下へ移動する(矩形)\n選択範囲を一行下へ(矩形)"
+    ID_FONT_SIZE_LARGE      "文字サイズを大きくする\n大きく"
+    ID_FONT_SIZE_SMALL      "文字サイズを小さくする\n小さく"
+    ID_BOX_PASTE            "クリップボードの内容を矩形に貼り付ける\n矩形貼付"
+    ID_VIEW_BROWSER_02      "編集中のファイルをブラウザで確認する(Chrome)\nブラウザで確認(Chrome)"
+    ID_FILE_LOAD_UTF16BE    "UTF16BEでファイルを読みなおす\nUTF16BE"
+    ID_FILE_LOAD_UTF16BE_NO_SIGNATURE 
+                            "UTF16BE(no signature)でファイルを読みなおす\nUTF16BE(no signature)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_TAB_CLOSE_RIGHT      "右のタブを全て閉じる\n右のタブを全て閉じる"
+    ID_TAB_CLOSE_LEFT       "左のタブを全て閉じる\n左のタブを全て閉じる"
+    ID_TAB_CLOSE_OTHER      "他のタブを全て閉じる\n他のタブを全て閉じる"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WORD_LEFT_STOP_WB    "カーソルを一単語左へ移動する(単語の両端で停止)\n一単語左へ(単語の両端で停止)"
+    ID_WORD_RIGHT_STOP_WB   "カーソルを一単語右へ移動する(単語の両端で停止)\n一単語右へ(単語の両端で停止)"
+    ID_WORD_LEFT_STOP_WB_EXTEND 
+                            "選択範囲を一単語左へ移動する(単語の両端で停止)\n選択範囲を一単語左へ(単語の両端で停止)"
+    ID_WORD_RIGHT_STOP_WB_EXTEND 
+                            "選択範囲を一単語右へ移動する(単語の両端で停止)\n選択範囲を一単語右へ(単語の両端で停止)"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SHOW_CREDITS         "Creditsを参照する\nCredits..."
+END
+
+#endif    // 日本語 (日本) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE 17, 1
+#pragma code_page(932)
+#endif //_WIN32
+#include "res\oedit.rc2"  // Microsoft Visual C++ 以外のツールで編集されたリソース
+#include "l.jpn\afxres.rc"          // 標準のコンポーネント
+#include "l.jpn\afxprint.rc"        // 印刷/印刷プレビュー リソース
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,9 @@
+// otbedit language settings
+Text,Txt,text.cfg,*.txt
+Html,Html,html.cfg,*.htm;*.html;*.shtml
+C++,C++,cpp.cfg,*.cpp;*.c;*.h
+Java,Java,java.cfg,*.java
+Perl,Perl,perl.cfg,*.cgi;*.pl
+SQL,SQL,sql.cfg,*.sql
+Scheme,SCM,scm.cfg,*.scm
+

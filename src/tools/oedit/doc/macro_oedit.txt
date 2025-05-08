@@ -1,0 +1,353 @@
+
+                                                         (Rev.11 2009/09/01)
+
+oeditマクロマニュアル
+
+1.はじめに
+ 本文書では、マクロを使ってoeditを拡張する方法を説明します。
+
+
+2.マクロの初期化
+ oeditは起動時に以下のファイルを実行し、マクロ環境を初期化します。
+
+  <oedit.exeのディレクトリ>\scmlib\init.scm
+  <oedit.exeのディレクトリ>\scmlib\oedit.scm
+
+ init.scmはScheme標準の手続きやマクロが記述されています。このファイルは
+編集しないで下さい。
+ oedit.scmにカスタマイズ用のコードを記述して下さい。
+ ファイルの実行中にエラーが発生した場合は、ダイアログが表示されます。
+
+
+3.マクロの実行
+3-1.ファイルから実行
+ ツールメニューのマクロを実行(ファイル)メニューを選択し、マクロが記述された
+ファイルを選択します。
+
+3-2.エディタに記述したコードを実行
+ エディタ上で実行したいコードを選択し、ツールメニューのマクロを実行(選択範囲)
+を選択します。
+
+3-3.current-output-portへの出力
+ マクロ実行中に、displayなどの手続きでcurrent-output-portへ出力した場合は、
+マクロ実行後にメッセージダイアログに表示されます。
+
+3-4.マクロ実行後のUndo操作
+ マクロの実行中に、エディタのテキストに複数回の更新を行った場合でも、1回の
+Undo操作でマクロ実行前の状態に戻ります。
+
+3-5.処理の中断
+ マクロ実行中にCtrl+Breakキーで、処理を中断できます。
+ 後述するapp-set-cancel-keyでキーを設定することもできます。
+
+
+4.エディタを制御する手続き
+  行番号・列番号を取得・指定する場合、0から始まります。(先頭行の行番号は0)
+  
+- (app-status-bar-msg <data1> ...)
+  strをステータスバーに表示します。
+  (例) (app-status-bar-msg "AAA" 123 #f)
+
+- (app-msg-box <data1> ...)
+  メッセージダイアログを表示します。
+  (例) (app-msg-box "ABC" 123 #f)
+
+- (app-input-box <title> <value>)
+  文字列入力用のインプットダイアログを表示します。
+   title: ダイアログタイトル (省略可能)
+   value: 初期値 (省略可能)
+  ダイアログをOKボタンかEnterキーで閉じると、入力された文字列を返します。
+  ダイアログをキャンセルしたときは、#fを返します。
+  (例) (app-input-box "Title" "123")
+
+- (app-get-tool-dir)
+  oedit.exeファイルがあるディレクトリ名の文字列を取得します。
+
+- (app-get-command-line-option)
+  起動時のコマンドラインオプションの文字列を取得します。
+
+- (editor-get-filename)
+  現在開いているファイル名の文字列を取得します。
+  (例) (editor-get-filename) => "C:\tmp\aaa.txt"
+
+- (editor-get-row-cnt)
+  現在開いているファイルの行数を取得します。
+  (例) (editor-get-row-cnt) => 100
+
+- (editor-get-cur-row)
+  現在のカーソル位置(行)を取得します。
+
+- (editor-get-cur-col)
+  現在のカーソル位置(列)を取得します。
+
+- (editor-get-caret-col <row> <col>)
+  データ上の位置から、画面の列位置を取得します。
+  (例) (app-status-bar-msg (editor-get-caret-col (editor-get-cur-row) (editor-get-cur-col)))
+
+- (editor-get-col-from-caret-col <row> <caret-col>)
+  画面の列位置から、データ上の列を取得します。
+
+- (editor-set-row-col <row> <col>)
+  カーソルを移動します。
+
+- (editor-set-select-area <row1> <col1> <row2> <col2>)
+  テキストの選択範囲を設定します。
+
+- (editor-get-selected-area)
+  選択範囲の位置を取得します。
+  選択範囲がある場合(row1 col1 row2 col2)のリストを返します。
+  選択範囲が無い場合、#fを返します。
+
+- (editor-box-select?)
+  選択範囲が矩形選択の場合、真を返します。
+
+- (editor-get-selected-string)
+  選択範囲の文字列を取得します。
+
+- (editor-get-selected-string-bytes)
+  選択範囲のバイト数を取得します。
+
+- (editor-get-selected-string-chars)
+  選択範囲の文字数を取得します。
+
+- (editor-get-all-string)
+  エディタ内の全文字列を取得します。
+
+- (editor-get-row-string <row>)
+  指定した行の文字列を取得します。
+
+- (editor-get-row-col-char <row> <col>)
+  指定した行・列の文字を取得します。
+
+- (editor-paste-string <str>)
+  エディタに文字列を貼り付けます。
+  (例) (editor-paste-string "ABC") => エディタにABCが入力されます
+
+- (editor-search-string <regex-str>)
+  正規表現の検索を実行します。 (大文字小文字を区別する)
+  (例) (editor-search-string "AAA") => AAAを検索します
+
+- (editor-search-string-ci <regex-str>)
+  正規表現の検索を実行します。 (大文字小文字を区別しない)
+
+- (editor-replace-string <regex-str> <rep>)
+  正規表現の置換機能を実行します。(全部置換, 大文字小文字を区別する)
+  処理が成功した場合、置換した件数を返します。
+  (例) (editor-replace-string "<" "&lt;") => "<"が"&lt;"に置換されます
+
+- (editor-replace-string-ci <regex-str> <rep>)
+  正規表現の置換機能を実行します。(全部置換, 大文字小文字を区別しない)
+
+- (editor-replace-selected-string <regex-str> <rep>)
+  選択範囲に対して正規表現の置換機能を実行します。(大文字小文字を区別する)
+
+- (editor-replace-selected-string-ci <regex-str> <rep>)
+  選択範囲に対して正規表現の置換機能を実行します。(大文字小文字を区別しない)
+
+- (editor-delete-selected-string)
+  選択範囲を削除します。
+
+- (editor-forward-char <n> <select>)
+  (editor-backward-char <n> <select>)
+  (editor-next-line <n> <select>)
+  (editor-previous-line <n> <select>)
+  カーソルを移動します。
+  <n>で移動量を指定します。
+  <select>に#f以外の値を指定すると選択範囲を移動します。
+
+- (editor-set-box-select)
+  次の範囲選択を矩形選択にします。
+  この機能は選択範囲が無い場合のみ有効です。
+
+
+5.イベントハンドラを定義する
+ マクロの初期化ファイルに以下の構文で記述します。
+
+- (app-set-event-handler <eventname> <proc>)
+  eventnameで指定したイベントに、procを割り当てます。
+  eventnameには次のイベントを指定できます。
+   on-open-file           ファイルを開いた後
+   on-close-file          ファイルを閉じる前
+   on-selection-changed   選択範囲が変更された時
+   on-cursor-moved        カーソルが移動したとき
+   on-activate-app        アプリケーションがアクティブになったとき
+   on-file-saved          ファイルが保存された後
+
+(例) 以下のコードをoedit.scmに記述
+(app-set-event-handler "on-open-file"
+  (lambda () (app-msg-box "ファイルを開きました")))
+
+- (app-get-event-handler <eventname>)
+  eventnameに指定したイベントハンドラを取得します
+
+- (app-clear-event-handler <eventname>)
+  eventnameに指定したイベントハンドラを削除します
+
+- (app-set-timer <timer-id> <elapse> <proc>)
+  タイマーで起動するイベントを登録します
+  timer-id: 整数を指定
+  elapse: 起動間隔をマイクロ秒で指定
+  proc: 実行する処理を指定
+(例)
+(app-set-timer 1 1000 (lambda () (editor-paste-string "A")))
+=> 1秒間隔でAを入力
+
+- (app-clear-timer <timer-id>)
+  タイマーイベントを削除します
+
+
+6.ショートカットキーを設定する
+6-1 ショートカットキーの設定方法
+ マクロの初期化ファイルに以下の構文で記述します。
+
+ (app-set-key <keyname> <proc> [comment])
+
+ keynameで指定したキーに、procを割り当てます。
+ comment(省略可能)は、app-get-all-keysでキーリストを取得する時に利用されます。
+ ツール→キー割り当てメニューの設定よりも、マクロの設定が優先されます。
+
+(例) 以下のコードをoedit.scmに記述
+(define (test-proc) (display 10))
+(app-set-key "F7" test-proc)
+=> F7キーでメッセージダイアログに10が表示されるようになります。
+
+
+6-2 キャンセルキーの設定方法
+ (app-set-cancel-key <keyname>)
+ マクロの実行を中断するキーを設定します。
+ デフォルトはCtrl+Breakキーに設定されています。
+ (Ctrl+Breakで上手くキャンセルできない場合、キーを変更してみて下さい)
+
+(例) 以下のコードをoedit.scmに記述
+(app-set-cancel-key "Ctrl+\\")
+=> Ctrl+\キーで、マクロの実行を中断するようになります。
+
+
+6-3 キーの表記
+ ツール→キー割り当てメニューで表示される記法と同じです。
+
+(例) Alt+Ctrl+K
+
+ Alt,Ctrl,Shiftは、それぞれAlt+,Ctrl+,Shift+と記述します。
+ アルファベットは大文字で記述します。
+ ファンクションキーは、F1～F24が使えます。
+ その他のキーは、キー割り当てダイアログで確認してください。
+
+
+6-4 現在のショートカットキーの取得
+ (app-get-all-keys)
+ 結果は((keyname proc comment) ...)の形式のリストで取得できます。
+
+ 
+7.サンプルマクロ
+7-1.HTMLの文字列変換
+ 選択範囲内の文字列について、以下の置換を実行します。
+
+  & => &amp;
+  < => &lt;
+  > => &gt;
+  " => &quot;
+
+ oedit.scmに以下のコードを記述します。
+ (以下の例ではF6キーに割り当てています)
+
+;; HTML変換
+(app-set-key "F6"
+  (lambda ()
+    (define cnt
+	  (apply + (map editor-replace-selected-string
+                 '("&" "<" ">" "\"")
+                 '("&amp;" "&lt;" "&gt;" "&quot;"))))
+    (app-status-bar-msg cnt "件置換しました(HTML変換)")))
+
+
+7-2.ファイルを開いたとき、前回のカーソル位置を復元する
+ oedit.scmに以下のコードを記述します。
+
+;; ==================================================================
+;; ファイルを開いたとき、カーソル位置を復元する
+;; ==================================================================
+(let ((cursor-save-file-cnt 10)
+      (cursor-save-file-name 
+	    (string-append (app-get-tool-dir) "oedit_cur_pos.txt")))
+
+  ;; ファイルからファイル名とカーソル位置の対応を取得
+  (define (load-pos-data)
+    (if (file-exists? cursor-save-file-name)
+      (let loop ((r (open-input-file cursor-save-file-name)) (l '()))
+        (if (eof-object? (peek-char r))
+          (begin (close-input-port r) (reverse l))
+          (loop r (cons (read r) l))))
+      '()))
+
+  ;; カーソル位置を復元
+  (define (restore-cursor-pos)
+    (let ((fname (editor-get-filename)))
+      (if (and (string? fname) (> (string-length fname) 0))
+        (let loop ((lst (load-pos-data)))
+          (if (null? lst)
+            #f
+            (if (string=? (caar lst) fname)
+              (editor-set-row-col (cadar lst) (caddar lst))
+              (loop (cdr lst))))))))
+
+  ;; 現在のカーソル位置を保存
+  (define (save-cursor-pos)
+    (let ((fname (editor-get-filename)))
+      (if (and (string? fname) (> (string-length fname) 0))
+        (let ((lst (load-pos-data))
+              (w (open-output-file cursor-save-file-name))
+              (record (list fname (editor-get-cur-row) (editor-get-cur-col))))
+          (write record w)
+          (let loop ((l lst) (i 0))
+            (if (or (null? l) (= i cursor-save-file-cnt))
+              (close-output-port w)
+              (begin
+                (if (not (string=? (caar l) fname))
+                  (write (car l) w))
+                (loop (cdr l) (+ i 1)))))))))
+
+  ;; イベントハンドラを定義
+  (app-set-event-handler "on-open-file" restore-cursor-pos)
+  (app-set-event-handler "on-close-file" save-cursor-pos))
+
+
+7-3.ステータスバーに、選択範囲のバイト数・文字数を表示する
+ oedit.scmに以下のコードを記述します。
+;; ==================================================================
+;; 選択範囲のバイト数・文字数を表示する
+;; ==================================================================
+(app-set-event-handler "on-selection-changed" 
+  (lambda () 
+    (let ((bytes (editor-get-selected-string-bytes)) 
+          (chars (editor-get-selected-string-chars)))
+      (if (= bytes 0)
+        (app-status-bar-msg "")
+        (app-status-bar-msg bytes "bytes," chars "chars")))))
+
+
+7-4.Alt+矢印キーで矩形選択できるようにする
+ oedit.scmに以下のコードを記述します。
+;; ==================================================================
+;; Alt+矢印キーで矩形選択
+;; ==================================================================
+(app-set-key "Alt+LEFT" 
+  (lambda () (editor-set-box-select) (editor-backward-char 1 #t)))
+(app-set-key "Alt+RIGHT" 
+  (lambda () (editor-set-box-select) (editor-forward-char 1 #t)))
+(app-set-key "Alt+UP" 
+  (lambda () (editor-set-box-select) (editor-previous-line 1 #t)))
+(app-set-key "Alt+DOWN" 
+  (lambda () (editor-set-box-select) (editor-next-line 1 #t)))
+
+7-5.Input Boxに入力されたS式を評価する
+ oedit.scmに以下のコードを記述します。
+ Input Boxに、"(+ 2 3)"などと入力して計算させることが出来ます。
+;; ==================================================================
+;; Input Boxに入力されたS式を評価する
+;; ==================================================================
+(app-set-key "Ctrl+0"
+  (lambda ()
+    (let ((s (app-input-box "S式を入力")))
+      (if (string? s)
+        (display (eval (read (open-input-string s))))))))

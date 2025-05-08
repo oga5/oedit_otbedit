@@ -1,0 +1,307 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: ostrutil - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1CF.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"../../../obj/Debug/ostrutil/ostrutil.pch" /YX /Fo"../../../obj/Debug/ostrutil/" /Fd"../../../obj/Debug/ostrutil/" /FD /GZ /c 
+"D:\develop2\src\libs\ostrutil\bm_search.c"
+"D:\develop2\src\libs\ostrutil\hankaku.c"
+"D:\develop2\src\libs\ostrutil\lexer.c"
+"D:\develop2\src\libs\ostrutil\mbutil.c"
+"D:\develop2\src\libs\ostrutil\ostrutil.c"
+"D:\develop2\src\libs\ostrutil\parser.c"
+"D:\develop2\src\libs\ostrutil\regexp.c"
+"D:\develop2\src\libs\ostrutil\replace.c"
+"D:\develop2\src\libs\ostrutil\to_xxx.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1CF.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D0.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Debug\ostrutil.lib" 
+\develop2\obj\Debug\ostrutil\bm_search.obj
+\develop2\obj\Debug\ostrutil\hankaku.obj
+\develop2\obj\Debug\ostrutil\lexer.obj
+\develop2\obj\Debug\ostrutil\mbutil.obj
+\develop2\obj\Debug\ostrutil\ostrutil.obj
+\develop2\obj\Debug\ostrutil\parser.obj
+\develop2\obj\Debug\ostrutil\regexp.obj
+\develop2\obj\Debug\ostrutil\replace.obj
+\develop2\obj\Debug\ostrutil\to_xxx.obj
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D0.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+Neither /Zi nor /Z7 is specified, instrumentation is adding /Zi
+bm_search.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\bm_search.c
+hankaku.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\hankaku.c
+lexer.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\lexer.c
+mbutil.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\mbutil.c
+ostrutil.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\ostrutil.c
+parser.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\parser.c
+regexp.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\regexp.c
+replace.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\replace.c
+to_xxx.c
+インストゥルメンテーション D:\develop2\src\libs\ostrutil\to_xxx.c
+ﾗｲﾌﾞﾗﾘを作成中...
+LINK : warning LNK4044: ｵﾌﾟｼｮﾝ "INCREMENTAL:NO" は無効です; 無視されます
+LINK : warning LNK4044: ｵﾌﾟｼｮﾝ "DEBUG" は無効です; 無視されます
+<h3>
+--------------------構成: octrllib - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D2.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /I "../ostrutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Debug/octrllib/octrllib.pch" /Yu"stdafx.h" /Fo"../../../obj/Debug/octrllib/" /Fd"../../../obj/Debug/octrllib/" /FD /GZ /c 
+"D:\develop2\src\libs\octrllib\CodeAssistData.cpp"
+"D:\develop2\src\libs\octrllib\CodeAssistEditCtrl.cpp"
+"D:\develop2\src\libs\octrllib\CodeAssistListMaker.cpp"
+"D:\develop2\src\libs\octrllib\CodeAssistWnd.cpp"
+"D:\develop2\src\libs\octrllib\CommonCancelDlg.cpp"
+"D:\develop2\src\libs\octrllib\DispColorData.cpp"
+"D:\develop2\src\libs\octrllib\EditableGridData.cpp"
+"D:\develop2\src\libs\octrllib\EditCtrl.cpp"
+"D:\develop2\src\libs\octrllib\EditData.cpp"
+"D:\develop2\src\libs\octrllib\editdispdata.cpp"
+"D:\develop2\src\libs\octrllib\EditRowBuffer.cpp"
+"D:\develop2\src\libs\octrllib\EditRowData.cpp"
+"D:\develop2\src\libs\octrllib\expsplit.cpp"
+"D:\develop2\src\libs\octrllib\FastIniFile.cpp"
+"D:\develop2\src\libs\octrllib\FileTabCtrl.cpp"
+"D:\develop2\src\libs\octrllib\GridCtrl.cpp"
+"D:\develop2\src\libs\octrllib\griddata.cpp"
+"D:\develop2\src\libs\octrllib\GridDispData.cpp"
+"D:\develop2\src\libs\octrllib\Indenter.cpp"
+"D:\develop2\src\libs\octrllib\IntArray.cpp"
+"D:\develop2\src\libs\octrllib\ListCtrlUtil.cpp"
+"D:\develop2\src\libs\octrllib\MemoryPool.cpp"
+"D:\develop2\src\libs\octrllib\octrl_util.cpp"
+"D:\develop2\src\libs\octrllib\OWinApp.cpp"
+"D:\develop2\src\libs\octrllib\owinutil.cpp"
+"D:\develop2\src\libs\octrllib\printeditdata.cpp"
+"D:\develop2\src\libs\octrllib\PtrGridData.cpp"
+"D:\develop2\src\libs\octrllib\ScrollWnd.cpp"
+"D:\develop2\src\libs\octrllib\SJISArchive.cpp"
+"D:\develop2\src\libs\octrllib\StrGridData.cpp"
+"D:\develop2\src\libs\octrllib\StrToken.cpp"
+"D:\develop2\src\libs\octrllib\ToolTipEx.cpp"
+"D:\develop2\src\libs\octrllib\Undo.cpp"
+"D:\develop2\src\libs\octrllib\wheelsplit.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D2.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D3.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /I "../ostrutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Debug/octrllib/octrllib.pch" /Yc"stdafx.h" /Fo"../../../obj/Debug/octrllib/" /Fd"../../../obj/Debug/octrllib/" /FD /GZ /c 
+"D:\develop2\src\libs\octrllib\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D3.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D4.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Debug\octrllib.lib" 
+\develop2\obj\Debug\octrllib\CodeAssistData.obj
+\develop2\obj\Debug\octrllib\CodeAssistEditCtrl.obj
+\develop2\obj\Debug\octrllib\CodeAssistListMaker.obj
+\develop2\obj\Debug\octrllib\CodeAssistWnd.obj
+\develop2\obj\Debug\octrllib\CommonCancelDlg.obj
+\develop2\obj\Debug\octrllib\DispColorData.obj
+\develop2\obj\Debug\octrllib\EditableGridData.obj
+\develop2\obj\Debug\octrllib\EditCtrl.obj
+\develop2\obj\Debug\octrllib\EditData.obj
+\develop2\obj\Debug\octrllib\editdispdata.obj
+\develop2\obj\Debug\octrllib\EditRowBuffer.obj
+\develop2\obj\Debug\octrllib\EditRowData.obj
+\develop2\obj\Debug\octrllib\expsplit.obj
+\develop2\obj\Debug\octrllib\FastIniFile.obj
+\develop2\obj\Debug\octrllib\FileTabCtrl.obj
+\develop2\obj\Debug\octrllib\GridCtrl.obj
+\develop2\obj\Debug\octrllib\griddata.obj
+\develop2\obj\Debug\octrllib\GridDispData.obj
+\develop2\obj\Debug\octrllib\Indenter.obj
+\develop2\obj\Debug\octrllib\IntArray.obj
+\develop2\obj\Debug\octrllib\ListCtrlUtil.obj
+\develop2\obj\Debug\octrllib\MemoryPool.obj
+\develop2\obj\Debug\octrllib\octrl_util.obj
+\develop2\obj\Debug\octrllib\OWinApp.obj
+\develop2\obj\Debug\octrllib\owinutil.obj
+\develop2\obj\Debug\octrllib\printeditdata.obj
+\develop2\obj\Debug\octrllib\PtrGridData.obj
+\develop2\obj\Debug\octrllib\ScrollWnd.obj
+\develop2\obj\Debug\octrllib\SJISArchive.obj
+\develop2\obj\Debug\octrllib\StdAfx.obj
+\develop2\obj\Debug\octrllib\StrGridData.obj
+\develop2\obj\Debug\octrllib\StrToken.obj
+\develop2\obj\Debug\octrllib\ToolTipEx.obj
+\develop2\obj\Debug\octrllib\Undo.obj
+\develop2\obj\Debug\octrllib\wheelsplit.obj
+\develop2\lib\Debug\ostrutil.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D4.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+Neither /Zi nor /Z7 is specified, instrumentation is adding /Zi
+StdAfx.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+Neither /Zi nor /Z7 is specified, instrumentation is adding /Zi
+CodeAssistData.cpp
+CodeAssistEditCtrl.cpp
+CodeAssistListMaker.cpp
+CodeAssistWnd.cpp
+CommonCancelDlg.cpp
+DispColorData.cpp
+EditableGridData.cpp
+EditCtrl.cpp
+EditData.cpp
+editdispdata.cpp
+EditRowBuffer.cpp
+EditRowData.cpp
+expsplit.cpp
+FastIniFile.cpp
+FileTabCtrl.cpp
+GridCtrl.cpp
+griddata.cpp
+GridDispData.cpp
+Indenter.cpp
+IntArray.cpp
+ｺｰﾄﾞを生成中...
+インストゥルメンテーション D:\develop2\src\libs\octrllib\IntArray.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\Indenter.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\GridDispData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\griddata.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\GridCtrl.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\FileTabCtrl.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\FastIniFile.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::map<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::less<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >,_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::_Rb_tree_iterator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::_Nonconst_traits<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::binary_function<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,bool>' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::map<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::less<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >,_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >::value_compare' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::_Rb_tree<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::_Select1st<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >,_STL::less<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >,_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >::rebind<`template-parameter513'>' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >::rebind' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::pair<_STL::_Rb_tree_iterator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::_Nonconst_traits<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >,bool>' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::_Rb_tree_node<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::_Rb_tree_base<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::binary_function<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,bool>' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::_STLP_alloc_proxy<_STL::_Rb_tree_node<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > *,_STL::_Rb_tree_node<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >,_STL::allocator<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::allocator<_STL::_Rb_tree_node<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::allocator<_STL::_Rb_tree_node<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >::rebind<`template-parameter513'>' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::allocator<_STL::_Rb_tree_node<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > > >::rebind' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::_Select1st<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+C:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE\afxtls_.h(140) : warning C4786: '_STL::unary_function<_STL::pair<_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const ,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > >,_STL::pair<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> >,_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char> > > const >' : ﾃﾞﾊﾞｯｸﾞ情報で識別子が 255 文字に切り捨てられました。
+インストゥルメンテーション D:\develop2\src\libs\octrllib\expsplit.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\EditRowData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\EditRowBuffer.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\editdispdata.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\EditData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\EditCtrl.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\EditableGridData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\DispColorData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\CommonCancelDlg.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\CodeAssistWnd.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\CodeAssistListMaker.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\CodeAssistEditCtrl.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\CodeAssistData.cpp
+ｺﾝﾊﾟｲﾙ中...
+ListCtrlUtil.cpp
+MemoryPool.cpp
+octrl_util.cpp
+OWinApp.cpp
+owinutil.cpp
+printeditdata.cpp
+PtrGridData.cpp
+ScrollWnd.cpp
+SJISArchive.cpp
+StrGridData.cpp
+StrToken.cpp
+ToolTipEx.cpp
+Undo.cpp
+wheelsplit.cpp
+ｺｰﾄﾞを生成中...
+インストゥルメンテーション D:\develop2\src\libs\octrllib\wheelsplit.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\Undo.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\ToolTipEx.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\StrToken.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\StrGridData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\SJISArchive.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\ScrollWnd.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\PtrGridData.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\printeditdata.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\owinutil.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\OWinApp.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\octrl_util.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\MemoryPool.cpp
+インストゥルメンテーション D:\develop2\src\libs\octrllib\ListCtrlUtil.cpp
+ﾗｲﾌﾞﾗﾘを作成中...
+LINK : warning LNK4044: ｵﾌﾟｼｮﾝ "INCREMENTAL:NO" は無効です; 無視されます
+LINK : warning LNK4044: ｵﾌﾟｼｮﾝ "DEBUG" は無効です; 無視されます
+
+
+
+<h3>結果</h3>
+octrllib.lib - ｴﾗｰ 0、警告 22
+<h3>
+--------------------構成: ofileutil - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D7.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /I "../ostrutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Debug/ofileutil/ofileutil.pch" /Yu"stdafx.h" /Fo"../../../obj/Debug/ofileutil/" /Fd"../../../obj/Debug/ofileutil/" /FD /GZ /c 
+"D:\develop2\src\libs\ofileutil\file_winutil.cpp"
+"D:\develop2\src\libs\ofileutil\filenames.cpp"
+"D:\develop2\src\libs\ofileutil\fileutil.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D7.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D8.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /ZI /Od /I "../ostrutil" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"../../../obj/Debug/ofileutil/ofileutil.pch" /Yc"stdafx.h" /Fo"../../../obj/Debug/ofileutil/" /Fd"../../../obj/Debug/ofileutil/" /FD /GZ /c 
+"D:\develop2\src\libs\ofileutil\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D8.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D9.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"../../../lib/Debug\ofileutil.lib" 
+\develop2\obj\Debug\ofileutil\file_winutil.obj
+\develop2\obj\Debug\ofileutil\filenames.obj
+\develop2\obj\Debug\ofileutil\fileutil.obj
+\develop2\obj\Debug\ofileutil\StdAfx.obj
+\develop2\lib\Debug\ostrutil.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe -lib @C:\DOCUME~1\e4019810\LOCALS~1\Temp\RSP1D9.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+Neither /Zi nor /Z7 is specified, instrumentation is adding /Zi
+StdAfx.cpp
+インストゥルメンテーション D:\develop2\src\libs\ofileutil\StdAfx.cpp
+ｺﾝﾊﾟｲﾙ中...
+Neither /Zi nor /Z7 is specified, instrumentation is adding /Zi
+file_winutil.cpp
+filenames.cpp
+fileutil.cpp
+ｺｰﾄﾞを生成中...
+インストゥルメンテーション D:\develop2\src\libs\ofileutil\fileutil.cpp
+インストゥルメンテーション D:\develop2\src\libs\ofileutil\filenames.cpp
+インストゥルメンテーション D:\develop2\src\libs\ofileutil\file_winutil.cpp
+ﾗｲﾌﾞﾗﾘを作成中...
+LINK : warning LNK4044: ｵﾌﾟｼｮﾝ "INCREMENTAL:NO" は無効です; 無視されます
+LINK : warning LNK4044: ｵﾌﾟｼｮﾝ "DEBUG" は無効です; 無視されます
+
+
+
+<h3>結果</h3>
+ofileutil.lib - ｴﾗｰ 0、警告 2
+</pre>
+</body>
+</html>

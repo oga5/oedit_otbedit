@@ -1,0 +1,105 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: oedit - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ogawa\AppData\Local\Temp\RSPD598.tmp" with contents
+[
+imm32.lib version.lib ostrutil.lib octrllib.lib ofileutil.lib /nologo /subsystem:windows /profile /debug /machine:I386 /out:"../../../../exe/Debug/otbedit/otbedit.exe" /libpath:"../../../../lib/debug" 
+\data\develop3\obj\Debug\otbedit\AboutDlg.obj
+\data\develop3\obj\Debug\otbedit\AcceleratorDlg.obj
+\data\develop3\obj\Debug\otbedit\AccelList.obj
+\data\develop3\obj\Debug\otbedit\ColorGridWnd.obj
+\data\develop3\obj\Debug\otbedit\CommonUtil.obj
+\data\develop3\obj\Debug\otbedit\EditorOptionPage.obj
+\data\develop3\obj\Debug\otbedit\EditorOptionPage2.obj
+\data\develop3\obj\Debug\otbedit\ExtFileDialog.obj
+\data\develop3\obj\Debug\otbedit\FileFormatDlg.obj
+\data\develop3\obj\Debug\otbedit\FileListBar.obj
+\data\develop3\obj\Debug\otbedit\FileTreeCtrl.obj
+\data\develop3\obj\Debug\otbedit\FilterDlg.obj
+\data\develop3\obj\Debug\otbedit\greputil.obj
+\data\develop3\obj\Debug\otbedit\kbmacro.obj
+\data\develop3\obj\Debug\otbedit\LineJumpDlg.obj
+\data\develop3\obj\Debug\otbedit\MainFrm.obj
+\data\develop3\obj\Debug\otbedit\oedit.obj
+\data\develop3\obj\Debug\otbedit\oeditapp2.obj
+\data\develop3\obj\Debug\otbedit\oeditDoc.obj
+\data\develop3\obj\Debug\otbedit\oeditView.obj
+\data\develop3\obj\Debug\otbedit\OptionSheet.obj
+\data\develop3\obj\Debug\otbedit\PrintDlg.obj
+\data\develop3\obj\Debug\otbedit\QueryCloseDlg.obj
+\data\develop3\obj\Debug\otbedit\ReplaceDlg.obj
+\data\develop3\obj\Debug\otbedit\scm_macro.obj
+\data\develop3\obj\Debug\otbedit\scm_macro_common.obj
+\data\develop3\obj\Debug\otbedit\SearchDlg.obj
+\data\develop3\obj\Debug\otbedit\SelectColorDlg.obj
+\data\develop3\obj\Debug\otbedit\SetupPage.obj
+\data\develop3\obj\Debug\otbedit\SetupPage2.obj
+\data\develop3\obj\Debug\otbedit\sizecbar.obj
+\data\develop3\obj\Debug\otbedit\StdAfx.obj
+\data\develop3\obj\Debug\otbedit\TagJumpCommon.obj
+\data\develop3\obj\Debug\otbedit\oedit.res
+\data\develop3\lib\Debug\octrllib.lib
+]
+Creating command line "link.exe @C:\Users\ogawa\AppData\Local\Temp\RSPD598.tmp"
+<h3>Output Window</h3>
+Linking...
+Creating temporary file "C:\Users\ogawa\AppData\Local\Temp\RSPD9EE.bat" with contents
+[
+@echo off
+mkdir ..\..\..\..\exe\Debug\otbedit\data
+copy ..\data\*.txt  ..\..\..\..\exe\Debug\otbedit\data
+copy ..\data\*.cfg  ..\..\..\..\exe\Debug\otbedit\data
+mkdir ..\..\..\..\exe\Debug\otbedit\doc
+copy ..\doc\*.txt         ..\..\..\..\exe\Debug\otbedit\doc
+mkdir ..\..\..\..\exe\Debug\otbedit\scmlib
+copy ..\..\..\libs\common_doc\*.txt ..\..\..\..\exe\Debug\otbedit\doc
+copy ..\scmlib\*.scm ..\..\..\..\exe\Debug\otbedit\scmlib
+copy ..\..\..\libs\common_scmlib\*.* ..\..\..\..\exe\Debug\otbedit\scmlib
+]
+Creating command line "C:\Users\ogawa\AppData\Local\Temp\RSPD9EE.bat"
+
+サブディレクトリまたはファイル ..\..\..\..\exe\Debug\otbedit\data は既に存在します。
+..\data\cpp.txt
+..\data\html.txt
+..\data\java.txt
+..\data\languages_default.txt
+..\data\perl.txt
+..\data\sql.txt
+..\data\text.txt
+        7 個のファイルをコピーしました。
+..\data\cpp.cfg
+..\data\html.cfg
+..\data\java.cfg
+..\data\perl.cfg
+..\data\sql.cfg
+..\data\text.cfg
+        6 個のファイルをコピーしました。
+サブディレクトリまたはファイル ..\..\..\..\exe\Debug\otbedit\doc は既に存在します。
+..\doc\keyword.txt
+..\doc\languages.txt
+..\doc\macro_otbedit.txt
+..\doc\option.txt
+..\doc\shortcutkey.txt
+        5 個のファイルをコピーしました。
+サブディレクトリまたはファイル ..\..\..\..\exe\Debug\otbedit\scmlib は既に存在します。
+..\..\..\libs\common_doc\macro_ref.txt
+..\..\..\libs\common_doc\regexp.txt
+        2 個のファイルをコピーしました。
+..\scmlib\otbedit.scm
+        1 個のファイルをコピーしました。
+..\..\..\libs\common_scmlib\init.scm
+..\..\..\libs\common_scmlib\srfi-11.scm
+        2 個のファイルをコピーしました。
+
+
+
+<h3>Results</h3>
+otbedit.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,60 @@
+# ルートフォルダのBuild結果のみ除外
+/exe/
+/lib/
+/obj/
+
+# Visual Studioの一時ファイル
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.filters
+
+# ビルド結果
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual C++ キャッシュファイル
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# プロファイル結果
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio プロジェクト固有のファイル
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows固有のファイル
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 一時ファイル
+*.tmp
+*.temp
+*.bak
+*~
