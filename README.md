@@ -45,3 +45,12 @@
 - `lib` - ライブラリファイルが格納されます
 - `obj` - 中間オブジェクトファイルが格納されます
 
+実行ファイルは `exe` フォルダ内の対応するビルド構成とプラットフォームのサブディレクトリに出力されます：
+- `exe\Debug\Win32\oedit\`
+- `exe\Debug\x64\oedit\`
+- `exe\Release\Win32\oedit\`
+- `exe\Release\x64\oedit\`
+- `exe\Debug\Win32\otbedit\`
+- `exe\Debug\x64\otbedit\`
+- `exe\Release\Win32\otbedit\`
+- `exe\Release\x64\otbedit\`
