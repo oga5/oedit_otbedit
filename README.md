@@ -39,6 +39,7 @@
 
 1. Visual Studioで `src\tools\oedit\ogrep\ogrep.sln` を開きます
 2. ビルドを実行します
+3. ogrep.exeはoeditとotbeditの両方のexe用のフォルダに格納されます
 
 ビルドが成功すると、リポジトリのルートに以下のフォルダが作成されます：
 - `exe` - 実行ファイルが格納されます
@@ -46,11 +47,4 @@
 - `obj` - 中間オブジェクトファイルが格納されます
 
 実行ファイルは `exe` フォルダ内の対応するビルド構成とプラットフォームのサブディレクトリに出力されます：
-- `exe\Debug\Win32\oedit\`
-- `exe\Debug\x64\oedit\`
-- `exe\Release\Win32\oedit\`
-- `exe\Release\x64\oedit\`
-- `exe\Debug\Win32\otbedit\`
-- `exe\Debug\x64\otbedit\`
-- `exe\Release\Win32\otbedit\`
-- `exe\Release\x64\otbedit\`
+
