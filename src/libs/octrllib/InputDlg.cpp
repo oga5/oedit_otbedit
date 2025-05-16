@@ -77,8 +77,8 @@ BOOL CInputDlg::OnInitDialog()
 	m_cancel.Create(_T("CANCEL"), WS_CHILD | WS_VISIBLE, cancel_rect, this, IDCANCEL);
 	m_cancel.SetFont(&m_font);
 
-	int win_width = dlg_rect.Width() + ::GetSystemMetrics(SM_CXFIXEDFRAME) * 2;
-	int win_height = btn_y + btn_h + 10 + ::GetSystemMetrics(SM_CYCAPTION) + ::GetSystemMetrics(SM_CYFIXEDFRAME) * 2;
+	int win_width = dlg_rect.Width() + ::GetSystemMetrics(SM_CXFIXEDFRAME) * 2 + 15;
+	int win_height = btn_y + btn_h + 25 + ::GetSystemMetrics(SM_CYCAPTION) + ::GetSystemMetrics(SM_CYFIXEDFRAME) * 2;
 	SetWindowPos(NULL, 0, 0, win_width, win_height, SWP_NOMOVE | SWP_NOZORDER);
 
 	return TRUE;

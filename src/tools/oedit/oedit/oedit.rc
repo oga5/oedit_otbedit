@@ -868,7 +868,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 9,0,0,1
+ FILEVERSION 9,0,0,2
  PRODUCTVERSION 9,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -885,7 +885,7 @@ BEGIN
         BLOCK "041104b0"
         BEGIN
             VALUE "FileDescription", "oedit"
-            VALUE "FileVersion", "9.0.0.1"
+            VALUE "FileVersion", "9.0.0.2"
             VALUE "InternalName", "oedit"
             VALUE "LegalCopyright", "Copyright (C) 2001-2025 Atsushi Ogawa"
             VALUE "OriginalFilename", "oedit.EXE"
