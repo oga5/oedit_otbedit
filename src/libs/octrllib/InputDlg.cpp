@@ -57,16 +57,17 @@ BOOL CInputDlg::OnInitDialog()
 
 	int font_height = 20;
 	int edit_x = 10;
-	int edit_y = 10;
+	int edit_y = 15;
 
-	CRect rect(edit_x, edit_y, dlg_rect.Width() - 10, edit_y + font_height);
+	int edit_height = font_height + 4;
+	CRect rect(edit_x, edit_y, dlg_rect.Width() - 10, edit_y + edit_height);
 	m_edit.Create(WS_CHILD | WS_BORDER | WS_VISIBLE | ES_AUTOHSCROLL, 
 		rect, this, INPUT_DLG_EDIT_ID);
 	m_edit.SetFont(&m_font);
 	m_edit.SetWindowText(m_value);
 
 	int center = dlg_rect.Width() / 2;
-	int btn_y = edit_y + font_height + 10;
+	int btn_y = edit_y + edit_height + 10;
 	int btn_h = font_height + 4;
 	int btn_w = 80;
 	CRect ok_rect(center - 10 - btn_w, btn_y, center - 10, btn_y + btn_h);
