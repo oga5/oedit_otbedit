@@ -87,18 +87,18 @@ TCHAR *my_mbschr(const TCHAR *mbstr, unsigned int ch)
 	return NULL;
 }
 
-TCHAR  *my_mbsstr(const TCHAR *string1, const TCHAR *string2)
+TCHAR* my_mbsstr(const TCHAR* string1, const TCHAR* string2)
 {
-	const TCHAR *p = string1;
-	for(;;) {
-		p = _tcsstr(p, string2);
-		if(p == NULL) return NULL;
-		if(p == string1) break;
-		if(is_lead_byte2(string1, p - string1 - 1) == 0) break;
+	size_t len2 = _tcslen(string2);
+	if (len2 == 0) return (TCHAR*)string1;
 
-		p++;
+	const TCHAR* p = string1;
+	for (; *p; p += get_char_len(p)) {
+		// マルチバイト境界を考慮して比較
+		if (_tcsncmp(p, string2, len2) == 0) {
+			return (TCHAR*)p;
+		}
 	}
-
-	return (TCHAR *)p;
+	return NULL;
 }
 
