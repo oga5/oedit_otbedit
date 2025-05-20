@@ -11,11 +11,11 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// ColorGridWnd.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// ColorGridWnd.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CColorGridWnd ƒEƒBƒ“ƒhƒE
+// CColorGridWnd ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 
 #define CGC_WM_SELECTED_COLOR		WM_USER + 300
 #define CGC_WM_DBL_CLICK			WM_USER + 301
@@ -24,27 +24,27 @@
 
 class CColorGridWnd : public CWnd
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CColorGridWnd();
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 public:
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	void SetColor(int idx, COLORREF col);
 	void SetSelectedColor(COLORREF col);
 	COLORREF GetColor(int idx) { return m_color_info[idx]; }
 	COLORREF GetSelectedColor() { return m_color_info[GetSelectedIdx()]; }
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CColorGridWnd)
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~CColorGridWnd();
 
@@ -71,7 +71,7 @@ private:
 	int GetIdx(int x, int y) { return y * m_x + x; }
 	int GetSelectedIdx() { return GetIdx(m_selected.x, m_selected.y); }
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CColorGridWnd)
 	afx_msg void OnPaint();
@@ -88,6 +88,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_COLORGRIDWND_H__D5DD1882_0E69_11D6_8508_00E018A83B1B__INCLUDED_)

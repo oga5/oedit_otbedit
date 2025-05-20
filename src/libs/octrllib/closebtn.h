@@ -11,15 +11,15 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// CloseBtn.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// CloseBtn.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CCloseBtn ƒEƒBƒ“ƒhƒE
+// CCloseBtn ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 
 class CCloseBtn : public CButton
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CCloseBtn();
 
@@ -28,24 +28,24 @@ public:
 	void SetParam(int param) { m_param = param; }
 	int GetParam() { return m_param; }
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 public:
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(CCloseBtn)
 	public:
 	virtual void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct);
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~CCloseBtn();
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CCloseBtn)
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
@@ -68,6 +68,6 @@ private:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_CLOSEBTN_H__CC4A629A_AC66_409F_83CD_07F133CD683D__INCLUDED_)

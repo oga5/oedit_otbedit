@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// FileTabCtrl.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// FileTabCtrl.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -69,7 +69,7 @@ BEGIN_MESSAGE_MAP(CFileTabCtrl, CTabCtrl)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CFileTabCtrl ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CFileTabCtrl ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 int CFileTabCtrl::HitTabTest(CPoint point)
 {
@@ -220,7 +220,7 @@ void CFileTabCtrl::SetExStyle(DWORD ex_style)
 	SetPadding(CSize(padding_x, 3));
 
 	{
-		// ƒ^ƒu‚Ì•‚ğÄ’²ß‚·‚é
+		// ã‚¿ãƒ–ã®å¹…ã‚’å†èª¿ç¯€ã™ã‚‹
 		InsertItem(0, _T(""), 0);
 		DeleteItem(0);
 	}
@@ -254,8 +254,8 @@ void CFileTabCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	int tab_idx = HitTabTest(point);
 
-	// ƒAƒNƒeƒBƒuƒ^ƒu‚ğ•ÏX‚·‚é‚Æ‚«A•Â‚¶‚éƒ{ƒ^ƒ“‚ÌˆÊ’u‚Éc‘œ‚İ‚½‚¢‚Éc‚é‚Ì‚ÅA
-	// ˆê’U”ñ•\¦‚É‚·‚é
+	// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚¿ãƒ–ã‚’å¤‰æ›´ã™ã‚‹ã¨ãã€é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ã®ä½ç½®ã«æ®‹åƒã¿ãŸã„ã«æ®‹ã‚‹ã®ã§ã€
+	// ä¸€æ—¦éè¡¨ç¤ºã«ã™ã‚‹
 	if((m_ex_style & (FTC_CLOSE_BTN_ON_TAB | FTC_CLOSE_BTN_ON_ALL_TAB | FTC_TAB_DRAG_MOVE)) && 
 		tab_idx >= 0 && tab_idx != GetCurSel()) {
 		m_close_btn.ShowWindow(SW_HIDE);
@@ -323,7 +323,7 @@ BOOL CFileTabCtrl::Drop(COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoi
 
 	if(drag_idx < m_drop_target_idx) m_drop_target_idx--;
 	if(drag_idx != m_drop_target_idx) {
-		// eƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+		// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 		NMHDR		nmhdr;
 		nmhdr.code = TC_MOVE_TAB;
 		nmhdr.hwndFrom = GetSafeHwnd();
@@ -442,7 +442,7 @@ BOOL CFileTabCtrl::OnCommand(WPARAM wParam, LPARAM lParam)
 			}
 		}
 
-		// eƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+		// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 		NMHDR		nmhdr;
 		nmhdr.code = TC_CLOSE_BTN;
 		nmhdr.hwndFrom = GetSafeHwnd();
@@ -570,14 +570,14 @@ void CFileTabCtrl::Redraw()
 
 BOOL CFileTabCtrl::OnEraseBkgnd(CDC* pDC)
 {
-	// TODO: ‚±‚±‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰[ ƒR[ƒh‚ğ’Ç‰Á‚·‚é‚©AŠù’è‚Ìˆ—‚ğŒÄ‚Ño‚µ‚Ü‚·B
+	// TODO: ã“ã“ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã‹ã€æ—¢å®šã®å‡¦ç†ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚
 	int  item_cnt;
 
 	item_cnt = GetItemCount();
 
 	if(b_min_erase_bkgnd && item_cnt > 0) {
-		// ƒ_ƒCƒAƒƒO‚ÌƒTƒCƒY•ÏX‚É‚¿‚ç‚Â‚©‚È‚¢‚æ‚¤‚É‚·‚é
-		// ƒ^ƒu‚ÌŠO‘¤‚Ì‚İbackground‚ğ“h‚è‚Â‚Ô‚·
+		// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚µã‚¤ã‚ºå¤‰æ›´æ™‚ã«ã¡ã‚‰ã¤ã‹ãªã„ã‚ˆã†ã«ã™ã‚‹
+		// ã‚¿ãƒ–ã®å¤–å´ã®ã¿backgroundã‚’å¡—ã‚Šã¤ã¶ã™
 		RECT client_rect;
 		RECT item_rect;
 		RECT last_item_rect;

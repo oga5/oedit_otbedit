@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// oeditView.cpp : COeditView ƒNƒ‰ƒX‚Ì“®ì‚Ì’è‹`‚ğs‚¢‚Ü‚·B
+// oeditView.cpp : COeditView ã‚¯ãƒ©ã‚¹ã®å‹•ä½œã®å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -221,7 +221,7 @@ BEGIN_MESSAGE_MAP(COeditView, CView)
 	ON_COMMAND(ID_WORD_RIGHT_STOP_WB, OnWordRightStopWb)
 	ON_COMMAND(ID_WORD_RIGHT_STOP_WB_EXTEND, OnWordRightStopWbExtend)
 	//}}AFX_MSG_MAP
-	// •W€ˆóüƒRƒ}ƒ“ƒh
+	// æ¨™æº–å°åˆ·ã‚³ãƒãƒ³ãƒ‰
 	ON_UPDATE_COMMAND_UI_RANGE(ID_TO_LOWER, ID_TO_UPPER, OnUpdateSelected)
 	ON_UPDATE_COMMAND_UI(ID_SPLIT_ROWS, OnUpdateSelected)
 	ON_UPDATE_COMMAND_UI(ID_JOIN_ROWS, OnUpdateMultiLineEdit)
@@ -233,7 +233,7 @@ BEGIN_MESSAGE_MAP(COeditView, CView)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚Ì\’z/Á–Å
+// COeditView ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰/æ¶ˆæ»…
 
 
 COeditView::COeditView()
@@ -248,17 +248,17 @@ COeditView::~COeditView()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚Ì•`‰æ
+// COeditView ã‚¯ãƒ©ã‚¹ã®æç”»
 
 void COeditView::OnDraw(CDC* pDC)
 {
 	COeditDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
-	// TODO: ‚±‚ÌêŠ‚ÉƒlƒCƒeƒBƒu ƒf[ƒ^—p‚Ì•`‰æƒR[ƒh‚ğ’Ç‰Á‚µ‚Ü‚·B
+	// TODO: ã“ã®å ´æ‰€ã«ãƒã‚¤ãƒ†ã‚£ãƒ– ãƒ‡ãƒ¼ã‚¿ç”¨ã®æç”»ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¾ã™ã€‚
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚Ìf’f
+// COeditView ã‚¯ãƒ©ã‚¹ã®è¨ºæ–­
 
 #ifdef _DEBUG
 void COeditView::AssertValid() const
@@ -271,7 +271,7 @@ void COeditView::Dump(CDumpContext& dc) const
 	CView::Dump(dc);
 }
 
-COeditDoc* COeditView::GetDocument() // ”ñƒfƒoƒbƒO ƒo[ƒWƒ‡ƒ“‚ÍƒCƒ“ƒ‰ƒCƒ“‚Å‚·B
+COeditDoc* COeditView::GetDocument() // éãƒ‡ãƒãƒƒã‚° ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³ã§ã™ã€‚
 {
 	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(COeditDoc)));
 	return (COeditDoc*)m_pDocument;
@@ -279,7 +279,7 @@ COeditDoc* COeditView::GetDocument() // ”ñƒfƒoƒbƒO ƒo[ƒWƒ‡ƒ“‚ÍƒCƒ“ƒ‰ƒCƒ“‚Å‚·B
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚ÌƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// COeditView ã‚¯ãƒ©ã‚¹ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 int COeditView::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
@@ -400,9 +400,9 @@ CString COeditView::GetTabName(CString path_name)
 	INT_PTR	last_sepa_pos = 0;
 	INT_PTR	pre_last_sepa_pos = 0;
 
-	/* '\'‚ÍSJIS‚Ì2ƒoƒCƒg–Ú‚Å‚àg‚í‚ê‚é‚Ì‚ÅC•¶š—ñ‚Ì‘O‚©‚ç’²‚×‚Ä‚¢‚­ */
+	/* '\'ã¯SJISã®2ãƒã‚¤ãƒˆç›®ã§ã‚‚ä½¿ã‚ã‚Œã‚‹ã®ã§ï¼Œæ–‡å­—åˆ—ã®å‰ã‹ã‚‰èª¿ã¹ã¦ã„ã */
 	for(p = file_name; p[0] != '\0'; p++) {
-		/* 2ƒoƒCƒg•¶š‚ÍƒXƒLƒbƒv */
+		/* 2ãƒã‚¤ãƒˆæ–‡å­—ã¯ã‚¹ã‚­ãƒƒãƒ— */
 		if(is_lead_byte(*p) == 1) {
 			p++;
 			continue;
@@ -509,7 +509,7 @@ void COeditView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		GetDocument()->GetEditCtrl()->Invalidate();
 		break;
 	case UPD_EDIT_MODE:
-		// FIXME: ‹N“®‚ÉƒGƒ‰[‚É‚È‚é‚Ì‚ğ‰ñ”ğ
+		// FIXME: èµ·å‹•æ™‚ã«ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã®ã‚’å›é¿
 		if(GetDocument()->GetEditCtrl()->GetSafeHwnd() != NULL) {
 			//GetDocument()->GetEditCtrl()->CheckCommentRow();
 			SetEditorOption();
@@ -571,17 +571,17 @@ void COeditView::RecalcLayout()
 	CRect	rect;
 	GetClientRect(rect);
 
-	// m_tab_height‚ª0‚Ì‚Æ‚«Cƒ^ƒu‚Ì‚‚³‚ª³‚µ‚­ŒvZ‚Å‚«‚È‚¢‚Ì‚ğ‰ñ”ğ
+	// m_tab_heightãŒ0ã®ã¨ãï¼Œã‚¿ãƒ–ã®é«˜ã•ãŒæ­£ã—ãè¨ˆç®—ã§ããªã„ã®ã‚’å›é¿
 	if(m_tab_height == 0) m_tab_height = 20;
 
 	int tab_width = rect.Width();
 	if(!g_option.close_btn_on_tab) tab_width -= CLOSE_BUTTON_WIDTH;
 
-	// ‰¡•‚ğ’²®‚·‚é
+	// æ¨ªå¹…ã‚’èª¿æ•´ã™ã‚‹
 	m_tab_ctrl.MoveWindow(0, 0, tab_width, m_tab_height);
-	// ƒ^ƒu‚Ì‚‚³‚ğŒvZ
+	// ã‚¿ãƒ–ã®é«˜ã•ã‚’è¨ˆç®—
 	m_tab_height = GetTabHeight();
-	// ƒ^ƒu‚Ì‚‚³‚ğ”½‰f‚·‚é
+	// ã‚¿ãƒ–ã®é«˜ã•ã‚’åæ˜ ã™ã‚‹
 	m_tab_ctrl.MoveWindow(0, 0, tab_width, m_tab_height);
 
 	GetDocument()->GetEditCtrl()->MoveWindow(0, m_tab_height, rect.Width(), rect.Height() - m_tab_height);
@@ -590,7 +590,7 @@ void COeditView::RecalcLayout()
 	CalcCloseButtonRect(&btn_rect);
 	m_close_btn.MoveWindow(&btn_rect);
 
-	// FIXME: ƒ^ƒu‚É•Â‚¶‚éƒ{ƒ^ƒ“‚ğ•\¦’†‚ÍAƒ{ƒ^ƒ“‚ğ‰B‚·
+	// FIXME: ã‚¿ãƒ–ã«é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºä¸­ã¯ã€ãƒœã‚¿ãƒ³ã‚’éš ã™
 	if(m_tab_height == 0 || g_option.close_btn_on_tab) {
 		m_close_btn.ShowWindow(SW_HIDE);
 	} else {
@@ -779,7 +779,7 @@ LRESULT COeditView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 
 			if(m_search_data.m_all) {
 				CString msg;
-				msg.Format(_T("%dŒ’uŠ·‚µ‚Ü‚µ‚½"), replace_cnt);
+				msg.Format(_T("%dä»¶ç½®æ›ã—ã¾ã—ãŸ"), replace_cnt);
 				GetParentFrame()->SetMessageText(msg);
 			} else {
 				SearchMsg(ret_v, m_search_data.m_dir, b_looped);
@@ -801,7 +801,7 @@ LRESULT COeditView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 
 			if(ret_v == 0) {
 				CString msg;
-				msg.Format(_T("%dsíœ‚µ‚Ü‚µ‚½"), replace_cnt);
+				msg.Format(_T("%dè¡Œå‰Šé™¤ã—ã¾ã—ãŸ"), replace_cnt);
 				GetParentFrame()->SetMessageText(msg);
 			}
 		}
@@ -1006,7 +1006,7 @@ void COeditView::OnFilePrint()
 	if(dlg.m_print_title) {
 		title = GetDocument()->GetTitle();
 
-		// ƒ^ƒCƒgƒ‹‚Ì" *"‚ğæ‚èœ‚­
+		// ã‚¿ã‚¤ãƒˆãƒ«ã®" *"ã‚’å–ã‚Šé™¤ã
 		if(title.Find(_T(" *"), 0) != -1) {
 			TCHAR *p;
 			p = title.GetBuffer(0);
@@ -1025,7 +1025,7 @@ void COeditView::OnFilePrint()
 	CEditData *edit_data = GetDocument()->GetEditData();
 	if(dlg.m_print_selected_area) {
 		if(!GetDocument()->GetEditCtrl()->HaveSelected()) {
-			MessageBox(_T("‘I‘ğ”ÍˆÍ‚ª‚ ‚è‚Ü‚¹‚ñ"), _T("ˆóü"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("é¸æŠç¯„å›²ãŒã‚ã‚Šã¾ã›ã‚“"), _T("å°åˆ·"), MB_ICONERROR | MB_OK);
 			return;
 		}
 
@@ -1043,7 +1043,7 @@ void COeditView::OnFilePrint()
 		delete edit_data;
 	}
 
-	MessageBox(_T("ˆóü‚µ‚Ü‚µ‚½"), _T("ˆóü"), MB_ICONINFORMATION | MB_OK);
+	MessageBox(_T("å°åˆ·ã—ã¾ã—ãŸ"), _T("å°åˆ·"), MB_ICONINFORMATION | MB_OK);
 }
 
 void COeditView::ReplaceText(TCHAR *search_text, TCHAR *replace_text, BOOL bInfrateSelectedArea)
@@ -1065,12 +1065,12 @@ void COeditView::ReplaceText(TCHAR *search_text, TCHAR *replace_text, BOOL bInfr
 
 void COeditView::OnDeleteSpace() 
 {
-	ReplaceText(_T("^[\\s@]+"), _T(""));
+	ReplaceText(_T("^[\\sã€€]+"), _T(""));
 }
 
 void COeditView::OnDeleteSpaceEnd() 
 {
-	ReplaceText(_T("[\\s@]+$"), _T(""));
+	ReplaceText(_T("[\\sã€€]+$"), _T(""));
 }
 
 void COeditView::OnInsertGt() 
@@ -1286,7 +1286,7 @@ void COeditView::OnContextMenu(CWnd* pWnd, CPoint point)
 
 	UINT flags = TPM_LEFTALIGN | TPM_RIGHTBUTTON;
 
-	// ƒL[ƒ{[ƒh‘€ì‚Ì‚Æ‚«‚ÍAƒLƒƒƒŒƒbƒg•t‹ß‚Éƒƒjƒ…[‚ğ•\¦‚·‚é
+	// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æ“ä½œã®ã¨ãã¯ã€ã‚­ãƒ£ãƒ¬ãƒƒãƒˆä»˜è¿‘ã«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹
 	if(point.y < 0) {
 		CPoint caret_pos = GetDocument()->GetEditCtrl()->GetCaretPos();
 		GetDocument()->GetEditCtrl()->ClientToScreen(&caret_pos);
@@ -1301,10 +1301,10 @@ void COeditView::OnContextMenu(CWnd* pWnd, CPoint point)
 		}
 	}
 
-	// CMainFrame‚ğeƒEƒBƒ“ƒhƒE‚É‚·‚é‚ÆAƒƒjƒ…[‚Ì—LŒø–³Œø‚ğAƒƒCƒ“ƒƒjƒ…[‚Æ“¯‚¶‚É‚Å‚«‚é
+	// CMainFrameã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«ã™ã‚‹ã¨ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®æœ‰åŠ¹ç„¡åŠ¹ã‚’ã€ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨åŒã˜ã«ã§ãã‚‹
 	menu.GetSubMenu(0)->TrackPopupMenu(flags, point.x, point.y, GetParentFrame());
 
-	// ƒƒjƒ…[íœ
+	// ãƒ¡ãƒ‹ãƒ¥ãƒ¼å‰Šé™¤
 	menu.DestroyMenu();
 }
 
@@ -1345,7 +1345,7 @@ void COeditView::OnSearchFile()
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("‹N“®‚É¸”s‚µ‚Ü‚µ‚½"), MB_OK);
+		AfxMessageBox(_T("èµ·å‹•ã«å¤±æ•—ã—ã¾ã—ãŸ"), MB_OK);
 		return;
 	}
 
@@ -1568,9 +1568,9 @@ void COeditView::CalcCloseButtonRect(RECT *lpRect)
 
 void COeditView::OnPaint() 
 {
-	CPaintDC dc(this); // •`‰æ—p‚ÌƒfƒoƒCƒX ƒRƒ“ƒeƒLƒXƒg
+	CPaintDC dc(this); // æç”»ç”¨ã®ãƒ‡ãƒã‚¤ã‚¹ ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 	
-	// TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 
 	CRect	cli_rect;
 	GetClientRect(cli_rect);
@@ -1645,13 +1645,13 @@ void COeditView::MoveTab(int old_pos, int new_pos)
 
 //	m_tab_ctrl.SetCurSel(new_pos);
 
-//  ƒLƒƒƒŒƒbƒg‚ªÁ‚¦‚Ä‚µ‚Ü‚¤
+//  ã‚­ãƒ£ãƒ¬ãƒƒãƒˆãŒæ¶ˆãˆã¦ã—ã¾ã†
     GetDocument()->ChangeDocData(static_cast<int>(item.lParam));
 }
 
 void COeditView::SortTab()
 {
-	// ‘I‘ğƒ\[ƒg
+	// é¸æŠã‚½ãƒ¼ãƒˆ
 	int		i, j, min;
 	CString	str_j, str_min;
 
@@ -2031,7 +2031,7 @@ void COeditView::SaveAllDocument()
 
 	int		i;
 
-	// ã‘‚«•Û‘¶
+	// ä¸Šæ›¸ãä¿å­˜
 	for(i = 0; i < cnt; i++) {
 		GetDocument()->ChangeDocData(GetDocIdx(i));
 		if(!GetDocument()->IsSaveAsNewFile()) {
@@ -2039,7 +2039,7 @@ void COeditView::SaveAllDocument()
 		}
 	}
 
-	// –¼‘O‚ğ•t‚¯‚Ä•Û‘¶
+	// åå‰ã‚’ä»˜ã‘ã¦ä¿å­˜
 	for(i = 0; i < cnt; i++) {
 		GetDocument()->ChangeDocData(GetDocIdx(i));
 		if(GetDocument()->IsSaveAsNewFile()) {
@@ -2047,7 +2047,7 @@ void COeditView::SaveAllDocument()
 		}
 	}
 
-	// •\¦‚µ‚Ä‚¢‚½ƒtƒ@ƒCƒ‹‚É–ß‚·
+	// è¡¨ç¤ºã—ã¦ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«ã«æˆ»ã™
 	GetDocument()->ChangeDocData(GetDocIdx(cur_sel));
 }
 

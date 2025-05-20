@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // MainFrm.cpp : CMainFrame �N���X�̓���̒�`���s���܂��B
+ // MainFrm.cpp : CMainFrame クラスの動作の定義を行います。
 //
 
 #include "stdafx.h"
@@ -26,7 +26,7 @@
 static const char* THIS_FILE = __FILE__; 
 #endif
 
-// XP�X�^�C����K�p�����Ƃ��A�c�[���o�[��Ń}�E�X�̗��{�^�����������ŁA�n���O�A�b�v���Ă��܂��������
+// XPスタイルを適用したとき、ツールバー上でマウスの両ボタン同時押しで、ハングアップしてしまう問題を回避
 static LRESULT CALLBACK ToolBar_SubclassWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message) {
@@ -85,7 +85,7 @@ END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
-	ID_SEPARATOR,           // �X�e�[�^�X ���C�� �C���W�P�[�^
+	ID_SEPARATOR,           // ステータス ライン インジケータ
 //	ID_INDICATOR_KANA,
 	ID_INDICATOR_FILE_TYPE,
 	ID_INDICATOR_CURSOR_POS,
@@ -97,7 +97,7 @@ static UINT indicators[] =
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame �N���X�̍\�z/����
+// CMainFrame クラスの構築/消滅
 
 CMainFrame::CMainFrame()
 {
@@ -107,7 +107,7 @@ CMainFrame::CMainFrame()
 	m_bToolBarVisible = FALSE;
 	m_bToolBar2Visible = FALSE;
 
-	// m_wpPrev ��������
+	// m_wpPrev を初期化
 	m_wpPrev.length = sizeof(WINDOWPLACEMENT);
 	m_wpPrev.flags = 0;
 	m_wpPrev.showCmd = SW_HIDE;
@@ -126,7 +126,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	// �E�B���h�E�T�C�Y��O�񗘗p���̑傫���ɂ���
+	// ウィンドウサイズを前回利用時の大きさにする
 	int win_left, win_top, win_width, win_height;
 	GetNextWindowPos(win_left, win_top, win_width, win_height);
 	if(win_width != 0 && win_height != 0) {
@@ -140,17 +140,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
 	{
 		TRACE(_T("Failed to create toolbar\n"));
-		return -1;      // �쐬�Ɏ��s
+		return -1;      // 作成に失敗
 	}
-	// XP�X�^�C����K�p����Ƃ��Astyle = 0��CreateEx���Ă���AModifyStyle�ŃX�^�C����ݒ肷��
-	// �������Ȃ��ƁA���[�̃O���b�v�ʒu���������`�悳��Ȃ�
+	// XPスタイルを適用するとき、style = 0でCreateExしてから、ModifyStyleでスタイルを設定する
+	// こうしないと、左端のグリップ位置が正しく描画されない
 	m_wndToolBar.ModifyStyle(0, TBSTYLE_FLAT | TBSTYLE_TRANSPARENT);
 
-	// �T�u�N���X��
-	// �Â��E�B���h�E�v���V�[�W����ۑ�����
+	// サブクラス化
+	// 古いウィンドウプロシージャを保存する
 	HWND hwnd = m_wndToolBar.GetSafeHwnd();
 	::SetWindowLongPtr (hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-	// �E�B���h�E�v���V�[�W����؂�ւ���
+	// ウィンドウプロシージャを切り替える
 	::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)ToolBar_SubclassWndProc);
 
 	if (!m_wndToolBar2.CreateEx(this, 0, 
@@ -159,15 +159,15 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		!m_wndToolBar2.LoadToolBar(IDR_EDIT_MODE))
 	{
 		TRACE(_T("Failed to create toolbar\n"));
-		return -1;      // �쐬�Ɏ��s
+		return -1;      // 作成に失敗
 	}
 	m_wndToolBar2.ModifyStyle(0, TBSTYLE_FLAT | TBSTYLE_TRANSPARENT);
 
-	// �T�u�N���X��
-	// �Â��E�B���h�E�v���V�[�W����ۑ�����
+	// サブクラス化
+	// 古いウィンドウプロシージャを保存する
 	HWND hwnd2 = m_wndToolBar2.GetSafeHwnd();
 	::SetWindowLongPtr (hwnd2, GWLP_USERDATA, GetWindowLongPtr(hwnd2, GWLP_WNDPROC));
-	// �E�B���h�E�v���V�[�W����؂�ւ���
+	// ウィンドウプロシージャを切り替える
 	::SetWindowLongPtr (hwnd2, GWLP_WNDPROC, (LONG_PTR)ToolBar_SubclassWndProc);
 
 	Set256ColorToolBar(&m_wndToolBar2, IDB_TOOLBAR1_256);
@@ -177,19 +177,19 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		  sizeof(indicators)/sizeof(UINT)))
 	{
 		TRACE(_T("Failed to create status bar\n"));
-		return -1;      // �쐬�Ɏ��s
+		return -1;      // 作成に失敗
 	}
 
-	// TODO: �����c�[�� �`�b�v�X���K�v�Ȃ��ꍇ�A�������폜���Ă��������B
+	// TODO: もしツール チップスが必要ない場合、ここを削除してください。
 	m_wndToolBar.SetBarStyle(m_wndToolBar.GetBarStyle() | CBRS_TOOLTIPS | CBRS_FLYBY);
 
-	// �C���W�P�[�^�̌����ڂ𒲐�
+	// インジケータの見た目を調整
 	m_wndStatusBar.SetPaneInfo(1, ID_INDICATOR_FILE_TYPE, SBPS_NORMAL, 120);
 
-	// �C���W�P�[�^�̌����ڂ𒲐�
+	// インジケータの見た目を調整
 	m_wndStatusBar.SetPaneInfo(2, ID_INDICATOR_CURSOR_POS, SBPS_NORMAL, 100);
 
-	// �h�b�L���O
+	// ドッキング
 	EnableDocking(CBRS_ALIGN_ANY);
 	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
 	DockControlBar(&m_wndToolBar);
@@ -198,7 +198,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	LoadBarState(_T("BarState"));
 
-	// ���L�������ɃE�B���h�E��o�^
+	// 共有メモリにウィンドウを登録
 	g_share_data.RegisterWindow(GetSafeHwnd());
 
 	SetLangToolBar();
@@ -225,7 +225,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame �N���X�̐f�f
+// CMainFrame クラスの診断
 
 #ifdef _DEBUG
 void CMainFrame::AssertValid() const
@@ -241,7 +241,7 @@ void CMainFrame::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame ���b�Z�[�W �n���h��
+// CMainFrame メッセージ ハンドラ
 
 void CMainFrame::OnUpdateFileType(CCmdUI *pCmdUI)
 {
@@ -256,7 +256,7 @@ void CMainFrame::OnUpdateCursorPos(CCmdUI *pCmdUI)
 
 	cur_pos = g_cur_pos;
 	CString str;
-	str.Format(_T(" %d �s�C%d ��"), cur_pos.y, cur_pos.x);
+	str.Format(_T(" %d 行，%d 列"), cur_pos.y, cur_pos.x);
 	pCmdUI->SetText(str);
 }
 
@@ -284,7 +284,7 @@ void CMainFrame::OnDestroy()
 
 	pApp->SaveIniFile();
 
-	// ���L����������E�B���h�E���폜
+	// 共有メモリからウィンドウを削除
 	g_share_data.UnregisterWindow(GetSafeHwnd());
 }
 
@@ -299,12 +299,12 @@ void CMainFrame::OnDropFiles(HDROP hDropInfo)
 	CWinApp* pApp = AfxGetApp();
 	ASSERT(pApp != NULL);
 
-	// �ЂƂ߂̃t�@�C��
+	// ひとつめのファイル
 	TCHAR szFileName[_MAX_PATH];
 	::DragQueryFile(hDropInfo, 0, szFileName, _MAX_PATH);
 	pApp->OpenDocumentFile(szFileName);
 
-	// ��ڈڍs�̃t�@�C��
+	// 二つ目移行のファイル
 	for (UINT iFile = 1; iFile < nFiles; iFile++) {
 		::DragQueryFile(hDropInfo, iFile, szFileName, _MAX_PATH);
 		OeditOpenFile(szFileName);
@@ -362,8 +362,8 @@ void CMainFrame::GetNextWindowPos(int &left, int &top, int &width, int &height)
 	}
 
 	{
-		// �}���`���j�^�[�Ή�
-		// ���j�^�[�����ς�������ƂŋN�������Ƃ��A���C���E�B���h�E�̈ʒu����ʊO�ɂȂ�Ȃ��悤�ɂ���
+		// マルチモニター対応
+		// モニター数が変わったあとで起動したとき、メインウィンドウの位置が画面外にならないようにする
 		RECT rcWnd;
 		rcWnd.left = left;
 		rcWnd.top = top;
@@ -433,8 +433,8 @@ void CMainFrame::SetAcceleratorToMenu(CMenu *pMenu)
 	UINT	menu_state;
 
 	for(i = 0; i < pMenu->GetMenuItemCount(); i++) {
-		if(pMenu->GetMenuItemID(i) == 0) continue;	// �Z�p���[�^
-		if(pMenu->GetMenuItemID(i) == -1) {			// �|�b�v�A�b�v
+		if(pMenu->GetMenuItemID(i) == 0) continue;	// セパレータ
+		if(pMenu->GetMenuItemID(i) == -1) {			// ポップアップ
 			if(pMenu->GetSubMenu(i) != NULL) {
 				//SetAcceleratorToMenu(pMenu->GetSubMenu(i));
 				continue;
@@ -445,7 +445,7 @@ void CMainFrame::SetAcceleratorToMenu(CMenu *pMenu)
 
 		new_menu_str = menu_str;
 
-		// ���ɃV���[�g�J�b�g�L�[���܂܂�Ă���ꍇ�C�폜����
+		// 既にショートカットキーが含まれている場合，削除する
 		int tab_pos = new_menu_str.Find('\t');
 		if(tab_pos != -1) new_menu_str.Delete(tab_pos, new_menu_str.GetLength() - tab_pos);
 
@@ -504,7 +504,7 @@ void CMainFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu)
 {
 	CFrameWnd::OnInitMenuPopup(pPopupMenu, nIndex, bSysMenu);
 
-	// �E�N���b�N���j���[�����ׂ�
+	// 右クリックメニューか調べる
 	if(pPopupMenu->GetMenuItemID(0) == ID_CONTEXT_MENU_DUMMY) {
 		pPopupMenu->RemoveMenu(0, MF_BYPOSITION);
 
@@ -542,7 +542,7 @@ void CMainFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu)
 		g_lang_setting_list.AddEditModeMenu(pPopupMenu, g_option.edit_mode);
 	}
 
-	// �^�X�N�o�[�̉E�N���b�N���j���[�̂Ƃ��́ASetAcceleratorToMenu�����s���Ȃ�
+	// タスクバーの右クリックメニューのときは、SetAcceleratorToMenuを実行しない
 	if(pPopupMenu->GetMenuItemID(0) == SC_RESTORE) return;
 
 	SetAcceleratorToMenu(pPopupMenu);
@@ -679,10 +679,10 @@ void CMainFrame::OnActivateApp(BOOL bActive, DWORD hTask)
 	CFrameWnd::OnActivateApp(bActive, hTask);
 	
 	if(bActive) {
-		// ActivateApp�̏�����ɁA�C�x���g�n���h�������s����
-		// �����Ŏ��s���Ă��܂��ƁA�G�f�B�^�����N���b�N���ăA�N�e�B�u�ɂ����Ƃ���
-		// �͈͑I���J�n�ƂȂ�A�C�x���g�n���h�����Ń��b�Z�[�W�{�b�N�X��\�������ꍇ�ɁA
-		// ���b�Z�[�W�{�b�N�X��������Ƃ��͈͑I�𒆂ɂȂ��Ă��܂�
+		// ActivateAppの処理後に、イベントハンドラを実行する
+		// ここで実行してしまうと、エディタ部をクリックしてアクティブにしたときに
+		// 範囲選択開始となり、イベントハンドラ内でメッセージボックスを表示した場合に、
+		// メッセージボックスを閉じたあとも範囲選択中になってしまう
 		PostMessage(WM_POST_ACTIVATE_APP, 0, 0);
 	}
 }

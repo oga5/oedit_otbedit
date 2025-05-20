@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// oeditDoc.cpp : COeditDoc ƒNƒ‰ƒX‚Ì“®ì‚Ì’è‹`‚ğs‚¢‚Ü‚·B
+// oeditDoc.cpp : COeditDoc ã‚¯ãƒ©ã‚¹ã®å‹•ä½œã®å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -58,7 +58,7 @@ BEGIN_MESSAGE_MAP(COeditDoc, CDocument)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒNƒ‰ƒX‚Ì\’z/Á–Å
+// COeditDoc ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰/æ¶ˆæ»…
 
 COeditDoc::COeditDoc()
 {
@@ -73,7 +73,7 @@ BOOL COeditDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	int idx = AddDocData("–³‘è");
+	int idx = AddDocData("ç„¡é¡Œ");
 	m_doc_data_arr.GetDocData(idx)->is_new_document = TRUE;
 	ChangeDocData(m_doc_data_arr.GetCurrentDocDataId());
 	SetModifiedFlag(FALSE);
@@ -85,8 +85,8 @@ BOOL COeditDoc::OnNewDocument()
 	}
 	UpdateAllViews(NULL, UPD_EDIT_MODE, 0);
 
-	// TODO: ‚±‚ÌˆÊ’u‚ÉÄ‰Šú‰»ˆ—‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
-	// (SDI ƒhƒLƒ…ƒƒ“ƒg‚Í‚±‚ÌƒhƒLƒ…ƒƒ“ƒg‚ğÄ—˜—p‚µ‚Ü‚·B)
+	// TODO: ã“ã®ä½ç½®ã«å†åˆæœŸåŒ–å‡¦ç†ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
+	// (SDI ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ã“ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å†åˆ©ç”¨ã—ã¾ã™ã€‚)
 	DispFileType();
 
 	return TRUE;
@@ -110,7 +110,7 @@ int COeditDoc::AddDocData(CString file_name)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒVƒŠƒAƒ‰ƒCƒ[[ƒVƒ‡ƒ“
+// COeditDoc ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚¼ãƒ¼ã‚·ãƒ§ãƒ³
 
 void COeditDoc::DispFileType()
 {
@@ -121,8 +121,8 @@ int COeditDoc::LoadFile(CArchive &ar, int kanji_code)
 {
 	int	line_type;
 
-	// •¶šƒR[ƒh‚ª”»’è‚Å‚«‚È‚©‚Á‚½‚Æ‚«AƒIƒvƒVƒ‡ƒ“‚ÌV‹Kƒtƒ@ƒCƒ‹ì¬‚Ì
-	// •¶šƒR[ƒh‚ğg—p‚·‚é
+	// æ–‡å­—ã‚³ãƒ¼ãƒ‰ãŒåˆ¤å®šã§ããªã‹ã£ãŸã¨ãã€ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆæ™‚ã®
+	// æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹
 	if(kanji_code == UnknownKanjiCode) {
 		kanji_code = CUnicodeArchive::CheckKanjiCode(&ar, g_option.default_kanji_code);
 	}
@@ -155,7 +155,7 @@ void COeditDoc::Serialize(CArchive& ar)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒNƒ‰ƒX‚Ìf’f
+// COeditDoc ã‚¯ãƒ©ã‚¹ã®è¨ºæ–­
 
 #ifdef _DEBUG
 void COeditDoc::AssertValid() const
@@ -170,7 +170,7 @@ void COeditDoc::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒRƒ}ƒ“ƒh
+// COeditDoc ã‚³ãƒãƒ³ãƒ‰
 
 BOOL COeditDoc::SaveModified() 
 {
@@ -210,10 +210,10 @@ BOOL COeditDoc::OnOpenDocumentMain(LPCTSTR lpszPathName)
 	CFileException fe;
 //	CFile* pFile = GetFile(lpszPathName,
 //		CFile::modeRead|CFile::shareDenyWrite, &fe);
-	// ‘¼‚ÌƒvƒƒZƒX‚ªƒtƒ@ƒCƒ‹‚ğg‚Á‚Ä‚¢‚é‚Æ‚«‚Å‚àCƒtƒ@ƒCƒ‹‚ğ“Ç‚ß‚é‚æ‚¤‚É‚·‚éB
+	// ä»–ã®ãƒ—ãƒ­ã‚»ã‚¹ãŒãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã£ã¦ã„ã‚‹ã¨ãã§ã‚‚ï¼Œãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚
 	CFile* pFile = GetFile(lpszPathName, CFile::modeRead|CFile::shareDenyNone, &fe);
 
-	// ‘¶İ‚µ‚È‚¢ƒtƒ@ƒCƒ‹‚ğw’è‚³‚ê‚½‚Æ‚«C‹óƒf[ƒ^‚Å‹N“®‚·‚é
+	// å­˜åœ¨ã—ãªã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã•ã‚ŒãŸã¨ãï¼Œç©ºãƒ‡ãƒ¼ã‚¿ã§èµ·å‹•ã™ã‚‹
 	if(pFile == NULL && fe.m_cause == CFileException::fileNotFound) {
 		DeleteContents();
 		SetModifiedFlag(FALSE);     // start off with unmodified
@@ -271,13 +271,13 @@ BOOL COeditDoc::OnOpenDocumentMain(LPCTSTR lpszPathName)
 
 BOOL COeditDoc::OnOpenDocument(LPCTSTR lpszPathName) 
 {
-	// ƒƒ“ƒOƒtƒ@ƒCƒ‹–¼‚É‚·‚é
+	// ãƒ­ãƒ³ã‚°ãƒ•ã‚¡ã‚¤ãƒ«åã«ã™ã‚‹
 	TCHAR	long_name[_MAX_PATH];
 	if(GetLongPath(lpszPathName, long_name) == FALSE) {
 		_tcscpy(long_name, lpszPathName);
 	}
 
-	if(m_doc_data_arr.GetCurrentDocDataId() == 1 && GetPathName() == _T("–³‘è") &&
+	if(m_doc_data_arr.GetCurrentDocDataId() == 1 && GetPathName() == _T("ç„¡é¡Œ") &&
 		GetEditData()->is_edit_data() == FALSE) {
 		DeleteDocData();
 	}
@@ -364,7 +364,7 @@ BOOL COeditDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 		SetKanjiCode(kanji_code);
 		SetLineType(line_type);
 
-		// Ÿè‚ÉŠg’£q‚ğ‚Â‚¯‚È‚¢
+		// å‹æ‰‹ã«æ‹¡å¼µå­ã‚’ã¤ã‘ãªã„
 		//AddExt(newName);
 	}
 
@@ -396,13 +396,13 @@ BOOL COeditDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 void COeditDoc::ReloadFile(int kanji_code)
 {
 	if(this->IsModified()) {
-		if(AfxGetMainWnd()->MessageBox(_T("•ÏX‚ğ”jŠü‚µ‚Ä“Ç‚İ’¼‚µ‚Ü‚·‚©H"), 
-			_T("Šm”F"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
+		if(AfxGetMainWnd()->MessageBox(_T("å¤‰æ›´ã‚’ç ´æ£„ã—ã¦èª­ã¿ç›´ã—ã¾ã™ã‹ï¼Ÿ"), 
+			_T("ç¢ºèª"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
 	}
 
 	CString		file_name = this->GetPathName();
 	if(file_name == _T("")) {
-		AfxMessageBox(_T("ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB"), MB_OK);
+		AfxMessageBox(_T("ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚"), MB_OK);
 		return;
 	}
 
@@ -430,7 +430,7 @@ void COeditDoc::ReloadFile(int kanji_code)
 	GetEditData()->set_cur(pt.y, pt.x);
 
 //	UpdateAllViews(NULL, UPD_REDRAW);
-	{	// “Ç‚İ’¼‚·‘O‚ÌƒJ[ƒ\ƒ‹ˆÊ’uCƒXƒNƒ[ƒ‹ˆÊ’u‚É‚·‚é
+	{	// èª­ã¿ç›´ã™å‰ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ï¼Œã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã«ã™ã‚‹
 		GetEditCtrl()->Redraw(TRUE);
 
 		if(scr_pt.y > GetEditCtrl()->GetScrollLimit(SB_VERT)) {
@@ -505,7 +505,7 @@ void COeditDoc::OnFileLoadUtf8NoSignature()
 
 void COeditDoc::SetPathName(LPCTSTR lpszPathName, BOOL bAddToMRU) 
 {
-	// ƒƒ“ƒOƒtƒ@ƒCƒ‹–¼‚É‚·‚é
+	// ãƒ­ãƒ³ã‚°ãƒ•ã‚¡ã‚¤ãƒ«åã«ã™ã‚‹
 	TCHAR	long_name[_MAX_PATH];
 	if(GetLongPath(lpszPathName, long_name) == FALSE) {
 		_tcscpy(long_name, lpszPathName);
@@ -517,7 +517,7 @@ void COeditDoc::SetPathName(LPCTSTR lpszPathName, BOOL bAddToMRU)
 
 	SetDocTitle();
 
-	// ƒtƒ@ƒCƒ‹‚Ì‚ ‚éƒfƒBƒŒƒNƒgƒŠ‚ğAƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚É‚·‚é
+	// ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã€ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã™ã‚‹
 	{
 		TCHAR	drive[_MAX_PATH];
 		TCHAR	dir[_MAX_PATH];
@@ -586,14 +586,14 @@ BOOL COeditDoc::ChangeDocData(int idx, BOOL save_data, BOOL call_scm_tab_changed
 	UpdateAllViews(NULL, UPD_PRE_CHANGE_EDIT_DATA, (CObject *)((INT_PTR)idx));
 
 	if(save_data) {
-		// •ÒWƒ‚[ƒh‚ğ•Û‘¶
+		// ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã‚’ä¿å­˜
 		SetEditMode(g_option.edit_mode);
 	}
 
-	// ƒAƒNƒeƒBƒuƒf[ƒ^‚ğØ‚è‘Ö‚¦
+	// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒ‡ãƒ¼ã‚¿ã‚’åˆ‡ã‚Šæ›¿ãˆ
 	m_doc_data_arr.ChangeCurrentIdx(idx);
 
-	// •ÒWƒ‚[ƒh‚ğİ’è
+	// ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®š
 	((COeditApp *)AfxGetApp)->SetEditMode(GetEditMode());
 
 	SetPathName(GetPathName(), FALSE);
@@ -603,7 +603,7 @@ BOOL COeditDoc::ChangeDocData(int idx, BOOL save_data, BOOL call_scm_tab_changed
 	if(idx > 0) {
 		UpdateAllViews(NULL, UPD_POST_CHANGE_EDIT_DATA, (CObject *)((INT_PTR)idx));
 
-		// File Open‚Ì‚Æ‚«‚ÍAon-open-fileƒnƒ“ƒhƒ‰‚ğæ‚ÉÀs‚·‚é‚Ì‚ÅA‚±‚±‚Å‚ÍÀs‚µ‚È‚¢
+		// File Openã®ã¨ãã¯ã€on-open-fileãƒãƒ³ãƒ‰ãƒ©ã‚’å…ˆã«å®Ÿè¡Œã™ã‚‹ã®ã§ã€ã“ã“ã§ã¯å®Ÿè¡Œã—ãªã„
 		if(call_scm_tab_changed_handler && old_idx != idx) {
 			scm_call_event_handler(g_sc, SCM_EVENT_ON_CHANGE_TAB);
 		}
@@ -622,7 +622,7 @@ BOOL COeditDoc::DeleteDocData()
 {
 	if(CDocument::SaveModified() == 0) return FALSE;
 
-	// ƒ}ƒNƒ‚ğÀs
+	// ãƒã‚¯ãƒ­ã‚’å®Ÿè¡Œ
 	scm_call_event_handler(g_sc, SCM_EVENT_ON_CLOSE_FILE);
 
 	m_doc_data_arr.DeleteDocData();
@@ -649,7 +649,7 @@ BOOL COeditDoc::CloseArr(std::vector<int> *arr)
 		if(mode == 0 && IsModified()) {
 			MessageBeep(MB_ICONEXCLAMATION);
 			CQueryCloseDlg	dlg;
-			dlg.m_msg.Format(_T("%s‚Ö‚Ì•ÏX‚ğ•Û‘¶‚µ‚Ü‚·‚©H"), GetPathName());
+			dlg.m_msg.Format(_T("%sã¸ã®å¤‰æ›´ã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿ"), GetPathName());
 			if(dlg.DoModal() == IDCANCEL) goto EXIT;
 
 			if(dlg.m_result == IDALLYES) mode = ALL_SAVE;
@@ -683,7 +683,7 @@ BOOL COeditDoc::CloseAll()
 		if(mode == 0 && IsModified()) {
 			MessageBeep(MB_ICONEXCLAMATION);
 			CQueryCloseDlg	dlg;
-			dlg.m_msg.Format(_T("%s‚Ö‚Ì•ÏX‚ğ•Û‘¶‚µ‚Ü‚·‚©H"), GetPathName());
+			dlg.m_msg.Format(_T("%sã¸ã®å¤‰æ›´ã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿ"), GetPathName());
 			if(dlg.DoModal() == IDCANCEL) return FALSE;
 
 			if(dlg.m_result == IDALLYES) mode = ALL_SAVE;
@@ -773,7 +773,7 @@ void COeditDoc::OnSetFileFormat()
 {
 	CFileFormatDlg	dlg;
 	
-	// Œ»İ‚Ìİ’è‚ğCƒ_ƒCƒAƒƒO‚ÌƒRƒ“ƒ{ƒ{ƒbƒNƒX‚É”½‰f
+	// ç¾åœ¨ã®è¨­å®šã‚’ï¼Œãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã«åæ˜ 
 	dlg.InitData(GetKanjiCode(), GetLineType());
 
 	if(dlg.DoModal() != IDOK) return;

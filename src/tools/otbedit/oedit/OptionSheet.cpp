@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // OptionSheet.cpp : �C���v�������e�[�V���� �t�@�C��
+ // OptionSheet.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -41,17 +41,17 @@ COptionSheet::~COptionSheet()
 
 BEGIN_MESSAGE_MAP(COptionSheet, CPropertySheet)
 	//{{AFX_MSG_MAP(COptionSheet)
-		// ���� - ClassWizard �͂��̈ʒu�Ƀ}�b�s���O�p�̃}�N����ǉ��܂��͍폜���܂��B
+		// メモ - ClassWizard はこの位置にマッピング用のマクロを追加または削除します。
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COptionSheet ���b�Z�[�W �n���h��
+// COptionSheet メッセージ ハンドラ
 
 INT_PTR COptionSheet::DoModal() 
 {
-	// TODO: ���̈ʒu�ɌŗL�̏�����ǉ����邩�A�܂��͊�{�N���X���Ăяo���Ă�������
-	m_psh.dwFlags |= PSH_NOAPPLYNOW;	// �K�p�{�^�����O��
+	// TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
+	m_psh.dwFlags |= PSH_NOAPPLYNOW;	// 適用ボタンを外す
 
 	AddPage(&m_editor_page);
 	AddPage(&m_editor_page2);

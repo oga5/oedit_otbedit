@@ -51,7 +51,7 @@ CString CBootParameter::ParseFileName(const TCHAR *&p1)
 {
 	CString result;
 
-	for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 	if(*p1 == '"') {
 		p1++;
@@ -86,9 +86,9 @@ CString CBootParameter::ParseFileName(const TCHAR *&p1)
 		}
 	}
 
-	for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
-	result.Replace(_T("/"), _T("\\"));	// ƒpƒX‚Ì'/'‚ğ'\'‚É•ÏŠ·‚·‚é (I-O Data‚ÌmAgicƒ}ƒl[ƒWƒƒ‘Î‰)
+	result.Replace(_T("/"), _T("\\"));	// ãƒ‘ã‚¹ã®'/'ã‚’'\'ã«å¤‰æ›ã™ã‚‹ (I-O Dataã®mAgicãƒãƒãƒ¼ã‚¸ãƒ£å¯¾å¿œ)
 	result.TrimLeft();
 	result.TrimRight();
 
@@ -102,7 +102,7 @@ CString CBootParameter::ParseOptionData(const TCHAR *&p1)
 {
 	CString result;
 
-	for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 	if(*p1 == '"') {
 		p1++;
@@ -116,7 +116,7 @@ CString CBootParameter::ParseOptionData(const TCHAR *&p1)
 			p1 = p2 + 1;
 		} 
 	} else {
-		// Ÿ‚ÌƒXƒy[ƒX‚Ü‚Å
+		// æ¬¡ã®ã‚¹ãƒšãƒ¼ã‚¹ã¾ã§
 		const TCHAR *p2 = _tcschr(p1, ' ');
 
 		if(p2 == NULL) {
@@ -129,7 +129,7 @@ CString CBootParameter::ParseOptionData(const TCHAR *&p1)
 		} 
 	}
 
-	for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 	result.TrimLeft();
 	result.TrimRight();
@@ -148,13 +148,13 @@ BOOL CBootParameter::ParseOption(const TCHAR *&p1, TCHAR *msg_buf)
 	case 'r':
 		{
 			p1++;
-			for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+			for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 			int row = 0;
 			for(;;) {
 				if(*p1 == ' ' || *p1 == '\0') break;
 				if(!inline_isdigit(*p1)) {
-					if(msg_buf != NULL) _stprintf(msg_buf, _T("‹N“®ƒIƒvƒVƒ‡ƒ“ƒGƒ‰[F/r‚Ì‚ ‚Æ‚Í”š‚Ìw’è‚ª•K—v‚Å‚·"));
+					if(msg_buf != NULL) _stprintf(msg_buf, _T("èµ·å‹•ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼ï¼š/rã®ã‚ã¨ã¯æ•°å­—ã®æŒ‡å®šãŒå¿…è¦ã§ã™"));
 					return FALSE;
 				}
 
@@ -203,7 +203,7 @@ BOOL CBootParameter::ParseOption(const TCHAR *&p1, TCHAR *msg_buf)
 		break;
 	}
 
-	for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 	return TRUE;
 }
@@ -223,10 +223,10 @@ BOOL CBootParameter::InitParameter(const TCHAR *cmd_line, TCHAR *msg_buf, BOOL f
 
 	p1 = cmd_line;
 
-	for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 	for(; *p1 != '\0';) {
-		if(*p1 == '/') { // ‹N“®ƒIƒvƒVƒ‡ƒ“
+		if(*p1 == '/') { // èµ·å‹•ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 			if(ParseOption(p1, msg_buf) == FALSE) return FALSE;
 		} else {
 			if(file_name_flg) {
@@ -238,7 +238,7 @@ BOOL CBootParameter::InitParameter(const TCHAR *cmd_line, TCHAR *msg_buf, BOOL f
 			}
 		}
 
-		for(; *p1 == ' '; p1++) ;	// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+		for(; *p1 == ' '; p1++) ;	// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 	}
 
 	return TRUE;

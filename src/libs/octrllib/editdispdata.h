@@ -17,10 +17,10 @@
 #define PRE_DRAG	1
 #define DO_DRAG		2
 
-// s‚ğÜ‚è•Ô‚µ‚Ä•\¦‚·‚é‚©‚Ç‚¤‚©
-#define EC_LINE_MODE_NORMAL		0		// Ü‚è•Ô‚³‚È‚¢
-#define EC_LINE_MODE_RIGHT		1		// ‰E’[‚ÅÜ‚è•Ô‚·
-#define EC_LINE_MODE_LEN		2		// w’èŒ…”‚ÅÜ‚è•Ô‚·
+// è¡Œã‚’æŠ˜ã‚Šè¿”ã—ã¦è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹
+#define EC_LINE_MODE_NORMAL		0		// æŠ˜ã‚Šè¿”ã•ãªã„
+#define EC_LINE_MODE_RIGHT		1		// å³ç«¯ã§æŠ˜ã‚Šè¿”ã™
+#define EC_LINE_MODE_LEN		2		// æŒ‡å®šæ¡æ•°ã§æŠ˜ã‚Šè¿”ã™
 
 #define MAX_EDIT_NOTIFY_WND_CNT		4
 
@@ -73,7 +73,7 @@ private:
 	int			m_line_len;
 	int			m_line_width;
 
-	// ”ÍˆÍ‘I‘ğ—p
+	// ç¯„å›²é¸æŠç”¨
 	struct edit_data_select_area_st m_select_area;
 
 	HWND		m_notify_wnd_list[MAX_EDIT_NOTIFY_WND_CNT];

@@ -9,7 +9,7 @@
 #ifndef __COMMON_UTIL_H_INCLUDED__
 #define __COMMON_UTIL_H_INCLUDED__
 
-// define‚·‚é”Ô†‚ªCgreputil.h‚Æd•¡‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+// defineã™ã‚‹ç•ªå·ãŒï¼Œgreputil.hã¨é‡è¤‡ã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 #define WM_COPY_DATA_SET_OPTION			1010
 
 struct _set_option_st {

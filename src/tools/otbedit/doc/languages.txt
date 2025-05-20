@@ -1,64 +1,64 @@
 
-�E�ҏW���[�h�̃J�X�^�}�C�Y�ɂ��� 
- �ҏW���[�h�̐ݒ�́C���̂Q��ނ̃t�@�C���ōs���܂��B
- �ݒ�t�@�C���͂��ׂāCdata�t�H���_�ɒu���K�v������܂��B
+・編集モードのカスタマイズについて 
+ 編集モードの設定は，次の２種類のファイルで行います。
+ 設定ファイルはすべて，dataフォルダに置く必要があります。
 
- (1)�ҏW���[�h�̈ꗗ
-  �ҏW���[�h�̈ꗗ���Ǘ�����t�@�C���ł��B
-  �t�@�C������languages_default.txt�܂��́Clanguages.txt�ł��B
-  languages_default.txt��languages.txt�̗���������ꍇ�Clanguages.txt��
-  �D�悳��܂��B
-  �����̃t�@�C�������݂��Ȃ��ꍇ�́A�g�ݍ��݂̐ݒ肪�g�p����܂��B
+ (1)編集モードの一覧
+  編集モードの一覧を管理するファイルです。
+  ファイル名はlanguages_default.txtまたは，languages.txtです。
+  languages_default.txtとlanguages.txtの両方がある場合，languages.txtが
+  優先されます。
+  これらのファイルが存在しない場合は、組み込みの設定が使用されます。
 
- (2)�ҏW���[�h���Ƃ̐ݒ�t�@�C��
-  �L�[���[�h��R�����g�̐ݒ�ȂǁA�ҏW���[�h���Ƃ̐ݒ�t�@�C���ł��B
+ (2)編集モードごとの設定ファイル
+  キーワードやコメントの設定など、編集モードごとの設定ファイルです。
 
 
-�E�ҏW���[�h�̒ǉ��E�폜
- �ҏW���[�h��ǉ��E�폜����ꍇ�Clanguages.txt��ҏW���܂��B
- languages.txt�����݂��Ȃ��Ƃ��́Clanguages_default.txt���R�s�[���Ă��������B
- (languages_default.txt�͕ҏW���Ȃ��ł�������)
- �f�[�^�̓J���}��؂�ŁC����4�̏����L�q���܂��B
+・編集モードの追加・削除
+ 編集モードを追加・削除する場合，languages.txtを編集します。
+ languages.txtが存在しないときは，languages_default.txtをコピーしてください。
+ (languages_default.txtは編集しないでください)
+ データはカンマ区切りで，次の4つの情報を記述します。
 
- (1)����
- (2)����(�c�[���o�[�ɕ\������܂�)
- (2)�ݒ�t�@�C����
- (3)�g���q(�����̊g���q��ݒ肷��Ƃ��́C;�ŋ�؂�܂�)
+ (1)名称
+ (2)略称(ツールバーに表示されます)
+ (2)設定ファイル名
+ (3)拡張子(複数の拡張子を設定するときは，;で区切ります)
 
- //�Ŏn�܂�s�́C�R�����g�ɂȂ�܂��B
- �ҏW���[�h�̍ő吔�́C15�ł��B
+ //で始まる行は，コメントになります。
+ 編集モードの最大数は，15です。
 
- ��) �ҏW���[�h�ɁCVisualBasic��o�^����ꍇ
+ 例) 編集モードに，VisualBasicを登録する場合
 Visual Basic,VB,vb.cfg,*.vb
 
 
-�E�ҏW���[�h���Ƃ̐ݒ�
- �ҏW���[�h��ǉ�����Ƃ��́C�ݒ�t�@�C�����쐬���܂��B
- �t�@�C������languages.txt�Őݒ肵���t�@�C�����ɂȂ�܂��B
+・編集モードごとの設定
+ 編集モードを追加するときは，設定ファイルを作成します。
+ ファイル名はlanguages.txtで設定したファイル名になります。
 
- �e�ݒ荀�ڂ́C���ږ��ƃf�[�^��:�ŋ�؂�܂��B
- :�̑O��ɃX�y�[�X���󂯂Ȃ��悤�ɂ��Ă��������B
- �e�ݒ荀�ڂɁC�S�p�����͐ݒ�ł��܂���B
- //�Ŏn�܂�s�́C�R�����g�ɂȂ�܂��B
- �ݒ�\�ȍ��ڂ́C�ȉ��̂Ƃ���ł��B
+ 各設定項目は，項目名とデータを:で区切ります。
+ :の前後にスペースを空けないようにしてください。
+ 各設定項目に，全角文字は設定できません。
+ //で始まる行は，コメントになります。
+ 設定可能な項目は，以下のとおりです。
 
- KeywordNocase:        �L�[���[�h��啶����������ʂ��邩(TRUE/FALSE)
- KeywordFile:          �L�[���[�h�t�@�C����
- OpenComment:          �u���b�N�R�����g�̊J�n������
- CloseComment:         �u���b�N�R�����g�̏I��������
- RowComment:           �s�R�����g�̊J�n������ (�ő�4�w��\)
- BreakChars:           �P��̋�؂蕶��(�����w��\)
- OperatorChars:        ���Z�q�̕���(�����w��\)
- BracketChars:         �J�b�R�Ƃ��Ĉ�������(�����w��\)
- QuoteChars:           �͂ݕ���(�����w��\)
- EscapeChar:           �G�X�P�[�v����(1�̂ݎw��\)
- LanguageKeywordChars: �L�[���[�h�̐擪����(�����w��\)
-                       �����Ŏw�肵�������Ŏn�܂�P��́C�L�[���[�h�Q�̐F�ɂȂ�
- CStyleIndent:         C���ꕗ�̃X�}�[�g�C���f���g���T�|�[�g���邩(TRUE/FALSE)
- TagLanguageMode:      HTML, XML�Ȃǂ�tag���g�����ꂩ(TRUE/FALSE)
-                       TRUE�ɂ����ꍇ�Ctag�����̂݃L�[���[�h��F��������
+ KeywordNocase:        キーワードを大文字小文字区別するか(TRUE/FALSE)
+ KeywordFile:          キーワードファイル名
+ OpenComment:          ブロックコメントの開始文字列
+ CloseComment:         ブロックコメントの終了文字列
+ RowComment:           行コメントの開始文字列 (最大4つ指定可能)
+ BreakChars:           単語の区切り文字(複数指定可能)
+ OperatorChars:        演算子の文字(複数指定可能)
+ BracketChars:         カッコとして扱う文字(複数指定可能)
+ QuoteChars:           囲み文字(複数指定可能)
+ EscapeChar:           エスケープ文字(1つのみ指定可能)
+ LanguageKeywordChars: キーワードの先頭文字(複数指定可能)
+                       ここで指定した文字で始まる単語は，キーワード２の色になる
+ CStyleIndent:         C言語風のスマートインデントをサポートするか(TRUE/FALSE)
+ TagLanguageMode:      HTML, XMLなどのtagを使う言語か(TRUE/FALSE)
+                       TRUEにした場合，tag内部のみキーワードを色分けする
 
-(*)RowComment�𕡐��w�肷��ꍇ�́ARowComment�̐ݒ�𕡐��L�q����
-��: #��//���s�R�����g�ɂ���
+(*)RowCommentを複数指定する場合は、RowCommentの設定を複数記述する
+例: #と//を行コメントにする
 RowComment: #
 RowComment: //

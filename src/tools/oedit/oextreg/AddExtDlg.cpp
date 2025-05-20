@@ -1,4 +1,4 @@
-// AddExtDlg.cpp : �C���v�������e�[�V���� �t�@�C��
+// AddExtDlg.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -12,7 +12,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CAddExtDlg �_�C�A���O
+// CAddExtDlg ダイアログ
 
 
 CAddExtDlg::CAddExtDlg(CWnd* pParent /*=NULL*/)
@@ -50,7 +50,7 @@ BEGIN_MESSAGE_MAP(CAddExtDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAddExtDlg ���b�Z�[�W �n���h��
+// CAddExtDlg メッセージ ハンドラ
 
 void CAddExtDlg::OnChangeEditExt() 
 {
@@ -68,15 +68,15 @@ BOOL CAddExtDlg::OnInitDialog()
 	
 	if(m_update) {
 		m_edit_ext.SetReadOnly(TRUE);
-		SetWindowText(_T("�֘A�t���̕ύX"));
+		SetWindowText(_T("関連付けの変更"));
 	} else {
-		SetWindowText(_T("�֘A�t���̒ǉ�"));
+		SetWindowText(_T("関連付けの追加"));
 	}
 
 	UpdateData(FALSE);
 	
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 void CAddExtDlg::CheckBtn()

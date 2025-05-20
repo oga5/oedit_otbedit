@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // AcceleratorDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // AcceleratorDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -22,7 +22,7 @@ static const char *THIS_FILE = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CAcceleratorDlg ƒ_ƒCƒAƒƒO
+// CAcceleratorDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 
 CAcceleratorDlg::CAcceleratorDlg(CWnd* pParent /*=NULL*/)
@@ -67,7 +67,7 @@ BEGIN_MESSAGE_MAP(CAcceleratorDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAcceleratorDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CAcceleratorDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 static void SetKeyInfo(HWND hwnd, int key, DWORD keyData)
 {
@@ -79,7 +79,7 @@ static void SetKeyInfo(HWND hwnd, int key, DWORD keyData)
 	SendMessage(hwnd, WM_SETTEXT, 0, (LPARAM)keyInfo.GetBuffer(0));
 }
 
-// •ÒW—pƒGƒfƒBƒbƒgƒRƒ“ƒgƒ[ƒ‹‚ÌCƒTƒuƒNƒ‰ƒXŒã‚ÌƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ
+// ç·¨é›†ç”¨ã‚¨ãƒ‡ã‚£ãƒƒãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ï¼Œã‚µãƒ–ã‚¯ãƒ©ã‚¹å¾Œã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message) {
@@ -102,27 +102,27 @@ BOOL CAcceleratorDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	
-	// ƒTƒuƒNƒ‰ƒX‰»
-	// ŒÃ‚¢ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğ•Û‘¶‚·‚é
+	// ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–
+	// å¤ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’ä¿å­˜ã™ã‚‹
 	HWND hwnd = m_edit_new_key.GetSafeHwnd();
 	::SetWindowLongPtr(hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	::SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)Edit_SubclassWndProc);
 
 	ListView_SetExtendedListViewStyle(m_list_category.GetSafeHwnd(), LVS_EX_FULLROWSELECT);
-	m_list_category.InsertColumn(0, _T("•ª—Ş"), LVCFMT_LEFT, 170);
+	m_list_category.InsertColumn(0, _T("åˆ†é¡"), LVCFMT_LEFT, 170);
 	SetCategoryList();
 
 	ListView_SetExtendedListViewStyle(m_list_command.GetSafeHwnd(), LVS_EX_FULLROWSELECT);
-	m_list_command.InsertColumn(0, _T("‹@”\"), LVCFMT_LEFT, 170);
-	m_list_command.InsertColumn(1, _T("à–¾"), LVCFMT_LEFT, 240);
-	m_list_command.InsertColumn(2, _T("ƒL["), LVCFMT_LEFT, 100);
+	m_list_command.InsertColumn(0, _T("æ©Ÿèƒ½"), LVCFMT_LEFT, 170);
+	m_list_command.InsertColumn(1, _T("èª¬æ˜"), LVCFMT_LEFT, 240);
+	m_list_command.InsertColumn(2, _T("ã‚­ãƒ¼"), LVCFMT_LEFT, 100);
 
 	ListView_SetExtendedListViewStyle(m_list_accel.GetSafeHwnd(), LVS_EX_FULLROWSELECT);
-	m_list_accel.InsertColumn(0, _T("ƒL["), LVCFMT_LEFT, 170);
+	m_list_accel.InsertColumn(0, _T("ã‚­ãƒ¼"), LVCFMT_LEFT, 170);
 
-	return TRUE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ğİ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return TRUE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CAcceleratorDlg::SetCategoryList()
@@ -268,8 +268,8 @@ void CAcceleratorDlg::CheckBtn()
 
 void CAcceleratorDlg::OnBtnDefault() 
 {
-	if(MessageBox(_T("ƒL[Š„‚è“–‚Ä‚ğƒfƒtƒHƒ‹ƒg‚Ìİ’è‚É–ß‚µ‚Ü‚·B\n")
-		_T("‚æ‚ë‚µ‚¢‚Å‚·‚©H"), _T("Šm”F"), MB_ICONQUESTION | MB_OKCANCEL) == IDCANCEL) return;
+	if(MessageBox(_T("ã‚­ãƒ¼å‰²ã‚Šå½“ã¦ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¨­å®šã«æˆ»ã—ã¾ã™ã€‚\n")
+		_T("ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ"), _T("ç¢ºèª"), MB_ICONQUESTION | MB_OKCANCEL) == IDCANCEL) return;
 
 	m_accel_list.load_default_accel_list();
 
@@ -336,7 +336,7 @@ void CAcceleratorDlg::OnChangeEditNewKey()
 	if(menu_id > 0) {
 		CString current_menu = m_accel_list.GetCommandName(menu_id);
 		if(current_menu != "") {
-			m_current_menu.Format(_T("Œ»İ‚ÌŠ„‚è“–‚ÄF%s"), current_menu);
+			m_current_menu.Format(_T("ç¾åœ¨ã®å‰²ã‚Šå½“ã¦ï¼š%s"), current_menu);
 		} else {
 			m_current_menu = _T("");
 		}

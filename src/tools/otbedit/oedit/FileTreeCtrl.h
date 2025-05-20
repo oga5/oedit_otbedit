@@ -12,11 +12,11 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// FileTreeCtrl.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// FileTreeCtrl.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CFileTreeCtrl ƒEƒBƒ“ƒhƒE
+// CFileTreeCtrl ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 class CSortStringArray : public CStringArray  
 {
 public:
@@ -27,11 +27,11 @@ private:
 
 class CFileTreeCtrl : public CTreeCtrl
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CFileTreeCtrl();
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 private:
 	CString		m_strRoot;
 	CString		m_strFilter;
@@ -40,7 +40,7 @@ private:
 
 public:
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 private:
 	BOOL GetSysImgList();
 	BOOL DisplayDrives();
@@ -59,16 +59,16 @@ public:
 	CString GetFullPath() { return GetFullPath(GetSelectedItem()); }
 	TCHAR *GetSubPath(LPCTSTR strPath);
 	
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(CFileTreeCtrl)
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~CFileTreeCtrl();
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CFileTreeCtrl)
 	afx_msg void OnItemexpanded(NMHDR* pNMHDR, LRESULT* pResult);
@@ -81,6 +81,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_FILETREECTRL_H__2E626494_9ED1_4710_8C43_849AF52FC246__INCLUDED_)

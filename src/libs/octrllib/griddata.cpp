@@ -244,39 +244,39 @@ int CGridData::SearchDataRegexp(POINT start_pt, POINT *result_pt,
 	}
 
 	if(dir == 1) {
-		// Œ»İs‚Ì‰E‘¤
+		// ç¾åœ¨è¡Œã®å³å´
 		if(SearchDataMainRegexp(start_pt.y, 1,
 			start_pt.x + 1, Get_ColCnt() - (start_pt.x + 1),
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
-		// Œ»İs + 1 ‚©‚ç––”ö‚Ü‚Å
+		// ç¾åœ¨è¡Œ + 1 ã‹ã‚‰æœ«å°¾ã¾ã§
 		if(SearchDataMainRegexp(start_pt.y + 1, Get_RowCnt() - (start_pt.y + 1),
 			0, Get_ColCnt(), result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
 		
 		if(b_loop == FALSE) goto NOT_FOUND;
 		if(b_looped != NULL) *b_looped = TRUE;
 
-		// æ“ª‚©‚çŒ»İs - 1 ‚Ü‚Å
+		// å…ˆé ­ã‹ã‚‰ç¾åœ¨è¡Œ - 1 ã¾ã§
 		if(SearchDataMainRegexp(0, start_pt.y, 0, Get_ColCnt(), 
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
-		// Œ»İs‚Ì¶‘¤
+		// ç¾åœ¨è¡Œã®å·¦å´
 		if(SearchDataMainRegexp(start_pt.y, 1, 0, start_pt.x + 1, 
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
 	} else {
-		// Œ»İs‚Ì¶‘¤
+		// ç¾åœ¨è¡Œã®å·¦å´
 		if(SearchDataMainRegexp(start_pt.y, 1, start_pt.x - 1, start_pt.x,
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
-		// Œ»İs - 1 ‚©‚çæ“ª‚Ü‚Å
+		// ç¾åœ¨è¡Œ - 1 ã‹ã‚‰å…ˆé ­ã¾ã§
 		if(SearchDataMainRegexp(start_pt.y - 1, start_pt.y, Get_ColCnt() - 1, Get_ColCnt(),
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
 
 		if(b_loop == FALSE) goto NOT_FOUND;
 		if(b_looped != NULL) *b_looped = TRUE;
 
-		// ––”ö‚©‚çŒ»İs + 1 ‚Ü‚Å
+		// æœ«å°¾ã‹ã‚‰ç¾åœ¨è¡Œ + 1 ã¾ã§
 		if(SearchDataMainRegexp(Get_RowCnt() - 1, Get_RowCnt() - (start_pt.y + 1),
 			Get_ColCnt() - 1, Get_ColCnt(), 
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
-		// Œ»İs‚Ì‰E‘¤
+		// ç¾åœ¨è¡Œã®å³å´
 		if(SearchDataMainRegexp(start_pt.y, 1,
 			Get_ColCnt() - 1, Get_ColCnt() - start_pt.x,
 			result_pt, dir, reg_data, b_select_area) == 1) goto FOUND;
@@ -312,9 +312,9 @@ void CGridData::set_valid_cell(int row, int col)
 
 void CGridData::set_cur_cell(int row, int col)
 {
-	// NOTE: ˆá‚¤SQL‚ÅŒŸõÀs‚µ‚½‚Æ‚«AƒJƒ‰ƒ€”‚âƒŒƒR[ƒh”‚ª­‚È‚­‚È‚éê‡A
-	// ‚±‚ÌASSERTƒ`ƒFƒbƒN‚É‚Ğ‚Á‚©‚©‚é‚Æ‚«‚ª‚ ‚é
-	// ‚±‚±‚Åƒ`ƒFƒbƒN‚·‚é‚Ì‚Í“KØ‚Å‚Í‚È‚¢‚©‚à
+	// NOTE: é•ã†SQLã§æ¤œç´¢å®Ÿè¡Œã—ãŸã¨ãã€ã‚«ãƒ©ãƒ æ•°ã‚„ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°ãŒå°‘ãªããªã‚‹å ´åˆã€
+	// ã“ã®ASSERTãƒã‚§ãƒƒã‚¯ã«ã²ã£ã‹ã‹ã‚‹ã¨ããŒã‚ã‚‹
+	// ã“ã“ã§ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã®ã¯é©åˆ‡ã§ã¯ãªã„ã‹ã‚‚
 	ASSERT((row >= 0 && row < Get_RowCnt()) || (row < 0 && Get_RowCnt() <= 0));
 	ASSERT((col >= 0 && col < Get_ColCnt()) || (col < 0 && Get_ColCnt() <= 0));
 
@@ -329,8 +329,8 @@ void CGridData::clear_selected_cell()
 
 BOOL CGridData::is_selected_cell()
 {
-	// ƒZƒ‹‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚é‚©BCanCopy‚È‚Ç‚Ìƒ`ƒFƒbƒN‚Å‚àg‚í‚ê‚é
-	// ‘I‘ğ”ÍˆÍ‚ª‚È‚¢‚Æ‚«Ay = -1‚É‚È‚é
+	// ã‚»ãƒ«ãŒé¸æŠã•ã‚Œã¦ã„ã‚‹ã‹ã€‚CanCopyãªã©ã®ãƒã‚§ãƒƒã‚¯ã§ã‚‚ä½¿ã‚ã‚Œã‚‹
+	// é¸æŠç¯„å›²ãŒãªã„ã¨ãã€y = -1ã«ãªã‚‹
 	return (m_selected_cell.y != -1);
 }
 
@@ -479,7 +479,7 @@ CString CGridData::CalcSelectedData(GRID_CALC_TYPE calc_type, CPoint pt1, CPoint
 
 	if(calc_type == GRID_CALC_TYPE_ROWS) {
 		int row_cnt = (int)CalcSelectedDataDouble(calc_type, start_pt, end_pt, &result_pt, NULL);
-		result.Format(_T("s”:%s"), FormatValue(row_cnt, 0, NULL).GetBuffer(0));
+		result.Format(_T("è¡Œæ•°:%s"), FormatValue(row_cnt, 0, NULL).GetBuffer(0));
 		return result;
 	}
 
@@ -499,10 +499,10 @@ CString CGridData::CalcSelectedData(GRID_CALC_TYPE calc_type, CPoint pt1, CPoint
 		CString name = _T("");
 		switch(calc_type) {
 		case GRID_CALC_TYPE_MAX:
-			name = _T("Å‘å’l");
+			name = _T("æœ€å¤§å€¤");
 			break;
 		case GRID_CALC_TYPE_MIN:
-			name = _T("Å¬’l");
+			name = _T("æœ€å°å€¤");
 			break;
 		default:
 			return _T("");
@@ -521,20 +521,20 @@ CString CGridData::CalcSelectedData(GRID_CALC_TYPE calc_type, CPoint pt1, CPoint
 
 	switch(calc_type) {
 	case GRID_CALC_TYPE_TOTAL:
-		name = _T("‡Œv");
+		name = _T("åˆè¨ˆ");
 		result.Format(_T("%s:%s"), name.GetBuffer(0), FormatValue(value, max_scale, NULL).GetBuffer(0));
 		break;
 	case GRID_CALC_TYPE_AVE:
-		name = _T("•½‹Ï");
+		name = _T("å¹³å‡");
 		max_scale++;
 		result.Format(_T("%s:%s"), name.GetBuffer(0), FormatValue(value, max_scale, NULL).GetBuffer(0));
 		break;
 	case GRID_CALC_TYPE_MAX:
-		name = _T("Å‘å’l");
+		name = _T("æœ€å¤§å€¤");
 		result.Format(_T("%s:%s"), name.GetBuffer(0), FormatValue(value, 0, Get_DispData(result_pt.y, result_pt.x)).GetBuffer(0));
 		break;
 	case GRID_CALC_TYPE_MIN:
-		name = _T("Å¬’l");
+		name = _T("æœ€å°å€¤");
 		result.Format(_T("%s:%s"), name.GetBuffer(0), FormatValue(value, 0, Get_DispData(result_pt.y, result_pt.x)).GetBuffer(0));
 		break;
 	default:
@@ -624,7 +624,7 @@ int CGridData::ProcessUpdateCells(CGridUpdateProcess &process)
 			CString new_str = process.ProcessData(p);
 			if(new_str.Compare(p) == 0) continue;
 
-			// UndoŠJn
+			// Undoé–‹å§‹
 			if(!b_undo_start) {
 				StartUndoSet();
 				b_undo_start = TRUE;
@@ -937,7 +937,7 @@ int CGridData::Get_CopyDataBufSize(int row, int col, BOOL b_escape, char quote_c
 	if (pdata != NULL) {
 		result = result + (int)_tcslen(pdata);
 		if (b_escape) {
-			// "‚ÍC""‚É•ÏŠ·‚·‚é‚Ì‚ÅC‚»‚Ì•ª‚ğŒvZ
+			// "ã¯ï¼Œ""ã«å¤‰æ›ã™ã‚‹ã®ã§ï¼Œãã®åˆ†ã‚’è¨ˆç®—
 			result += ostr_str_cnt(pdata, quote_char);
 		}
 	}
@@ -958,7 +958,7 @@ int CGridData::GetMaxColWidth(int col, int limit_width, CFontWidthHandler *dchan
 		int w = GetColWidth(Get_DispData(i, col), limit_width, NULL, dchandler, NULL);
 		if(w > max_width) {
 			max_width = w;
-			// ƒEƒBƒ“ƒhƒE•‚ğ’´‚¦‚½‚Æ‚«‚ÍC‚±‚êˆÈãÅ‘å•‚ğ‹‚ß‚È‚¢
+			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å¹…ã‚’è¶…ãˆãŸã¨ãã¯ï¼Œã“ã‚Œä»¥ä¸Šæœ€å¤§å¹…ã‚’æ±‚ã‚ãªã„
 			if(max_width >= limit_width) break;
 		}
 	}
@@ -966,7 +966,7 @@ int CGridData::GetMaxColWidth(int col, int limit_width, CFontWidthHandler *dchan
 	return max_width;
 }
 
-// CHARŒ^ƒf[ƒ^‚Ì‚Æ‚«A––”ö‚ÌƒXƒy[ƒX‚ğl—¶‚¹‚¸‚ÉÅ‘å’·‚ğ‹‚ß‚é
+// CHARå‹ãƒ‡ãƒ¼ã‚¿ã®ã¨ãã€æœ«å°¾ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’è€ƒæ…®ã›ãšã«æœ€å¤§é•·ã‚’æ±‚ã‚ã‚‹
 int CGridData::GetMaxColWidthNoLastSpace(int col, int limit_width, CFontWidthHandler *dchandler,
 	volatile int *cancel_flg)
 {
@@ -983,7 +983,7 @@ int CGridData::GetMaxColWidthNoLastSpace(int col, int limit_width, CFontWidthHan
 
 		if(w > max_width) {
 			max_width = w;
-			// ƒEƒBƒ“ƒhƒE•‚ğ’´‚¦‚½‚Æ‚«‚ÍC‚±‚êˆÈãÅ‘å•‚ğ‹‚ß‚È‚¢
+			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å¹…ã‚’è¶…ãˆãŸã¨ãã¯ï¼Œã“ã‚Œä»¥ä¸Šæœ€å¤§å¹…ã‚’æ±‚ã‚ãªã„
 			if(max_width >= limit_width) break;
 		}
 	}
@@ -1044,7 +1044,7 @@ BOOL CGridData::SaveFile(const TCHAR *file_name, int kanji_code, int line_type,
 	CFileException fe;
 	CFile file;
 	if(file.Open(file_name, CFile::modeCreate | CFile::modeReadWrite | CFile::shareExclusive, &fe) == FALSE) {
-		// FIXME: —áŠO‚©‚çæ“¾‚Å‚«‚éƒGƒ‰[ƒƒbƒZ[ƒWŠm”F‚·‚é
+		// FIXME: ä¾‹å¤–ã‹ã‚‰å–å¾—ã§ãã‚‹ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç¢ºèªã™ã‚‹
 		//fe.GetErrorMessage(msg_buf, 512);
 		_stprintf(msg_buf, _T("Error: File can not open (%s)"), file_name);
 		return FALSE;
@@ -1153,7 +1153,7 @@ void CGridData_SwapRowCol::InitDispInfo(BOOL b_free_disp_info)
 
 	int		row;
 	for(row = 0; row < Get_RowCnt(); row++) {
-		// FIXME: “ú–{Œê‚É‘Î‰‚·‚é
+		// FIXME: æ—¥æœ¬èªã«å¯¾å¿œã™ã‚‹
 		int len = static_cast<int>(_tcslen(GetRowHeader(row)));
 		if(len > m_row_header_len) m_row_header_len = len;
 	}
@@ -1210,7 +1210,7 @@ int CGridData_SwapRowCol::Paste(const TCHAR *pstr)
 			(pt.x)++;
 
 			if(pt.x > x_max) {
-				// ‰E’[‚ÌƒZƒ‹‚É‚«‚½‚Æ‚«CŸ‚Ìs‚Ìƒf[ƒ^‚Ü‚Å“Ç‚İ”ò‚Î‚·
+				// å³ç«¯ã®ã‚»ãƒ«ã«ããŸã¨ãï¼Œæ¬¡ã®è¡Œã®ãƒ‡ãƒ¼ã‚¿ã¾ã§èª­ã¿é£›ã°ã™
 				for(;;) {
 					p = ostr_get_tsv_data(p, buf, paste_buf_size);
 					if(*p != '\t') break;
@@ -1230,7 +1230,7 @@ int CGridData_SwapRowCol::Paste(const TCHAR *pstr)
 				continue;
 			}
 
-			// ÅŒã‚Ì‰üs‚Í–³‹‚·‚é
+			// æœ€å¾Œã®æ”¹è¡Œã¯ç„¡è¦–ã™ã‚‹
 			if(*(p + 1) == '\0') break;
 		}
 
@@ -1246,8 +1246,8 @@ int CGridData_SwapRowCol::Paste(const TCHAR *pstr)
 }
 
 BOOL CGridData_SwapRowCol::is_selected_cell() {
-	// ƒZƒ‹‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚é‚©BCanCopy‚È‚Ç‚Ìƒ`ƒFƒbƒN‚Å‚àg‚í‚ê‚é
-	// s—ñ“ü‚ê‘Ö‚¦‚Ä•\¦‚Ì‚Æ‚«‚ÍAx = -1‚É‚È‚é
+	// ã‚»ãƒ«ãŒé¸æŠã•ã‚Œã¦ã„ã‚‹ã‹ã€‚CanCopyãªã©ã®ãƒã‚§ãƒƒã‚¯ã§ã‚‚ä½¿ã‚ã‚Œã‚‹
+	// è¡Œåˆ—å…¥ã‚Œæ›¿ãˆã¦è¡¨ç¤ºã®ã¨ãã¯ã€x = -1ã«ãªã‚‹
 	return (m_selected_cell.x != -1);
 }
 

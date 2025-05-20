@@ -8,7 +8,7 @@
 
 /*----------------------------------------------------------------------
   strutil.c
-  •¶š—ñˆ—
+  æ–‡å­—åˆ—å‡¦ç†
 ----------------------------------------------------------------------*/
 
 #include <stdio.h>
@@ -22,7 +22,7 @@
 #include "str_inline.h"
 
 /*----------------------------------------------------------------------
-  s––‚Ì‰üsƒR[ƒh‚Æsepa‚Åw’è‚µ‚½•¶š‚ğíœ‚·‚é
+  è¡Œæœ«ã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã¨sepaã§æŒ‡å®šã—ãŸæ–‡å­—ã‚’å‰Šé™¤ã™ã‚‹
 ----------------------------------------------------------------------*/
 void ostr_chomp(TCHAR *buf, TCHAR sepa)
 {
@@ -42,7 +42,7 @@ void ostr_chomp(TCHAR *buf, TCHAR sepa)
 }
 
 /*----------------------------------------------------------------------
-  —¼’[‚ÌƒXƒy[ƒX‚ğíœ
+  ä¸¡ç«¯ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤
 ----------------------------------------------------------------------*/
 void ostr_trim(TCHAR *buf)
 {
@@ -51,7 +51,7 @@ void ostr_trim(TCHAR *buf)
 
 	if(buf == NULL || _tcslen(buf) == 0) return;
 
-	/* ‘O•û‚ÌƒXƒy[ƒX‚ğíœ */
+	/* å‰æ–¹ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ */
 	p1 = buf;
 	for(i = 0; *p1 == ' '; i++, p1 += get_char_len(p1)) {
 		;
@@ -60,7 +60,7 @@ void ostr_trim(TCHAR *buf)
 
 	if(_tcslen(buf) == 0) return;
 
-	/* Œã•û‚ÌƒXƒy[ƒX‚ğíœ */
+	/* å¾Œæ–¹ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ */
 	p2 = NULL;
 	for(p1 = buf; *p1 != '\0'; p1 += get_char_len(p1)) {
 		if(*p1 == ' ') {
@@ -73,7 +73,7 @@ void ostr_trim(TCHAR *buf)
 }
 
 /*----------------------------------------------------------------------
-  ¶’[‚ÌƒXƒy[ƒX‚ğíœ
+  å·¦ç«¯ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤
 ----------------------------------------------------------------------*/
 void ostr_trimleft(TCHAR *buf)
 {
@@ -82,7 +82,7 @@ void ostr_trimleft(TCHAR *buf)
 
 	if(buf == NULL || _tcslen(buf) == 0) return;
 
-	/* ‘O•û‚ÌƒXƒy[ƒX‚ğíœ */
+	/* å‰æ–¹ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ */
 	p1 = buf;
 	for(i = 0; *p1 == ' '; i++, p1 += get_char_len(p1)) {
 		;
@@ -91,7 +91,7 @@ void ostr_trimleft(TCHAR *buf)
 }
 
 /*----------------------------------------------------------------------
-  •¶š—ñ‚ğsepa‚Å•ªŠ„‚·‚é
+  æ–‡å­—åˆ—ã‚’sepaã§åˆ†å‰²ã™ã‚‹
 ----------------------------------------------------------------------*/
 const TCHAR *ostr_split(const TCHAR *buf, TCHAR *buf2, TCHAR sepa)
 {
@@ -128,7 +128,7 @@ const TCHAR *ostr_split(const TCHAR *buf, TCHAR *buf2, TCHAR sepa)
 }
 
 /*----------------------------------------------------------------------
-  •¶š‚Ì’uŠ·(c1 ‚ğ c2‚É’uŠ·)
+  æ–‡å­—ã®ç½®æ›(c1 ã‚’ c2ã«ç½®æ›)
 ----------------------------------------------------------------------*/
 void ostr_char_replace(TCHAR *s, const TCHAR c1, const TCHAR c2)
 {
@@ -138,7 +138,7 @@ void ostr_char_replace(TCHAR *s, const TCHAR c1, const TCHAR c2)
 }
 
 /*----------------------------------------------------------------------
-  •¶š”‚ğ”‚¦‚é
+  æ–‡å­—æ•°ã‚’æ•°ãˆã‚‹
 ----------------------------------------------------------------------*/
 int ostr_str_char_cnt(const TCHAR *p, const TCHAR *end)
 {
@@ -150,7 +150,7 @@ int ostr_str_char_cnt(const TCHAR *p, const TCHAR *end)
 }
 
 /*----------------------------------------------------------------------
-  •¶š‚ğ”‚¦‚é
+  æ–‡å­—ã‚’æ•°ãˆã‚‹
 ----------------------------------------------------------------------*/
 int ostr_str_cnt(const TCHAR *p, unsigned int ch)
 {
@@ -164,7 +164,7 @@ int ostr_str_cnt(const TCHAR *p, unsigned int ch)
 }
 
 /*----------------------------------------------------------------------
-  •¶š‚ğ”‚¦‚é
+  æ–‡å­—ã‚’æ•°ãˆã‚‹
 ----------------------------------------------------------------------*/
 int ostr_str_cnt2(const TCHAR *p, const TCHAR *end, unsigned int ch)
 {
@@ -245,7 +245,7 @@ int ostr_get_cmplen_nocase(const TCHAR *p1, const TCHAR *p2, int len)
 }
 
 //
-// ¬•¶š‚ªŠÜ‚Ü‚ê‚é‚©ƒ`ƒFƒbƒN‚·‚é
+// å°æ–‡å­—ãŒå«ã¾ã‚Œã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 //
 int ostr_is_contain_lower(const TCHAR *str)
 {
@@ -264,7 +264,7 @@ int ostr_is_contain_lower(const TCHAR *str)
 }
 
 //
-// ‘å•¶š‚ªŠÜ‚Ü‚ê‚é‚©ƒ`ƒFƒbƒN‚·‚é
+// å¤§æ–‡å­—ãŒå«ã¾ã‚Œã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 //
 int ostr_is_contain_upper(const TCHAR *str)
 {
@@ -284,7 +284,7 @@ int ostr_is_contain_upper(const TCHAR *str)
 
 
 //
-// •¶š—ñ‚ª”š‚©ƒ`ƒFƒbƒN‚·‚é
+// æ–‡å­—åˆ—ãŒæ•°å­—ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 //
 int ostr_is_digit_only(const TCHAR *str)
 {
@@ -299,7 +299,7 @@ int ostr_is_digit_only(const TCHAR *str)
 }
 
 //
-// •¶š—ñ‚ªASCII‚©ƒ`ƒFƒbƒN‚·‚é
+// æ–‡å­—åˆ—ãŒASCIIã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 //
 int ostr_is_ascii_only(const TCHAR *str)
 {
@@ -313,7 +313,7 @@ int ostr_is_ascii_only(const TCHAR *str)
 }
 
 //
-// •¶š—ñ‚Ì•\¦•‚ğ‹‚ß‚é (––”ö‚ÌƒXƒy[ƒX‚ÍŠÜ‚ß‚È‚¢)
+// æ–‡å­—åˆ—ã®è¡¨ç¤ºå¹…ã‚’æ±‚ã‚ã‚‹ (æœ«å°¾ã®ã‚¹ãƒšãƒ¼ã‚¹ã¯å«ã‚ãªã„)
 //
 int ostr_first_line_len_no_last_space(const TCHAR *str)
 {
@@ -337,7 +337,7 @@ int ostr_first_line_len_no_last_space(const TCHAR *str)
 }
 
 //
-// ƒeƒLƒXƒgƒf[ƒ^‚ğ•ªŠ„
+// ãƒ†ã‚­ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’åˆ†å‰²
 //
 static TCHAR *ostr_get_sepa_data(const TCHAR *p, TCHAR *buf, 
 	int buf_size, unsigned int sepa)
@@ -379,7 +379,7 @@ static TCHAR *ostr_get_sepa_data(const TCHAR *p, TCHAR *buf,
 }
 
 //
-// Excel‚©‚ç‚ÌPasteƒf[ƒ^‚ğ•ªŠ„‚·‚é
+// Excelã‹ã‚‰ã®Pasteãƒ‡ãƒ¼ã‚¿ã‚’åˆ†å‰²ã™ã‚‹
 //
 TCHAR *ostr_get_tsv_data(const TCHAR *p, TCHAR *buf, 
 	int buf_size)
@@ -388,7 +388,7 @@ TCHAR *ostr_get_tsv_data(const TCHAR *p, TCHAR *buf,
 }
 
 //
-// csvƒf[ƒ^‚ğ•ªŠ„‚·‚é
+// csvãƒ‡ãƒ¼ã‚¿ã‚’åˆ†å‰²ã™ã‚‹
 //
 TCHAR *ostr_get_csv_data(const TCHAR *p, TCHAR *buf, 
 	int buf_size)
@@ -397,7 +397,7 @@ TCHAR *ostr_get_csv_data(const TCHAR *p, TCHAR *buf,
 }
 
 //
-// Excel‚©‚ç‚ÌPasteƒf[ƒ^‚ÌƒZƒ‹‚Ì”‚ğ”‚¦‚é
+// Excelã‹ã‚‰ã®Pasteãƒ‡ãƒ¼ã‚¿ã®ã‚»ãƒ«ã®æ•°ã‚’æ•°ãˆã‚‹
 //
 int ostr_get_tsv_col_cnt(const TCHAR *p)
 {
@@ -414,7 +414,7 @@ int ostr_get_tsv_col_cnt(const TCHAR *p)
 }
 
 //
-// Excel‚©‚ç‚ÌPasteƒf[ƒ^‚ÌƒZƒ‹‚ª1s‚Ì‚İ‚©Šm”F
+// Excelã‹ã‚‰ã®Pasteãƒ‡ãƒ¼ã‚¿ã®ã‚»ãƒ«ãŒ1è¡Œã®ã¿ã‹ç¢ºèª
 //
 int ostr_is_tsv_single_row(const TCHAR* p)
 {
@@ -430,7 +430,7 @@ int ostr_is_tsv_single_row(const TCHAR* p)
 }
 
 //
-// Excel‚©‚ç‚ÌPasteƒf[ƒ^‚ÌƒZƒ‹‚ª1ƒZƒ‹‚Ì‚İ‚©Šm”F
+// Excelã‹ã‚‰ã®Pasteãƒ‡ãƒ¼ã‚¿ã®ã‚»ãƒ«ãŒ1ã‚»ãƒ«ã®ã¿ã‹ç¢ºèª
 //
 int ostr_is_tsv_single_col(const TCHAR* p)
 {
@@ -441,7 +441,7 @@ int ostr_is_tsv_single_col(const TCHAR* p)
 }
 
 //
-// •¶š—ñ‚ª”’l‚©ƒ`ƒFƒbƒN‚·‚é
+// æ–‡å­—åˆ—ãŒæ•°å€¤ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 //
 int ostr_str_isnum(const TCHAR *str)
 {
@@ -474,7 +474,7 @@ int ostr_str_isnum(const TCHAR *str)
 }
 
 //
-// tab text‚ğformat‚·‚é
+// tab textã‚’formatã™ã‚‹
 //
 #pragma intrinsic(memcpy)
 void ostr_tabbed_text_format(const TCHAR *p1, TCHAR *buf, 
@@ -486,7 +486,7 @@ void ostr_tabbed_text_format(const TCHAR *p1, TCHAR *buf,
 	for(x = 0;;) {
 		for(; *p2; p2++) if(*p2 == '\t') break;
 		if(!(*p2)) {
-			// '\0'‚Ü‚ÅƒRƒs[‚·‚é
+			// '\0'ã¾ã§ã‚³ãƒ”ãƒ¼ã™ã‚‹
 			memcpy((buf + x), p1, (p2 - p1 + 1) * sizeof(TCHAR));
 			break;
 		}
@@ -514,7 +514,7 @@ void ostr_tabbed_text_format(const TCHAR *p1, TCHAR *buf,
 #pragma function(memcpy)
 
 //
-// tab text‚Ìsize‚ğŒvZ‚·‚é
+// tab textã®sizeã‚’è¨ˆç®—ã™ã‚‹
 //
 INT_PTR ostr_calc_tabbed_text_size(const TCHAR *pstr, int tabstop)
 {
@@ -548,7 +548,7 @@ INT_PTR ostr_calc_tabbed_text_size_n(const TCHAR *pstr, int tabstop, int x)
 }
 
 //
-// CSVƒf[ƒ^‚ğo—Í
+// CSVãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›
 //
 int ostr_csv_fputs(FILE *stream, TCHAR *string, TCHAR sepa)
 {
@@ -568,7 +568,7 @@ int ostr_csv_fputs(FILE *stream, TCHAR *string, TCHAR sepa)
 	return 1;
 }
 
-// atof‚Ìwcharƒo[ƒWƒ‡ƒ“
+// atofã®wcharãƒãƒ¼ã‚¸ãƒ§ãƒ³
 double _ttofbak(const TCHAR *p)
 {
 #ifdef _UNICODE
@@ -594,28 +594,28 @@ int get_scale(const TCHAR *value)
 
 
 //
-// Oracle‚ÌƒIƒuƒWƒFƒNƒg–¼‚ÅAƒ_ƒuƒ‹ƒNƒH[ƒg‚ª•K—v‚©ƒ`ƒFƒbƒN‚·‚é
+// Oracleã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã§ã€ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆãŒå¿…è¦ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 //
 int ostr_need_object_name_quote_for_oracle(const TCHAR *object_name)
 {
-	// ‘å•¶š‰p”š, _, $, #, ƒ}ƒ‹ƒ`ƒoƒCƒg•¶šˆÈŠO‚Íquote‘ÎÛ‚É‚·‚é
+	// å¤§æ–‡å­—è‹±æ•°å­—, _, $, #, ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—ä»¥å¤–ã¯quoteå¯¾è±¡ã«ã™ã‚‹
 	const TCHAR *p = object_name;
 
 	for(; *p != '\0'; p += get_char_len(p)) {
 		unsigned int ch = get_char(p);
 
-		// ‘SŠp‰p”š‚Í”¼Šp‚É‚·‚é
-		if(ch >= L'I' && ch <= L'p') {
-			ch -= L'I' - L'!';
+		// å…¨è§’è‹±æ•°å­—ã¯åŠè§’ã«ã™ã‚‹
+		if(ch >= L'ï¼' && ch <= L'ï½') {
+			ch -= L'ï¼' - L'!';
 		}
 
-		// ‘å•¶š, ”š, ASCII
+		// å¤§æ–‡å­—, æ•°å­—, ASCII
 		if(inline_isupper(ch) || inline_isdigit(ch) || ch >= 0x80) continue;
 
 		// [_$#.]
 		if(ch == '_' || ch == '#' || ch == '$' || ch == '.') continue;
 
-		// ‚»‚Ì‘¼‚Íquote
+		// ãã®ä»–ã¯quote
 		return 1;
 	}
 

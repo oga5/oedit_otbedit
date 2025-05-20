@@ -14,7 +14,7 @@
 #include "OWinApp.h"
 #include "oscheme.h"
 
-#define GLOBAL_H_OTBEDIT				// LoadOption‚È‚Ç‚Ì“®ì‚ğCotbedit—p‚ÉŠg’£‚·‚é
+#define GLOBAL_H_OTBEDIT				// LoadOptionãªã©ã®å‹•ä½œã‚’ï¼Œotbeditç”¨ã«æ‹¡å¼µã™ã‚‹
 
 EXTERN oscheme		*g_sc;
 EXTERN CFont		g_font;				// global font

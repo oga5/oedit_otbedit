@@ -1,177 +1,177 @@
 
                                                          (Rev.7 2012/11/06)
 
-Scheme�}�N�����t�@�����X
+Schemeマクロリファレンス
 
-1.�͂��߂�
- �e�c�[���̃}�N���@�\�Ƃ��āAScheme�C���^�v���^��񋟂��܂��B
- �}�N���ɂ��A����I�ɍs����Ƃ�������������A�c�[���̓�����g�����邱�Ƃ�
-�ł��܂��B
- �{�����ł́AScheme�C���^�v���^�̎d�l��������܂��B
- �e�c�[���̃J�X�^�}�C�Y�ɂ��ẮA�c�[�����Ƃɒ񋟂����h�L�������g���Q��
-���ĉ������B
+1.はじめに
+ 各ツールのマクロ機能として、Schemeインタプリタを提供します。
+ マクロにより、日常的に行う作業を自動化したり、ツールの動作を拡張することが
+できます。
+ 本文書では、Schemeインタプリタの仕様を説明します。
+ 各ツールのカスタマイズについては、ツールごとに提供されるドキュメントを参照
+して下さい。
 
 
-2.�W���ւ̏���
- R5RS�ւ̏�����ڕW�ɂ��Ă��܂����A�ȉ��ɋ�����_�͕W���ƈقȂ�܂��B
+2.標準への準拠
+ R5RSへの準拠を目標にしていますが、以下に挙げる点は標準と異なります。
 
-  - �V���{���͑啶������������ʂ��܂��B
-  - �����^��32bit�����l�̂݃T�|�[�g���܂��B
-  - ���S�ȃ}�N��(define-syntax, let-syntax, letrec-syntax)�͂���܂���B
-    ����ɓ`���I�ȃ}�N��(define-macro)���g���܂��B
-  - �ȉ��̋@�\������܂���B
-    dynamic-wind, char-ready?, ���̑����낢��
+  - シンボルは大文字小文字を区別します。
+  - 数字型は32bit整数値のみサポートします。
+  - 健全なマクロ(define-syntax, let-syntax, letrec-syntax)はありません。
+    代わりに伝統的なマクロ(define-macro)が使えます。
+  - 以下の機能がありません。
+    dynamic-wind, char-ready?, その他いろいろ
 
- �܂��ASRFI�̈ꕔ���T�|�[�g���܂��B
+ また、SRFIの一部をサポートします。
   SRFI-6<*>  Basic String Ports
   SRFI-8<*>  receive: Binding to multiple values
   SRFI-11    Syntax for receiving multiple values
   SRFI-26<*> Notation for Specializing Parameters without Currying
   SRFI-30<*> Nested Multi-line Comments
-  (<*>��SRFI�͑g�ݍ��݂ł��B���̑���(use srfi-11)�ȂǂƂ���K�v������܂�)
+  (<*>のSRFIは組み込みです。その他は(use srfi-11)などとする必要があります)
 
- SRFI-1 list-processing library�̓��t�@�����X���������p�\�ł��B
-  http://srfi.schemers.org/srfi-1/srfi-1-reference.scm���Ascmlib\srfi-1.scm
-  �Ƃ��ĕۑ�����ƁA(use srfi-1)�ŗ��p�ł���悤�ɂȂ�܂��B
+ SRFI-1 list-processing libraryはリファレンス実装が利用可能です。
+  http://srfi.schemers.org/srfi-1/srfi-1-reference.scmを、scmlib\srfi-1.scm
+  として保存すると、(use srfi-1)で利用できるようになります。
 
- R5RS�͈̔͊O�̊g���́AGauche, Guile, TinyScheme�Ȃǂ̏����n���Q�l�ɂ��Ă��܂��B
+ R5RSの範囲外の拡張は、Gauche, Guile, TinySchemeなどの処理系を参考にしています。
 
 
-3.�\��
- - �L�@
-   (): �ۃJ�b�R�̓O���[�v���ƃ��X�g���������߂Ɏg����
-   #t: �^�l
-   #f: �U�l
-   #\: �����萔�̐擪 (#\a�ŕ���a�ɂȂ�)
-   ' : ���e�����f�[�^������
-   ` : ���萔������
-   " : �������\�L���邽�߂Ɏg�p ("ABC"�ŕ�����ABC�ɂȂ�)
+3.構文
+ - 記法
+   (): 丸カッコはグループ化とリストを示すために使われる
+   #t: 真値
+   #f: 偽値
+   #\: 文字定数の先頭 (#\aで文字aになる)
+   ' : リテラルデータを示す
+   ` : 準定数を示す
+   " : 文字列を表記するために使用 ("ABC"で文字列ABCになる)
 
-   ;��#!�͍s�R�����g�ɂȂ�܂�
-   #| ... |#�̓u���b�N�R�����g�ɂȂ�܂� [SRFI-30]
+   ;と#!は行コメントになります
+   #| ... |#はブロックコメントになります [SRFI-30]
 
- - �葱���Ăяo�� (<���Z�q> <�I�y�����h> ...)
+ - 手続き呼び出し (<演算子> <オペランド> ...)
    (+ 2 4) => 6
 
- - �ϐ��̒�` (define <�ϐ���> <��>)
+ - 変数の定義 (define <変数名> <式>)
    (define x 1)
    (define x (+ 3 4))
 
- - ��� (set! <�ϐ�> <��>)
+ - 代入 (set! <変数> <式>)
    (define x 1)
    (set! x 2)
 
- - �֐��̒�` (define (<�֐���> <��������>) <�{��>)
+ - 関数の定義 (define (<関数名> <仮引数部>) <本体>)
    (define (add3 x) (+ x 3))
    (add3 4) => 7
 
- - �葱���̍쐬 (lambda <��������> <�{��>)
+ - 手続きの作成 (lambda <仮引数部> <本体>)
    ((lambda (x) (+ x x)) 4) => 8
 
-   ���������ł́A:optional�ň����ȗ����̃f�t�H���g�l���w��ł��܂��B
+   仮引数部では、:optionalで引数省略時のデフォルト値を指定できます。
    ((lambda (a b :optional (c 3)) (list a b c)) 1 2)) => (1 2 3)
 
  - (cut expr-or-slot1 ...)
-   [SRFI-26] �����K�p�葱��
-   cut�́A�t�H�[������<>�Ɠ������̈��������lambda���ɓW�J���܂��B
-   �Ō�̈����ɂ�<...>���g���܂��B
+   [SRFI-26] 部分適用手続き
+   cutは、フォーム内の<>と同じ数の引数を取るlambda式に展開します。
+   最後の引数には<...>が使えます。
    (cut list 1 <> 3 <> 5)
      => (lambda (|G:4| |G:7|) (list 1 |G:4| 3 |G:7| 5))
 
-   cute�́A�eexpr-or-slot1��lambda�̑O�ɕ]������܂��B
+   cuteは、各expr-or-slot1がlambdaの前に評価されます。
    (cute list (+ 1 2) <>)
      => (let ((|G:10| list) (|G:12| (+ 1 2)))
           (lambda (|G:17|) (|G:10| |G:12| |G:17|)))
 
- - �����R���X�g���N�g (let <������> <�{��>)
-   �������͎��̌`�����Ƃ邱�� ((<�ϐ�1> <�����l1>) ...)
+ - 束縛コンストラクト (let <束縛部> <本体>)
+   束縛部は次の形式をとること ((<変数1> <初期値1>) ...)
 
-   �������̕ϐ����`���Ă���A�{�̂�]�����܂��B
-   �������̕ϐ��͖{�̂̊O����͎Q�Ƃł��܂���B
+   束縛部の変数を定義してから、本体を評価します。
+   束縛部の変数は本体の外からは参照できません。
 
-   (let ((x 2) (y 3)) (* x y)) => 6  (x��y��let�̊O�ł͎Q�Ƃł��Ȃ�)
+   (let ((x 2) (y 3)) (* x y)) => 6  (xとyはletの外では参照できない)
 
-   let�̒��ԂƂ��āAlet*, letrec������܂��B
-    let�͑����𓯎��ɕ]�� (���݂��̕]�����ʂ��Q�Ƃ��Ȃ�)
-    let*�͑�����������E�ɕ]��
-    letrec�͍ŏ��ɑS���̕ϐ����`���Ă���A�����l����
-   named-let, let-optionals���g���܂��B
+   letの仲間として、let*, letrecもあります。
+    letは束縛を同時に評価 (お互いの評価結果を参照しない)
+    let*は束縛を左から右に評価
+    letrecは最初に全部の変数を定義してから、初期値を代入
+   named-let, let-optionalsも使えます。
 
- - ���e���� (quote <�f�[�^>), `(<�f�[�^>)
+ - リテラル (quote <データ>), `(<データ>)
    (quote x) => x
    (quote (1 2 3)) => (1 2 3)
    '(1 2 3) => (1 2 3)
 
- - ���萔 (quasiquote <qq�e���v���[�g>), `(<qq�e���v���[�g>)
-   �J���}(,), �J���}�A�b�g(,@)�̏����������āAquote�Ɠ����ł��B
-   �}�N���̋L�q�ȂǁA���X�g���̍\���̑������������Ă���Ƃ��ɗL�p�ł��B
-   qq�e���v���[�g���ɃR���}������ꍇ�A�J���}�ɑ��������]������}������܂��B
-   ,@������ꍇ�́A�����]�����ꂽ��ɃJ�b�R���͂��Ƃ�}������܂��B
+ - 準定数 (quasiquote <qqテンプレート>), `(<qqテンプレート>)
+   カンマ(,), カンマアット(,@)の処理を除いて、quoteと等価です。
+   マクロの記述など、リスト内の構造の多くが分かっているときに有用です。
+   qqテンプレート内にコンマがある場合、カンマに続く式が評価され挿入されます。
+   ,@がある場合は、式が評価された後にカッコをはぎとり挿入されます。
 
    `(a ,(+ 1 2) ,@(map abs '(4 -5 6)) b) => (a 3 4 5 6 b)
 
- - ������ (begin <��1> ...)
-   ���������珇�ɕ]�����A�Ō�̎��̒l��Ԃ��܂��B
+ - 逐次式 (begin <式1> ...)
+   式を左から順に評価し、最後の式の値を返します。
    (define x 0)
    (begin (set! x 5) (+ x 1)) => 6
 
- - ������ (if <�e�X�g> <consequent> <alternative>)
-   �e�X�g���^�Ȃ�consequent��]�����܂��B
-   �����łȂ����alternative��]�����܂��B
-   alternative�͏ȗ��\�ł��B
+ - 条件式 (if <テスト> <consequent> <alternative>)
+   テストが真ならconsequentを評価します。
+   そうでなければalternativeを評価します。
+   alternativeは省略可能です。
 
    (if (number? 3) 'yes 'no) => yes
 
-   ���̑��̏������Ƃ���cond, case������܂��B
+   その他の条件式としてcond, caseもあります。
  
- - (and <�e�X�g1> ...)
-   �e�X�g��������]�����U�l�Ȃ�A�c��̃e�X�g��]�������ɋU�l��Ԃ��܂��B
-   �S���^�Ȃ�Ō�̎��̒l��Ԃ��܂��B
+ - (and <テスト1> ...)
+   テストを左から評価し偽値なら、残りのテストを評価せずに偽値を返します。
+   全部真なら最後の式の値を返します。
 
- - (or <�e�X�g1> ...)
-   �e�X�g��������]�����^�l�Ȃ�A�c��̃e�X�g��]�������ɂ��̒l��Ԃ��܂��B
-   �S���U�Ȃ�U�l��Ԃ��܂��B
+ - (or <テスト1> ...)
+   テストを左から評価し真値なら、残りのテストを評価せずにその値を返します。
+   全部偽なら偽値を返します。
 
- - (not <��>)
-   �����^�Ȃ�U(#f)��Ԃ��A�U�Ȃ�^(#t)��Ԃ��܂��B
+ - (not <式>)
+   式が真なら偽(#f)を返し、偽なら真(#t)を返します。
 
- - �J��Ԃ�
-   (do ((<�ϐ�1> <�����l1> <�X�e�b�v1>) ...)
-       (<�e�X�g> <��> ...)
-       <�{��>)
+ - 繰り返し
+   (do ((<変数1> <初期値1> <ステップ1>) ...)
+       (<テスト> <式> ...)
+       <本体>)
 
-   �͂��߂Ɋe�ϐ��������l�ŏ���������܂��B
-   �e�X�g���^�Ȃ玮��]�����āA�Ō�̎��̒l��Ԃ��܂��B
-   �e�X�g���U�Ȃ�{�̂�]��������A�e�X�e�b�v��]�����ă��[�v���܂��B
+   はじめに各変数が初期値で初期化されます。
+   テストが真なら式を評価して、最後の式の値を返します。
+   テストが偽なら本体を評価した後、各ステップを評価してループします。
 
    (do ((i 0 (+ i 1)) (x 0))
        ((= i 10) x)
        (set! x (+ x i))) => 45
 
- - �������q�� (eqv?, eq?, equal?)
-   �q��͏�ɐ^(#t)���U(#f)��Ԃ��܂��B
-   eq?, eqv?, equal?��2�̃I�u�W�F�N�g�������ł���ꍇ�ɐ^��Ԃ��܂��B
+ - 等価性述語 (eqv?, eq?, equal?)
+   述語は常に真(#t)か偽(#f)を返します。
+   eq?, eqv?, equal?は2つのオブジェクトが等価である場合に真を返します。
 
     (eq? 2 2) => #t
     (eq? 2 3) => #f
     (eq? 'a 'a) => #t
    
-   �������̎��ʂɂ��āAeq?���ł����ʂ�������equal?���ł��Â��ł��B
-   ���݂̎����ł́Aeq?��eqv?�͏�ɓ������ʂ�Ԃ��܂��B
-   equal?�̓��X�g�A������A�x�N�^�̓��e���ċA�I��eqv?�Ŕ�r���܂��B
+   等価性の識別について、eq?が最も識別が厳しくequal?が最も甘いです。
+   現在の実装では、eq?とeqv?は常に同じ結果を返します。
+   equal?はリスト、文字列、ベクタの内容を再帰的にeqv?で比較します。
 
- - (boolean? <obj>) obj��#t��#f�Ȃ�^��Ԃ��܂��B
+ - (boolean? <obj>) objが#tか#fなら真を返します。
    (boolean? #f) => #t
    (boolean? 0) => #f
 
  - (error <message>)
-   �G���[�𔭐������܂��B
+   エラーを発生させます。
 
 
-4.�}�N��
- - �`���I�ȃ}�N�� (define-macro <���O ��������> <�{��>)
-   �R���p�C����<���O ��������>��������ƁA�{�̂��Ăяo���܂��B
-   �����āA�{�̂̎��s���ʂ����̏ꏊ�ɑ}�����A�ēx�R���p�C�����ĕ]�����܂��B
+4.マクロ
+ - 伝統的なマクロ (define-macro <名前 仮引数部> <本体>)
+   コンパイラが<名前 仮引数部>を見つけると、本体を呼び出します。
+   そして、本体の実行結果を元の場所に挿入し、再度コンパイルして評価します。
 
    (define-macro (for var-start-stop . body)
      (let ((limit (gensym)) 
@@ -182,418 +182,418 @@ Scheme�}�N�����t�@�����X
            ((> ,var ,limit))
            ,@body)))
    (for (i 1 10) (display i))
-   => (12345678910�ƈ�)
+   => (12345678910と印字)
 
  - macroexpand, macroexpand-1
-   �}�N���̓W�J���ʂ�Ԃ��܂��B
-   macroexpand-1�̓}�N����1�񂾂��W�J���܂��B
-   macroexpand�͓W�J����}�N�����Ȃ��Ȃ�܂ŌJ��Ԃ��܂��B
+   マクロの展開結果を返します。
+   macroexpand-1はマクロを1回だけ展開します。
+   macroexpandは展開するマクロがなくなるまで繰り返します。
 
    (macroexpand-1 '(for (i 1 10) (display i)))
    => (do ((i 1 (+ i 1)) (|G:5| 10)) ((> i |G:5|)) (display i))
 
    (macroexpand '(for (i 1 10) (display i)))
-   => (��Lmacroexpand-1�̌��ʂ���Ado���W�J�������ʂ�������)
+   => (上記macroexpand-1の結果から、doも展開した結果が得られる)
 
- - (macro? <obj>) obj���}�N���Ȃ�^��Ԃ��܂��B
+ - (macro? <obj>) objがマクロなら真を返します。
 
 
-5.�V���{��
- - (symbol? <obj>) obj���V���{���Ȃ�^
- - (symbol-bound? <obj>) obj�����݂̊��ɑ�������Ă���ΐ^
- - (string->symbol <str>) ��������V���{���ɕϊ�
- - (symbol->string <symbol>) �V���{���𕶎���ɕϊ�
+5.シンボル
+ - (symbol? <obj>) objがシンボルなら真
+ - (symbol-bound? <obj>) objが現在の環境に束縛されていれば真
+ - (string->symbol <str>) 文字列をシンボルに変換
+ - (symbol->string <symbol>) シンボルを文字列に変換
  - (gensym)
-   ��ӂȃV���{����Ԃ��܂��B
-   ���(�`���I��)�}�N���̕ϐ��⑫������邽�߂Ɏg�p���܂��B
-   (gensym) => |G:4| (���s���邽�тɈႤ�V���{���ɂȂ�)
- - (gensym? <obj>) obj��gensym�Ő������ꂽ�V���{���ł���ΐ^
+   一意なシンボルを返します。
+   主に(伝統的な)マクロの変数補足を避けるために使用します。
+   (gensym) => |G:4| (実行するたびに違うシンボルになる)
+ - (gensym? <obj>) objがgensymで生成されたシンボルであれば真
 
 
-6.���l
- - �l�����Z�q (+, -, *, /)
+6.数値
+ - 四則演算子 (+, -, *, /)
    (* 2 3) => 6
    (+ 2 3 4) => 9
 
- - /��quotient�����p�\
+ - /はquotientも利用可能
    (quotient 9 3) => 3
 
- - (remainder <a> <b>) ��]���v�Z (modulo�����`)
+ - (remainder <a> <b>) 剰余を計算 (moduloも同義)
    (remainder 10 3) => 1
    (modulo 10 3) => 1
 
- - ���l��r�p�̏q�� (<, <=, =, >=, >)
+ - 数値比較用の述語 (<, <=, =, >=, >)
    (<= 2 3) => #t
 
- - (abs <num>) ��Βl�𓾂�
+ - (abs <num>) 絶対値を得る
    (abs -5) => 5
 
- - (min <num1> ...), (max <num1> ...) �ŏ��l�A�ő�l�𓾂�
+ - (min <num1> ...), (max <num1> ...) 最小値、最大値を得る
    (min 4 3 8 1) => 1
 
- - (number? <obj>) ���l�Ȃ�^
- - (integer? <obj>) �����Ȃ�^
- - (zero? <obj>) 0�Ȃ�^
- - (even? <obj>) �����Ȃ�^
- - (odd? <obj>) ��Ȃ�^
- - (negative? <obj>) ���Ȃ�^
- - (positive? <obj>) ���Ȃ�^
+ - (number? <obj>) 数値なら真
+ - (integer? <obj>) 整数なら真
+ - (zero? <obj>) 0なら真
+ - (even? <obj>) 偶数なら真
+ - (odd? <obj>) 奇数なら真
+ - (negative? <obj>) 負なら真
+ - (positive? <obj>) 正なら真
 
 
-7.���X�g
- - �y�A�ƃ��X�g
-   �y�A��car���Acdr���ƌĂ΂��2�̃t�B�[���h�����B
-   �y�A��(<car> . <cdr>)�ŕ\�L�����B
-   ���X�g��cdr�������X�g�ł���悤�ȃy�A���A�����A ��������̃��X�g�����B
-   ��̃��X�g��()�ƕ\�L����B
-   �v�f1, 2, 3����Ȃ郊�X�g���y�A�̕\�L�ŕ\���ƁA(1 . (2 . (3 . ())))�ƂȂ�B
-   ���X�g�̓J�b�R�ɂ��L�@���g����B��L���X�g��(1 2 3)�ƕ\�L�ł���B
+7.リスト
+ - ペアとリスト
+   ペアはcar部、cdr部と呼ばれる2つのフィールドを持つ。
+   ペアは(<car> . <cdr>)で表記される。
+   リストはcdr部がリストであるようなペアが連続し、 末尾が空のリストを持つ。
+   空のリストは()と表記する。
+   要素1, 2, 3からなるリストをペアの表記で表すと、(1 . (2 . (3 . ())))となる。
+   リストはカッコによる記法を使える。上記リストは(1 2 3)と表記できる。
    
- - (cons <obj1> <obj2>) �V�����y�A�����
+ - (cons <obj1> <obj2>) 新しいペアを作る
    (cons 'a 'b) => (a . b)
    (cons 'a (cons 'b '())) => (a b)
 
- - (pair? <obj>) obj���y�A�Ȃ�^
+ - (pair? <obj>) objがペアなら真
 
- - (list? <obj>) obj�����X�g�Ȃ�^
+ - (list? <obj>) objがリストなら真
    (list? '(1 2 3)) => #t
    (list? '(1 . 2)) => #f
 
- - (null? <obj>) obj���󃊃X�g�Ȃ�^
+ - (null? <obj>) objが空リストなら真
 
- - (car <pair>) �y�A��car����Ԃ�
+ - (car <pair>) ペアのcar部を返す
    (car '(1 2 3)) => 1
 
- - (cdr <pair>) �y�A��cdr����Ԃ�
+ - (cdr <pair>) ペアのcdr部を返す
    (cdr '(1 2 3)) => (2 3)
 
- - (caar <pair>) car��car��Ԃ�
-   ���ɂ�cadr, cdar, cddr, caadr�Ȃǂ�����܂�
+ - (caar <pair>) carのcarを返す
+   他にもcadr, cdar, cddr, caadrなどがあります
 
- - (list <obj1> ...) �������烊�X�g���쐬����
+ - (list <obj1> ...) 引数からリストを作成する
    (list 1 2 3) => (1 2 3)
 
- - (length <list>) ���X�g�̒�����Ԃ�
+ - (length <list>) リストの長さを返す
    (length '(1 2 3)) => 3
 
- - (append <list1> ...) �ŏ��̃��X�g�ɁA���̃��X�g�̗v�f���Ȃ������X�g��Ԃ�
+ - (append <list1> ...) 最初のリストに、他のリストの要素をつなげたリストを返す
    (append '(1 2) '(3 4 5) '(6 7 8)) => (1 2 3 4 5 6 7 8)
 
- - (reverse <list>) ���X�g���t���ɂ����A�V�������X�g��Ԃ�
+ - (reverse <list>) リストを逆順にした、新しいリストを返す
    (reverse '(1 2 3)) => (3 2 1)
 
- - (list-tail <list> <k>) �w�肵���ʒu�ȍ~�̃��X�g��Ԃ�
+ - (list-tail <list> <k>) 指定した位置以降のリストを返す
    (list-tail '(1 2 3 4 5) 2) => (3 4 5)
 
- - (list-ref <list> <k>) �w�肵���ʒu�̗v�f��Ԃ�
+ - (list-ref <list> <k>) 指定した位置の要素を返す
    (list-ref '(a b c) 2) => c
 
- - (set-car! <list> <obj>) �y�A��car����ύX����
+ - (set-car! <list> <obj>) ペアのcar部を変更する
    (define l '(1 2 3))
    (set-car! l 9) => (9 2 3)
 
- - (set-cdr! <list> <obj>) �y�A��cdr����ύX����
+ - (set-cdr! <list> <obj>) ペアのcdr部を変更する
    (define l '(1 2 3))
    (set-cdr! l 9) => (1 . 9)
 
- - (memq <obj> <list>) list��car����obj�ł�����̂�Ԃ�
+ - (memq <obj> <list>) listのcar部がobjであるものを返す
    (memq 'b '(a b c)) => (b c)
-   ���l�̎葱���Ƃ��āAmemv, member������܂��B
-   �������̕]����memq��eq?, memv��eqv?, member��equal?���g���܂��B
+   同様の手続きとして、memv, memberがあります。
+   等価性の評価にmemqはeq?, memvはeqv?, memberはequal?を使います。
 
  - (assq <obj> <alist>)
-   alist�̓y�A����Ȃ郊�X�g�łȂ���΂Ȃ�Ȃ��B
-   assq�́Aalist�̒��̗v�f��car����obj�ł�����̂�Ԃ��܂��B
+   alistはペアからなるリストでなければならない。
+   assqは、alistの中の要素のcar部がobjであるものを返します。
    (assq 'b '((a 1) (b 2) (c 2))) => (b 2)
-   ���l�̎葱���Ƃ��āAassv, assoc������܂��B
-   �������̕]����assq��eq?, assv��eqv?, assoc��equal?���g���܂��B
+   同様の手続きとして、assv, assocがあります。
+   等価性の評価にassqはeq?, assvはeqv?, assocはequal?を使います。
 
 
-8.����
- - �����̕\�L
-   #\<����>�ŁA������\�L���܂��B
+8.文字
+ - 文字の表記
+   #\<文字>で、文字を表記します。
    (define x #\a)
-   (define y #\��)
+   (define y #\あ)
 
-   �܂��A���ʂȕ����̕\�L�Ƃ��āA�ȉ��̕\���������܂��B
-   #\space    �X�y�[�X
-   #\newline  ���s(\n)
-   #\return   ���A(\r)
-   #\tab      �^�u(\t)
+   また、特別な文字の表記として、以下の表現がつかえます。
+   #\space    スペース
+   #\newline  改行(\n)
+   #\return   復帰(\r)
+   #\tab      タブ(\t)
 
- - ������r�p�̏q�� (char<=?, char<?, char=?, char>=?, char>?)
+ - 文字比較用の述語 (char<=?, char<?, char=?, char>=?, char>?)
    (char<=? #\a #\p) => #t
 
-   �ȉ��̏q��́A�啶������������ʂ����ɔ�r�ł��܂��B
+   以下の述語は、大文字小文字を区別せずに比較できます。
    char-ci<=?, char-ci<?, char-ci=?, char-ci>=?, char-ci>?
 
- - (char-downcase <char>) ���������擾����
- - (char-upcase <char>) �啶�����擾����
+ - (char-downcase <char>) 小文字を取得する
+ - (char-upcase <char>) 大文字を取得する
    (char-downcase #\A) => #\a
 
- - (char->integer <char>) �����R�[�h�𓾂�
- - (integer->char <integer>) �����R�[�h���當���𓾂�
+ - (char->integer <char>) 文字コードを得る
+ - (integer->char <integer>) 文字コードから文字を得る
 
- - (char? <obj>) �����Ȃ�^
- - (char-lower-case? <obj>) �������Ȃ�^
- - (char-upper-case? <obj>) �啶���Ȃ�^
- - (char-alphabetic? <obj>) �p��(a-z, A-Z)�Ȃ�^
- - (char-numeric? <obj>) ����(0-9)�Ȃ�^
- - (char-whitespace? <obj>) �󔒂Ȃ�^ (���s�A�^�u���^)
+ - (char? <obj>) 文字なら真
+ - (char-lower-case? <obj>) 小文字なら真
+ - (char-upper-case? <obj>) 大文字なら真
+ - (char-alphabetic? <obj>) 英字(a-z, A-Z)なら真
+ - (char-numeric? <obj>) 数字(0-9)なら真
+ - (char-whitespace? <obj>) 空白なら真 (改行、タブも真)
 
 
-9.������
- - ������̕\�L
-   �������""�ň݂͂܂��B ���������"��\�́A\�ŃG�X�P�[�v���܂��B
-   ���s�A�^�u��\�����߂ɁA\n, \r, \t���g���܂��B
+9.文字列
+ - 文字列の表記
+   文字列は""で囲みます。 文字列内の"や\は、\でエスケープします。
+   改行、タブを表すために、\n, \r, \tが使えます。
    (define str "ABC")
    (define str2 "\\100")
 
- - �������r�p�̏q�� (string<=?, string<?, string=?, string>=?, string>?)
+ - 文字列比較用の述語 (string<=?, string<?, string=?, string>=?, string>?)
    (string<=? "abc" "zzz") => #t
 
-   �ȉ��̏q��́A�啶������������ʂ����ɔ�r�ł��܂��B
+   以下の述語は、大文字小文字を区別せずに比較できます。
    string-ci<=?, string-ci<?, string-ci=?, string-ci>=?, string-ci>?
 
- - (string-length <str>) ������̒�����Ԃ��܂�
-   (string-length "�e�X�g") => 3
+ - (string-length <str>) 文字列の長さを返します
+   (string-length "テスト") => 3
 
- - (string <char1> ...) �����ŗ^����ꂽ�������當��������܂�
+ - (string <char1> ...) 引数で与えられた文字から文字列を作ります
    (string #\a #\b #\c) => "abc"
 
- - (string->number <str>) �����񂩂琔�l�𓾂�
- - (number->string <num>) ���l���當����𓾂�
+ - (string->number <str>) 文字列から数値を得る
+ - (number->string <num>) 数値から文字列を得る
  
- - (string->list <str>) �����񂩂當���̃��X�g�𓾂�
- - (list->string <list>) �����̃��X�g���當����𓾂�
+ - (string->list <str>) 文字列から文字のリストを得る
+ - (list->string <list>) 文字のリストから文字列を得る
 
- - (string? <obj>) ������Ȃ�^
+ - (string? <obj>) 文字列なら真
 
- - (string-append <str1> ...) �������A�����܂�
+ - (string-append <str1> ...) 文字列を連結します
    (string-append "ABC" "Z" "zzz") => "ABCZzzz"
 
- - (string-copy <str>) ��������R�s�[
+ - (string-copy <str>) 文字列をコピー
 
- - (string-ref <str> <k>) �w�肵���ʒu�̕������擾���܂� (0���擪����)
+ - (string-ref <str> <k>) 指定した位置の文字を取得します (0が先頭文字)
    (string-ref "ABCD" 2) => #\C
 
- - (string-set! <str> <k> <char>) �w�肵���ʒu�̕�����ύX���܂�
+ - (string-set! <str> <k> <char>) 指定した位置の文字を変更します
    (define str "ABCD")
    (string-set! str 2 #\Z) => "ABZD"
 
  - (substring <str> <start> <end>) 
-   start�Ŏw�肵���ʒu����end�̒��O�܂ł̕������؂�o���܂��B
-   (start�̕����͌��ʂɊ܂܂�܂��Bend�ʒu�̕����͌��ʂɊ܂܂�܂���)
+   startで指定した位置からendの直前までの文字列を切り出します。
+   (startの文字は結果に含まれます。end位置の文字は結果に含まれません)
    (substring "ABCDE" 1 3) => "BC"
 
- - (make-string <size> <char>) �傫�����w�肵�ĕ�������쐬���܂�
-   (define s (make-string 10 #\a))   "aaaaaaaaaa"���쐬�����
-   <char>�͏ȗ��\�ł��B�ȗ������ꍇ�̓X�y�[�X�ŏ���������܂��B
+ - (make-string <size> <char>) 大きさを指定して文字列を作成します
+   (define s (make-string 10 #\a))   "aaaaaaaaaa"が作成される
+   <char>は省略可能です。省略した場合はスペースで初期化されます。
 
  - (delay <expr>)
  - (force <promise>)
-   �x���]�����������邽�߂Ɏg�p����܂��B
-   delay�́Apromise�ƌĂ΂��I�u�W�F�N�g��Ԃ��܂��B
-   force�́Apromise�ŗ^����ꂽ�I�u�W�F�N�g��]�����܂��B
+   遅延評価を実装するために使用されます。
+   delayは、promiseと呼ばれるオブジェクトを返します。
+   forceは、promiseで与えられたオブジェクトを評価します。
 
    (define p (delay (+ 2 3)))
    (force p) => 5
 
 
-10.�x�N�^
- - �x�N�^�̕\�L
-   �x�N�^��'#(...)�ŕ\�L���܂��B'�͏ȗ��\�ł��B
+10.ベクタ
+ - ベクタの表記
+   ベクタは'#(...)で表記します。'は省略可能です。
    '#(1 2 3) => #(1 2 3)
 
- - (make-vector <size> <obj>) �傫�����w�肵�ăx�N�^���쐬���܂�
+ - (make-vector <size> <obj>) 大きさを指定してベクタを作成します
    (make-vector 10 0) => #(0 0 0 0 0 0 0 0 0 0)
-   <obj>�͏ȗ��\�B�ȗ������ꍇ()�ŏ���������܂��B
+   <obj>は省略可能。省略した場合()で初期化されます。
 
- - (vector <obj1> ...) ��������x�N�^�����܂�
+ - (vector <obj1> ...) 引数からベクタを作ります
    (vector 1 2 3) => #(1 2 3)
 
- - (vector? <obj>) �x�N�^�Ȃ�^
- - (vector-length <vec>) �x�N�^�̑傫����Ԃ��܂�
+ - (vector? <obj>) ベクタなら真
+ - (vector-length <vec>) ベクタの大きさを返します
 
- - (vector-ref <vec> <k>) �w�肵���ʒu�̗v�f�𓾂܂� (�擪��0)
+ - (vector-ref <vec> <k>) 指定した位置の要素を得ます (先頭は0)
    (vector-ref #(4 5 6) 2) => 6
 
- - (vector-set! <vec> <k> <obj>) �w�肵���ʒu�̗v�f�����������܂�
+ - (vector-set! <vec> <k> <obj>) 指定した位置の要素を書き換えます
    (define v #(1 2 3))
-   (vector-set! v 0 9) => (v��#(9 2 3)�ɂȂ�)
+   (vector-set! v 0 9) => (vが#(9 2 3)になる)
 
- - (list->vector <list>) ���X�g����x�N�^���쐬
- - (vector->list <vec>) �x�N�^���烊�X�g���쐬
+ - (list->vector <list>) リストからベクタを作成
+ - (vector->list <vec>) ベクタからリストを作成
 
 
-11.����@�\
- - (procedure? <obj>) obj���葱���Ȃ�^
+11.制御機能
+ - (procedure? <obj>) objが手続きなら真
    (procedure? +) => #t
 
  - (apply <proc> <arg1> ... <args>)
-   proc�͎葱���A�Ō��args�̓��X�g�łȂ���΂Ȃ�Ȃ��B
-   proc��<arg1>...<args>����Ȃ郊�X�g�������ɂ��ČĂяo���܂��B
+   procは手続き、最後のargsはリストでなければならない。
+   procを<arg1>...<args>からなるリストを引数にして呼び出します。
 
  - (eval <expr> <environment>)
-   expr��]�����܂��B
-   (���݂̎����ł́Aenvironment�̎w��͖�������܂�)
+   exprを評価します。
+   (現在の実装では、environmentの指定は無視されます)
 
  - (map <proc> <list1> ...)
-   proc���elist���Ƃ̗v�f���ƂɓK�p���A���̌��ʂ̃��X�g��Ԃ��܂��B
+   procを各listごとの要素ごとに適用し、その結果のリストを返します。
    (map + '(1 2 3) '(4 5 6)) => (5 7 9)
 
  - (for-each <proc> <list1> <list2>)
-   proc���elist���Ƃ̗v�f�ɏ��ԂɓK�p���܂��B
+   procを各listごとの要素に順番に適用します。
 
  - (call-with-current-continuation <proc>)
-   ���݂̌p����E�o�葱���Ƃ��ăp�b�P�[�W�����Aproc�ɓn���B
-   proc��1�����̎葱���łȂ���΂Ȃ�Ȃ��B
-   call-with-current-continuation�́Acall/cc�Ɨ��L�ł���B
+   現在の継続を脱出手続きとしてパッケージ化し、procに渡す。
+   procは1引数の手続きでなければならない。
+   call-with-current-continuationは、call/ccと略記できる。
 
  - (values <obj1> ...)
-   call-with-values��������p���ɁA���������ׂĈ����n���܂��B
+   call-with-valuesが作った継続に、引数をすべて引き渡します。
 
  - (call-with-values <producer> <consumer>)
-   producer�����������ŌĂяo���A���̌��ʂ�consumer�ɓn���Ď��s���܂��B
-   values�Ƒg�ݍ��킹�邱�ƂŁA���l���󂯎�鏈�����L�q�ł��܂��B
+   producerを引数無しで呼び出し、その結果をconsumerに渡して実行します。
+   valuesと組み合わせることで、多値を受け取る処理を記述できます。
 
    (call-with-values (lambda () (values 3 4)) (lambda (x y) (+ x y))) => 7
 
  - (receive <formals> <expr> <body> ...)
-   [SRFI-8] ���l���󂯎�鏈�����L�q�ł��܂��B�ȉ��̎��Ɠ����ł��B
+   [SRFI-8] 多値を受け取る処理を記述できます。以下の式と等価です。
    (call-with-values (lambda () <expr>) (lambda <formals> <body> ...))
-   expr��]�����A�Ԃ��ꂽ�l��formals�̕ϐ��ɑ�������body��]�����܂��B
+   exprを評価し、返された値をformalsの変数に束縛してbodyを評価します。
 
    (receive (x y) (values 3 4) (+ x y)) => 7
 
  - (let-values ((vars expr) ...) body ...)
-   [SRFI-11] ���l��Ԃ����̒l�𑩔����܂��B
+   [SRFI-11] 多値を返す式の値を束縛します。
    (let-values (((a b) (values 1 2))
                 ((c . d) (values 3 4 5)))
      (list a b c d))) => (1 2 3 (4 5))
 
  - (let*-values ((vars expr) ...) body ...)
-   [SRFI-11] let-values�ɗގ����Ă��܂����A�����͍�����E�֏��Ԃɍs���܂��B
-   (let��let*�̊֌W�Ɠ����ł�)
+   [SRFI-11] let-valuesに類似していますが、束縛は左から右へ順番に行われます。
+   (letとlet*の関係と同じです)
 
 
-12.���o��
+12.入出力
  - (call-with-input-file <filename> <proc>)
-   filename�Ŏw�肳�ꂽ�t�@�C������͂Ƃ��āA�葱��proc���Ăяo��
-   (call-with-input-file "zz" read)  �t�@�C��zz�̐擪�̗v�f��ǂ�
+   filenameで指定されたファイルを入力として、手続きprocを呼び出す
+   (call-with-input-file "zz" read)  ファイルzzの先頭の要素を読む
 
  - (call-with-output-file <filename> <proc>)
-   filename�Ŏw�肳�ꂽ�t�@�C�����o�͂Ƃ��āA�葱��proc���Ăяo��
+   filenameで指定されたファイルを出力として、手続きprocを呼び出す
 
- - (input-port? obj) ���̓|�[�g�Ȃ�^
- - (output-port? obj) �o�̓|�[�g�Ȃ�^
- - (current-input-port) ���݂̓��̓|�[�g��Ԃ�
- - (current-output-port) ���݂̏o�̓|�[�g��Ԃ�
+ - (input-port? obj) 入力ポートなら真
+ - (output-port? obj) 出力ポートなら真
+ - (current-input-port) 現在の入力ポートを返す
+ - (current-output-port) 現在の出力ポートを返す
 
  - (open-input-file <filename>)
-   filename�Ŏw�肳�ꂽ�t�@�C���œ��̓|�[�g���쐬���܂��B
-   �t�@�C�������݂��Ȃ���΃G���[�ɂȂ�܂��B
+   filenameで指定されたファイルで入力ポートを作成します。
+   ファイルが存在しなければエラーになります。
 
  - (open-output-file <filename>)
-   filename�Ŏw�肳�ꂽ�t�@�C���ŏo�̓|�[�g���쐬���܂��B
-   �t�@�C�������݂���ꍇ�́A�����̃t�@�C���͔j������܂��B
+   filenameで指定されたファイルで出力ポートを作成します。
+   ファイルが存在する場合は、既存のファイルは破棄されます。
 
- - (close-input-port <port>) ���̓|�[�g����܂��B
- - (close-output-port <port>) �o�̓|�[�g����܂��B
- - (port-closed? <port>) �|�[�g�����Ă�����^�B
+ - (close-input-port <port>) 入力ポートを閉じます。
+ - (close-output-port <port>) 出力ポートを閉じます。
+ - (port-closed? <port>) ポートが閉じていたら真。
 
  - (open-input-string <str>)
-   [SRFI-6] ������p�̓��̓|�[�g���쐬���܂��B
+   [SRFI-6] 文字列用の入力ポートを作成します。
 
  - (open-output-string)
-   [SRFI-6] ������p�̏o�̓|�[�g���쐬���܂��B
-   ������|�[�g�ւ̏o�͓͂����o�b�t�@�ɏ������܂�Ă����܂��B
+   [SRFI-6] 文字列用の出力ポートを作成します。
+   文字列ポートへの出力は内部バッファに書き込まれていきます。
 
  - (get-output-string <port>)
-   [SRFI-6] ������p�̏o�̓|�[�g�ɏ������܂ꂽ��������擾���܂��B
+   [SRFI-6] 文字列用の出力ポートに書き込まれた文字列を取得します。
 
  - (clear-output-string <port>)
-   ������p�̏o�̓|�[�g�̃o�b�t�@���N���A���܂��B
+   文字列用の出力ポートのバッファをクリアします。
 
  - (read <port>)
-   port����Scheme�I�u�W�F�N�g�̕\�L�\����ǂ݂܂��B
+   portからSchemeオブジェクトの表記表現を読みます。
 
  - (read-char <port>)
-   port����ꕶ���ǂ݁Aport�����̕������w���悤�ɍX�V���܂��B
+   portから一文字読み、portを次の文字を指すように更新します。
 
  - (peek-char <port>)
-   port����ꕶ���ǂ݂܂��B
+   portから一文字読みます。
 
-   read�Ȃǂ�port���ȗ������ꍇ�Acurrent-input-port����ǂ݂܂��B
-   �܂��A�t�@�C���̖�����read�����ꍇ�Aend of file�I�u�W�F�N�g���Ԃ���܂��B
+   readなどでportを省略した場合、current-input-portから読みます。
+   また、ファイルの末尾でreadした場合、end of fileオブジェクトが返されます。
 
- - (eof-object? <obj>) obj��end of file�I�u�W�F�N�g�Ȃ�^
+ - (eof-object? <obj>) objがend of fileオブジェクトなら真
 
  - (write <obj> <port>)
-   obj�̕\�L�\����port�ɏo�͂��܂��B
+   objの表記表現をportに出力します。
 
  - (display <obj> <port>)
-   obj�̕\����port�ɏo�͂��܂��B������̓G�X�P�[�v���ꂸ�ɏo�͂���܂��B
+   objの表現をportに出力します。文字列はエスケープされずに出力されます。
 
  - (newline <port>)
-   ���s��port�ɏo�͂��܂��B
+   改行をportに出力します。
 
  - (write-char <char> <port>)
-   ������port�ɏo�͂��܂��B
+   文字をportに出力します。
 
-   write�Ȃǂ�port���ȗ������ꍇ�Acurrent-output-port�ɏo�͂��܂��B
+   writeなどでportを省略した場合、current-output-portに出力します。
 
- - (file-exists? <filename>) �t�@�C�������݂�����^
+ - (file-exists? <filename>) ファイルが存在したら真
 
- - (load <filename>) filename�Ŏw�肳�ꂽ�t�@�C�������s���܂��B
-   filename��"."�܂���"C:\"(C�͔C�ӂ̉p����)�Ŏn�܂��Ă��Ȃ��ꍇ�́A
-   �t�@�C���T�[�`�p�X(�ϐ�*load-path*)����A�t�@�C����T���܂��B
+ - (load <filename>) filenameで指定されたファイルを実行します。
+   filenameが"."または"C:\"(Cは任意の英文字)で始まっていない場合は、
+   ファイルサーチパス(変数*load-path*)から、ファイルを探します。
 
  - (require <string>)
-   �t�@�C���T�[�`�p�X����A<string>.scm�Ƃ����t�@�C����T����load���܂��B
+   ファイルサーチパスから、<string>.scmというファイルを探してloadします。
 
  - (use <feature>)
-   �t�@�C���T�[�`�p�X����A<feature>.scm�Ƃ����t�@�C����T����load���܂��B
-   (require "srfi-11")��(use srfi-11)�͓����ł��B
+   ファイルサーチパスから、<feature>.scmというファイルを探してloadします。
+   (require "srfi-11")と(use srfi-11)は等価です。
    
 
-13.���K�\��
- oedit���Ɠ����APerl5�݊��̐��K�\���G���W���𗘗p�ł��܂��B
- ���K�\���̎d�l��oedit���̃}�j���A�����Q�Ƃ��������B
- �܂��AScheme����API�d�l��Gauche���Q�l�ɂ����Ă��������܂����B
+13.正規表現
+ oedit等と同じ、Perl5互換の正規表現エンジンを利用できます。
+ 正規表現の仕様はoedit等のマニュアルを参照ください。
+ また、Scheme側のAPI仕様はGaucheを参考にさせていただきました。
 
- - �\�L���@
-   #/<regexp>/�Ő��K�\���I�u�W�F�N�g�ɃR���p�C������܂��B
-   #/<regexp>/i�ő啶������������ʂ��܂���B
+ - 表記方法
+   #/<regexp>/で正規表現オブジェクトにコンパイルされます。
+   #/<regexp>/iで大文字小文字を区別しません。
 
- - (regexp? <obj>) obj�����K�\����������^
- - (string->regexp <str>) ������𐳋K�\���I�u�W�F�N�g�ɕϊ�
- - (regexp->string <symbol>) ���K�\���I�u�W�F�N�g�𕶎���ɕϊ�
+ - (regexp? <obj>) objが正規表現だったら真
+ - (string->regexp <str>) 文字列を正規表現オブジェクトに変換
+ - (regexp->string <symbol>) 正規表現オブジェクトを文字列に変換
 
  - (rxmatch <regexp> <string>)
-   string�𐳋K�\���I�u�W�F�N�gregexp�Ō������܂��B
-   ���������ꍇ�́A<regmatch>�I�u�W�F�N�g��Ԃ��܂��B
-   ������Ȃ������ꍇ�́A#f��Ԃ��܂��B
+   stringを正規表現オブジェクトregexpで検索します。
+   見つかった場合は、<regmatch>オブジェクトを返します。
+   見つからなかった場合は、#fを返します。
 
  - (rxmatch-num-matches <regmatch>)
-   regmatch�I�u�W�F�N�g�̎��}�b�`�̐���Ԃ��܂��B
+   regmatchオブジェクトの持つマッチの数を返します。
 
  - (rxmatch-substring <regmatch> <i>)
-   �}�b�`�����������Ԃ��܂��B
-   i���ȗ�����邩0�̏ꍇ�A��v����������S�̂�Ԃ��܂��B
-   i�ɐ��̐������^����ꂽ�ꍇ�́Ai�Ԗڂ̕����������Ԃ��܂��B
+   マッチした文字列を返します。
+   iが省略されるか0の場合、一致した文字列全体を返します。
+   iに正の整数が与えられた場合は、i番目の部分文字列を返します。
 
  - (regexp-replace <regexp> <string> <substitution>)
-   string��regexp�ɍŏ��Ƀ}�b�`����������substitution�Œu�������܂��B
-   substitution��������̏ꍇ�A�w�肵��������Œu�����܂��B
-   �u��������ł́A\1,\2�Ȃǂ��g�p���ăT�u�}�b�`��������Q�Ƃł��܂��B
-   �����񃊃e������\���g���ꍇ�A��̃o�b�N�X���b�V�����K�v�ł��B
-   \1,\2�Ȃǂ̑���ɁA$1,$2�Ȃǂ��g�����Ƃ��ł��܂��B
-   substitution���葱���̏ꍇ�Aregmatch�I�u�W�F�N�g�������Ƃ��Ď葱����
-   ���s���܂��B���̎葱���̌��ʂ�u��������Ƃ��Ďg���܂��B
+   stringでregexpに最初にマッチした部分をsubstitutionで置き換えます。
+   substitutionが文字列の場合、指定した文字列で置換します。
+   置換文字列では、\1,\2などを使用してサブマッチ文字列を参照できます。
+   文字列リテラルに\を使う場合、二つのバックスラッシュが必要です。
+   \1,\2などの代わりに、$1,$2などを使うこともできます。
+   substitutionが手続きの場合、regmatchオブジェクトを引数として手続きを
+   実行します。その手続きの結果を置換文字列として使います。
 
  - (regexp-replace-all <regexp> <string> <substitution>)
-   string��regexp�Ƀ}�b�`�����S�Ă̕�����substitution�Œu�������܂��B
+   stringでregexpにマッチした全ての部分をsubstitutionで置き換えます。
 
    (regexp-replace-all #/(\w+)/ "aaa bbb ccc" ":\\1:") => ":aaa: :bbb: :ccc:"
    (regexp-replace-all #/(\w+)/ "aaa bbb ccc" ":$1:") => ":aaa: :bbb: :ccc:"
@@ -603,109 +603,109 @@ Scheme�}�N�����t�@�����X
          (string-set! s 0 (char-upcase (string-ref s 0)))))) => "Aaa Bbb Ccc"
 
 
-14.�n�b�V���e�[�u��
+14.ハッシュテーブル
  - (make-hash-table <type>)
-   ��̃n�b�V���e�[�u�����쐬���܂��B
-   type�ɂ̓L�[�̔�r�葱��(eq?, eqv?, equal?, string=?)���w�肵�܂��B
-   type���ȗ������ꍇ�́Aeq?�ɂȂ�܂��B
+   空のハッシュテーブルを作成します。
+   typeにはキーの比較手続き(eq?, eqv?, equal?, string=?)を指定します。
+   typeを省略した場合は、eq?になります。
 
    (define h (make-hash-table 'string=?))
 
- - (hash-table? <obj>) obj���n�b�V���e�[�u���Ȃ�^�B
- - (hash-table-type <h>) �n�b�V���e�[�u���̃^�C�v(eq?�Ȃ�)��Ԃ��܂��B
- - (hash-table-num-entries <h>) �n�b�V���e�[�u���̗v�f����Ԃ��܂��B
- - (hash-table-exists? <h> <key>) �n�b�V���e�[�u����key������ΐ^�B
+ - (hash-table? <obj>) objがハッシュテーブルなら真。
+ - (hash-table-type <h>) ハッシュテーブルのタイプ(eq?など)を返します。
+ - (hash-table-num-entries <h>) ハッシュテーブルの要素数を返します。
+ - (hash-table-exists? <h> <key>) ハッシュテーブルにkeyがあれば真。
 
  - (hash-table-get <h> <key> <default>)
-   �n�b�V���e�[�u��h����key��T���āA�l��Ԃ��܂��B
-   ������Ȃ��ꍇ��default��Ԃ��܂��B
-   default���ȗ������ꍇ�A�G���[�ɂȂ�܂��B
+   ハッシュテーブルhからkeyを探して、値を返します。
+   見つからない場合はdefaultを返します。
+   defaultを省略した場合、エラーになります。
 
  - (hash-table-put! <h> <key> <value>)
-   �n�b�V���e�[�u����key, value��}�����܂��B
+   ハッシュテーブルにkey, valueを挿入します。
 
  - (hash-table-delete! <h> <key>)
-   �n�b�V���e�[�u������key�̃G���g�����폜���܂��B
-   �G���g�������݂��Ă��č폜�����ꍇ�͐^��Ԃ��܂��B(���݂��Ȃ��ꍇ�͋U)
+   ハッシュテーブルからkeyのエントリを削除します。
+   エントリが存在していて削除した場合は真を返します。(存在しない場合は偽)
 
  - (hash-table-for-each <h> <proc>)
  - (hash-table-map <h> <proc>)
-   proc��2�̈��������葱�����w�肵�܂��B
-   �n�b�V���e�[�u���̊e�G���g���ɂ��āA�L�[�ƃf�[�^��������proc�����s���܂��B
-   hash-table-for-each��undef��Ԃ��܂��B
-   hash-table-map�͌��ʂ̃��X�g��Ԃ��܂��B
+   procは2つの引数を取る手続きを指定します。
+   ハッシュテーブルの各エントリについて、キーとデータを引数にprocを実行します。
+   hash-table-for-eachはundefを返します。
+   hash-table-mapは結果のリストを返します。
 
 
-15.�I�u�W�F�N�g�V�X�e��
- CLOS���̃I�u�W�F�N�g�V�X�e����񋟂���\��ł��B
- API�d�l��Gauche���Q�l�ɂ����Ă��������܂����B
- �p���A�W�F�l���b�N�t�@���N�V�����Ȃǂ͖������ł��B
- ���݂͍\���̓I�Ȏg���������ł��܂���B
+15.オブジェクトシステム
+ CLOS風のオブジェクトシステムを提供する予定です。
+ API仕様はGaucheを参考にさせていただきました。
+ 継承、ジェネリックファンクションなどは未実装です。
+ 現在は構造体的な使い方しかできません。
 
  - (define-class <class-name> <supers> <slots>)
-   �N���X���`���܂��B
-   supers�ɐe�N���X�̃��X�g���w�肵�܂��B(���݂̎����ł͖�������܂�)
-   slots�ɃX���b�g���X�g���w�肵�܂��B�X���b�g�Ƃ͉������i�[����ꏊ�ł��B
+   クラスを定義します。
+   supersに親クラスのリストを指定します。(現在の実装では無視されます)
+   slotsにスロットリストを指定します。スロットとは何かを格納する場所です。
    (define-class <point> () (x y)) => <point>
 
  - (make <class-name>)
-   �C���X�^���X�𐶐����܂�
+   インスタンスを生成します
    (make <point>) => #<<point> 0x8e49870>
 
  - (slot-ref <obj> <slot_name>)
  - (slot-set! <obj> <slot_name> <value>)
-   �X���b�g�̃f�[�^���Q�ƁA�f�[�^��ݒ�
+   スロットのデータを参照、データを設定
    (define p (make <point>)) => p
    (slot-set! p 'x 10) => #undef
    (slot-ref p 'x) => 10
 
 
-16.����
+16.時間
  - (sys-time)
-   ���݂̎��Ԃ�POSIX����(1970/01/01 00:00:00����̌o�ߕb��)�ŕԂ��܂��B
+   現在の時間をPOSIX時間(1970/01/01 00:00:00からの経過秒数)で返します。
    (sys-time) => 1202285281
 
- - sys-tm�I�u�W�F�N�g
-   �ȉ��̃X���b�g�������܂��B
-   sec  : �b(0 - 59) 
-   min  : �� (0 - 59) 
-   hour : ���� (0�`24) 
-   mday : �� (1�`31) 
-   mon  : �� (0�`11�A1����0) 
-   year : �N (���݂̔N����1900���������l) 
-   wday : �j�� (0�`6�A���j����0) 
-   yday : �N������̒ʎZ���� (0�`365�A1��1����0) 
-   isdst: �Ď��Ԃ̏��(�L���ȏꍇ�͐��̒l�A�����ȏꍇ��0�A�s���ȏꍇ�͕��̒l)
+ - sys-tmオブジェクト
+   以下のスロットを持ちます。
+   sec  : 秒(0 - 59) 
+   min  : 分 (0 - 59) 
+   hour : 時間 (0〜24) 
+   mday : 日 (1〜31) 
+   mon  : 月 (0〜11、1月は0) 
+   year : 年 (現在の年から1900を引いた値) 
+   wday : 曜日 (0〜6、日曜日を0) 
+   yday : 年初からの通算日数 (0〜365、1月1日を0) 
+   isdst: 夏時間の状態(有効な場合は正の値、無効な場合は0、不明な場合は負の値)
 
  - (sys-localtime <time>)
-   POSIX���Ԃ����[�J�����Ԃ�sys-tm�I�u�W�F�N�g�ɕϊ����܂�
+   POSIX時間をローカル時間のsys-tmオブジェクトに変換します
    (sys-localtime (sys-time)) => #<sys-tm 0x84dc588>
 
  - (sys-strftime <format> <sys-tm>)
-   sys-tm���t�H�[�}�b�g�����������Ԃ��܂�
+   sys-tmをフォーマットした文字列を返します
    (sys-strftime "%Y-%m-%d %H:%M:%S" (sys-localtime (sys-time)))
    => "2008-02-06 17:16:42" 
 
 
-17.�t�@�C���̏��
- - sys-stat�I�u�W�F�N�g
-   �ȉ��̃X���b�g�������܂��B
-   size   : �t�@�C���T�C�Y (�o�C�g��)
-   mtime  : �t�@�C���̍X�V���� (1970/01/01 00:00:00����̌o�ߕb��)
-   ctime  : �t�@�C���̍쐬���� (1970/01/01 00:00:00����̌o�ߕb��)
-   atime  : �t�@�C���̎Q�Ǝ��� (1970/01/01 00:00:00����̌o�ߕb��)
+17.ファイルの状態
+ - sys-statオブジェクト
+   以下のスロットを持ちます。
+   size   : ファイルサイズ (バイト数)
+   mtime  : ファイルの更新時刻 (1970/01/01 00:00:00からの経過秒数)
+   ctime  : ファイルの作成時刻 (1970/01/01 00:00:00からの経過秒数)
+   atime  : ファイルの参照時刻 (1970/01/01 00:00:00からの経過秒数)
 
  - (sys-stat <filename>)
-   �t�@�C���̏�Ԃ��擾���܂�
+   ファイルの状態を取得します
    (display (sys-strftime "%Y-%m-%d %H:%M:%S"
      (sys-localtime (slot-ref (sys-stat "C:\\tmp\\aaa.htm") 'mtime))))
    => "2009-08-25 22:01:42" 
 
 
-18.���̑�
+18.その他
  - (win-exec <cmd> <args1> ...)
-   cmd�Ŏw�肵���v���O�������N�����܂�
-   args�Ɉ������w��ł��܂�
+   cmdで指定したプログラムを起動します
+   argsに引数を指定できます
 
  - (win-get-clipboard-text)
-   �N���b�v�{�[�h�̃e�L�X�g���擾���܂�
+   クリップボードのテキストを取得します

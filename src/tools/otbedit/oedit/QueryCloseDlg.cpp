@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // QueryCloseDlg.cpp : �C���v�������e�[�V���� �t�@�C��
+ // QueryCloseDlg.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -20,7 +20,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CQueryCloseDlg �_�C�A���O
+// CQueryCloseDlg ダイアログ
 
 
 CQueryCloseDlg::CQueryCloseDlg(CWnd* pParent /*=NULL*/)
@@ -51,7 +51,7 @@ BEGIN_MESSAGE_MAP(CQueryCloseDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CQueryCloseDlg ���b�Z�[�W �n���h��
+// CQueryCloseDlg メッセージ ハンドラ
 
 void CQueryCloseDlg::OnOK() 
 {
@@ -90,9 +90,9 @@ BOOL CQueryCloseDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	
-	// TODO: ���̈ʒu�ɏ������̕⑫������ǉ����Ă�������
+	// TODO: この位置に初期化の補足処理を追加してください
 	m_icon.SetIcon(LoadIcon(NULL, IDI_EXCLAMATION));
 
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }

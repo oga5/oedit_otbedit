@@ -11,7 +11,7 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// CodeAssistEditCtrl.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// CodeAssistEditCtrl.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "EditCtrl.h"
@@ -21,7 +21,7 @@
 #include "StrToken.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CCodeAssistEditCtrl ƒEƒBƒ“ƒhƒE
+// CCodeAssistEditCtrl ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 
 typedef enum {
 	ASSIST_CODE,
@@ -40,14 +40,14 @@ struct code_assist_st {
 
 class CCodeAssistEditCtrl : public CEditCtrl
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CCodeAssistEditCtrl();
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 public:
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	void SetCodeAssistListMaker(CCodeAssistListMaker *list_maker) { m_list_maker = list_maker; }
 
@@ -72,16 +72,16 @@ public:
 
 	virtual void AssistWndCanceled();
 
-	// CEditCtrl‚Ìoverride 
+	// CEditCtrlã®override 
 	virtual void SetFont(CFont *font);
 
-	// FIXME:virtualŠÖ”‚É‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚©
+	// FIXME:virtualé–¢æ•°ã«ã—ãŸã»ã†ãŒã„ã„ã‹
 	void KeywordCompletion(BOOL reverse);
 	void BackSpace();
 	void DeleteKey();
 	void InsertTab(BOOL del);
 
-	// FIXME:virtualŠÖ”‚É‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚©
+	// FIXME:virtualé–¢æ•°ã«ã—ãŸã»ã†ãŒã„ã„ã‹
 	void LineUp(BOOL extend);
 	void LineDown(BOOL extend);
 	void PageUp(BOOL extend);
@@ -97,19 +97,19 @@ public:
 	void DocumentStart(BOOL extend);
 	void DocumentEnd(BOOL extend);
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CCodeAssistEditCtrl)
 	protected:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~CCodeAssistEditCtrl();
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CCodeAssistEditCtrl)
 	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
@@ -163,6 +163,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_CODEASSISTEDITCTRL_H__6475E16A_9E47_410F_B5DC_BBE80C2800CD__INCLUDED_)

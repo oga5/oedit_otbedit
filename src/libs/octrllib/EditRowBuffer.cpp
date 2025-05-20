@@ -135,10 +135,10 @@ void CEditRowBuffer::make_gap(int row)
 		fill_cnt = m_gap_end - fill_start;
 	}
 
-	// ƒf[ƒ^‚ðˆÚ“®
+	// ãƒ‡ãƒ¼ã‚¿ã‚’ç§»å‹•
 	memmove(m_row_data + move_to, m_row_data + move_start, sizeof(CEditRowData *) * (move_rows));
 
-	// ‹ó‚¢‚½—Ìˆæ‚ðNULL‚Å–„‚ß‚é
+	// ç©ºã„ãŸé ˜åŸŸã‚’NULLã§åŸ‹ã‚ã‚‹
 	memset(m_row_data + fill_start, 0, sizeof(CEditRowData *) * fill_cnt);
 /*
 #ifdef _DEBUG
@@ -208,7 +208,7 @@ int CEditRowBuffer::add_new_rows(CEditRowData **new_rows, int cur_row, int cur_c
 	m_row_cnt += new_row_cnt;
 	m_gap_start += new_row_cnt;
 
-	// ƒJ[ƒ\ƒ‹ˆÊ’u‚æ‚è‰E‚ÌƒeƒLƒXƒg‚ðC––”ö‚É‚Â‚¯‚é
+	// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚ˆã‚Šå³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’ï¼Œæœ«å°¾ã«ã¤ã‘ã‚‹
 	get_edit_row_data(cur_row)->add_chars(cur_col,
 		get_edit_row_data(new_row_pt.y)->get_buffer() + new_row_pt.x,
 		get_edit_row_data(new_row_pt.y)->get_char_cnt() - new_row_pt.x - 1);

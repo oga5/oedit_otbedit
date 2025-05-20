@@ -87,7 +87,7 @@ void *CMemoryPool::alloc(size_t n)
 	return p;
 
 ERR1:
-	MessageBox(NULL, _T("メモリが確保できません"), _T("メッセージ"), MB_ICONINFORMATION | MB_OK);
+	MessageBox(NULL, _T("繝｡繝｢繝ｪ縺檎｢ｺ菫昴〒縺阪∪縺帙ｓ"), _T("繝｡繝�繧ｻ繝ｼ繧ｸ"), MB_ICONINFORMATION | MB_OK);
 	return NULL;
 }
 

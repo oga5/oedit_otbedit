@@ -23,8 +23,8 @@ BEGIN_MESSAGE_MAP(CExpSplitterWnd, CWheelSplitterWnd)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-// ‰¡•ûŒü‚Ì•ªŠ„ƒo[‚Ì•‚ðÝ’è‚·‚é
-// ƒfƒtƒHƒ‹ƒg‚æ‚è¬‚³‚¢‚Ù‚¤‚ªƒJƒbƒRƒCƒC
+// æ¨ªæ–¹å‘ã®åˆ†å‰²ãƒãƒ¼ã®å¹…ã‚’è¨­å®šã™ã‚‹
+// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚ˆã‚Šå°ã•ã„ã»ã†ãŒã‚«ãƒƒã‚³ã‚¤ã‚¤
 #define SPLITTER_CY		5
 
 enum HitTestValue
@@ -76,8 +76,8 @@ int CExpSplitterWnd::HitTestV(CPoint pt) const
 
 	v = CSplitterWnd::HitTest(pt);
 
-	// ‰¡•ûŒü‚Ì•ªŠ„ƒo[‚É‚Í”½‰ž‚µ‚È‚¢‚±‚Æ‚É‚æ‚èA‚‚³‚ÌƒTƒCƒY•ÏX‚ð‚Å‚«‚È‚­‚·‚é
-	// c‰¡“¯Žžƒqƒbƒg‚È‚çAc‚Ìƒo[‚Ì‚Ýƒqƒbƒg‚³‚¹‚é
+	// æ¨ªæ–¹å‘ã®åˆ†å‰²ãƒãƒ¼ã«ã¯åå¿œã—ãªã„ã“ã¨ã«ã‚ˆã‚Šã€é«˜ã•ã®ã‚µã‚¤ã‚ºå¤‰æ›´ã‚’ã§ããªãã™ã‚‹
+	// ç¸¦æ¨ªåŒæ™‚ãƒ’ãƒƒãƒˆãªã‚‰ã€ç¸¦ã®ãƒãƒ¼ã®ã¿ãƒ’ãƒƒãƒˆã•ã›ã‚‹
 	if(v == vSplitterBox || (v >= vSplitterBar1 && v <= vSplitterBar15)) v = noHit;
 	else if (v == bothSplitterBox) v = hSplitterBox;
 	else if (v >= splitterIntersection1 && v <= splitterIntersection225) {
@@ -93,8 +93,8 @@ int CExpSplitterWnd::HitTestH(CPoint pt) const
 
 	v = CSplitterWnd::HitTest(pt);
 
-	// ‰¡•ûŒü‚Ì•ªŠ„ƒo[‚É‚Í”½‰ž‚µ‚È‚¢‚±‚Æ‚É‚æ‚èA‚‚³‚ÌƒTƒCƒY•ÏX‚ð‚Å‚«‚È‚­‚·‚é
-	// c‰¡“¯Žžƒqƒbƒg‚È‚çAc‚Ìƒo[‚Ì‚Ýƒqƒbƒg‚³‚¹‚é
+	// æ¨ªæ–¹å‘ã®åˆ†å‰²ãƒãƒ¼ã«ã¯åå¿œã—ãªã„ã“ã¨ã«ã‚ˆã‚Šã€é«˜ã•ã®ã‚µã‚¤ã‚ºå¤‰æ›´ã‚’ã§ããªãã™ã‚‹
+	// ç¸¦æ¨ªåŒæ™‚ãƒ’ãƒƒãƒˆãªã‚‰ã€ç¸¦ã®ãƒãƒ¼ã®ã¿ãƒ’ãƒƒãƒˆã•ã›ã‚‹
 	if(v == hSplitterBox || (v >= hSplitterBar1 && v <= hSplitterBar15)) v = noHit;
 	else if (v == bothSplitterBox) v = vSplitterBox;
 	else if (v >= splitterIntersection1 && v <= splitterIntersection225) {
@@ -109,7 +109,7 @@ void CExpSplitterWnd::OnLButtonDown(UINT /*nFlags*/, CPoint pt)
 	if (m_bTracking)
 		return;
 
-	// “ÆŽ©‚ÌHitTest()‚ðŒÄ‚Ô
+	// ç‹¬è‡ªã®HitTest()ã‚’å‘¼ã¶
 	StartTracking(HitTest(pt));
 }
 
@@ -120,12 +120,12 @@ void CExpSplitterWnd::OnMouseMove(UINT /*nFlags*/, CPoint pt)
 
 	if (m_bTracking)
 	{
-		// ƒTƒCƒY•ÏX’†‚ÍƒfƒtƒHƒ‹ƒg‚Ì“®ì
+		// ã‚µã‚¤ã‚ºå¤‰æ›´ä¸­ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å‹•ä½œ
 		CSplitterWnd::OnMouseMove(0, pt);
 	}
 	else
 	{
-		// •’Ê‚Éƒ}ƒEƒX‚ð“®‚©‚µ‚Ä‚¢‚é‚Æ‚«‚ÍA“ÆŽ©‚ÌHitTest()‚ðŒÄ‚Ô
+		// æ™®é€šã«ãƒžã‚¦ã‚¹ã‚’å‹•ã‹ã—ã¦ã„ã‚‹ã¨ãã¯ã€ç‹¬è‡ªã®HitTest()ã‚’å‘¼ã¶
 		int ht = HitTest(pt);
 		SetSplitCursor(ht);
 	}

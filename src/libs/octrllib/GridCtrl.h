@@ -8,7 +8,7 @@
 #if !defined(AFX_GRIDCTRL_H__D78AAD60_6D2E_11D4_B06E_00E018A83B1B__INCLUDED_)
 #define AFX_GRIDCTRL_H__D78AAD60_6D2E_11D4_B06E_00E018A83B1B__INCLUDED_
 
-// GridCtrl.h : ÉwÉbÉ_Å[ ÉtÉ@ÉCÉã
+// GridCtrl.h : „Éò„ÉÉ„ÉÄ„Éº „Éï„Ç°„Ç§„É´
 //
 #include "GridData.h"
 #include "ScrollWnd.h"
@@ -19,7 +19,7 @@
 #define GRID_CTRL_MAX_CELL_DATA_LEN		256
 
 /////////////////////////////////////////////////////////////////////////////
-// CGridCtrl ÉEÉBÉìÉhÉE
+// CGridCtrl „Ç¶„Ç£„É≥„Éâ„Ç¶
 
 #define GRS_COL_HEADER			(0x0001 << 0)
 #define GRS_ROW_HEADER			(0x0001 << 1)
@@ -48,20 +48,20 @@
 #define GRS_DONT_CHANGE_TOPLEFT_CELL_COLOR	(0x0001 << 24)
 #define GRS_ALLOW_F2_ENTER_EDIT (0x0001 << 25)
 
-#define GR_COPY_FORMAT_CSV			1	// CSVå`éÆ
-#define GR_COPY_FORMAT_TAB			2	// TABãÊêÿÇË
-#define GR_COPY_FORMAT_CSV_CNAME	3	// CSVå`éÆ(ÉJÉâÉÄñºïtÇ´)
-#define GR_COPY_FORMAT_TAB_CNAME	4	// TABãÊêÿÇË(ÉJÉâÉÄñºïtÇ´)
-#define GR_COPY_FORMAT_FIX_LEN		5	// å≈íËí∑(ÉJÉâÉÄñºïtÇ´)
-#define GR_COPY_FORMAT_FIX_LEN_CNAME	6	// å≈íËí∑(ÉJÉâÉÄñºïtÇ´)
-#define GR_COPY_FORMAT_COLUMN_NAME	7	// ÉJÉâÉÄñº
-#define GR_COPY_FORMAT_SQL			8	// SQLÇÃinsertï∂óp
-#define GR_COPY_FORMAT_WHERE_CLAUSE 9	// SQLÇÃwhereãÂóp
-#define GR_COPY_FORMAT_IN_CLAUSE 10		// SQLÇÃinãÂóp
+#define GR_COPY_FORMAT_CSV			1	// CSVÂΩ¢Âºè
+#define GR_COPY_FORMAT_TAB			2	// TABÂå∫Âàá„Çä
+#define GR_COPY_FORMAT_CSV_CNAME	3	// CSVÂΩ¢Âºè(„Ç´„É©„É†Âêç‰ªò„Åç)
+#define GR_COPY_FORMAT_TAB_CNAME	4	// TABÂå∫Âàá„Çä(„Ç´„É©„É†Âêç‰ªò„Åç)
+#define GR_COPY_FORMAT_FIX_LEN		5	// Âõ∫ÂÆöÈï∑(„Ç´„É©„É†Âêç‰ªò„Åç)
+#define GR_COPY_FORMAT_FIX_LEN_CNAME	6	// Âõ∫ÂÆöÈï∑(„Ç´„É©„É†Âêç‰ªò„Åç)
+#define GR_COPY_FORMAT_COLUMN_NAME	7	// „Ç´„É©„É†Âêç
+#define GR_COPY_FORMAT_SQL			8	// SQL„ÅÆinsertÊñáÁî®
+#define GR_COPY_FORMAT_WHERE_CLAUSE 9	// SQL„ÅÆwhereÂè•Áî®
+#define GR_COPY_FORMAT_IN_CLAUSE 10		// SQL„ÅÆinÂè•Áî®
 
 #define GR_COPY_OPTION_QUOTED_NAME (0x0001 << 0)
 #define GR_COPY_OPTION_CONVERT_CRLF (0x0001 << 1)
-#define GR_COPY_OPTION_USE_NULL (0x0001 << 2)		// GR_COPY_FORMAT_SQLÇÃÇ∆Ç´ÅAÉfÅ[É^Ç™NULLÇÃèÍçáÅA''Ç≈ÇÕÇ»Ç≠NULLÇèoóÕ
+#define GR_COPY_OPTION_USE_NULL (0x0001 << 2)		// GR_COPY_FORMAT_SQL„ÅÆ„Å®„Åç„ÄÅ„Éá„Éº„Çø„ÅåNULL„ÅÆÂ†¥Âêà„ÄÅ''„Åß„ÅØ„Å™„ÅèNULL„ÇíÂá∫Âäõ
 
 #define GRIDCTRL_CLASSNAME	_T("OGAWA_GridCtrl")
 
@@ -366,7 +366,7 @@ protected:
 	int		m_num_width;
 	int		m_show_row;
 
-	// ÉJÉâÉÄïùÇÃÉhÉâÉbÉOïœçXóp
+	// „Ç´„É©„É†ÂπÖ„ÅÆ„Éâ„É©„ÉÉ„Ç∞Â§âÊõ¥Áî®
 	struct {
 		int drag_flg;
 		int col;
@@ -388,8 +388,8 @@ protected:
 	int		m_cell_padding_left;
 	int		m_cell_padding_right;
 
-// ÉIÅ[ÉoÅ[ÉâÉCÉh
-	// ClassWizard ÇÕâºëzä÷êîÇê∂ê¨ÇµÉIÅ[ÉoÅ[ÉâÉCÉhÇµÇ‹Ç∑ÅB
+// „Ç™„Éº„Éê„Éº„É©„Ç§„Éâ
+	// ClassWizard „ÅØ‰ªÆÊÉ≥Èñ¢Êï∞„ÇíÁîüÊàê„Åó„Ç™„Éº„Éê„Éº„É©„Ç§„Éâ„Åó„Åæ„Åô„ÄÇ
 	//{{AFX_VIRTUAL(CGridCtrl)
 	public:
 	virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
@@ -397,7 +397,7 @@ protected:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL
 
-	// ê∂ê¨Ç≥ÇÍÇΩÉÅÉbÉZÅ[ÉW É}ÉbÉvä÷êî
+	// ÁîüÊàê„Åï„Çå„Åü„É°„ÉÉ„Çª„Éº„Ç∏ „Éû„ÉÉ„ÉóÈñ¢Êï∞
 protected:
 	//{{AFX_MSG(CGridCtrl)
 	afx_msg void OnPaint();

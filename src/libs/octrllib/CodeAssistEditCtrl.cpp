@@ -5,7 +5,7 @@
  * This software is licensed under the BSD License.
  * See the LICENSE_BSD file for details.
  */
- // CodeAssistEditCtrl.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // CodeAssistEditCtrl.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -25,7 +25,7 @@ struct win_user_data {
 	LONG_PTR				old_user_data;
 };
 
-// ƒƒCƒ“ƒEƒBƒ“ƒhƒE‚ÌCƒTƒuƒNƒ‰ƒXŒã‚ÌƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ
+// ãƒ¡ã‚¤ãƒ³ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ï¼Œã‚µãƒ–ã‚¯ãƒ©ã‚¹å¾Œã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 static LRESULT CALLBACK MainWnd_SubclassWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	struct win_user_data *user_data = (struct win_user_data *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
@@ -35,14 +35,14 @@ static LRESULT CALLBACK MainWnd_SubclassWndProc(HWND hwnd, UINT message, WPARAM 
 	switch(message) {
 	case WM_NCACTIVATE:
 		if((BOOL)wParam == FALSE) {
-			// ƒR[ƒhƒAƒVƒXƒgƒEƒBƒ“ƒhƒE‚Ì•\¦’†‚ÍCƒEƒBƒ“ƒhƒEƒ^ƒCƒgƒ‹‚ğ”ñƒAƒNƒeƒBƒu‚É‚µ‚È‚¢
+			// ã‚³ãƒ¼ãƒ‰ã‚¢ã‚·ã‚¹ãƒˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¡¨ç¤ºä¸­ã¯ï¼Œã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒˆãƒ«ã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ã—ãªã„
 			return TRUE;
 		}
 		break;
-	case WM_NCLBUTTONDOWN:	// ”ñƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ(ƒ^ƒCƒgƒ‹ƒo[Cƒƒjƒ…[‚È‚Ç)‚ğƒNƒŠƒbƒN
+	case WM_NCLBUTTONDOWN:	// éã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸ(ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ï¼Œãƒ¡ãƒ‹ãƒ¥ãƒ¼ãªã©)ã‚’ã‚¯ãƒªãƒƒã‚¯
 		user_data->wnd->AssistWndCanceled();
 		break;
-	case WM_PARENTNOTIFY:	// ƒc[ƒ‹ƒo[ã‚ÅƒNƒŠƒbƒN
+	case WM_PARENTNOTIFY:	// ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ä¸Šã§ã‚¯ãƒªãƒƒã‚¯
 		if(wParam == WM_LBUTTONDOWN) {
 			user_data->wnd->AssistWndCanceled();
 		}
@@ -57,13 +57,13 @@ void CCodeAssistEditCtrl::SubclassMainWndOn()
 	HWND hwnd = AfxGetMainWnd()->GetSafeHwnd();
 
 	//
-	// FIXME: m_subclass_ref_cnt‚ÍEditCtrl‚²‚Æ‚É•Û‚µ‚Ä‚¢‚é‚½‚ßAMainWnd‚É‘Î‚µ‚Ä
-	// •¡”‰ñ”Subclass‚µ‚Ä‚µ‚Ü‚¤‰Â”\«‚ª‚ ‚é
-	// •¡”Subclass‰»‚·‚é‚ÆAuser_data->wnd_proc‚ªMainWnd_SubclassWndProc‚ğİ’è‚µ‚Ä
-	// ‚µ‚Ü‚¤‚½‚ßA–³ŒÀƒ‹[ƒv‚É‚È‚è—‚¿‚é
+	// FIXME: m_subclass_ref_cntã¯EditCtrlã”ã¨ã«ä¿æŒã—ã¦ã„ã‚‹ãŸã‚ã€MainWndã«å¯¾ã—ã¦
+	// è¤‡æ•°å›æ•°Subclassã—ã¦ã—ã¾ã†å¯èƒ½æ€§ãŒã‚ã‚‹
+	// è¤‡æ•°SubclassåŒ–ã™ã‚‹ã¨ã€user_data->wnd_procãŒMainWnd_SubclassWndProcã‚’è¨­å®šã—ã¦
+	// ã—ã¾ã†ãŸã‚ã€ç„¡é™ãƒ«ãƒ¼ãƒ—ã«ãªã‚Šè½ã¡ã‚‹
 	//
-	// (1)exists( ‚È‚Ç‚Åƒc[ƒ‹ƒ`ƒbƒv‚ğ•\¦’†‚ÉACtrl+N‚ÅVƒEƒBƒ“ƒhƒE‚ğì¬
-	// (2)VƒEƒBƒ“ƒhƒE‚ÅAƒR[ƒh•âŠ®‚ÌƒEƒBƒ“ƒhƒE‚ğ•\¦‚·‚é‚Æ‚±‚ë‚ÅƒGƒ‰[‚É‚È‚é
+	// (1)exists( ãªã©ã§ãƒ„ãƒ¼ãƒ«ãƒãƒƒãƒ—ã‚’è¡¨ç¤ºä¸­ã«ã€Ctrl+Nã§æ–°ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ä½œæˆ
+	// (2)æ–°ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ã€ã‚³ãƒ¼ãƒ‰è£œå®Œã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’è¡¨ç¤ºã™ã‚‹ã¨ã“ã‚ã§ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹
 	//
 
 	if(m_subclass_ref_cnt == 0) {
@@ -80,10 +80,10 @@ void CCodeAssistEditCtrl::SubclassMainWndOn()
 		user_data->old_user_data = GetWindowLongPtr(hwnd, GWLP_USERDATA);
 		user_data->wnd_proc = (WNDPROC)GetWindowLongPtr(hwnd, GWLP_WNDPROC);
 
-		// ƒTƒuƒNƒ‰ƒX‰»
-		// ŒÃ‚¢ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğ•Û‘¶‚·‚é
+		// ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–
+		// å¤ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’ä¿å­˜ã™ã‚‹
 		::SetWindowLongPtr (hwnd, GWLP_USERDATA, (LONG_PTR)user_data);
-		// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+		// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 		::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)MainWnd_SubclassWndProc);
 	}
 
@@ -99,7 +99,7 @@ void CCodeAssistEditCtrl::SubclassMainWndOff()
 		struct win_user_data *user_data = (struct win_user_data *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
 		if(user_data == NULL) return;
 
-		// ƒTƒuƒNƒ‰ƒX‚ğŒ³‚É–ß‚·
+		// ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã‚’å…ƒã«æˆ»ã™
 		::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)user_data->wnd_proc);
 		::SetWindowLongPtr (hwnd, GWLP_USERDATA, user_data->old_user_data);
 
@@ -141,7 +141,7 @@ END_MESSAGE_MAP()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CCodeAssistEditCtrl ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CCodeAssistEditCtrl ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 BOOL CCodeAssistEditCtrl::CommitKey(UINT nChar) 
 {
 	if(m_code_wnd.GetAssistMode() == AssistCommit) {
@@ -167,10 +167,10 @@ void CCodeAssistEditCtrl::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 			CString word = GetWord();
 			word += (TCHAR)nChar;
 
-			// word + “ü—Í‚µ‚½ƒL[‚ÅAˆê’v‚·‚éŒó•â‚ª‚ ‚é‚©’²‚×‚é
-			// incremental search‚Ì‚Æ‚«A•\¦’†‚ÌŒó•â‚ğ‰ó‚³‚È‚¢‚æ‚¤‚É‚·‚é
+			// word + å…¥åŠ›ã—ãŸã‚­ãƒ¼ã§ã€ä¸€è‡´ã™ã‚‹å€™è£œãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹
+			// incremental searchã®ã¨ãã€è¡¨ç¤ºä¸­ã®å€™è£œã‚’å£Šã•ãªã„ã‚ˆã†ã«ã™ã‚‹
 			if(m_code_wnd.GetMatchData(word, NULL, TRUE)) {
-				// Œó•â‚ª‚ ‚éê‡AÄŒŸõ
+				// å€™è£œãŒã‚ã‚‹å ´åˆã€å†æ¤œç´¢
 				m_code_wnd.GetMatchData(word, NULL, FALSE);
 			} else {
 				if(CommitKey(nChar)) return;
@@ -261,9 +261,9 @@ void CCodeAssistEditCtrl::SetCodeAssistWindowPos()
 void CCodeAssistEditCtrl::AssistWindowOn(ASSIST_MODE mode)
 {
 	if(mode == ASSIST_KEYWORD && m_assist.assist_data.Get_RowCnt() == 1) {
-		// ‘I‘ğŒó•â‚ğƒeƒLƒXƒg‚Ì“ü—Í‚É‚æ‚Á‚Ä“®“I‚Éi‚è‚Şİ’è‚Ì‚Æ‚«A
-		// ƒR[ƒh•âŠ®‚ª³‚µ‚­“®ì‚·‚é‚æ‚¤‚É‚·‚é
-		// GridData‚ğØ‚è‘Ö‚¦‚È‚¢‚ÆAi‚İ‘O‚ÌŒó•â‚Ìæ“ª‚ª‘I‘ğ‚³‚ê‚Ä‚µ‚Ü‚¤
+		// é¸æŠå€™è£œã‚’ãƒ†ã‚­ã‚¹ãƒˆã®å…¥åŠ›ã«ã‚ˆã£ã¦å‹•çš„ã«çµã‚Šè¾¼ã‚€è¨­å®šã®ã¨ãã€
+		// ã‚³ãƒ¼ãƒ‰è£œå®ŒãŒæ­£ã—ãå‹•ä½œã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
+		// GridDataã‚’åˆ‡ã‚Šæ›¿ãˆãªã„ã¨ã€çµè¾¼ã¿å‰ã®å€™è£œã®å…ˆé ­ãŒé¸æŠã•ã‚Œã¦ã—ã¾ã†
 		m_code_wnd.SetIncrSearch(FALSE);
 		m_code_wnd.SetGridData(&m_assist.assist_data);
 		PasteAssistDataMain(0);
@@ -286,7 +286,7 @@ void CCodeAssistEditCtrl::AssistWindowOn(ASSIST_MODE mode)
 	SetCodeAssistWindowPos();
 	m_code_wnd.ShowWindow(SW_SHOWNA);
 
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	SubclassMainWndOn();
 
 	m_assist.assist_on = TRUE;
@@ -343,7 +343,7 @@ void CCodeAssistEditCtrl::CodeAssistOff()
 
 	m_code_wnd.ShowWindow(SW_HIDE);
 
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	SubclassMainWndOff();
 
 	m_assist.assist_on = FALSE;
@@ -393,12 +393,12 @@ void CCodeAssistEditCtrl::KeywordAssist(BOOL reverse)
 	}
 
 	POINT	pt1, pt2;
-	// ’PŒê‚Ì––”öˆÊ’u‚ğæ“¾
+	// å˜èªã®æœ«å°¾ä½ç½®ã‚’å–å¾—
 	pt2.y = m_edit_data->get_cur_row();
 	pt2.x = m_edit_data->get_cur_col();
 	if(pt2.x == 0) return;
 
-	// ’PŒê‚Ìæ“ªˆÊ’u‚ğæ“¾
+	// å˜èªã®å…ˆé ­ä½ç½®ã‚’å–å¾—
 	m_edit_data->move_break_char(-1);
 	pt1.y = m_edit_data->get_cur_row();
 	pt1.x = m_edit_data->get_cur_col();
@@ -466,7 +466,7 @@ BOOL CCodeAssistEditCtrl::PasteAssistDataMain(int row)
 	if(m_assist.start_pos.x != m_edit_data->get_cur_col()) {
 		ASSERT(m_assist.end_pos.x <= m_edit_data->get_row_len(m_assist.end_pos.y));
 		
-		// ReleaseŠÂ‹«‚ÅCend_pos.x‚ÌŒvZƒ~ƒX‚©‚ç•ÛŒì‚·‚é
+		// Releaseç’°å¢ƒã§ï¼Œend_pos.xã®è¨ˆç®—ãƒŸã‚¹ã‹ã‚‰ä¿è­·ã™ã‚‹
 		if(m_assist.end_pos.x > m_edit_data->get_row_len(m_assist.end_pos.y)) {
 			m_assist.end_pos.x = m_edit_data->get_row_len(m_assist.end_pos.y);
 		}
@@ -504,7 +504,7 @@ LRESULT CCodeAssistEditCtrl::WindowProc(UINT message, WPARAM wParam, LPARAM lPar
 	case CAW_WM_ACTIVATEAPP:
 		if(IsCodeAssistOn()) {
 			CodeAssistOff();
-			// ƒEƒBƒ“ƒhƒEƒ^ƒCƒgƒ‹‚ğ•`‰æ
+			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒˆãƒ«ã‚’æç”»
 			if(AfxGetMainWnd() != NULL && (BOOL)wParam == FALSE) {
 				AfxGetMainWnd()->PostMessage(WM_NCACTIVATE, 0, 0);
 			}
@@ -516,8 +516,8 @@ LRESULT CCodeAssistEditCtrl::WindowProc(UINT message, WPARAM wParam, LPARAM lPar
 
 	switch(message) {
 	case WM_IME_CHAR:
-		// ‘I‘ğŒó•â‚ğ•\¦’†‚ÉMulti byte•¶š‚ª“ü—Í‚³‚ê‚½‚Æ‚«AƒL[ƒ[ƒh‚ğ‘I‘ğ‚·‚é
-		// OnChar‚ªŒÄ‚Î‚ê‚È‚¢‚Ì‚Å‚±‚±‚Åˆ—‚·‚é
+		// é¸æŠå€™è£œã‚’è¡¨ç¤ºä¸­ã«Multi byteæ–‡å­—ãŒå…¥åŠ›ã•ã‚ŒãŸã¨ãã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’é¸æŠã™ã‚‹
+		// OnCharãŒå‘¼ã°ã‚Œãªã„ã®ã§ã“ã“ã§å‡¦ç†ã™ã‚‹
 		if(IsCodeAssistOn()) {
 			m_code_wnd.SelectData(GetWord());
 		}

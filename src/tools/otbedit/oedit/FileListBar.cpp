@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// FileListBar.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// FileListBar.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -45,14 +45,14 @@ BEGIN_MESSAGE_MAP(CFileListBar, CSizingControlBarG)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CFileListBar ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CFileListBar ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 int CFileListBar::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
 	if (CSizingControlBar::OnCreate(lpCreateStruct) == -1)
 		return -1;
 	
-	// TODO: ‚±‚ÌˆÊ’u‚ÉŒÅ—L‚Ìì¬—pƒR[ƒh‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«å›ºæœ‰ã®ä½œæˆç”¨ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	CRect rect(0, 0, lpCreateStruct->cx, lpCreateStruct->cy);
 
 	m_tree_ctrl.Create(WS_CHILD | 
@@ -68,7 +68,7 @@ void CFileListBar::OnSize(UINT nType, int cx, int cy)
 {
 	CSizingControlBar::OnSize(nType, cx, cy);
 	
-	// TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	m_tree_ctrl.SetWindowPos(&wndBottom, 0, 0, cx, cy, SWP_NOACTIVATE);
 }
 
@@ -95,7 +95,7 @@ void CFileListBar::Init()
 
 BOOL CFileListBar::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult) 
 {
-	// TODO: ‚±‚ÌˆÊ’u‚ÉŒÅ—L‚Ìˆ—‚ğ’Ç‰Á‚·‚é‚©A‚Ü‚½‚ÍŠî–{ƒNƒ‰ƒX‚ğŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«å›ºæœ‰ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹ã‹ã€ã¾ãŸã¯åŸºæœ¬ã‚¯ãƒ©ã‚¹ã‚’å‘¼ã³å‡ºã—ã¦ãã ã•ã„
 	switch(wParam) {
 	case TREE_CTRL_ID:
 		NMHDR *p_nmhdr = (NMHDR *)lParam;
@@ -151,14 +151,14 @@ int file_list_bar_init(CFileListBar *file_list_bar, LPCTSTR filter)
 
 void CFileListBar::OnPaint() 
 {
-	CPaintDC dc(this); // •`‰æ—p‚ÌƒfƒoƒCƒX ƒRƒ“ƒeƒLƒXƒg
+	CPaintDC dc(this); // æç”»ç”¨ã®ãƒ‡ãƒã‚¤ã‚¹ ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 	
-	// TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	if(m_b_init == FALSE) {
 		dc.TextOut(2, 2, "initializing ...");
 	}
 	
-	// •`‰æ—pƒƒbƒZ[ƒW‚Æ‚µ‚Ä CSizingControlBar::OnPaint() ‚ğŒÄ‚Ño‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ
+	// æç”»ç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã—ã¦ CSizingControlBar::OnPaint() ã‚’å‘¼ã³å‡ºã—ã¦ã¯ã„ã‘ã¾ã›ã‚“
 }
 
 void CFileListBar::WaitForInitializeThread()

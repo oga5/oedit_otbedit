@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // ExtFileDialog.cpp : �C���v�������e�[�V���� �t�@�C��
+ // ExtFileDialog.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -57,8 +57,8 @@ BOOL CExtFileDialog::OnInitDialog()
 
 	SetControlPos();
 
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 BOOL CExtFileDialog::OnFileNameOK()
@@ -84,14 +84,14 @@ BOOL CExtFileDialog::OnFileNameOK()
 #include <DLGS.H>
 void CExtFileDialog::SetControlPos()
 {
-	// �_�C�A���O�̕��𒲐߂���
+	// ダイアログの幅を調節する
 	CRect cur_rect;
 	CRect parent_rect;
 	GetClientRect(cur_rect);
 	GetParent()->GetClientRect(parent_rect);
 	SetWindowPos(NULL, 0, 0, parent_rect.Width(), cur_rect.Height(), SWP_NOMOVE | SWP_NOZORDER);
 
-	// �e�L�X�g�̈ʒu�𒲐�
+	// テキストの位置を調節
 	CWnd *p_stc1 = GetParent()->GetDlgItem(stc2);
 	if(p_stc1 != NULL) {
 		CRect rect1;
@@ -114,7 +114,7 @@ void CExtFileDialog::SetControlPos()
 		}
 	}
 
-	// �R���{�{�b�N�X�̈ʒu�𒲐�
+	// コンボボックスの位置を調節
 	CWnd *p_cmb1 = GetParent()->GetDlgItem(cmb1);
 	if(p_cmb1 != NULL) {
 		CRect rect1;

@@ -94,7 +94,7 @@ TCHAR* my_mbsstr(const TCHAR* string1, const TCHAR* string2)
 
 	const TCHAR* p = string1;
 	for (; *p; p += get_char_len(p)) {
-		// ƒ}ƒ‹ƒ`ƒoƒCƒg‹«ŠE‚ğl—¶‚µ‚Ä”äŠr
+		// ãƒãƒ«ãƒãƒã‚¤ãƒˆå¢ƒç•Œã‚’è€ƒæ…®ã—ã¦æ¯”è¼ƒ
 		if (_tcsncmp(p, string2, len2) == 0) {
 			return (TCHAR*)p;
 		}

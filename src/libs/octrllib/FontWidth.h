@@ -10,7 +10,7 @@
 
 #include "get_char.h"
 
-// Uniscribe‚ÌƒeƒXƒg
+// Uniscribeã®ãƒ†ã‚¹ãƒˆ
 //#define USE_UNISCRIBE	1
 
 

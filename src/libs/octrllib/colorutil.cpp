@@ -40,9 +40,9 @@ void RGBtoHSV(COLORREF color, HSV *hsv)
 COLORREF HSVtoRGB(const HSV *hsv)
 {
 	double r, g, b;
-	double num1 = (hsv->v * (0xff - hsv->s) / 0xff); // �ŏ��l
-	double num2 = (hsv->v * (1 - hsv->s / 0xff * ((int)hsv->h % 60) / 60)); // 2�Ԗڂ̐F(���̕����̏ꍇ)
-	double num3 = (hsv->v * (1 - hsv->s / 0xff * ((double)1 - ((int)hsv->h % 60) / 60))); // 2�Ԗڂ̐F(���̕����̏ꍇ)
+	double num1 = (hsv->v * (0xff - hsv->s) / 0xff); // 最小値
+	double num2 = (hsv->v * (1 - hsv->s / 0xff * ((int)hsv->h % 60) / 60)); // 2番目の色(正の方向の場合)
+	double num3 = (hsv->v * (1 - hsv->s / 0xff * ((double)1 - ((int)hsv->h % 60) / 60))); // 2番目の色(負の方向の場合)
 
 	switch((int)(hsv->h / 60)) {
 	case 0:

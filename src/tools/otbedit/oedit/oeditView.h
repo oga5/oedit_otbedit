@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// oeditView.h : COeditView ƒNƒ‰ƒX‚ÌéŒ¾‚¨‚æ‚ÑƒCƒ“ƒ^[ƒtƒFƒCƒX‚Ì’è‹`‚ğ‚µ‚Ü‚·B
+// oeditView.h : COeditView ã‚¯ãƒ©ã‚¹ã®å®£è¨€ãŠã‚ˆã³ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã®å®šç¾©ã‚’ã—ã¾ã™ã€‚
 //
 /////////////////////////////////////////////////////////////////////////////
 
@@ -33,25 +33,25 @@
 
 class COeditView : public CView
 {
-protected: // ƒVƒŠƒAƒ‰ƒCƒY‹@”\‚Ì‚İ‚©‚çì¬‚µ‚Ü‚·B
+protected: // ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºæ©Ÿèƒ½ã®ã¿ã‹ã‚‰ä½œæˆã—ã¾ã™ã€‚
 	COeditView();
 	DECLARE_DYNCREATE(COeditView)
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 public:
 	COeditDoc* GetDocument();
 	CEditCtrl* GetEditCtrl() { return GetDocument()->GetEditCtrl(); }
 
 	void SetSearchText(const TCHAR *search_text, BOOL distinct_lwr_upr, BOOL distinct_width_ascii);
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(COeditView)
 	public:
-	virtual void OnDraw(CDC* pDC);  // ‚±‚Ìƒrƒ…[‚ğ•`‰æ‚·‚éÛ‚ÉƒI[ƒo[ƒ‰ƒCƒh‚³‚ê‚Ü‚·B
+	virtual void OnDraw(CDC* pDC);  // ã“ã®ãƒ“ãƒ¥ãƒ¼ã‚’æç”»ã™ã‚‹éš›ã«ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã•ã‚Œã¾ã™ã€‚
 	virtual DROPEFFECT OnDragEnter(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point);
 	virtual void OnDragLeave();
 	virtual DROPEFFECT OnDragOver(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point);
@@ -62,7 +62,7 @@ public:
 	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~COeditView();
 #ifdef _DEBUG
@@ -72,7 +72,7 @@ public:
 
 protected:
 
-// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(COeditView)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -311,7 +311,7 @@ private:
 	void CloseTab(int tab_idx);
 };
 
-#ifndef _DEBUG  // oeditView.cpp ƒtƒ@ƒCƒ‹‚ªƒfƒoƒbƒOŠÂ‹«‚Ìg—p‚³‚ê‚Ü‚·B
+#ifndef _DEBUG  // oeditView.cpp ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ãƒãƒƒã‚°ç’°å¢ƒã®æ™‚ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚
 inline COeditDoc* COeditView::GetDocument()
    { return (COeditDoc*)m_pDocument; }
 #endif
@@ -319,6 +319,6 @@ inline COeditDoc* COeditView::GetDocument()
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_OEDITVIEW_H__52A23F4D_4E07_11D5_8505_00E018A83B1B__INCLUDED_)

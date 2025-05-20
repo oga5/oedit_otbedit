@@ -48,7 +48,7 @@ void scm_set_status_bar_flg(oscheme *sc)
 void scm_start_macro_msg(oscheme *sc)
 {
 	struct _oscheme_user_data_st *user_data = scm_get_user_data(sc);
-	scm_set_status_msg(_T("ƒ}ƒNƒÀs’†..."));
+	scm_set_status_msg(_T("ãƒã‚¯ãƒ­å®Ÿè¡Œä¸­..."));
 	user_data->_scm_status_bar_flg = 0;
 }
 
@@ -125,7 +125,7 @@ pcell scm_set_key(oscheme *sc, pcell *argv, int argc)
 
 	UINT_PTR key = (fvirt << 16) | (keycode & 0xffff);
 	{
-		// Šù‚É“¯‚¶ƒL[‚Å“o˜^‚³‚ê‚Ä‚¢‚éê‡Aíœ‚·‚é
+		// æ—¢ã«åŒã˜ã‚­ãƒ¼ã§ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã€å‰Šé™¤ã™ã‚‹
 		struct scm_key_hook_st *old_elem;
 		if(user_data->_key_hook->Lookup((void *)key, (void *&)old_elem)) {
 			oscheme_unbound_global(sc, old_elem->proc);
@@ -251,7 +251,7 @@ pcell scm_msg_box(oscheme *sc, pcell *argv, int argc)
 {
 	if(!IsWindow(AfxGetMainWnd()->GetSafeHwnd())) return oscheme_false(sc);
 
-	// ƒEƒBƒ“ƒhƒE‚ªÅ¬‰»‚³‚ê‚½ó‘Ô‚ÅMessageBox‚ğ•\¦‚·‚é‚ÆAƒEƒBƒ“ƒhƒE‚ğ•œŒ³‚Å‚«‚È‚­‚È‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒæœ€å°åŒ–ã•ã‚ŒãŸçŠ¶æ…‹ã§MessageBoxã‚’è¡¨ç¤ºã™ã‚‹ã¨ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’å¾©å…ƒã§ããªããªã‚‹
 	if(AfxGetMainWnd()->IsIconic()) {
 		CMainFrame *f = (CMainFrame *)AfxGetMainWnd();
 		f->ActivateFrame();
@@ -332,7 +332,7 @@ void scm_disp_eval_info(oscheme *sc)
 	if(oscheme_canceled(sc)) {
 		if(IsWindow(AfxGetMainWnd()->GetSafeHwnd())) {
 			user_data->_scm_status_bar_flg = 1;
-			scm_set_status_msg(_T("ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½"));
+			scm_set_status_msg(_T("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸ"));
 			return;
 		}
 	}
@@ -574,7 +574,7 @@ BOOL init_scm_macro_main(oscheme **psc, const TCHAR *ini_scm_file,
 	return TRUE;
 
 ERR1:
-	AfxGetMainWnd()->MessageBox(_T("ƒ}ƒNƒ‚Ì‰Šú‰»‚É¸”s‚µ‚Ü‚µ‚½B"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
+	AfxGetMainWnd()->MessageBox(_T("ãƒã‚¯ãƒ­ã®åˆæœŸåŒ–ã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
 	clear_oscheme(sc);
 	*psc = NULL;
 	return FALSE;

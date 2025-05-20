@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // FilterDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // FilterDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -22,7 +22,7 @@ static char THIS_FILE[] = __FILE__;
 #define SAVE_SEARCH_TEXT_CNT	20
 
 /////////////////////////////////////////////////////////////////////////////
-// CFilterDlg ƒ_ƒCƒAƒƒO
+// CFilterDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 
 CFilterDlg::CFilterDlg(CWnd* pParent /*=NULL*/)
@@ -88,7 +88,7 @@ BEGIN_MESSAGE_MAP(CFilterDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CFilterDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CFilterDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 
 void CFilterDlg::SaveSearchDlgData()
@@ -205,8 +205,8 @@ BOOL CFilterDlg::OnInitDialog()
 
 	InitDialog();
 
-	return TRUE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ğİ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return TRUE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CFilterDlg::LoadSearchTextList()
@@ -235,7 +235,7 @@ void CFilterDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 
-	// eƒEƒBƒ“ƒhƒE‚Ì’†‰›‚É•\¦‚·‚é
+	// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸­å¤®ã«è¡¨ç¤ºã™ã‚‹
 	if(bShow) {
 		CRect	win_rect, parent_rect;
 		GetWindowRect(win_rect);

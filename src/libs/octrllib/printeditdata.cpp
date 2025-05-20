@@ -39,27 +39,27 @@ public:
 		num_width = 0;
 	}
 
-	TCHAR* printer_name;	// ƒvƒŠƒ“ƒ^–¼
-	TCHAR* msg_buf;		// ƒGƒ‰[î•ñ
-	TCHAR* doc_name;		// ƒ^ƒCƒgƒ‹
+	TCHAR* printer_name;	// ãƒ—ãƒªãƒ³ã‚¿å
+	TCHAR* msg_buf;		// ã‚¨ãƒ©ãƒ¼æƒ…å ±
+	TCHAR* doc_name;		// ã‚¿ã‚¤ãƒˆãƒ«
 	BOOL	print_page;
 	BOOL	print_date;
 	TCHAR	now_date[100];
 	HDC		hdc;
 	CFont	font;
 	HFONT	old_font;
-	int		wx;				// ƒy[ƒW‘S‘Ì‚ÌƒsƒNƒZƒ‹”
-	int		wy;				// ƒy[ƒW‘S‘Ì‚ÌƒsƒNƒZƒ‹”
-	int		logicx;			// ƒCƒ“ƒ`‚ ‚½‚è‚ÌƒsƒNƒZƒ‹”
-	int		logicy;			// ƒCƒ“ƒ`‚ ‚½‚è‚ÌƒsƒNƒZƒ‹”
-	int		row_height;		// •¶Žš‚Ì‚‚³‚ÌƒsƒNƒZƒ‹”
+	int		wx;				// ãƒšãƒ¼ã‚¸å…¨ä½“ã®ãƒ”ã‚¯ã‚»ãƒ«æ•°
+	int		wy;				// ãƒšãƒ¼ã‚¸å…¨ä½“ã®ãƒ”ã‚¯ã‚»ãƒ«æ•°
+	int		logicx;			// ã‚¤ãƒ³ãƒã‚ãŸã‚Šã®ãƒ”ã‚¯ã‚»ãƒ«æ•°
+	int		logicy;			// ã‚¤ãƒ³ãƒã‚ãŸã‚Šã®ãƒ”ã‚¯ã‚»ãƒ«æ•°
+	int		row_height;		// æ–‡å­—ã®é«˜ã•ã®ãƒ”ã‚¯ã‚»ãƒ«æ•°
 	int		char_width;
-	int		chars_par_line;	// ‚Ps‚Éo—Í‰Â”\‚È•¶Žš”
+	int		chars_par_line;	// ï¼‘è¡Œã«å‡ºåŠ›å¯èƒ½ãªæ–‡å­—æ•°
 	int		line_width;
-	int		rows_par_page;	// ‚Pƒy[ƒW‚Éo—Í‰Â”\‚Ès”
-	RECT* space;			// —]”’
-	RECT	space_pixel;	// —]”’(ƒsƒNƒZƒ‹)
-	int		row_num_digit;	// s”Ô†‚ÌŒ…”(0‚Ì‚Æ‚«o—Í‚µ‚È‚¢)
+	int		rows_par_page;	// ï¼‘ãƒšãƒ¼ã‚¸ã«å‡ºåŠ›å¯èƒ½ãªè¡Œæ•°
+	RECT* space;			// ä½™ç™½
+	RECT	space_pixel;	// ä½™ç™½(ãƒ”ã‚¯ã‚»ãƒ«)
+	int		row_num_digit;	// è¡Œç•ªå·ã®æ¡æ•°(0ã®ã¨ãå‡ºåŠ›ã—ãªã„)
 	CFontWidthData* font_width_data;
 	CRenderer* renderer;
 	int				num_width;
@@ -98,7 +98,7 @@ static int print_edit_data_init_page(PRINT_INFO *pi, TCHAR *font_face_name,
 {
 	SetMapMode(pi->hdc, MM_TEXT);
 
-	// ƒy[ƒW‚Ìî•ñ‚ðŽæ“¾EÝ’è
+	// ãƒšãƒ¼ã‚¸ã®æƒ…å ±ã‚’å–å¾—ãƒ»è¨­å®š
 	pi->wx = GetDeviceCaps(pi->hdc, HORZRES);
 	pi->wy = GetDeviceCaps(pi->hdc, VERTRES);
 //	pi->wx = GetDeviceCaps(pi->hdc, PHYSICALWIDTH);
@@ -106,11 +106,11 @@ static int print_edit_data_init_page(PRINT_INFO *pi, TCHAR *font_face_name,
 	pi->logicx = GetDeviceCaps(pi->hdc, LOGPIXELSX);
 	pi->logicy = GetDeviceCaps(pi->hdc, LOGPIXELSY);
 
-	// ƒtƒHƒ“ƒgì¬
+	// ãƒ•ã‚©ãƒ³ãƒˆä½œæˆ
 	pi->font.CreatePointFont(font_point, font_face_name, CDC::FromHandle(pi->hdc));
 	pi->old_font = (HFONT)SelectObject(pi->hdc, pi->font.GetSafeHandle());
 
-	// —]”’‚ÌÝ’è
+	// ä½™ç™½ã®è¨­å®š
 	pi->space_pixel.top = pi->space->top * (int)ceil(pi->logicy / 25.4) - 
 		GetDeviceCaps(pi->hdc, PHYSICALOFFSETY);
 	pi->space_pixel.bottom = pi->space->bottom * (int)ceil(pi->logicy / 25.4);
@@ -119,7 +119,7 @@ static int print_edit_data_init_page(PRINT_INFO *pi, TCHAR *font_face_name,
 		GetDeviceCaps(pi->hdc, PHYSICALOFFSETX);
 	pi->space_pixel.right = pi->space->right * (int)ceil(pi->logicx / 25.4);
 
-	// ƒtƒHƒ“ƒg‚Ì‚‚³C•‚ðŽæ“¾‚·‚é
+	// ãƒ•ã‚©ãƒ³ãƒˆã®é«˜ã•ï¼Œå¹…ã‚’å–å¾—ã™ã‚‹
 	TEXTMETRIC	tm;
     GetTextMetrics(pi->hdc, &tm);
 	pi->row_height = tm.tmHeight + tm.tmExternalLeading;
@@ -154,13 +154,13 @@ static void start_doc(PRINT_INFO *pi)
 {
 	DOCINFO			docinfo;
 
-	// ‰Šú‰»
+	// åˆæœŸåŒ–
 	memset(&docinfo, 0, sizeof(docinfo));
 
 	docinfo.cbSize = sizeof(DOCINFO);
 	docinfo.lpszDocName = pi->doc_name;
 
-	// ˆóüŠJŽn
+	// å°åˆ·é–‹å§‹
 	StartDoc(pi->hdc, &docinfo);
 }
 
@@ -243,7 +243,7 @@ static int print_edit_data_main(PRINT_INFO *pi, CEditData *edit_data)
 	dx = calc_row_left(pi);
 	dy = pi->space_pixel.top;
 
-	// ƒy[ƒWŠJŽn
+	// ãƒšãƒ¼ã‚¸é–‹å§‹
 	StartPage(pi->hdc);
 	print_header(pi);
 
@@ -292,7 +292,7 @@ static int print_edit_data_main(PRINT_INFO *pi, CEditData *edit_data)
 
 	print_footer(pi, page);
 
-	// ƒy[ƒWI—¹
+	// ãƒšãƒ¼ã‚¸çµ‚äº†
 	dc.Detach();
 	EndPage(pi->hdc);
 

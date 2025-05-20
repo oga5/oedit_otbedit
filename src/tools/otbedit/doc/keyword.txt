@@ -1,27 +1,27 @@
 
-�L�[���[�h�̐ݒ���@�ɂ���
+キーワードの設定方法について
 
-�E�L�[���[�h�ݒ�t�@�C���́Cdata�t�H���_�̉��ɁC�e���ꂲ�Ƃɗp�ӂ���Ă��܂��B
-  cpp.txt : C/C++�p
-  html.txt: html�p
-  java.txt: java�p
-  perl.txt: perl�p
-  sql.txt : sql�p
-  text.txt: text�p
+・キーワード設定ファイルは，dataフォルダの下に，各言語ごとに用意されています。
+  cpp.txt : C/C++用
+  html.txt: html用
+  java.txt: java用
+  perl.txt: perl用
+  sql.txt : sql用
+  text.txt: text用
 
-�E���̃t�@�C���ɃL�[���[�h��ǉ����āC�L�[���[�h�⊮��F�����\�����J�X�^�}�C�Y
- ���邱�Ƃ��ł��܂��B
+・このファイルにキーワードを追加して，キーワード補完や色分け表示をカスタマイズ
+ することができます。
 
-�E�L�[���[�h�͂Q��ސݒ肷�邱�Ƃ��ł��܂��B
- �L�[���[�h�P�ƃL�[���[�h�Q�́C�Ⴄ�F�ŕ\�����邱�Ƃ��ł��܂��B
+・キーワードは２種類設定することができます。
+ キーワード１とキーワード２は，違う色で表示することもできます。
 
-�E�t�@�C���̏����͈ȉ��̒ʂ�ł��B
- (1)//�Ŏn�܂�s�́C�R�����g�s�ł��B(�ǂݍ��ݎ��ɖ�������܂�)
- (2)�L�[���[�h�P�̐ݒ�
-  �P�s�ɂP�C�L�[���[�h���L�q���܂��B
-  ��) keyword
- (3)�L�[���[�h�Q�̐ݒ�
-  �P�s�ɂP�C�L�[���[�h���L�q���܂��B
-  ���̂Ƃ��C�e�L�[���[�h�̌���",2"���L�q���܂��B
-  ��) keyword2,2
+・ファイルの書式は以下の通りです。
+ (1)//で始まる行は，コメント行です。(読み込み時に無視されます)
+ (2)キーワード１の設定
+  １行に１つ，キーワードを記述します。
+  例) keyword
+ (3)キーワード２の設定
+  １行に１つ，キーワードを記述します。
+  このとき，各キーワードの後ろに",2"を記述します。
+  例) keyword2,2
 

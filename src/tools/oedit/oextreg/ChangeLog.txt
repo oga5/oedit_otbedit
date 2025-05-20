@@ -1,28 +1,28 @@
 
 ver.1.0.0.0 (2001-09-20)
-�E�V�K�쐬
+・新規作成
 
 Ver.1.0.0.1 (2001-11-12)
-�E�t�@�C���\����ύX�����̂ŁC�R���p�C�����ʂ�悤�ɂ����B
+・ファイル構成を変更したので，コンパイルが通るようにした。
 
 Ver.1.1.0.0 (2002-02-22)
-�EInternetExplorer�̃\�[�X��\������G�f�B�^�ɐݒ�ł���悤�ɂ����B
-�EWindowsNT/2000�Ń��W�X�g���̍폜���C���삵�Ȃ��o�O���C���B
+・InternetExplorerのソースを表示するエディタに設定できるようにした。
+・WindowsNT/2000でレジストリの削除が，動作しないバグを修正。
 
 Ver.2.0.0.0 (2008-10-14)
-�E����UNICODE��
+・内部UNICODE化
 
 Ver.3.0.0.0 (2018-05-28)
-�E�J������Visual Studio 2017�Ɉڍs
+・開発環境をVisual Studio 2017に移行
 
 Ver.3.1.0.0 (2025-05-02)
-�E�J������Visual Studio 2022�Ɉڍs
-�E64bit�ł̒ǉ�
+・開発環境をVisual Studio 2022に移行
+・64bit版の追加
 
 
 TODO:
-�EAPP_NAME���N�����̈����Ŏ󂯎��悤�ɂ��� (ogrep�ł͑Ή��ς�)
-�EWindows10�œ���m�F
+・APP_NAMEを起動時の引数で受け取るようにする (ogrepでは対応済み)
+・Windows10で動作確認
 
-�E�I�����ɃG�N�X�v���[���ɒʒm�𑗂�C�ύX�𔽉f������
-�E�֘A�t�����폜�����Ƃ��C�ȑO�̐ݒ�ɖ߂�悤�ɂ���
+・終了時にエクスプローラに通知を送り，変更を反映させる
+・関連付けを削除したとき，以前の設定に戻るようにする

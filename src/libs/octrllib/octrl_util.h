@@ -12,7 +12,7 @@
 #include "oregexp.h"
 #include <vector>
 
-// �֐��𔲂���Ƃ��C�J�[�\���ʒu�����ɖ߂����߂̃I�u�W�F�N�g
+// 関数を抜けるとき，カーソル位置を元に戻すためのオブジェクト
 class CEditDataSaveCurPt
 {
 private:

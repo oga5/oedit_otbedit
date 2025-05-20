@@ -11,7 +11,7 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// CodeAssistWnd.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// CodeAssistWnd.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "GridCtrl.h"
@@ -19,19 +19,19 @@
 #include "CodeAssistData.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CCodeAssistWnd ƒEƒBƒ“ƒhƒE
+// CCodeAssistWnd ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 
 enum CodeAssistMode {
 	AssistCommit,
 	AssistTemp,
-	AssistInitial,	// ‰Šú‰»—pƒ_ƒ~[
+	AssistInitial,	// åˆæœŸåŒ–ç”¨ãƒ€ãƒŸãƒ¼
 };
 
 class CCodeAssistWnd : public CGridCtrl
 {
 	DECLARE_DYNAMIC(CCodeAssistWnd)
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CCodeAssistWnd();
 
@@ -64,7 +64,7 @@ public:
 
 	void SetCodeAssistMaxCommentDispWidth(int w) { m_max_comment_disp_width = w; }
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 private:
 	CodeAssistMode	m_mode;
 	CWnd			*m_parent_wnd;
@@ -90,20 +90,20 @@ private:
 	BOOL GetMatchDataPartialMatch(const TCHAR* word, int* match_row, BOOL no_break_cur_grid_data);
 
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CCodeAssistWnd)
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~CCodeAssistWnd();
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CCodeAssistWnd)
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
@@ -119,6 +119,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_CODEASSISTWND_H__1353F5C6_0C2F_41BB_AC84_853CFB865100__INCLUDED_)

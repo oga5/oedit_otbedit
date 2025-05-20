@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // ScrollWnd.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // ScrollWnd.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -63,7 +63,7 @@ END_MESSAGE_MAP()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CScrollWnd ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CScrollWnd ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CScrollWnd::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
 {
@@ -241,7 +241,7 @@ BOOL CScrollWnd::OnScrollBy(CSize sizeScroll, BOOL bDoScroll, BOOL bThumbTrack)
 		if(m_scroll_style & LOCK_WINDOW) LockWindowUpdate();
 
 		// do scroll and update scroll positions
-		// –{‘Ì‚ğƒXƒNƒ[ƒ‹
+		// æœ¬ä½“ã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 		CRect rect1(GetScrollLeftMargin(), GetScrollTopMargin(), 
 			winrect.Width() - GetScrollRightMargin(), 
 			winrect.Height() - GetScrollBottomMargin());
@@ -253,7 +253,7 @@ BOOL CScrollWnd::OnScrollBy(CSize sizeScroll, BOOL bDoScroll, BOOL bThumbTrack)
 			SetScrollPos(SB_VERT, y);
 		}
 
-		// ƒwƒbƒ_•”•ª‚ğƒXƒNƒ[ƒ‹
+		// ãƒ˜ãƒƒãƒ€éƒ¨åˆ†ã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 		if(x != xOrig && GetScrollTopMargin() != 0) {
 			rect1.left = GetScrollLeftMargin();
 			rect1.right = winrect.Width() - GetScrollRightMargin();
@@ -284,7 +284,7 @@ BOOL CScrollWnd::IsNeedVScrollBar(int height)
 	if(m_scroll_style & VSCROLL_ALWAYS_ON) return TRUE;
 
 	if(IsSplitterMode()) {
-		// •ªŠ„‚³‚ê‚Ä‚¢‚é‚Æ‚«‚ÍCí‚É•\¦
+		// åˆ†å‰²ã•ã‚Œã¦ã„ã‚‹ã¨ãã¯ï¼Œå¸¸ã«è¡¨ç¤º
 		CSplitterWnd *p = GetParentSplitter();
 		if(p != NULL && p->GetRowCount() > 1)  return TRUE;
 		if(m_scroll_style & NO_VSCROLL_BAR) return FALSE;
@@ -304,7 +304,7 @@ BOOL CScrollWnd::IsNeedHScrollBar(int width)
 	if(m_scroll_style & HSCROLL_ALWAYS_ON) return TRUE;
 
 	if(IsSplitterMode()) {
-		// •ªŠ„‚³‚ê‚Ä‚¢‚é‚Æ‚«‚ÍCí‚É•\¦
+		// åˆ†å‰²ã•ã‚Œã¦ã„ã‚‹ã¨ãã¯ï¼Œå¸¸ã«è¡¨ç¤º
 		CSplitterWnd *p = GetParentSplitter();
 		if(p != NULL && p->GetColumnCount() > 1) return TRUE;
 		if(m_scroll_style & NO_HSCROLL_BAR) return FALSE;
@@ -333,7 +333,7 @@ void CScrollWnd::CheckScrollBar()
 	if(scr_style & WS_VSCROLL) winrect.right += ::GetSystemMetrics(SM_CXVSCROLL);
 	if(scr_style & WS_HSCROLL) winrect.bottom += ::GetSystemMetrics(SM_CYHSCROLL);
 
-	// ƒ^ƒu‚ÌØ‘Ö‚ÉAƒXƒNƒ[ƒ‹ƒo[‚ÌˆÊ’u‚ª0‚É‚È‚Á‚Ä‚µ‚Ü‚¤‚±‚Æ‚ª‚ ‚é–â‘è‚ğ‰ñ”ğ
+	// ã‚¿ãƒ–ã®åˆ‡æ›¿æ™‚ã«ã€ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ä½ç½®ãŒ0ã«ãªã£ã¦ã—ã¾ã†ã“ã¨ãŒã‚ã‚‹å•é¡Œã‚’å›é¿
 	if(m_on_mdi_wnd) {
 		if(winrect.Height() <= ::GetSystemMetrics(SM_CYHSCROLL)) return;
 		if(winrect.Width() <= ::GetSystemMetrics(SM_CXVSCROLL)) return;
@@ -418,9 +418,9 @@ void CScrollWnd::CheckScrollBar()
 	if(h_scr) {
 		SetScrollInfo(SB_HORZ, &scr_info, TRUE);
 	} else {
-		// Windows7‘Î‰
-		// SetScrollInfo‚ÌÀsŒã‚ÉƒXƒNƒ[ƒ‹ƒo[‚ÌƒTƒCƒY‚Ì”ÍˆÍ‚ÅAWM_LBUTTONDOWNƒCƒxƒ“ƒg‚ª’Ê’m‚³‚ê‚È‚­‚È‚é
-		// ShowScrollBar(FALSE)‚Å‰ñ”ğ‚Å‚«‚é
+		// Windows7å¯¾å¿œ
+		// SetScrollInfoã®å®Ÿè¡Œå¾Œã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ã‚µã‚¤ã‚ºã®ç¯„å›²ã§ã€WM_LBUTTONDOWNã‚¤ãƒ™ãƒ³ãƒˆãŒé€šçŸ¥ã•ã‚Œãªããªã‚‹
+		// ShowScrollBar(FALSE)ã§å›é¿ã§ãã‚‹
 		SetScrollInfo(SB_HORZ, &scr_info, FALSE);
 		ShowScrollBar(SB_HORZ, FALSE);
 	}
@@ -435,9 +435,9 @@ BOOL CScrollWnd::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 
 void CScrollWnd::OnMouseHWheel(UINT nFlags, short zDelta, CPoint pt)
 {
-	// ‚±‚Ì‹@”\‚É‚Í Windows Vista ˆÈ~‚Ìƒo[ƒWƒ‡ƒ“‚ª•K—v‚Å‚·B
-	// ƒVƒ“ƒ{ƒ‹ _WIN32_WINNT ‚Í >= 0x0600 ‚É‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
-	// TODO: ‚±‚±‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰[ ƒR[ƒh‚ğ’Ç‰Á‚·‚é‚©AŠù’è‚Ìˆ—‚ğŒÄ‚Ño‚µ‚Ü‚·B
+	// ã“ã®æ©Ÿèƒ½ã«ã¯ Windows Vista ä»¥é™ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒå¿…è¦ã§ã™ã€‚
+	// ã‚·ãƒ³ãƒœãƒ« _WIN32_WINNT ã¯ >= 0x0600 ã«ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+	// TODO: ã“ã“ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã‹ã€æ—¢å®šã®å‡¦ç†ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚
 
 	if(m_b_hwheel_scroll_enable) {
 		int scr_cnt = (int)(ceil(zDelta / m_hwheel_scroll_rate));
@@ -449,14 +449,14 @@ void CScrollWnd::OnMouseHWheel(UINT nFlags, short zDelta, CPoint pt)
 
 void CScrollWnd::OnRButtonDown(UINT nFlags, CPoint point) 
 {
-	// eƒEƒBƒ“ƒhƒE‚ÌÀ•W‚É•ÏŠ·‚·‚é
+	// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®åº§æ¨™ã«å¤‰æ›ã™ã‚‹
 	POINT	pt;
 	pt.x = point.x;
 	pt.y = point.y;
 	ClientToScreen(&pt);
 	GetParent()->ScreenToClient(&pt);
 
-	// eƒEƒBƒ“ƒhƒE‚É“]‘—
+	// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«è»¢é€
 	GetParent()->SendMessage(WM_RBUTTONDOWN, nFlags, MAKELPARAM(pt.x, pt.y));
 	
 //	CWnd::OnRButtonDown(nFlags, point);
@@ -477,7 +477,7 @@ int CScrollWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 	
-	// TODO: ‚±‚ÌˆÊ’u‚ÉŒÅ—L‚Ìì¬—pƒR[ƒh‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«å›ºæœ‰ã®ä½œæˆç”¨ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	if(!(lpCreateStruct->style & WS_VSCROLL)) {
 		m_scroll_style |= NO_WS_VSCROLL;
 	}
@@ -550,7 +550,7 @@ BOOL CScrollWnd::SetScrollInfo( int nBar, LPSCROLLINFO lpScrollInfo, BOOL bRedra
 		// for TrackPoint
 		if((nBar == SB_VERT && GetStyle() & WS_VSCROLL) ||
 			(nBar == SB_HORZ && GetStyle() & WS_HSCROLL)) {
-			// ƒXƒNƒ[ƒ‹ƒo[‚ªÁ‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+			// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ãŒæ¶ˆãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 			if(lpScrollInfo->nMax > 0 && lpScrollInfo->nMax > (int)lpScrollInfo->nPage) {
 				CWnd::SetScrollInfo(nBar, lpScrollInfo, bRedraw);
 			}
@@ -600,7 +600,7 @@ void CScrollWnd::GetDispRect( LPRECT lpRect ) const
 	}
 }
 
-// FIXME: —vƒeƒXƒg
+// FIXME: è¦ãƒ†ã‚¹ãƒˆ
 /*
 BOOL CScrollWnd::IsShowVScrollBar()
 {

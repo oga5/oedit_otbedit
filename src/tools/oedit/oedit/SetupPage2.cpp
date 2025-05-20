@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // SetupPage2.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // SetupPage2.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -20,7 +20,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CSetupPage2 ƒvƒƒpƒeƒB ƒy[ƒW
+// CSetupPage2 ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸
 
 IMPLEMENT_DYNCREATE(CSetupPage2, CPropertyPage)
 
@@ -58,12 +58,12 @@ void CSetupPage2::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CSetupPage2, CPropertyPage)
 	//{{AFX_MSG_MAP(CSetupPage2)
-		// ƒƒ‚: ClassWizard ‚Í‚±‚ÌˆÊ’u‚É DDX ‚¨‚æ‚Ñ DDV ‚ÌŒÄ‚Ño‚µƒR[ƒh‚ð’Ç‰Á‚µ‚Ü‚·B
+		// ãƒ¡ãƒ¢: ClassWizard ã¯ã“ã®ä½ç½®ã« DDX ãŠã‚ˆã³ DDV ã®å‘¼ã³å‡ºã—ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¾ã™ã€‚
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CSetupPage2 ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CSetupPage2 ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CSetupPage2::OnApply() 
 {

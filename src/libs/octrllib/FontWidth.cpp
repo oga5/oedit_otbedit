@@ -15,13 +15,13 @@
 #pragma comment(lib, "usp10.lib")
 #endif
 
-//@{ �[�����ߍ�� //@}
+//@{ ゼロ埋め作業 //@}
 inline void mem00( void* ptrv, int siz )
 	{ BYTE* ptr = (BYTE*)ptrv;
 	  for(;siz>3;siz-=4,ptr+=4) *(DWORD*)ptr = 0x00000000;
 	  for(;siz;--siz,++ptr) *ptr = 0x00; }
 
-//@{ FF���ߍ�� //@}
+//@{ FF埋め作業 //@}
 inline void memFF( void* ptrv, int siz )
 	{ BYTE* ptr = (BYTE*)ptrv;
 	  for(;siz>3;siz-=4,ptr+=4) *(DWORD*)ptr = 0xffffffff;
@@ -37,17 +37,17 @@ void CFontWidthData::InitFontWidth(CDC *pdc)
 		m_font_width = new int[65536];
 	}
 
-	// �������e�[�u���������iASCII�͈͂̕����ȊO�͒x�������j
-	// 0xff�ŏ�����
+	// 文字幅テーブル初期化（ASCII範囲の文字以外は遅延処理）
+	// 0xffで初期化
 	memFF( m_font_width, 65536 * sizeof(int) );
-	// ���ʃT���Q�[�g�͕������[��
+	// 下位サロゲートは文字幅ゼロ
 	mem00( m_font_width + 0xDC00, (0xE000 - 0xDC00) * sizeof(int) );
 
-	// ASCII�f�[�^��������
+	// ASCIIデータを初期化
 	m_font_width[L'\0'] = 0;
 	GetCharWidth32( pdc->GetSafeHdc(), L' ', L'~', m_font_width + L' ' );
 
-	// Tab����ݒ�
+	// Tab幅を設定
 	m_font_width[L'\t'] = m_font_width[L'x'];
 
 	TEXTMETRIC tm;
@@ -55,20 +55,20 @@ void CFontWidthData::InitFontWidth(CDC *pdc)
 
 	m_fixed_pitch_adjust = FALSE;
 
-	m_full_char_width = GetFontWidth(pdc, L'��', NULL);
+	m_full_char_width = GetFontWidth(pdc, L'あ', NULL);
 
-	// TMPF_FIXED_PITCH���Z�b�g����Ă���ƁA�Œ�s�b�`�ł͂Ȃ�
-	// (���O�ƈӖ����t�ɂȂ��Ă�̂Œ���)
+	// TMPF_FIXED_PITCHがセットされていると、固定ピッチではない
+	// (名前と意味が逆になってるので注意)
 	if(!(tm.tmPitchAndFamily & TMPF_FIXED_PITCH)) {
-		// �Œ�s�b�`�̂Ƃ��̏���
+		// 固定ピッチのときの処理
 		//
-		// Windows2000�ŌŒ�s�b�`�t�H���g�ŁA�S�p�����̕������p������2�{�ɂȂ�Ȃ�
-		// �P�[�X�����
+		// Windows2000で固定ピッチフォントで、全角文字の幅が半角文字の2倍にならない
+		// ケースを回避
 		// http://support.microsoft.com/kb/417434/ja
 		m_full_char_adjust_width = (m_font_width[L'x'] * 2) - 1;
 		if(m_full_char_width == m_full_char_adjust_width) {
 			m_fixed_pitch_adjust = TRUE;
-			m_font_width[L'��'] = -1;
+			m_font_width[L'あ'] = -1;
 		}
 	}
 }

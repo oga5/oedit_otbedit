@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// SetupPage2.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// SetupPage2.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -22,7 +22,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CSetupPage2 ƒvƒƒpƒeƒB ƒy[ƒW
+// CSetupPage2 ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸
 
 IMPLEMENT_DYNCREATE(CSetupPage2, CPropertyPage)
 
@@ -87,7 +87,7 @@ BEGIN_MESSAGE_MAP(CSetupPage2, CPropertyPage)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CSetupPage2 ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CSetupPage2 ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CSetupPage2::OnApply() 
 {

@@ -12,7 +12,7 @@
 
 #include "ToolTipEx.h"
 
-//ƒEƒBƒ“ƒhƒE‚Ì¶ã‚ðŒ´“_‚Æ‚µ‚ÄC•¶Žš‚ð‘‚«o‚·êŠ‚ÌÝ’è
+//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å·¦ä¸Šã‚’åŽŸç‚¹ã¨ã—ã¦ï¼Œæ–‡å­—ã‚’æ›¸ãå‡ºã™å ´æ‰€ã®è¨­å®š
 #define TIP_TEXT_LEFT_MARGINE	3
 #define TIP_TEXT_TOP_MARGINE	2
 
@@ -63,7 +63,7 @@ BOOL CToolTipEx::Create(HINSTANCE hInst)
     }
 
 	m_hWnd = CreateWindowEx(
-		WS_EX_TOOLWINDOW, // ƒ^ƒXƒNƒo[‚ÉƒAƒCƒRƒ“‚ª•\Ž¦‚³‚ê‚È‚¢
+		WS_EX_TOOLWINDOW, // ã‚¿ã‚¹ã‚¯ãƒãƒ¼ã«ã‚¢ã‚¤ã‚³ãƒ³ãŒè¡¨ç¤ºã•ã‚Œãªã„
 		TIP_CTRL_CLASSNAME, _T(""), 
 		WS_POPUP, //WS_CHILD | WS_BORDER | WS_VISIBLE | WS_TABSTOP, 
 		0, 0, 10,10, ::GetDesktopWindow(), 
@@ -75,7 +75,7 @@ BOOL CToolTipEx::Create(HINSTANCE hInst)
 	return TRUE;
 }
 
-// ƒEƒBƒ“ƒhƒEEƒvƒƒV[ƒWƒƒ
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ»ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 LRESULT CALLBACK CToolTipEx::ToolTipExWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	CToolTipEx	*tipctrl;
@@ -128,7 +128,7 @@ void CToolTipEx::OnTimer(UINT_PTR nIDEvent)
 	return;
 }
 
-// ƒEƒBƒ“ƒhƒE•`‰æ
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æç”»
 void CToolTipEx::OnPaint()
 {
 	HDC		hdc;
@@ -202,7 +202,7 @@ BOOL CToolTipEx::Show(HWND parent_wnd, RECT *rect)
 
 	if ( m_disp_rect.Width() < m_size.cx ) {
 		::SetTimer(m_hWnd, TIMER_ID_MOUSE_POS_CHECK, 200, NULL);
-		::SetWindowPos(m_hWnd, HWND_TOPMOST, -1, -1, -1, -1, SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE); // Žè‘O‚É•\Ž¦
+		::SetWindowPos(m_hWnd, HWND_TOPMOST, -1, -1, -1, -1, SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE); // æ‰‹å‰ã«è¡¨ç¤º
 
 		::MoveWindow(m_hWnd, m_disp_rect.left + m_pt.x, m_disp_rect.top + m_pt.y, 
 			m_size.cx + TIP_TEXT_LEFT_MARGINE - 1, m_disp_rect.Height(), TRUE);
@@ -224,7 +224,7 @@ BOOL CToolTipEx::Hide()
 	return ::ShowWindow(m_hWnd, SW_HIDE);
 }
 
-// ƒEƒBƒ“ƒhƒE”jŠüŽž‚Ìˆ—
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ç ´æ£„æ™‚ã®å‡¦ç†
 BOOL CToolTipEx::Destroy()
 {
 	Hide();

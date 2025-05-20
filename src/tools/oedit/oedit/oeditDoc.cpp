@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // oeditDoc.cpp : COeditDoc ƒNƒ‰ƒX‚Ì“®ì‚Ì’è‹`‚ğs‚¢‚Ü‚·B
+ // oeditDoc.cpp : COeditDoc ã‚¯ãƒ©ã‚¹ã®å‹•ä½œã®å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -50,7 +50,7 @@ BEGIN_MESSAGE_MAP(COeditDoc, CDocument)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒNƒ‰ƒX‚Ì\’z/Á–Å
+// COeditDoc ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰/æ¶ˆæ»…
 
 COeditDoc::COeditDoc()
 {
@@ -71,8 +71,8 @@ BOOL COeditDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	// TODO: ‚±‚ÌˆÊ’u‚ÉÄ‰Šú‰»ˆ—‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
-	// (SDI ƒhƒLƒ…ƒƒ“ƒg‚Í‚±‚ÌƒhƒLƒ…ƒƒ“ƒg‚ğÄ—˜—p‚µ‚Ü‚·B)
+	// TODO: ã“ã®ä½ç½®ã«å†åˆæœŸåŒ–å‡¦ç†ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
+	// (SDI ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ã“ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å†åˆ©ç”¨ã—ã¾ã™ã€‚)
 	UpdateAllViews(NULL, UPD_NEW_DOCUMENT);
 
 	if(g_option.default_edit_mode == "NONE") {
@@ -84,14 +84,14 @@ BOOL COeditDoc::OnNewDocument()
 
 	DispFileType();
 
-	// ‹¤—Lƒƒ‚ƒŠ‚Éƒtƒ@ƒCƒ‹–¼‚ğ“o˜^
+	// å…±æœ‰ãƒ¡ãƒ¢ãƒªã«ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ç™»éŒ²
 	g_share_data.UpdateOpenFileName(AfxGetMainWnd()->GetSafeHwnd(), GetTitle());
 
 	return TRUE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒVƒŠƒAƒ‰ƒCƒ[[ƒVƒ‡ƒ“
+// COeditDoc ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚¼ãƒ¼ã‚·ãƒ§ãƒ³
 
 void COeditDoc::DispFileType()
 {
@@ -103,8 +103,8 @@ int COeditDoc::LoadFile(CArchive &ar, int kanji_code)
 {
 	m_kanji_code = kanji_code;
 
-	// •¶šƒR[ƒh‚ª”»’è‚Å‚«‚È‚©‚Á‚½‚Æ‚«AƒIƒvƒVƒ‡ƒ“‚ÌV‹Kƒtƒ@ƒCƒ‹ì¬‚Ì
-	// •¶šƒR[ƒh‚ğg—p‚·‚é
+	// æ–‡å­—ã‚³ãƒ¼ãƒ‰ãŒåˆ¤å®šã§ããªã‹ã£ãŸã¨ãã€ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆæ™‚ã®
+	// æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹
 	if(m_kanji_code == UnknownKanjiCode) {
 		m_kanji_code = CUnicodeArchive::CheckKanjiCode(&ar, g_option.default_kanji_code);
 	}
@@ -135,7 +135,7 @@ void COeditDoc::Serialize(CArchive& ar)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒNƒ‰ƒX‚Ìf’f
+// COeditDoc ã‚¯ãƒ©ã‚¹ã®è¨ºæ–­
 
 #ifdef _DEBUG
 void COeditDoc::AssertValid() const
@@ -150,7 +150,7 @@ void COeditDoc::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditDoc ƒRƒ}ƒ“ƒh
+// COeditDoc ã‚³ãƒãƒ³ãƒ‰
 
 BOOL COeditDoc::SaveModified() 
 {
@@ -186,10 +186,10 @@ BOOL COeditDoc::OnOpenDocumentMain(LPCTSTR lpszPathName)
 	CFileException fe;
 //	CFile* pFile = GetFile(lpszPathName,
 //		CFile::modeRead|CFile::shareDenyWrite, &fe);
-	// ‘¼‚ÌƒvƒƒZƒX‚ªƒtƒ@ƒCƒ‹‚ğg‚Á‚Ä‚¢‚é‚Æ‚«‚Å‚àCƒtƒ@ƒCƒ‹‚ğ“Ç‚ß‚é‚æ‚¤‚É‚·‚éB
+	// ä»–ã®ãƒ—ãƒ­ã‚»ã‚¹ãŒãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã£ã¦ã„ã‚‹ã¨ãã§ã‚‚ï¼Œãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚
 	CFile* pFile = GetFile(lpszPathName, CFile::modeRead|CFile::shareDenyNone, &fe);
 
-	// ‘¶İ‚µ‚È‚¢ƒtƒ@ƒCƒ‹‚ğw’è‚³‚ê‚½‚Æ‚«C‹óƒf[ƒ^‚Å‹N“®‚·‚é
+	// å­˜åœ¨ã—ãªã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã•ã‚ŒãŸã¨ãï¼Œç©ºãƒ‡ãƒ¼ã‚¿ã§èµ·å‹•ã™ã‚‹
 	if(pFile == NULL && fe.m_cause == CFileException::fileNotFound) {
 		DeleteContents();
 		SetModifiedFlag(FALSE);     // start off with unmodified
@@ -203,7 +203,7 @@ BOOL COeditDoc::OnOpenDocumentMain(LPCTSTR lpszPathName)
 		return FALSE;
 	}
 
-	// ƒ}ƒNƒ‚ğÀs
+	// ãƒã‚¯ãƒ­ã‚’å®Ÿè¡Œ
 	scm_call_event_handler(g_sc, SCM_EVENT_ON_CLOSE_FILE);
 
 	DeleteContents();
@@ -252,7 +252,7 @@ BOOL COeditDoc::OnOpenDocumentMain(LPCTSTR lpszPathName)
 
 BOOL COeditDoc::OnOpenDocument(LPCTSTR lpszPathName) 
 {
-	// ƒƒ“ƒOƒtƒ@ƒCƒ‹–¼‚É‚·‚é
+	// ãƒ­ãƒ³ã‚°ãƒ•ã‚¡ã‚¤ãƒ«åã«ã™ã‚‹
 	TCHAR	long_name[_MAX_PATH];
 	if(GetLongPath(lpszPathName, long_name) == FALSE) {
 		_tcscpy(long_name, lpszPathName);
@@ -291,7 +291,7 @@ BOOL COeditDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	UpdateAllViews(NULL, UPD_EDIT_MODE, 0);
 	RedrawEditCtrl();
 
-	// ‹¤—Lƒƒ‚ƒŠ‚Éƒtƒ@ƒCƒ‹–¼‚ğ“o˜^
+	// å…±æœ‰ãƒ¡ãƒ¢ãƒªã«ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ç™»éŒ²
 	g_share_data.UpdateOpenFileName(AfxGetMainWnd()->GetSafeHwnd(), long_name);
 
 	return TRUE;
@@ -336,7 +336,7 @@ BOOL COeditDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 		  &m_kanji_code, &m_line_type))
 			return FALSE;       // don't even attempt to save
 
-		// Ÿè‚ÉŠg’£q‚ğ‚Â‚¯‚È‚¢
+		// å‹æ‰‹ã«æ‹¡å¼µå­ã‚’ã¤ã‘ãªã„
 		//AddExt(newName);
 	}
 
@@ -365,13 +365,13 @@ BOOL COeditDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 void COeditDoc::ReloadFile(int kanji_code)
 {
 	if(this->IsModified()) {
-		if(AfxGetMainWnd()->MessageBox(_T("•ÏX‚ğ”jŠü‚µ‚Ä“Ç‚İ’¼‚µ‚Ü‚·‚©H"), 
-			_T("Šm”F"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
+		if(AfxGetMainWnd()->MessageBox(_T("å¤‰æ›´ã‚’ç ´æ£„ã—ã¦èª­ã¿ç›´ã—ã¾ã™ã‹ï¼Ÿ"), 
+			_T("ç¢ºèª"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
 	}
 
 	CString		file_name = this->GetPathName();
 	if(file_name == _T("")) {
-		AfxMessageBox(_T("ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB"), MB_OK);
+		AfxMessageBox(_T("ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚"), MB_OK);
 		return;
 	}
 
@@ -456,7 +456,7 @@ void COeditDoc::OnFileReload()
 
 void COeditDoc::SetPathName(LPCTSTR lpszPathName, BOOL bAddToMRU) 
 {
-	// ƒƒ“ƒOƒtƒ@ƒCƒ‹–¼‚É‚·‚é
+	// ãƒ­ãƒ³ã‚°ãƒ•ã‚¡ã‚¤ãƒ«åã«ã™ã‚‹
 	TCHAR	long_name[_MAX_PATH];
 	if(GetLongPath(lpszPathName, long_name) == FALSE) {
 		_tcscpy(long_name, lpszPathName);
@@ -466,7 +466,7 @@ void COeditDoc::SetPathName(LPCTSTR lpszPathName, BOOL bAddToMRU)
 
 	SetDocTitle();
 
-	// ƒtƒ@ƒCƒ‹‚Ì‚ ‚éƒfƒBƒŒƒNƒgƒŠ‚ğAƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚É‚·‚é
+	// ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã€ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã™ã‚‹
 	{
 		TCHAR	drive[_MAX_PATH];
 		TCHAR	dir[_MAX_PATH];
@@ -502,7 +502,7 @@ void COeditDoc::DeleteContents()
 
 BOOL COeditDoc::OnSaveDocument(LPCTSTR lpszPathName) 
 {
-	// TODO: ‚±‚ÌˆÊ’u‚ÉŒÅ—L‚Ìˆ—‚ğ’Ç‰Á‚·‚é‚©A‚Ü‚½‚ÍŠî–{ƒNƒ‰ƒX‚ğŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«å›ºæœ‰ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹ã‹ã€ã¾ãŸã¯åŸºæœ¬ã‚¯ãƒ©ã‚¹ã‚’å‘¼ã³å‡ºã—ã¦ãã ã•ã„
 	
 	BOOL ret_v = CDocument::OnSaveDocument(lpszPathName);
 
@@ -511,7 +511,7 @@ BOOL COeditDoc::OnSaveDocument(LPCTSTR lpszPathName)
 		UpdateAllViews(NULL, UPD_INVALIDATE);
 	}
 
-	// ‹¤—Lƒƒ‚ƒŠ‚Éƒtƒ@ƒCƒ‹–¼‚ğ“o˜^
+	// å…±æœ‰ãƒ¡ãƒ¢ãƒªã«ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ç™»éŒ²
 	g_share_data.UpdateOpenFileName(AfxGetMainWnd()->GetSafeHwnd(), lpszPathName);
 
 	return ret_v;
@@ -594,7 +594,7 @@ void COeditDoc::OnFileInsert()
 
 void COeditDoc::OnCloseDocument() 
 {
-	// ƒ}ƒNƒ‚ğÀs
+	// ãƒã‚¯ãƒ­ã‚’å®Ÿè¡Œ
 	scm_call_event_handler(g_sc, SCM_EVENT_ON_CLOSE_FILE);
 
 	CDocument::OnCloseDocument();

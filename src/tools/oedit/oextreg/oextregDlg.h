@@ -1,4 +1,4 @@
-// oextregDlg.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// oextregDlg.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #if !defined(AFX_OEXTREGDLG_H__850FECA7_ADEF_11D5_8505_00E018A83B1B__INCLUDED_)
@@ -9,15 +9,15 @@
 #endif // _MSC_VER > 1000
 
 /////////////////////////////////////////////////////////////////////////////
-// COextregDlg ƒ_ƒCƒAƒƒO
+// COextregDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 class COextregDlg : public CDialog
 {
-// \’z
+// æ§‹ç¯‰
 public:
-	COextregDlg(CWnd* pParent = NULL);	// •W€‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	COextregDlg(CWnd* pParent = NULL);	// æ¨™æº–ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-// ƒ_ƒCƒAƒƒO ƒf[ƒ^
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ‡ãƒ¼ã‚¿
 	//{{AFX_DATA(COextregDlg)
 	enum { IDD = IDD_OEXTREG_DIALOG };
 	CButton	m_btn_update;
@@ -28,18 +28,18 @@ public:
 	BOOL	m_ie_source_viewer;
 	//}}AFX_DATA
 
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(COextregDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV ‚ÌƒTƒ|[ƒg
+	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV ã®ã‚µãƒãƒ¼ãƒˆ
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
 	HICON m_hIcon;
 	HICON m_hSmallIcon;
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 	//{{AFX_MSG(COextregDlg)
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
@@ -71,6 +71,6 @@ private:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_OEXTREGDLG_H__850FECA7_ADEF_11D5_8505_00E018A83B1B__INCLUDED_)

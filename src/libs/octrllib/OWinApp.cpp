@@ -97,8 +97,8 @@ void COWinApp::SetLocalIniFileName(const TCHAR *local_ini_file_name)
 	if(m_pszProfileName != NULL) free((void*)m_pszProfileName);
 	m_pszProfileName = _tcsdup(local_ini_file_name);
 
-	// local iniƒtƒ@ƒCƒ‹‚ª‘¶Ý‚µ‚È‚¢ê‡A‹ó‚Ìƒtƒ@ƒCƒ‹‚ðUNICODE‚Å¶¬‚·‚é
-	// UNICODE‚Å¶¬‚µ‚È‚¢‚ÆAMRUƒŠƒXƒg‚ÉUNICODEƒtƒ@ƒCƒ‹–¼‚ª³‚µ‚­•Û‘¶‚³‚ê‚È‚¢
+	// local iniãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã€ç©ºã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’UNICODEã§ç”Ÿæˆã™ã‚‹
+	// UNICODEã§ç”Ÿæˆã—ãªã„ã¨ã€MRUãƒªã‚¹ãƒˆã«UNICODEãƒ•ã‚¡ã‚¤ãƒ«åãŒæ­£ã—ãä¿å­˜ã•ã‚Œãªã„
 	if(!is_file_exist(local_ini_file_name)) {
 		FILE *local_fp = _tfopen(local_ini_file_name, _T("wb"));
 		if(local_fp != NULL) {
@@ -107,7 +107,7 @@ void COWinApp::SetLocalIniFileName(const TCHAR *local_ini_file_name)
 			fclose(local_fp);
 		}
 	} else {
-		// iniƒtƒ@ƒCƒ‹‚ªSJIS‚Ìê‡‚ÍAUNICODE‚É•ÏŠ·‚·‚é
+		// iniãƒ•ã‚¡ã‚¤ãƒ«ãŒSJISã®å ´åˆã¯ã€UNICODEã«å¤‰æ›ã™ã‚‹
 		FILE *local_fp = _tfopen(local_ini_file_name, _T("rb"));
 		if(local_fp != NULL) {
 			if(!check_utf16le_signature_fp(local_fp)) {

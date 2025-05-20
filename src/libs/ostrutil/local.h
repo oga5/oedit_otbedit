@@ -162,9 +162,9 @@ typedef struct nfa_node_st {
 	struct nfa_node_st	*next[2];
 
 	/*
-	 * first_test: Å‰‚Écheck‚·‚é•ûŒü‚ð§Œä‚·‚éƒtƒ‰ƒO
-	 * next[0]‚Ænext[1]‚ð“ü‚ê‘Ö‚¦‚é‚±‚Æ‚ào—ˆ‚»‚¤‚¾‚ªAnext[0]‚ð‚½‚Ç‚Á‚Ä
-	 * ––”ö‚É“ž’B‚Å‚«‚é‚±‚Æ‚ð•ÛØ‚µ‚½‚¢‚½‚ßA‚±‚Ìƒtƒ‰ƒO‚ª‚ ‚é
+	 * first_test: æœ€åˆã«checkã™ã‚‹æ–¹å‘ã‚’åˆ¶å¾¡ã™ã‚‹ãƒ•ãƒ©ã‚°
+	 * next[0]ã¨next[1]ã‚’å…¥ã‚Œæ›¿ãˆã‚‹ã“ã¨ã‚‚å‡ºæ¥ãã†ã ãŒã€next[0]ã‚’ãŸã©ã£ã¦
+	 * æœ«å°¾ã«åˆ°é”ã§ãã‚‹ã“ã¨ã‚’ä¿è¨¼ã—ãŸã„ãŸã‚ã€ã“ã®ãƒ•ãƒ©ã‚°ãŒã‚ã‚‹
 	 */
 	char	first_test;
 

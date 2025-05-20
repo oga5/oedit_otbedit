@@ -15,7 +15,7 @@ int GetPopupMenuHeight(HMENU hmenu)
 	int		item_cnt = ::GetMenuItemCount(hmenu);
 	int		height = ::GetSystemMetrics(SM_CYEDGE) * 2;
 
-	// FIXME:: ƒAƒCƒeƒ€‚Ì‚‚³‚ÆƒZƒpƒŒ[ƒ^‚Ì³‚µ‚¢’l‚ğæ“¾‚·‚é•û–@‚ğŒ©‚Â‚¯‚é
+	// FIXME:: ã‚¢ã‚¤ãƒ†ãƒ ã®é«˜ã•ã¨ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®æ­£ã—ã„å€¤ã‚’å–å¾—ã™ã‚‹æ–¹æ³•ã‚’è¦‹ã¤ã‘ã‚‹
 	int		sepa_height = ::GetSystemMetrics(SM_CYMENU) - 6;
 	int		item_height = ::GetSystemMetrics(SM_CYMENU) - 2;
 
@@ -38,33 +38,33 @@ int GetPopupMenuHeight(HMENU hmenu)
 
 BOOL Set256ColorToolBar(CToolBar *tool_bar, UINT bitmap_id)
 {
-	// toolbar‚ğ256F‚Ìbitmap‚É‚·‚é (firefoxƒAƒCƒRƒ“‘Î‰)
-	// FIXME: Œ¾Œê‚Ìƒ{ƒ^ƒ“‚ª³‚µ‚­•\¦‚³‚ê‚È‚¢
-	// ‰æ–Ê‚ÌF”‚ğæ“¾‚·‚é
+	// toolbarã‚’256è‰²ã®bitmapã«ã™ã‚‹ (firefoxã‚¢ã‚¤ã‚³ãƒ³å¯¾å¿œ)
+	// FIXME: è¨€èªã®ãƒœã‚¿ãƒ³ãŒæ­£ã—ãè¡¨ç¤ºã•ã‚Œãªã„
+	// ç”»é¢ã®è‰²æ•°ã‚’å–å¾—ã™ã‚‹
 	HDC ic = CreateIC(_T("DISPLAY"), NULL, NULL, NULL);
-	//16bitƒJƒ‰[ˆÈã‚È‚ç256ƒAƒCƒRƒ“‚ğ—˜—p‚·‚é
+	//16bitã‚«ãƒ©ãƒ¼ä»¥ä¸Šãªã‚‰256ã‚¢ã‚¤ã‚³ãƒ³ã‚’åˆ©ç”¨ã™ã‚‹
 	if(GetDeviceCaps(ic, BITSPIXEL) <= 8) return FALSE;
 
 
-	int nBtnCnt = 4; //ƒ{ƒ^ƒ“‚Ì”
-	//ƒc[ƒ‹ƒo[‚ÌƒCƒ[ƒWƒŠƒXƒg‚ğ‰Šú‰»
+	int nBtnCnt = 4; //ãƒœã‚¿ãƒ³ã®æ•°
+	//ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã®ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã‚’åˆæœŸåŒ–
 	CImageList* pImgList = tool_bar->GetToolBarCtrl().GetImageList();
 
-	//ƒCƒ[ƒWƒŠƒXƒg‚ğ”jŠü‚·‚éB
+	//ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã‚’ç ´æ£„ã™ã‚‹ã€‚
 	pImgList->DeleteImageList();
 
-	//ƒCƒ[ƒWƒŠƒXƒg‚ğ16bit(3,2000F)‚Å¶¬‚·‚éB
-	//256F‚ÌƒAƒCƒRƒ“‚Í16bitˆÈã‚Å‚È‚¢‚ÆF‰»‚¯‚µ‚Ä‚µ‚Ü‚µ‚Ü‚·B
+	//ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã‚’16bit(3,2000è‰²)ã§ç”Ÿæˆã™ã‚‹ã€‚
+	//256è‰²ã®ã‚¢ã‚¤ã‚³ãƒ³ã¯16bitä»¥ä¸Šã§ãªã„ã¨è‰²åŒ–ã‘ã—ã¦ã—ã¾ã—ã¾ã™ã€‚
 	pImgList->Create(16,15, ILC_COLOR16 | ILC_MASK,nBtnCnt,nBtnCnt);
-	//ƒrƒbƒgƒ}ƒbƒv‚ğ“Ç‚İ‚Ş
+	//ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€
 	CBitmap bmp;
 	bmp.LoadBitmap(bitmap_id);
 
-	//ƒCƒ[ƒWƒŠƒXƒg‚É’Ç‰Á‚·‚éB
-	//“§‰ßF‚ğ‚Q”Ô–Ú‚Ìˆø”‚Åİ’è‚µ‚Ä‚¢‚éB
+	//ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã«è¿½åŠ ã™ã‚‹ã€‚
+	//é€éè‰²ã‚’ï¼’ç•ªç›®ã®å¼•æ•°ã§è¨­å®šã—ã¦ã„ã‚‹ã€‚
 	pImgList->Add(&bmp, RGB(192, 192, 192));
 
-	//256ƒAƒCƒRƒ“‚ğToolBar‚ÉŠ„‚è“–‚Ä‚é
+	//256ã‚¢ã‚¤ã‚³ãƒ³ã‚’ToolBarã«å‰²ã‚Šå½“ã¦ã‚‹
 	tool_bar->GetToolBarCtrl().SetImageList(pImgList);
 	DeleteObject(bmp);
 

@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// SelectColorDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// SelectColorDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -20,7 +20,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CSelectColorDlg ƒ_ƒCƒAƒƒO
+// CSelectColorDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 CSelectColorDlg::CSelectColorDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CSelectColorDlg::IDD, pParent)
@@ -58,7 +58,7 @@ BEGIN_MESSAGE_MAP(CSelectColorDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CSelectColorDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CSelectColorDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 void CSelectColorDlg::InitDialog()
 {
 	CreateColorWnd();
@@ -78,7 +78,7 @@ BOOL CSelectColorDlg::OnInitDialog()
 
 	CDialog::OnInitDialog();
 	
-	// TODO: ‚±‚ÌˆÊ’u‚É‰Šú‰»‚Ì•â‘«ˆ—‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«åˆæœŸåŒ–ã®è£œè¶³å‡¦ç†ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	InitDialog();
 
 	return FALSE;
@@ -171,9 +171,9 @@ void CSelectColorDlg::GetSelectedColorRect(RECT *rect)
 
 void CSelectColorDlg::OnPaint() 
 {
-	CPaintDC dc(this); // •`‰æ—p‚ÌƒfƒoƒCƒX ƒRƒ“ƒeƒLƒXƒg
+	CPaintDC dc(this); // æç”»ç”¨ã®ãƒ‡ãƒã‚¤ã‚¹ ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 	
-	// TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	CRect draw_rect;
 	GetSelectedColorRect(&draw_rect);
 	if(dc.RectVisible(&draw_rect)) {
@@ -188,7 +188,7 @@ void CSelectColorDlg::OnPaint()
 		dc.Draw3dRect(&btn_rect, GetSysColor(COLOR_BTNHILIGHT), GetSysColor(COLOR_BTNSHADOW));
 		CFont *old_font = dc.SelectObject(GetFont());
 		dc.SetBkColor(GetSysColor(COLOR_BTNFACE));
-		dc.DrawText(_T("ƒXƒ|ƒCƒg"), -1, &btn_rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+		dc.DrawText(_T("ã‚¹ãƒã‚¤ãƒˆ"), -1, &btn_rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 		dc.SelectObject(old_font);
 	}
 }
@@ -354,7 +354,7 @@ void CSelectColorDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 
-	// eƒEƒBƒ“ƒhƒE‚Ì’†‰›‚É•\¦‚·‚é
+	// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸­å¤®ã«è¡¨ç¤ºã™ã‚‹
 	if(bShow) {
 		CRect	win_rect, parent_rect;
 		GetWindowRect(win_rect);

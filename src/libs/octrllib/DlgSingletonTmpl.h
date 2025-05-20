@@ -63,7 +63,7 @@ void DlgSingletonTmpl<T, DLG_ID>::SetWindowPosCenter()
 	x = main_rect.left + main_rect.Width() / 2 - win_rect.Width() / 2;
 	y = main_rect.top + main_rect.Height() / 2 - win_rect.Height() / 2;
 
-	// タスクバーに隠れないようにする
+	// 繧ｿ繧ｹ繧ｯ繝舌�ｼ縺ｫ髫繧後↑縺�繧医≧縺ｫ縺吶ｋ
 	RECT work_rect;
 	if(SystemParametersInfo(SPI_GETWORKAREA, 0, &work_rect, 0)) {
 		if(x < work_rect.left) x = work_rect.left;

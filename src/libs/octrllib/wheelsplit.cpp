@@ -29,12 +29,12 @@ CWheelSplitterWnd::CWheelSplitterWnd()
 	m_delete_pane_msg = 0;
 	m_wheel_mode = WHEEL_MODE_VSCROLL_MSG | WHEEL_MODE_ACTIVE_VIEW;
 
-	// splitter bar‚Ì•
-	// •W€‚Í7, ×‚­‚·‚éê‡‚Í5 or 6‚É‚·‚é (4ˆÈ‰º‚¾‚Æ•\Ž¦‚ª‚¨‚©‚µ‚­‚È‚Á‚½‚èAƒ}ƒEƒX‚ÅDrag‚Å‚«‚È‚­‚È‚Á‚½‚è‚·‚é)
-	// FIXME: Ý’è‰Â”\‚É‚·‚é
-//	m_cxSplitter = m_cySplitter = 6;		// Drag’†‚É•\Ž¦‚·‚éü‚Ì•
+	// splitter barã®å¹…
+	// æ¨™æº–ã¯7, ç´°ãã™ã‚‹å ´åˆã¯5 or 6ã«ã™ã‚‹ (4ä»¥ä¸‹ã ã¨è¡¨ç¤ºãŒãŠã‹ã—ããªã£ãŸã‚Šã€ãƒžã‚¦ã‚¹ã§Dragã§ããªããªã£ãŸã‚Šã™ã‚‹)
+	// FIXME: è¨­å®šå¯èƒ½ã«ã™ã‚‹
+//	m_cxSplitter = m_cySplitter = 6;		// Dragä¸­ã«è¡¨ç¤ºã™ã‚‹ç·šã®å¹…
 //	m_cxBorderShare = m_cyBorderShare = 0;
-//	m_cxSplitterGap = m_cySplitterGap = 6;	// bar‚Ì•
+//	m_cxSplitterGap = m_cySplitterGap = 6;	// barã®å¹…
 //	m_cxBorder = m_cyBorder = 2;
 }
 
@@ -166,7 +166,7 @@ void CWheelSplitterWnd::SetMaxCols(int col)
 
 void CWheelSplitterWnd::OnLButtonUp(UINT nFlags, CPoint point) 
 {
-	// CSplitterWnd‚Ì’†‚ÉCSplitterWnd‚ª‚ ‚éê‡AƒNƒŠƒbƒN‚µ‚½‚¾‚¯‚Å‹«ŠEˆÊ’u‚ª‚¸‚ê‚é–â‘è‚ð‰ñ”ð
+	// CSplitterWndã®ä¸­ã«CSplitterWndãŒã‚ã‚‹å ´åˆã€ã‚¯ãƒªãƒƒã‚¯ã—ãŸã ã‘ã§å¢ƒç•Œä½ç½®ãŒãšã‚Œã‚‹å•é¡Œã‚’å›žé¿
 	if(m_bTracking && GetPane(0, 0)->IsKindOf(RUNTIME_CLASS(CSplitterWnd))) {
 		m_rectTracker.top -= 2;
 		CRect rect = m_rectTracker;

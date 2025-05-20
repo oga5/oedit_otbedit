@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // PlacesBarFileDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // PlacesBarFileDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -32,7 +32,7 @@ CPlacesBarFileDlg::CPlacesBarFileDlg(BOOL bOpenFileDialog, LPCTSTR lpszDefExt, L
 
 BEGIN_MESSAGE_MAP(CPlacesBarFileDlg, CFileDialog)
 	//{{AFX_MSG_MAP(CPlacesBarFileDlg)
-		// ƒƒ‚ -  ClassWizard ‚Í‚±‚ÌˆÊ’u‚Éƒ}ƒbƒsƒ“ƒO—p‚Ìƒ}ƒNƒ‚ð’Ç‰Á‚Ü‚½‚Ííœ‚µ‚Ü‚·B
+		// ãƒ¡ãƒ¢ -  ClassWizard ã¯ã“ã®ä½ç½®ã«ãƒžãƒƒãƒ”ãƒ³ã‚°ç”¨ã®ãƒžã‚¯ãƒ­ã‚’è¿½åŠ ã¾ãŸã¯å‰Šé™¤ã—ã¾ã™ã€‚
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -92,7 +92,7 @@ INT_PTR CPlacesBarFileDlg::DoModal()
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*------------------------------------------------------------------------------
- ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO
+ ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 ------------------------------------------------------------------------------*/
 BOOL DoFileDlg(LPCTSTR lpszTitle, BOOL bOpenFileDialog,
 	LPCTSTR lpszDefExt, LPCTSTR lpszFileName, DWORD dwFlags,
@@ -102,7 +102,7 @@ BOOL DoFileDlg(LPCTSTR lpszTitle, BOOL bOpenFileDialog,
 		dwFlags, lpszFilter, pParentWnd);
 	file_dlg.m_ofn.lpstrTitle = lpszTitle;
 
-	// ƒfƒtƒHƒ‹ƒgƒfƒBƒŒƒNƒgƒŠ‚ðÝ’è
+	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®š
 	TCHAR	cur_dir[_MAX_PATH];
 	GetCurrentDirectory(sizeof(cur_dir)/sizeof(cur_dir[0]), cur_dir);
 	file_dlg.m_ofn.lpstrInitialDir = cur_dir;
@@ -117,7 +117,7 @@ BOOL DoFileDlg(LPCTSTR lpszTitle, BOOL bOpenFileDialog,
 }
 
 /*------------------------------------------------------------------------------
- ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO(ƒfƒBƒŒƒNƒgƒŠŽw’è)
+ ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°(ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæŒ‡å®š)
 ------------------------------------------------------------------------------*/
 BOOL DoFileDlg_SetDir(LPCTSTR lpszTitle, BOOL bOpenFileDialog,
 	LPCTSTR lpszDefExt, LPCTSTR lpszFileName, DWORD dwFlags,

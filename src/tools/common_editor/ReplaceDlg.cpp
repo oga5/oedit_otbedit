@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // ReplaceDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // ReplaceDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -24,7 +24,7 @@ static char THIS_FILE[] = __FILE__;
 #define SEARCH_DLG_MIN_WIDTH	550
 
 /////////////////////////////////////////////////////////////////////////////
-// CReplaceDlg ƒ_ƒCƒAƒƒO
+// CReplaceDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 
 CReplaceDlg::CReplaceDlg(CWnd* pParent /*=NULL*/)
@@ -96,7 +96,7 @@ BEGIN_MESSAGE_MAP(CReplaceDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CReplaceDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CReplaceDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CReplaceDlg::SaveSearchDlgData()
 {
@@ -196,8 +196,8 @@ void CReplaceDlg::ShowDialog(CWnd *wnd, int search_message, int replace_message,
 
 void CReplaceDlg::InitDialog()
 {
-	// ƒ_ƒCƒAƒƒO‚Ì‚‚³‚ðŒˆ‚ß‚é
-	// ƒfƒBƒXƒvƒŒƒC‚ÌÝ’è‚ª•ÏX‚³‚ê‚é‰Â”\«‚ª‚ ‚é‚Ì‚ÅA•\Ž¦‚·‚é“x‚ÉŒvŽZ‚·‚é
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®é«˜ã•ã‚’æ±ºã‚ã‚‹
+	// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã®è¨­å®šãŒå¤‰æ›´ã•ã‚Œã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§ã€è¡¨ç¤ºã™ã‚‹åº¦ã«è¨ˆç®—ã™ã‚‹
 	CRect	btn_rect;
 	POINT pt = { 0, 0 };
 
@@ -250,8 +250,8 @@ BOOL CReplaceDlg::OnInitDialog()
 
 	InitDialog();
 	
-	return TRUE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ðÝ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return TRUE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CReplaceDlg::CheckBtn()
@@ -320,7 +320,7 @@ void CReplaceDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 
-	// eƒEƒBƒ“ƒhƒE‚Ì’†‰›‚É•\Ž¦‚·‚é
+	// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸­å¤®ã«è¡¨ç¤ºã™ã‚‹
 	if(bShow) {
 		CRect	win_rect, parent_rect;
 		GetWindowRect(win_rect);
@@ -384,7 +384,7 @@ void CReplaceDlg::OnSize(UINT nType, int cx, int cy)
 
 void CReplaceDlg::OnGetMinMaxInfo( MINMAXINFO FAR* lpMMI )
 {
-	// ‰¡•ûŒü‚Ì‚Ý‰Â•Ï‚É‚·‚é
+	// æ¨ªæ–¹å‘ã®ã¿å¯å¤‰ã«ã™ã‚‹
 	lpMMI->ptMinTrackSize.x = SEARCH_DLG_MIN_WIDTH;
 	lpMMI->ptMinTrackSize.y = m_dlg_height;
 	lpMMI->ptMaxTrackSize.y = m_dlg_height;

@@ -5,7 +5,7 @@
  * This software is licensed under the BSD License.
  * See the LICENSE_BSD file for details.
  */
- // CloseBtn.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // CloseBtn.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -38,7 +38,7 @@ BEGIN_MESSAGE_MAP(CCloseBtn, CButton)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CCloseBtn ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CCloseBtn ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CCloseBtn::Create(CWnd *pParentWnd, UINT nID, BOOL border, int btn_size, int bmp_offset)
 {
@@ -81,7 +81,7 @@ void CCloseBtn::CreateXBitmap()
 
 void CCloseBtn::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct) 
 {
-	// TODO: Žw’è‚³‚ê‚½ƒAƒCƒeƒ€‚ð•`‰æ‚·‚é‚½‚ß‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’æç”»ã™ã‚‹ãŸã‚ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	CDC dc;
 	dc.Attach(lpDrawItemStruct->hDC);
 

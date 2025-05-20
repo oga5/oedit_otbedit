@@ -173,12 +173,12 @@ int CIndenter::search_row_top(int row)
 
 __inline BOOL CIndenter::is_space_char(unsigned int ch)
 {
-	return (ch == '\t' || ch == ' ' || ch == L'@');
+	return (ch == '\t' || ch == ' ' || ch == L'ã€€');
 }
 
 void CIndenter::indent(int sample_row, INDENT_MODE indent_mode, int add, BOOL b_ltrim)
 {
-	// ƒCƒ“ƒfƒ“ƒg•s—v‚©ƒ`ƒFƒbƒN‚·‚é
+	// ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆä¸è¦ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 	{
 		TCHAR	*p1;
 		TCHAR	*p2;
@@ -249,9 +249,9 @@ void CIndenter::DoIndent(CEditData *edit_data, unsigned char ch)
 		if(ch == '\r') {
 			int row = m_edit_data->get_cur_row() - 1;
 
-			// ƒuƒƒbƒNƒRƒƒ“ƒg’†‚Ì‚Æ‚«‚ÍC‘O‚Ìs‚ðˆø‚«Œp‚®
+			// ãƒ–ãƒ­ãƒƒã‚¯ã‚³ãƒ¡ãƒ³ãƒˆä¸­ã®ã¨ãã¯ï¼Œå‰ã®è¡Œã‚’å¼•ãç¶™ã
 			if(m_edit_data->check_char_type(row, m_edit_data->get_row_len(row)) == CHAR_TYPE_IN_COMMENT) {
-				// FIXME: ƒRƒƒ“ƒgŠJŽnˆÊ’u‚É‚ ‚í‚¹‚é
+				// FIXME: ã‚³ãƒ¡ãƒ³ãƒˆé–‹å§‹ä½ç½®ã«ã‚ã‚ã›ã‚‹
 				indent(row, INDENT_MODE_SMART);
 				return;
 			}
@@ -300,7 +300,7 @@ void CIndenter::DoIndent(CEditData *edit_data, unsigned char ch)
 		m_edit_data->save_cursor_pos();
 
 		if(ch == ':') {
-			// 3€‰‰ŽZŽq‚Ì‚Æ‚«CƒCƒ“ƒfƒ“ƒg‚µ‚È‚¢
+			// 3é …æ¼”ç®—å­ã®ã¨ãï¼Œã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã—ãªã„
 			if(_tcschr(m_edit_data->get_row_buf(m_edit_data->get_cur_row()), '?') != NULL) return;
 
 			if(m_edit_data->get_cur_col() >= 2 &&
@@ -310,7 +310,7 @@ void CIndenter::DoIndent(CEditData *edit_data, unsigned char ch)
 				if(row >= 0) row = search_row_top(row);
 				if(row >= 0) indent(row, INDENT_MODE_SMART);
 			} else {
-				// ‚‘¬‰»
+				// é«˜é€ŸåŒ–
 				int break_row;
 				for(break_row = m_edit_data->get_cur_row() - 1; break_row >= 0; break_row--) {
 					TCHAR *p = m_edit_data->get_row_buf(break_row);

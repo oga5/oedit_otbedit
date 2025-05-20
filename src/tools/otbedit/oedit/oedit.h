@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // oedit.h : OEDIT ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒƒCƒ“ ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+ // oedit.h : OEDIT ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ¡ã‚¤ãƒ³ ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #if !defined(AFX_OEDIT_H__52A23F45_4E07_11D5_8505_00E018A83B1B__INCLUDED_)
@@ -20,12 +20,12 @@
 	#error include 'stdafx.h' before including this file for PCH
 #endif
 
-#include "resource.h"       // ƒƒCƒ“ ƒVƒ“ƒ{ƒ‹
+#include "resource.h"       // ãƒ¡ã‚¤ãƒ³ ã‚·ãƒ³ãƒœãƒ«
 #include "filenames.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // COeditApp:
-// ‚±‚ÌƒNƒ‰ƒX‚Ì“®ì‚Ì’è‹`‚ÉŠÖ‚µ‚Ä‚Í oedit.cpp ƒtƒ@ƒCƒ‹‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+// ã“ã®ã‚¯ãƒ©ã‚¹ã®å‹•ä½œã®å®šç¾©ã«é–¢ã—ã¦ã¯ oedit.cpp ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 //
 
 #include "global.h"
@@ -43,8 +43,8 @@ public:
 
 	virtual CString GetCommandString(UINT nID);
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(COeditApp)
 	public:
 	virtual BOOL InitInstance();
@@ -52,7 +52,7 @@ public:
 	virtual CDocument* OpenDocumentFile(LPCTSTR lpszFileName);
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 	//{{AFX_MSG(COeditApp)
 	afx_msg void OnAppAbout();
 	afx_msg void OnOption();
@@ -115,6 +115,6 @@ public:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_OEDIT_H__52A23F45_4E07_11D5_8505_00E018A83B1B__INCLUDED_)

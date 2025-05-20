@@ -11,7 +11,7 @@
 #define ROW_DATA_COMMENT		(0x01 << 0)
 //#define ROW_DATA_IN_QUOTE		(0x01 << 1)
 #define ROW_DATA_IN_TAG			(0x01 << 2)
-#define ROW_DATA_UPDATE_FLG		(0x01 << 3)		// CDispColorData‚ÅŽg‚¤
+#define ROW_DATA_UPDATE_FLG		(0x01 << 3)		// CDispColorDataã§ä½¿ã†
 #define ROW_DATA_BOOK_MARK		(0x01 << 4)
 #define ROW_DATA_BREAK_POINT	(0x01 << 5)
 #define ROW_DATA_USER_DEF1		(0x01 << 6)

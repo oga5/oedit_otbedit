@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // PrintDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // PrintDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -104,7 +104,7 @@ static int dlg_combo_set_printer(CComboBox *combo, TCHAR *msg_buf)
 #define BYTEBUF_SIZE	1024 * 10
 
 /////////////////////////////////////////////////////////////////////////////
-// CPrintDlg ƒ_ƒCƒAƒƒO
+// CPrintDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 
 CPrintDlg::CPrintDlg(CWnd* pParent /*=NULL*/)
@@ -139,7 +139,7 @@ BOOL CPrintDlg::CreatePrinterDC()
 {
 	DeletePrinterDC();
 
-	// DCì¬
+	// DCä½œæˆ
 	printer_dc = CreateDC(NULL, m_prninfo->pPrinterName, NULL, m_prninfo->pDevMode);
 	if(printer_dc == NULL) {
 		ErrorMessage(GetSafeHwnd());
@@ -174,28 +174,28 @@ BOOL CPrintDlg::CreatePrnInfo()
 	DeletePrnInfo();
 	DeletePrinterDC();
 
-	// ƒvƒŠƒ“ƒ^‚Ìİ’è‚ğæ“¾
+	// ãƒ—ãƒªãƒ³ã‚¿ã®è¨­å®šã‚’å–å¾—
 	if(::OpenPrinter(m_printer_name.GetBuffer(0), &hPrinter, NULL) == FALSE) {
 		goto ERR1;
 	}
 
-	// •K—v‚Èƒƒ‚ƒŠ—Ê‚ğæ“¾
+	// å¿…è¦ãªãƒ¡ãƒ¢ãƒªé‡ã‚’å–å¾—
 	GetPrinter(hPrinter, 2, 0, 0, &m_prninfo_size);
 
-	// ƒƒ‚ƒŠŠm•Û
+	// ãƒ¡ãƒ¢ãƒªç¢ºä¿
 	m_prninfo = (PRINTER_INFO_2 *)calloc(m_prninfo_size, 1);
 	if(m_prninfo == NULL) {
 		goto ERR1;
 	}
 
-	// ƒvƒŠƒ“ƒ^î•ñ‚ğæ“¾
+	// ãƒ—ãƒªãƒ³ã‚¿æƒ…å ±ã‚’å–å¾—
 	if(GetPrinter(hPrinter, 2, (unsigned char *)m_prninfo, m_prninfo_size, &dwNeeded) == FALSE) {
 		goto ERR1;
 	}
 
 	::ClosePrinter(hPrinter);
 
-	// DCì¬
+	// DCä½œæˆ
 	if(CreatePrinterDC() == FALSE) return FALSE;
 
 	return TRUE;
@@ -243,7 +243,7 @@ BEGIN_MESSAGE_MAP(CPrintDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CPrintDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CPrintDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CPrintDlg::OnInitDialog() 
 {
@@ -253,7 +253,7 @@ BOOL CPrintDlg::OnInitDialog()
 
 	m_font_size.Format(_T("%d"), m_font_point / 10);
 
-	// TODO: ‚±‚ÌˆÊ’u‚É‰Šú‰»‚Ì•â‘«ˆ—‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«åˆæœŸåŒ–ã®è£œè¶³å‡¦ç†ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	TCHAR	msg_buf[1024];
 	if(dlg_combo_set_printer(&m_combo_printer, msg_buf) != 0) {
 		MessageBox(msg_buf, _T("Error"), MB_ICONEXCLAMATION | MB_OK);
@@ -295,8 +295,8 @@ BOOL CPrintDlg::OnInitDialog()
 	SetPageInfo();
 	CheckBtn();
 
-	return TRUE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ğİ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return TRUE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CPrintDlg::OnOK()
@@ -344,7 +344,7 @@ void CPrintDlg::SetPageInfo()
 	get_print_info(printer_dc, m_font_face_name.GetBuffer(0), m_font_point, &space,
 		line_len, row_num_digit, &rows_par_page, &chars_par_page);
 
-	m_page_info.Format(_T("%ds, %d—ñ"), rows_par_page, chars_par_page);
+	m_page_info.Format(_T("%dè¡Œ, %dåˆ—"), rows_par_page, chars_par_page);
 
 	UpdateData(FALSE);
 }
@@ -411,7 +411,7 @@ void CPrintDlg::OnPrinterSetup()
 
 	HANDLE		hPrinter = NULL;
 
-	// ƒvƒŠƒ“ƒ^‚Ìİ’è‚ğæ“¾
+	// ãƒ—ãƒªãƒ³ã‚¿ã®è¨­å®šã‚’å–å¾—
 	if(::OpenPrinter(m_printer_name.GetBuffer(0), &hPrinter, NULL) == FALSE) {
 		ErrorMessage(GetSafeHwnd());
 		goto ERR1;
@@ -420,7 +420,7 @@ void CPrintDlg::OnPrinterSetup()
 	if(DocumentProperties(GetSafeHwnd(), hPrinter, m_printer_name.GetBuffer(0),
 		m_prninfo->pDevMode, m_prninfo->pDevMode, DM_IN_PROMPT | DM_OUT_BUFFER | DM_IN_BUFFER) >= 0) {
 
-		// ƒvƒŠƒ“ƒ^DC‚ğì‚è’¼‚·
+		// ãƒ—ãƒªãƒ³ã‚¿DCã‚’ä½œã‚Šç›´ã™
 		if(CreatePrinterDC() == FALSE) goto ERR1;
 
 		SetPageInfo();
@@ -440,14 +440,14 @@ void CPrintDlg::OnSetFont()
 	CFontDialog		fontdlg;
 	CFont			font;
 
-	// ƒ_ƒCƒAƒƒO‰Šú‰»
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°åˆæœŸåŒ–
 	fontdlg.m_cf.Flags &= ~CF_EFFECTS;
 	fontdlg.m_cf.Flags |= CF_INITTOLOGFONTSTRUCT;
 	
 	font.CreatePointFont(m_font_point, m_font_face_name);
 	font.GetLogFont(fontdlg.m_cf.lpLogFont);
 
-	// ƒ_ƒCƒAƒƒO•\¦
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤º
 	if(fontdlg.DoModal() != IDOK) return;
 
 	UpdateData(TRUE);
@@ -472,7 +472,7 @@ void CPrintDlg::LoadPrintOption()
 	m_print_row_num = pApp->GetIniFileInt(_T("PRINT"), _T("PRINT_ROW_NUM"), FALSE);
 	m_print_date = pApp->GetIniFileInt(_T("PRINT"), _T("PRINT_DATE"), FALSE);
 
-	m_font_face_name = pApp->GetIniFileString(_T("PRINT"), _T("FONT_FACE_NAME"), _T("‚l‚r ƒSƒVƒbƒN"));
+	m_font_face_name = pApp->GetIniFileString(_T("PRINT"), _T("FONT_FACE_NAME"), _T("ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯"));
 	m_font_point = pApp->GetIniFileInt(_T("PRINT"), _T("FONT_POINT"), 110);
 }
 
@@ -523,7 +523,7 @@ PRINTER_INFO_2 *CPrintDlg::DuplicatePrnInfo(TCHAR *printer_name, PRINTER_INFO_2 
 	p = (PRINTER_INFO_2 *)calloc(prninfo_size, 1);
 	if(p == NULL) goto ERR1;
 	
-	// ƒvƒŠƒ“ƒ^‚Ìİ’è‚ğƒRƒs[
+	// ãƒ—ãƒªãƒ³ã‚¿ã®è¨­å®šã‚’ã‚³ãƒ”ãƒ¼
 	if(::OpenPrinter(printer_name, &hPrinter, NULL) == FALSE) goto ERR1;
 
 	if(GetPrinter(hPrinter, 2, (LPBYTE)p, prninfo_size, &dwNeeded) == FALSE) {

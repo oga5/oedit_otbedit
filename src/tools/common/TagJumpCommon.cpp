@@ -14,10 +14,10 @@ BOOL GetTagData(const TCHAR *tag_data, CString &file_name, int &row)
 {
 	const TCHAR *p1 = tag_data;
 
-	for(; *p1 == ' ' || *p1 == '\t'; p1++) ;		// ƒXƒy[ƒX‚ğ“Ç‚İ”ò‚Î‚·
+	for(; *p1 == ' ' || *p1 == '\t'; p1++) ;		// ã‚¹ãƒšãƒ¼ã‚¹ã‚’èª­ã¿é£›ã°ã™
 
 	const TCHAR *p2 = p1;
-	if(p2[1] == ':') {	// ƒtƒ‹ƒpƒX
+	if(p2[1] == ':') {	// ãƒ•ãƒ«ãƒ‘ã‚¹
 		p2 += 2;
 	}
 	

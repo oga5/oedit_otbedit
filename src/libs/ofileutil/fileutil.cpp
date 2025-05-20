@@ -24,8 +24,8 @@
 #endif
 
 //
-// �t�H���_�I���_�C�A���O�̃R�[���o�b�N
-// �t�H���_�̏����l��ݒ�
+// フォルダ選択ダイアログのコールバック
+// フォルダの初期値を設定
 static int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg,LPARAM lParam,LPARAM lpData)
 {
 	if(uMsg == BFFM_INITIALIZED){
@@ -35,7 +35,7 @@ static int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg,LPARAM lParam,LPARAM 
 }
 
 //
-// �t�H���_�I���_�C�A���O
+// フォルダ選択ダイアログ
 //
 LRESULT SelectFolder(HWND hWnd, TCHAR *folder, const TCHAR *base_dir, const TCHAR *title)
 {
@@ -69,7 +69,7 @@ LRESULT SelectFolder(HWND hWnd, TCHAR *folder, const TCHAR *base_dir, const TCHA
 }
 
 /*------------------------------------------------------------------------*/
-/*    �f�B���N�g�����̍Ō��'\'��t����                                   */
+/*    ディレクトリ名の最後に'\'を付ける                                   */
 /*------------------------------------------------------------------------*/
 void make_dirname(TCHAR *dir)
 {
@@ -78,22 +78,22 @@ void make_dirname(TCHAR *dir)
 }
 
 /*------------------------------------------------------------------------*/
-/*    �f�B���N�g�����̍Ō��'\'('/')�����                                */
+/*    ディレクトリ名の最後の'\'('/')を取る                                */
 /*------------------------------------------------------------------------*/
 void make_dirname2(TCHAR *dir)
 {
 	TCHAR	*p;
 
-	/* '\'��SJIS��2�o�C�g�ڂł��g����̂ŁC������̑O���璲�ׂĂ��� */
+	/* '\'はSJISの2バイト目でも使われるので，文字列の前から調べていく */
 	for(p = dir; p[0] != '\0'; p++) {
-		/* 2�o�C�g�����̓X�L�b�v */
+		/* 2バイト文字はスキップ */
 		if(is_lead_byte(*p) == 1) {
 			p++;
 			if(*p == '\0') break;
 			continue;
 		}
 
-		/* ������̍Ōオ'\'�̂Ƃ��́CNULL�ɂ��� */
+		/* 文字列の最後が'\'のときは，NULLにする */
 		if(p[1] == '\0') {
 #ifdef WIN32
 			if(p[0] == '\\') {
@@ -110,19 +110,19 @@ void make_dirname2(TCHAR *dir)
 }
 
 /*------------------------------------------------------------------------*/
-/*    �e�f�B���N�g�������쐬                                              */
+/*    親ディレクトリ名を作成                                              */
 /*------------------------------------------------------------------------*/
 void make_parent_dirname(TCHAR *dir)
 {
 	TCHAR	*p;
 	INT_PTR		last_sepa_pos = 0;
 
-	// ������'\'����菜��
+	// 末尾の'\'を取り除く
 	make_dirname2(dir);
 
-	/* '\'��SJIS��2�o�C�g�ڂł��g����̂ŁC������̑O���璲�ׂĂ��� */
+	/* '\'はSJISの2バイト目でも使われるので，文字列の前から調べていく */
 	for(p = dir; p[0] != '\0'; p++) {
-		/* 2�o�C�g�����̓X�L�b�v */
+		/* 2バイト文字はスキップ */
 		if(is_lead_byte(*p) == 1) {
 			p++;
 			continue;
@@ -139,7 +139,7 @@ void make_parent_dirname(TCHAR *dir)
 }
 
 //
-// �A�v���P�[�V�����̃p�X���擾
+// アプリケーションのパスを取得
 //
 CString GetAppPath()
 {
@@ -150,14 +150,14 @@ CString GetAppPath()
 	CString path;
 
 	dwRet = GetModuleFileName(NULL, path_buffer, sizeof(path_buffer)/sizeof(path_buffer[0]));
-	// path_buffer �� ���s���W���[���̃t���p�X���i�[����܂��B
-	if(dwRet != 0) {// �p�X�̎擾�ɐ��������ꍇ�A
+	// path_buffer に 実行モジュールのフルパスが格納されます。
+	if(dwRet != 0) {// パスの取得に成功した場合、
 		_tsplitpath( path_buffer, drive, dir, NULL, NULL);
-		// drive �ɂ� "c:" �̂悤�Ƀh���C�u����
-		// dir �ɂ� "\test\mydir\" �̂悤�ɐ�΃p�X���i�[����܂��B
+		// drive には "c:" のようにドライブ名が
+		// dir には "\test\mydir\" のように絶対パスが格納されます。
 
 		path.Format(_T("%s%s"), drive, dir);
-		// path �Ɏ��s���W���[���̂����΃p�X���o���オ��ł��B
+		// path に実行モジュールのある絶対パスが出来上がりです。
 	}
 
 	return path;
@@ -174,7 +174,7 @@ CString GetShortAppPath()
 }
 
 //
-// �����O�t�@�C�������擾
+// ロングファイル名を取得
 //
 BOOL GetLongPath(const TCHAR *short_name, TCHAR *long_name)
 {
@@ -185,7 +185,7 @@ BOOL GetLongPath(const TCHAR *short_name, TCHAR *long_name)
 	TCHAR				file_name[_MAX_PATH * 2] = _T("");
 
 	if(short_name[0] == '\\' && short_name[1] == '\\') {
-		// UNC�p�X(�l�b�g���[�N�h���C�u)
+		// UNCパス(ネットワークドライブ)
 		p1 = (TCHAR *)short_name + 2;
 		p1 = my_mbschr(p1, '\\');
 		if(p1 == NULL) return FALSE;
@@ -196,14 +196,14 @@ BOOL GetLongPath(const TCHAR *short_name, TCHAR *long_name)
 		p1++;
 	} else if(short_name[0] != '\0' && short_name[1] == ':' && short_name[2] == '\\') {
 		p1 = (TCHAR *)short_name + 3;
-		// �h���C�u�����擾
+		// ドライブ名を取得
 		_stprintf(find_path, _T("%.*s"), 2, short_name);
 	} else {
 		return FALSE;
 	}
 	_tcscpy(long_name, find_path);
 
-	// path�̑O�̗v�f����Clongname�ɕϊ����Ă���
+	// pathの前の要素から，longnameに変換していく
 	for(;;) {
 		p2 = my_mbschr(p1, '\\');
 		if(p2 == NULL) {
@@ -235,7 +235,7 @@ BOOL GetLongPath(const TCHAR *short_name, TCHAR *long_name)
 }
 
 /*------------------------------------------------------------------------------
- �t�@�C�������݂��邩�m�F����
+ ファイルが存在するか確認する
 ------------------------------------------------------------------------------*/
 BOOL is_file_exist(const TCHAR *path)
 {
@@ -251,7 +251,7 @@ BOOL is_file_exist(const TCHAR *path)
 }
 
 /*------------------------------------------------------------------------------
- �f�B���N�g�������݂��邩�m�F����
+ ディレクトリが存在するか確認する
 ------------------------------------------------------------------------------*/
 BOOL is_directory_exist(const TCHAR *path)
 {
@@ -261,11 +261,11 @@ BOOL is_directory_exist(const TCHAR *path)
 
 	if(path == NULL || _tcslen(path) == 0) return FALSE;
 
-	/* �f�B���N�g�����̍Ō�� \���͂��� */
+	/* ディレクトリ名の最後の \をはずす */
 	_tcscpy(path2, path);
 	make_dirname2(path2);
 
-	/* drive���̂Ƃ��Cstat()�Ɏ��s����̂���� */
+	/* drive名のとき，stat()に失敗するのを回避 */
 	if(_tcslen(path2) == 2 && path2[1] == ':') {
 		_tcscat(path2, _T("\\"));
 	}
@@ -279,17 +279,17 @@ BOOL is_directory_exist(const TCHAR *path)
 }
 
 /*------------------------------------------------------------------------------
- �f�B���N�g�����쐬����
+ ディレクトリを作成する
 ------------------------------------------------------------------------------*/
 int make_directory(const TCHAR *dir, TCHAR *msg_buf)
 {
 	TCHAR	buf[_MAX_PATH] = _T("");
 	const TCHAR	*p = NULL;
 
-	/* ROOT���珇�ԂɃf�B���N�g���̑��݂��m�F���āC���݂��Ȃ��ꍇ�͍쐬���Ă��� */
+	/* ROOTから順番にディレクトリの存在を確認して，存在しない場合は作成していく */
 	p = dir;
 	#ifdef WIN32
-	/* Windows�̏ꍇ�C�h���C�u�����X�L�b�v���� */
+	/* Windowsの場合，ドライブ名をスキップする */
 	p = my_mbschr(p, '\\');
 	p++;
 	#else
@@ -316,7 +316,7 @@ int make_directory(const TCHAR *dir, TCHAR *msg_buf)
 		#else
 			if(mkdir(buf, 0777 ) == -1) {
 		#endif
-				_stprintf(msg_buf, _T("�f�B���N�g�����쐬�ł��܂���(%s)"), dir);
+				_stprintf(msg_buf, _T("ディレクトリが作成できません(%s)"), dir);
 				return 1;
 			}
 		}
@@ -328,7 +328,7 @@ int make_directory(const TCHAR *dir, TCHAR *msg_buf)
 }
 
 /*------------------------------------------------------------------------------
- �f�B���N�g�����쐬����
+ ディレクトリを作成する
 ------------------------------------------------------------------------------*/
 BOOL is_valid_path(const TCHAR *path)
 {
@@ -341,7 +341,7 @@ BOOL is_valid_path(const TCHAR *path)
 }
 
 /*------------------------------------------------------------------------------
- �g���q�𒲂ׂ�
+ 拡張子を調べる
 ------------------------------------------------------------------------------*/
 BOOL check_ext(const TCHAR *file_name, const TCHAR *ext)
 {
@@ -359,7 +359,7 @@ BOOL check_ext(const TCHAR *file_name, const TCHAR *ext)
 }
 
 /*------------------------------------------------------------------------------
- ���΃p�X���t���p�X�ɂ���
+ 相対パスをフルパスにする
 ------------------------------------------------------------------------------*/
 void make_full_path(TCHAR *path)
 {
@@ -390,7 +390,7 @@ void make_full_path(TCHAR *path)
 }
 
 /*------------------------------------------------------------------------------
- ���X�g�ɒ�`���ꂽ�g���q�����ׂ�
+ リストに定義された拡張子か調べる
 ------------------------------------------------------------------------------*/
 __inline static const TCHAR *GetExt(const TCHAR *file_type, TCHAR *ext)
 {
@@ -433,7 +433,7 @@ BOOL CheckFileType(const TCHAR *file_name, const TCHAR *file_type)
 }
 
 /*------------------------------------------------------------------------------
- �V���[�g�J�b�g���`�F�b�N����
+ ショートカットかチェックする
 ------------------------------------------------------------------------------*/
 BOOL IsShortcut(const TCHAR *file_name)
 {
@@ -442,7 +442,7 @@ BOOL IsShortcut(const TCHAR *file_name)
 }
 
 /*------------------------------------------------------------------------------
- �V���[�g�J�b�g�̃t���p�X���擾
+ ショートカットのフルパスを取得
 ------------------------------------------------------------------------------*/
 BOOL GetFullPathFromShortcut(const TCHAR *file_name, CString *str)
 {
@@ -451,27 +451,27 @@ BOOL GetFullPathFromShortcut(const TCHAR *file_name, CString *str)
 	IPersistFile *ppf = NULL;
 	TCHAR fullPath[_MAX_PATH] = _T("");
 
-	// COM������
+	// COM初期化
 	CoInitialize(NULL);
 
-    // IShellLink�C���^�t�F�[�X�擾
+    // IShellLinkインタフェース取得
 	hres = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER,
 		IID_IShellLink, (void**)&psl);
 	if(!SUCCEEDED(hres)) goto ERR1;
 
-	// IPersistFile�C���^�t�F�[�X�擾
+	// IPersistFileインタフェース取得
 	hres = psl->QueryInterface(IID_IPersistFile, (void**)&ppf);
 	if(!SUCCEEDED(hres)) goto ERR1;
 
-	// �V���[�g�J�b�g�̓ǂݍ���
+	// ショートカットの読み込み
 	hres = ppf->Load(file_name, STGM_READ);
 	if(!SUCCEEDED(hres)) goto ERR1;
 
-	// �����N�����������
+	// リンク先を解決する
 	hres = psl->Resolve(NULL, 0);
 	if(!SUCCEEDED(hres)) goto ERR1;
 
-	// �����N��̃t���p�X�擾
+	// リンク先のフルパス取得
 	hres = psl->GetPath(fullPath, _MAX_PATH, NULL, 0);
 	if(!SUCCEEDED(hres)) goto ERR1;
         
@@ -490,7 +490,7 @@ ERR1:
 }
 
 /*------------------------------------------------------------------------------
- �t�@�C�����Ɏg���Ȃ�������'_'�ɒu��������
+ ファイル名に使えない文字を'_'に置き換える
 ------------------------------------------------------------------------------*/
 CString GetSafePathName(const TCHAR *file_name)
 {

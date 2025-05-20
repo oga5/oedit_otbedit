@@ -1,34 +1,34 @@
 
-�V���[�g�J�b�g�L�[
+ショートカットキー
 
- Esc         : �L�[���[�h�⊮
- Shift + Esc : �L�[���[�h�⊮(�t��)
+ Esc         : キーワード補完
+ Shift + Esc : キーワード補完(逆順)
 
- Ctrl + A    : �S�đI��
- Ctrl + C    : �I��͈͂��R�s�[(Ctrl + Insert)
- Ctrl + X    : �I��͈͂��J�b�g(Shift + Delete)
- Ctrl + V    : �y�[�X�g(Shift + Insert)
+ Ctrl + A    : 全て選択
+ Ctrl + C    : 選択範囲をコピー(Ctrl + Insert)
+ Ctrl + X    : 選択範囲をカット(Shift + Delete)
+ Ctrl + V    : ペースト(Shift + Insert)
  Ctrl + Z    : Undo
  Ctrl + Y    : Redo
 
- Ctrl + F    : �����񌟍�
- F3          : ��������
- Shift + F3  : �O������
- Ctrl + H    : ������u��
- Alt + F3    : ����������̋����\��������
- Ctrl + G    : �w��s�ֈړ�
+ Ctrl + F    : 文字列検索
+ F3          : 次を検索
+ Shift + F3  : 前を検索
+ Ctrl + H    : 文字列置換
+ Alt + F3    : 検索文字列の強調表示を解除
+ Ctrl + G    : 指定行へ移動
 
- Ctrl + N    : �V�K�E�B���h�E���J��
- Ctrl + O    : �t�@�C�����J��
- Ctrl + S    : �t�@�C���ɕۑ�
- Ctrl + P    : ���
- Alt + F4    : �A�v���P�[�V�������I��
+ Ctrl + N    : 新規ウィンドウを開く
+ Ctrl + O    : ファイルを開く
+ Ctrl + S    : ファイルに保存
+ Ctrl + P    : 印刷
+ Alt + F4    : アプリケーションを終了
 
- Tab         : �I��͈͂̊e�s�ɁCTab��}������
- Shift + Tab : �I��͈͂̊e�s����CTab���폜����
+ Tab         : 選択範囲の各行に，Tabを挿入する
+ Shift + Tab : 選択範囲の各行から，Tabを削除する
 
- Ctrl + U         : �I�𒆂̗̈���������ɕϊ�����
- Ctrl + Shift + U : �I�𒆂̗̈��啶���ɕϊ�����
- Ctrl + Shift + R : �I�𒆂̊e�s�ɁC"> "��}������
- Ctrl+Shift+Space : �I�𒆂̊e�s�́C�擪�̋󔒂��폜
+ Ctrl + U         : 選択中の領域を小文字に変換する
+ Ctrl + Shift + U : 選択中の領域を大文字に変換する
+ Ctrl + Shift + R : 選択中の各行に，"> "を挿入する
+ Ctrl+Shift+Space : 選択中の各行の，先頭の空白を削除
 

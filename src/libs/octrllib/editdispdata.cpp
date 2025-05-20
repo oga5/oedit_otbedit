@@ -61,8 +61,8 @@ CEditDispData::CEditDispData()
 	m_color[BRACKET_COLOR3] = m_color[OPERATOR_COLOR];
 
 // NOTE:
-//   CEditData(CEditDispData‚ğg‚Á‚Ä‚¢‚é)‚ÍA“à•”ƒf[ƒ^‚Æ‚µ‚Äg‚¤ê‡‚à‚ ‚é‚Ì‚ÅA
-//   ‚±‚±‚Å‚ÍGGI object‚ğ¶¬‚µ‚È‚¢ (GetMarkPen‚È‚Ç‚Åæ“¾‚É‰Šú‰»‚·‚é)
+//   CEditData(CEditDispDataã‚’ä½¿ã£ã¦ã„ã‚‹)ã¯ã€å†…éƒ¨ãƒ‡ãƒ¼ã‚¿ã¨ã—ã¦ä½¿ã†å ´åˆã‚‚ã‚ã‚‹ã®ã§ã€
+//   ã“ã“ã§ã¯GGI objectã‚’ç”Ÿæˆã—ãªã„ (GetMarkPenãªã©ã§å–å¾—æ™‚ã«åˆæœŸåŒ–ã™ã‚‹)
 //	m_mark_pen.CreatePen(PS_SOLID, 0, GetColor(PEN_COLOR));
 //	m_ruler_pen.CreatePen(PS_SOLID, 0, GetColor(RULER_COLOR));
 

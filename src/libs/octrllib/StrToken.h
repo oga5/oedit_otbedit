@@ -15,13 +15,13 @@
 struct _key_word_st {
 	const TCHAR	*str;
 	const TCHAR	*org_str;
-	// NOTE: lwr_str‚Ídataset‚Ìƒf[ƒ^‚ğ¬•¶š‚ÉXV‚·‚é‚Ì‚ÅAconst‚Í‚Â‚¯‚È‚¢
+	// NOTE: lwr_strã¯datasetã®ãƒ‡ãƒ¼ã‚¿ã‚’å°æ–‡å­—ã«æ›´æ–°ã™ã‚‹ã®ã§ã€constã¯ã¤ã‘ãªã„
 	TCHAR	*lwr_str;
 	unsigned int	len;
 	int				type;
 	const TCHAR	*type_name;
 	const TCHAR	*comment;
-	// Œó•â‚Ì’Šo‚ğ‚‘¬‰»‚·‚é‚½‚ß‚Ì’l (a-z‚ÌŠe•¶š‚ğ1bit‚Æ‚µ‚Äƒtƒ‰ƒO‚ğ—§‚Ä‚é)
+	// å€™è£œã®æŠ½å‡ºã‚’é«˜é€ŸåŒ–ã™ã‚‹ãŸã‚ã®å€¤ (a-zã®å„æ–‡å­—ã‚’1bitã¨ã—ã¦ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹)
 	unsigned int ch_map;
 };
 
@@ -30,7 +30,7 @@ struct _key_word_st {
 
 #define MAX_ROW_COMMENT_CNT	4
 
-/* KEYWORD_IDX_SIZE: ASCII + 1(ASCIIˆÈŠO) */
+/* KEYWORD_IDX_SIZE: ASCII + 1(ASCIIä»¥å¤–) */
 #define KEYWORD_IDX_SIZE	(0x80 + 1)
 
 class CStrToken
@@ -41,8 +41,8 @@ public:
 
 	BOOL isBreakChar(unsigned int ch) {
 		if(ch > 0xff) {
-			// ‘SŠp‚Ì‹ó”’‚Æ‹å“Ç“_(CABD)‚Í‹æØ‚è•¶š‚É‚·‚é
-			return (ch == L'@' || ch == L'C' || ch == L'A'|| ch == L'B' || ch == L'D');
+			// å…¨è§’ã®ç©ºç™½ã¨å¥èª­ç‚¹(ï¼Œã€ã€‚ï¼)ã¯åŒºåˆ‡ã‚Šæ–‡å­—ã«ã™ã‚‹
+			return (ch == L'ã€€' || ch == L'ï¼Œ' || ch == L'ã€'|| ch == L'ã€‚' || ch == L'ï¼');
 		}
 		return m_break_char[ch];
 	}

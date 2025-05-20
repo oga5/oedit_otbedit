@@ -75,9 +75,9 @@ static struct event_list *add_event_list(struct event_list *cur,
 	return cur;
 }
 
-LRESULT CALLBACK JournalRecordProc(int code,// ƒtƒbƒNƒR[ƒh
-	WPARAM wParam,// –¢’è‹`
-	LPARAM lParam// ˆ—‚³‚ê‚½ƒƒbƒZ[ƒW‚Ö‚Ìƒ|ƒCƒ“ƒ^
+LRESULT CALLBACK JournalRecordProc(int code,// ãƒ•ãƒƒã‚¯ã‚³ãƒ¼ãƒ‰
+	WPARAM wParam,// æœªå®šç¾©
+	LPARAM lParam// å‡¦ç†ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 )
 {
 	EVENTMSG	*msg = (EVENTMSG *)lParam;
@@ -88,12 +88,12 @@ LRESULT CALLBACK JournalRecordProc(int code,// ƒtƒbƒNƒR[ƒh
 	if(rec_status != HC_SYSMODALON && code == HC_ACTION) {
 		if(g_cur == NULL) goto EXIT;
 
-		// ƒ}ƒEƒXƒƒbƒZ[ƒW‚Í•Û‘¶‚µ‚È‚¢
+		// ãƒã‚¦ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯ä¿å­˜ã—ãªã„
 		if(msg->message < WM_KEYFIRST || msg->message > WM_KEYLAST) goto EXIT;
 
 		g_cur = add_event_list(g_cur, msg);
 		if(g_cur == NULL) {
-			// FIXME: ƒGƒ‰[ƒƒbƒZ[ƒW
+			// FIXME: ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 			goto EXIT;
 		}
 	}
@@ -105,9 +105,9 @@ EXIT:
 //const int WH_KEYBOARD_LL = 13;
 //#define WH_KEYBOARD_LL 13
 LRESULT CALLBACK LowLevelKeyboardProc(
-	int nCode,// ƒtƒbƒNƒR[ƒh
-	WPARAM wParam,// ƒƒbƒZ[ƒW
-	LPARAM lParam// ƒƒbƒZ[ƒWƒf[ƒ^‚Ì\‘¢‘Ì‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	int nCode,// ãƒ•ãƒƒã‚¯ã‚³ãƒ¼ãƒ‰
+	WPARAM wParam,// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	LPARAM lParam// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®æ§‹é€ ä½“ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 )
 {
 	TRACE(_T("%d:%d:%d\n"), nCode, wParam, lParam);
@@ -118,7 +118,7 @@ BOOL RecStartKBMacro()
 {
 	if(InitKBMacroBuffer() == FALSE) return FALSE;
 
-	// CtrlƒL[CShiftƒL[‚ğOFF‚É‚·‚é
+	// Ctrlã‚­ãƒ¼ï¼ŒShiftã‚­ãƒ¼ã‚’OFFã«ã™ã‚‹
 	if(GetAsyncKeyState(VK_CONTROL) < 0 || GetAsyncKeyState(VK_SHIFT) < 0) {
 		BYTE	key_state[256];
 		GetKeyboardState(key_state);
@@ -161,9 +161,9 @@ void PlayEndKBMacro()
 }
 
 LRESULT CALLBACK JournalPlaybackProc(
-	int code,// ƒtƒbƒNƒR[ƒh
-	WPARAM wParam,// –¢’è‹`
-	LPARAM lParam// ˆ—‚³‚ê‚éƒƒbƒZ[ƒW‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	int code,// ãƒ•ãƒƒã‚¯ã‚³ãƒ¼ãƒ‰
+	WPARAM wParam,// æœªå®šç¾©
+	LPARAM lParam// å‡¦ç†ã•ã‚Œã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 )
 {
 	if(code == HC_SYSMODALOFF) play_status = HC_SYSMODALOFF;
@@ -192,7 +192,7 @@ void PlayKBMacro()
 	if(rec_hook != NULL) RecEndKBMacro();
 	if(play_hook != NULL) PlayEndKBMacro();
 
-	// CtrlƒL[CShiftƒL[‚ğOFF‚É‚·‚é
+	// Ctrlã‚­ãƒ¼ï¼ŒShiftã‚­ãƒ¼ã‚’OFFã«ã™ã‚‹
 	BYTE	key_state[256];
 	GetKeyboardState(key_state);
 	key_state[VK_CONTROL] = 0;
@@ -233,7 +233,7 @@ BOOL SaveKBMacro(TCHAR *file_name)
 
 	fp = _tfopen(file_name, _T("wb"));
 	if(fp == NULL) {
-		// FIXME: ƒGƒ‰[ƒƒbƒZ[ƒW
+		// FIXME: ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 		return FALSE;
 	}
 
@@ -270,7 +270,7 @@ BOOL LoadKBMacro(TCHAR *file_name)
 	for(;;) {
 		if(uni_ar.ReadLine(buf, sizeof(buf)) == NULL) break;
 		
-		if(buf[0] == '/' && buf[1] == '/') continue;	// ƒRƒƒ“ƒgs
+		if(buf[0] == '/' && buf[1] == '/') continue;	// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 
 		_stscanf(buf, _T("%u:%u:%u:%u"), &(msg.message), &(msg.paramH), 
 			&(msg.paramL), &(msg.time));

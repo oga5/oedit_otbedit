@@ -59,18 +59,18 @@ int CGridData_Filter::DoFilterData(int filter_col_no, const TCHAR* search_text, 
 	CString search_text_string = search_text;
 
 	if(m_grid_data == NULL || m_grid_data->Get_RowCnt() == 0) {
-		msg_str->Format(_T("ƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ"));
+		msg_str->Format(_T("ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“"));
 		return 1;
 	}
 
 	if(_tcslen(search_text) >= MAX_FILTER_SEARCH_TEXT_LEN) {
-		msg_str->Format(_T("ŒŸõðŒ‚Ì•¶Žš—ñ‚ª’·‚·‚¬‚Ü‚·"));
+		msg_str->Format(_T("æ¤œç´¢æ¡ä»¶ã®æ–‡å­—åˆ—ãŒé•·ã™ãŽã¾ã™"));
 		return 1;
 	}
 
 	CRegData	reg_data;
 	if(!reg_data.Compile2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp)) {
-		msg_str->Format(_T("•s³‚È³‹K•\Œ»‚Å‚·"));
+		msg_str->Format(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"));
 		return 1;
 	}
 
@@ -93,7 +93,7 @@ int CGridData_Filter::DoFilterData(int filter_col_no, const TCHAR* search_text, 
 		}
 	}
 	if(b_err_at_no_find && row_arr_idx == 0) {
-		msg_str->Format(_T("ƒtƒBƒ‹ƒ^‚ÌðŒ‚Éˆê’v‚·‚éƒŒƒR[ƒh‚ª‚ ‚è‚Ü‚¹‚ñ"));
+		msg_str->Format(_T("ãƒ•ã‚£ãƒ«ã‚¿ã®æ¡ä»¶ã«ä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚Šã¾ã›ã‚“"));
 		free(row_idx);
 		return 1;
 	}
@@ -124,7 +124,7 @@ int CGridData_Filter::DoFilterData(int filter_col_no, const TCHAR* search_text, 
 
 int CGridData_Filter::RestoreGridDataFilterCondMain(griddata_filter_cond* d, CString* msg_str)
 {
-	// UNDO buffer‚©‚çŽæ‚èo‚µ‚½‚Æ‚«Arow_idx‚Ìƒ|ƒCƒ“ƒ^‚ÌˆÊ’u‚ª³‚µ‚­‚È‚¢‚Ì‚ÅC³‚·‚é
+	// UNDO bufferã‹ã‚‰å–ã‚Šå‡ºã—ãŸã¨ãã€row_idxã®ãƒã‚¤ãƒ³ã‚¿ã®ä½ç½®ãŒæ­£ã—ããªã„ã®ã§ä¿®æ­£ã™ã‚‹
 	d->row_idx = (int*)((char*)d + sizeof(griddata_filter_cond));
 
 	m_filter_cond = AllocFilterCond(d->row_cnt);
@@ -177,8 +177,8 @@ void CGridData_Filter::RestoreRowIdxFromFilterRowFlg()
 
 void CGridData_Filter::UpdateCurCell()
 {
-	// ƒf[ƒ^ã‚Ìs”Ô†‚©‚çAƒtƒBƒ‹ƒ^’†‚Ìs”Ô†‚É‚·‚é
-	// FIXME: ƒoƒCƒiƒŠƒT[ƒ`‚É‚·‚é
+	// ãƒ‡ãƒ¼ã‚¿ä¸Šã®è¡Œç•ªå·ã‹ã‚‰ã€ãƒ•ã‚£ãƒ«ã‚¿ä¸­ã®è¡Œç•ªå·ã«ã™ã‚‹
+	// FIXME: ãƒã‚¤ãƒŠãƒªã‚µãƒ¼ãƒã«ã™ã‚‹
 	int r;
 	int disp_row = 0;
 	int data_row = m_grid_data->get_cur_row();

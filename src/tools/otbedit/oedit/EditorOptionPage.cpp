@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // EditorOptionPage.cpp : �C���v�������e�[�V���� �t�@�C��
+ // EditorOptionPage.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -22,7 +22,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionPage �v���p�e�B �y�[�W
+// CEditorOptionPage プロパティ ページ
 
 IMPLEMENT_DYNCREATE(CEditorOptionPage, CPropertyPage)
 
@@ -125,18 +125,18 @@ BEGIN_MESSAGE_MAP(CEditorOptionPage, CPropertyPage)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionPage ���b�Z�[�W �n���h��
+// CEditorOptionPage メッセージ ハンドラ
 
 int CEditorOptionPage::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
 	if (CPropertyPage::OnCreate(lpCreateStruct) == -1)
 		return -1;
 	
-	// TODO: ���̈ʒu�ɌŗL�̍쐬�p�R�[�h��ǉ����Ă�������
+	// TODO: この位置に固有の作成用コードを追加してください
 	m_edit_data.paste(
 		_T("<body bgcolor=\"#eeeeee\">\n")
 		_T("<!-- comment -->\n")
-		_T("\t<h2>�^�C�g���@</h2>\n")
+		_T("\t<h2>タイトル　</h2>\n")
 		_T("\t<a href=\"http://www.hi-ho.ne.jp/a_ogawa/\">\n")
 	);
 	m_edit_data.set_cur(0, 0);
@@ -148,25 +148,25 @@ BOOL CEditorOptionPage::OnInitDialog()
 {
 	CPropertyPage::OnInitDialog();
 	
-	// TODO: ���̈ʒu�ɏ������̕⑫������ǉ����Ă�������
+	// TODO: この位置に初期化の補足処理を追加してください
 	UpdateData(FALSE);
 
 	CreateEditCtrl();
 
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 BOOL CEditorOptionPage::OnApply() 
 {
-	// TODO: ���̈ʒu�ɌŗL�̏�����ǉ����邩�A�܂��͊�{�N���X���Ăяo���Ă�������
+	// TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
 	
 	return CPropertyPage::OnApply();
 }
 
 void CEditorOptionPage::CreateEditCtrl()
 {
-	// HTML���[�h��CStrToken�����
+	// HTMLモードのCStrTokenを作る
 	TCHAR	msg_buf[512];
 	CString	keyword_file;
 	keyword_file.Format(_T("%s\\data\\html.txt"), GetAppPath());
@@ -181,7 +181,7 @@ void CEditorOptionPage::CreateEditCtrl()
 	m_str_token.SetTagMode(TRUE);
 
 	if(m_str_token.initDefaultKeyword(keyword_file.GetBuffer(0), msg_buf) != 0) {
-		// FIXME: ���b�Z�[�W��e�؂ɂ��Ă���\������
+		// FIXME: メッセージを親切にしてから表示する
 		//AfxMessageBox(msg_buf, MB_OK);
 	}
 
@@ -303,7 +303,7 @@ void CEditorOptionPage::OnChangeEditTabstop()
 
 void CEditorOptionPage::OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct) 
 {
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����邩�܂��̓f�t�H���g�̏������Ăяo���Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加するかまたはデフォルトの処理を呼び出してください
 	switch(nIDCtl) {
 	case IDC_BTN_TEXT_COLOR:
 		DrawColorBtn(lpDrawItemStruct, m_color[TEXT_COLOR]);

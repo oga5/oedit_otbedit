@@ -11,10 +11,10 @@
 class CEditData;
 class CEditRowData;
 
-#define DISP_COLOR_DATA_SELECTED	(0x01 << 0)		// 選択範囲
-#define DISP_COLOR_DATA_SEARCHED	(0x01 << 1)		// 検索結果
-#define DISP_COLOR_DATA_CLICKABLE	(0x01 << 2)		// クリッカブル
-#define DISP_COLOR_DATA_BOLD		(0x01 << 3)		// BOLD表示
+#define DISP_COLOR_DATA_SELECTED	(0x01 << 0)		// 驕ｸ謚樒ｯ�蝗ｲ
+#define DISP_COLOR_DATA_SEARCHED	(0x01 << 1)		// 讀懃ｴ｢邨先棡
+#define DISP_COLOR_DATA_CLICKABLE	(0x01 << 2)		// 繧ｯ繝ｪ繝�繧ｫ繝悶Ν
+#define DISP_COLOR_DATA_BOLD		(0x01 << 3)		// BOLD陦ｨ遉ｺ
 
 #define MARK_TAB			1
 #define MARK_2BYTE_SPACE	2
@@ -23,7 +23,7 @@ class CEditRowData;
 
 struct _st_disp_color_data {
 	COLORREF	color;
-	unsigned char mark;		// 記号
+	unsigned char mark;		// 險伜捷
 	unsigned char disp_flg;
 };
 

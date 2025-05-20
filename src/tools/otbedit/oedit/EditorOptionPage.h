@@ -12,26 +12,26 @@
 #if _MSC_VER >= 1000
 #pragma once
 #endif // _MSC_VER >= 1000
-// EditorOptionPage.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// EditorOptionPage.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "EditCtrl.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionPage ƒ_ƒCƒAƒƒO
+// CEditorOptionPage ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 class CEditorOptionPage : public CPropertyPage
 {
 	DECLARE_DYNCREATE(CEditorOptionPage)
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CEditorOptionPage();
 	~CEditorOptionPage();
 
 	CStrToken m_str_token;
 
-// ƒ_ƒCƒAƒƒO ƒf[ƒ^
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ‡ãƒ¼ã‚¿
 	//{{AFX_DATA(CEditorOptionPage)
 	enum { IDD = IDD_OPT_EDITOR };
 	BOOL	m_show_line_feed;
@@ -57,19 +57,19 @@ public:
 
 	COLORREF m_color[EDIT_CTRL_COLOR_CNT];
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CEditorOptionPage)
 	public:
 	virtual BOOL OnApply();
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ƒTƒ|[ƒg
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ã‚µãƒãƒ¼ãƒˆ
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 	//{{AFX_MSG(CEditorOptionPage)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	virtual BOOL OnInitDialog();
@@ -122,6 +122,6 @@ private:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Developer Studio ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_EDITOROPTIONPAGE_H__71AC5182_A085_11D4_B06E_00E018A83B1B__INCLUDED_)

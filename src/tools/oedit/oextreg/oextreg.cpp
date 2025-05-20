@@ -1,4 +1,4 @@
-// oextreg.cpp : ƒAƒvƒŠƒP[ƒVƒ‡ƒ“—pƒNƒ‰ƒX‚Ì’è‹`‚ðs‚¢‚Ü‚·B
+// oextreg.cpp : ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã‚¯ãƒ©ã‚¹ã®å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -20,44 +20,44 @@ static char THIS_FILE[] = __FILE__;
 
 BEGIN_MESSAGE_MAP(COextregApp, CWinApp)
 	//{{AFX_MSG_MAP(COextregApp)
-		// ƒƒ‚ - ClassWizard ‚Í‚±‚ÌˆÊ’u‚Éƒ}ƒbƒsƒ“ƒO—p‚Ìƒ}ƒNƒ‚ð’Ç‰Á‚Ü‚½‚Ííœ‚µ‚Ü‚·B
-		//        ‚±‚ÌˆÊ’u‚É¶¬‚³‚ê‚éƒR[ƒh‚ð•ÒW‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B
+		// ãƒ¡ãƒ¢ - ClassWizard ã¯ã“ã®ä½ç½®ã«ãƒžãƒƒãƒ”ãƒ³ã‚°ç”¨ã®ãƒžã‚¯ãƒ­ã‚’è¿½åŠ ã¾ãŸã¯å‰Šé™¤ã—ã¾ã™ã€‚
+		//        ã“ã®ä½ç½®ã«ç”Ÿæˆã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ‰ã‚’ç·¨é›†ã—ãªã„ã§ãã ã•ã„ã€‚
 	//}}AFX_MSG
 	ON_COMMAND(ID_HELP, CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COextregApp ƒNƒ‰ƒX‚Ì\’z
+// COextregApp ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰
 
 COextregApp::COextregApp()
 {
-	// TODO: ‚±‚ÌˆÊ’u‚É\’z—p‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
-	// ‚±‚±‚É InitInstance ’†‚Ìd—v‚È‰Šú‰»ˆ—‚ð‚·‚×‚Ä‹Lq‚µ‚Ä‚­‚¾‚³‚¢B
+	// TODO: ã“ã®ä½ç½®ã«æ§‹ç¯‰ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
+	// ã“ã“ã« InitInstance ä¸­ã®é‡è¦ãªåˆæœŸåŒ–å‡¦ç†ã‚’ã™ã¹ã¦è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚
 	m_hMutex = NULL;
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// —Bˆê‚Ì COextregApp ƒIƒuƒWƒFƒNƒg
+// å”¯ä¸€ã® COextregApp ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 COextregApp theApp;
 
 /////////////////////////////////////////////////////////////////////////////
-// COextregApp ƒNƒ‰ƒX‚Ì‰Šú‰»
+// COextregApp ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–
 
 BOOL COextregApp::InitInstance()
 {
-	// •W€“I‚È‰Šú‰»ˆ—
-	// ‚à‚µ‚±‚ê‚ç‚Ì‹@”\‚ðŽg—p‚¹‚¸AŽÀsƒtƒ@ƒCƒ‹‚ÌƒTƒCƒY‚ð¬‚³‚­‚µ‚½‚¯
-	//  ‚ê‚ÎˆÈ‰º‚Ì“Á’è‚Ì‰Šú‰»ƒ‹[ƒ`ƒ“‚Ì’†‚©‚ç•s•K—v‚È‚à‚Ì‚ðíœ‚µ‚Ä
-	//  ‚­‚¾‚³‚¢B
+	// æ¨™æº–çš„ãªåˆæœŸåŒ–å‡¦ç†
+	// ã‚‚ã—ã“ã‚Œã‚‰ã®æ©Ÿèƒ½ã‚’ä½¿ç”¨ã›ãšã€å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã‚’å°ã•ãã—ãŸã‘
+	//  ã‚Œã°ä»¥ä¸‹ã®ç‰¹å®šã®åˆæœŸåŒ–ãƒ«ãƒ¼ãƒãƒ³ã®ä¸­ã‹ã‚‰ä¸å¿…è¦ãªã‚‚ã®ã‚’å‰Šé™¤ã—ã¦
+	//  ãã ã•ã„ã€‚
 
-	// ‚Qd‹N“®‚Ì–hŽ~
+	// ï¼’é‡èµ·å‹•ã®é˜²æ­¢
 	if(CheckExecute() == FALSE) return FALSE;
 
 #ifdef _AFXDLL
-	Enable3dControls();			// ‹¤—L DLL “à‚Å MFC ‚ðŽg‚¤ê‡‚Í‚±‚±‚ðƒR[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
+	Enable3dControls();			// å…±æœ‰ DLL å†…ã§ MFC ã‚’ä½¿ã†å ´åˆã¯ã“ã“ã‚’ã‚³ãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚
 #else
-	Enable3dControlsStatic();	// MFC ‚ÆÃ“I‚ÉƒŠƒ“ƒN‚·‚éê‡‚Í‚±‚±‚ðƒR[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
+	Enable3dControlsStatic();	// MFC ã¨é™çš„ã«ãƒªãƒ³ã‚¯ã™ã‚‹å ´åˆã¯ã“ã“ã‚’ã‚³ãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚
 #endif
 
 	COextregDlg dlg;
@@ -65,30 +65,30 @@ BOOL COextregApp::InitInstance()
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
 	{
-		// TODO: ƒ_ƒCƒAƒƒO‚ª <OK> ‚ÅÁ‚³‚ê‚½Žž‚ÌƒR[ƒh‚ð
-		//       ‹Lq‚µ‚Ä‚­‚¾‚³‚¢B
+		// TODO: ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒ <OK> ã§æ¶ˆã•ã‚ŒãŸæ™‚ã®ã‚³ãƒ¼ãƒ‰ã‚’
+		//       è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚
 	}
 	else if (nResponse == IDCANCEL)
 	{
-		// TODO: ƒ_ƒCƒAƒƒO‚ª <·¬Ý¾Ù> ‚ÅÁ‚³‚ê‚½Žž‚ÌƒR[ƒh‚ð
-		//       ‹Lq‚µ‚Ä‚­‚¾‚³‚¢B
+		// TODO: ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒ <ã‚­ãƒ£ãƒ³ã‚»ãƒ«> ã§æ¶ˆã•ã‚ŒãŸæ™‚ã®ã‚³ãƒ¼ãƒ‰ã‚’
+		//       è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚
 	}
 
-	// ƒ_ƒCƒAƒƒO‚ª•Â‚¶‚ç‚ê‚Ä‚©‚çƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒƒbƒZ[ƒW ƒ|ƒ“ƒv‚ðŠJŽn‚·‚é‚æ‚è‚ÍA
-	// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðI—¹‚·‚é‚½‚ß‚É FALSE ‚ð•Ô‚µ‚Ä‚­‚¾‚³‚¢B
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒé–‰ã˜ã‚‰ã‚Œã¦ã‹ã‚‰ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ—ã‚’é–‹å§‹ã™ã‚‹ã‚ˆã‚Šã¯ã€
+	// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã™ã‚‹ãŸã‚ã« FALSE ã‚’è¿”ã—ã¦ãã ã•ã„ã€‚
 	return FALSE;
 }
 
 BOOL COextregApp::CheckExecute()
 {
-	// “ñd‹N“®‚Ìƒ`ƒFƒbƒN
+	// äºŒé‡èµ·å‹•ã®ãƒã‚§ãƒƒã‚¯
 	static const TCHAR* STR_MUTEX_NAME = _T("UNIQUE_STRING_OGAWA_OEXTREG");
 	m_hMutex = ::CreateMutex( NULL, FALSE, STR_MUTEX_NAME );
 	if ( ::GetLastError() == ERROR_ALREADY_EXISTS ) {
 		::CloseHandle(m_hMutex);
 		m_hMutex = NULL;
 
-		// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðƒtƒHƒAƒOƒ‰ƒEƒ“ƒh‚É‚·‚é
+		// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ãƒ•ã‚©ã‚¢ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã«ã™ã‚‹
 		HWND	wnd = GetTopWindow(NULL);
 		HWND	find = NULL;
 		for(; wnd != NULL; ) {

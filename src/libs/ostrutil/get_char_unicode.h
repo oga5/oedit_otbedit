@@ -18,11 +18,11 @@ extern "C" {
 
 #include <tchar.h>
 
-#define LARGE_A			L'Ç`'
-#define LARGE_Z			L'Çy'
-#define SMALL_A			L'ÇÅ'
-#define SMALL_Z			L'Çö'
-#define ZENKAKU_SPACE	L'Å@'
+#define LARGE_A			L'Ôº°'
+#define LARGE_Z			L'Ôº∫'
+#define SMALL_A			L'ÔΩÅ'
+#define SMALL_Z			L'ÔΩö'
+#define ZENKAKU_SPACE	L'„ÄÄ'
 
 __inline static unsigned int inline_ismblower(unsigned int ch)
 {

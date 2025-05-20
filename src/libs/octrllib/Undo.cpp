@@ -85,7 +85,7 @@ int CUndoData::add_undo_chars(const TCHAR *data, int cnt)
 	if(m_buf_size <= mem_size) {
 		size_t buf_size = m_buf_size;
 		if(buf_size == 0) {
-			ASSERT(m_char_cnt == 0);	// m_char_cnt != 0‚Ì‚Æ‚«Cæ‚Éset_data()‚ÅŽg‚í‚ê‚Ä‚¢‚é
+			ASSERT(m_char_cnt == 0);	// m_char_cnt != 0ã®ã¨ãï¼Œå…ˆã«set_data()ã§ä½¿ã‚ã‚Œã¦ã„ã‚‹
 			buf_size = m_default_row_size * sizeof(TCHAR);
 		}
 		for(; buf_size <= mem_size;) {
@@ -151,7 +151,7 @@ int CUndo::alloc_undo_data(int cnt)
 
 	m_undo_data[cnt] = new CUndoData(m_undo_sequence);
 	if(m_undo_data[cnt] == NULL) {
-		MessageBox(NULL, _T("ƒƒ‚ƒŠ‚ªŠm•Û‚Å‚«‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(NULL, _T("ãƒ¡ãƒ¢ãƒªãŒç¢ºä¿ã§ãã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 
@@ -198,7 +198,7 @@ int CUndo::realloc_undo_data_arr(int cnt)
 
 	m_undo_data = (CUndoData **)realloc(m_undo_data, sizeof(CUndoData *) * cnt);
 	if(m_undo_data == NULL) {
-		MessageBox(NULL, _T("ƒƒ‚ƒŠ‚ªŠm•Û‚Å‚«‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(NULL, _T("ãƒ¡ãƒ¢ãƒªãŒç¢ºä¿ã§ãã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 
@@ -234,7 +234,7 @@ void CUndo::init(int max_undo_cnt)
 
 CUndo::CUndo()
 {
-	init(2);	// 1‰ñ•ª‚ÌUndoƒf[ƒ^
+	init(2);	// 1å›žåˆ†ã®Undoãƒ‡ãƒ¼ã‚¿
 }
 
 CUndo::CUndo(int max_undo_cnt)
@@ -269,7 +269,7 @@ void CUndo::decr_undo_cnt()
 
 void CUndo::clear_next_undo()
 {
-	// 1‚Âæ‚Ìundoî•ñ‚ð‹ó‚É‚µ‚Ä‚¨‚­
+	// 1ã¤å…ˆã®undoæƒ…å ±ã‚’ç©ºã«ã—ã¦ãŠã
 	if(m_undo_cnt + 1 == m_max_undo_cnt) {
 		free_undo_data(0);
 	} else {
@@ -312,15 +312,15 @@ int CUndo::next_undo(int operation, BOOL set_mode)
 void CUndo::start_undo_set(BOOL save_redo_data)
 {
 	if(save_redo_data && m_set_mode_cnt == 0) {
-		// set mode‚ÌŠJŽnŽž‚Éredo‰Â”\‚¾‚Á‚½ê‡AŒ»Ý‚Ìredoî•ñ‚ð”j‰ó‚µ‚È‚¢‚æ‚¤‚É‚·‚é
-		// set mode’†‚Éƒf[ƒ^‚ªXV‚³‚ê‚È‚©‚Á‚½‚çAredoî•ñ‚ð•œŒ³‚·‚é
-		// ‚±‚ÌŽž“_‚Å‚ÍUndoƒoƒbƒtƒ@‚É“o˜^‚¹‚¸‚ÉAUndoData‚ðì¬‚·‚é
+		// set modeã®é–‹å§‹æ™‚ã«redoå¯èƒ½ã ã£ãŸå ´åˆã€ç¾åœ¨ã®redoæƒ…å ±ã‚’ç ´å£Šã—ãªã„ã‚ˆã†ã«ã™ã‚‹
+		// set modeä¸­ã«ãƒ‡ãƒ¼ã‚¿ãŒæ›´æ–°ã•ã‚Œãªã‹ã£ãŸã‚‰ã€redoæƒ…å ±ã‚’å¾©å…ƒã™ã‚‹
+		// ã“ã®æ™‚ç‚¹ã§ã¯Undoãƒãƒƒãƒ•ã‚¡ã«ç™»éŒ²ã›ãšã«ã€UndoDataã‚’ä½œæˆã™ã‚‹
 		clear_cur_operation();
 		m_undo_sequence++;
 		m_cur_undo_data = new CUndoData(m_undo_sequence, NULL);
 		m_cur_undo_data->set_data(1);
 	} else {
-		// ƒŠƒXƒg‚Ìæ“ª‚ÉC‹ó‚Ìƒf[ƒ^‚ðì‚é
+		// ãƒªã‚¹ãƒˆã®å…ˆé ­ã«ï¼Œç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚’ä½œã‚‹
 		next_undo(0);
 	}
 	m_set_mode_cnt++;
@@ -337,11 +337,11 @@ void CUndo::end_undo_set()
 
 	CUndoData *first_undo = get_cur_undo_data()->get_first();
 
-	// ‹ó‚ÌUNDO DATA‚©’²‚×‚é
+	// ç©ºã®UNDO DATAã‹èª¿ã¹ã‚‹
 	for(CUndoData *undo_data = first_undo; undo_data != NULL; undo_data = undo_data->get_next()) {
 		if(undo_data->get_operation() != 0) {
 			if(first_undo->get_data() != 0) {
-				// redoî•ñ‚ð”j‰ó‚µ‚È‚¢ƒ‚[ƒh‚Ì‚Æ‚«AUndoƒoƒbƒtƒ@‚É“o˜^‚·‚é
+				// redoæƒ…å ±ã‚’ç ´å£Šã—ãªã„ãƒ¢ãƒ¼ãƒ‰ã®ã¨ãã€Undoãƒãƒƒãƒ•ã‚¡ã«ç™»éŒ²ã™ã‚‹
 				next_undo(0);
 				m_cur_undo_data->m_next = first_undo;
 			}
@@ -349,7 +349,7 @@ void CUndo::end_undo_set()
 		}
 	}
 
-	// ‹ó‚¾‚Á‚½ê‡AŒ³‚É–ß‚·
+	// ç©ºã ã£ãŸå ´åˆã€å…ƒã«æˆ»ã™
 	if(first_undo->get_data() == 0) {
 		decr_undo_cnt();
 		clear_next_undo();

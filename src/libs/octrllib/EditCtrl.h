@@ -11,7 +11,7 @@
 #if _MSC_VER >= 1000
 #pragma once
 #endif // _MSC_VER >= 1000
-// EditCtrl.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// EditCtrl.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 #include "editdata.h"
 #include "scrollwnd.h"
@@ -22,7 +22,7 @@
 #include "octrl_msg.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditCtrl ƒEƒBƒ“ƒhƒE
+// CEditCtrl ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 
 #define EDIT_CTRL_MAX_WORD_LEN	100
 
@@ -47,7 +47,7 @@ public:
 	HREG_DATA MakeRegData2(const CString &search_text, BOOL b_distinct_lwr_upr, BOOL b_distinct_width_ascii, BOOL b_regexp);
 
 private:
-	BOOL		m_b_disp_search;	// ŒŸõŒ‹‰Ê‚ğƒJƒ‰[•\¦‚·‚é
+	BOOL		m_b_disp_search;	// æ¤œç´¢çµæœã‚’ã‚«ãƒ©ãƒ¼è¡¨ç¤ºã™ã‚‹
 	CString		m_search_text;
 	BOOL		m_b_distinct_lwr_upr;
 	BOOL		m_b_distinct_width_ascii;
@@ -62,7 +62,7 @@ class CEditCtrl : public CScrollWnd
 {
 	DECLARE_DYNAMIC(CEditCtrl)
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 protected:
 	CEditData	*m_edit_data;
 	unsigned int m_no_quote_color_char;
@@ -94,7 +94,7 @@ private:
 
 	QWORD		m_ex_style;
 
-	// ƒL[ƒ[ƒh•âŠ®—p
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰è£œå®Œç”¨
 	struct {
 		TCHAR	org_str[EDIT_CTRL_MAX_WORD_LEN];
 		int		cnt;
@@ -102,11 +102,11 @@ private:
 
 	int m_row_num_digit;
 
-	int m_row_space;	// sŠÔ
-	int m_row_space_top;	// sŠÔ(ã)
+	int m_row_space;	// è¡Œé–“
+	int m_row_space_top;	// è¡Œé–“(ä¸Š)
 
-	int m_top_space;	// ã‚ÌƒXƒy[ƒX
-	int m_left_space;	// ¶‚ÌƒXƒy[ƒX
+	int m_top_space;	// ä¸Šã®ã‚¹ãƒšãƒ¼ã‚¹
+	int m_left_space;	// å·¦ã®ã‚¹ãƒšãƒ¼ã‚¹
 	int m_bottom_space;
 	int m_right_space;
 
@@ -126,7 +126,7 @@ private:
 	COLORREF m_modified_bk_color;
 	COLORREF m_original_bk_color;
 
-	// ƒtƒ‹ƒXƒNƒŠ[ƒ“•\¦—p
+	// ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³è¡¨ç¤ºç”¨
 	POINT	m_null_cursor_pt;
 	int		m_null_cursor_cnt;
 	long m_bk_width_hi, m_bk_height_hi;
@@ -149,7 +149,7 @@ protected:
 	void GetDispDataPoint(CPoint data_pt, POINT *disp_pt, BOOL b_line_end = FALSE);
 	void GetDispCaretPoint(CPoint disp_pt, POINT *caret_pt);
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 private:
 	void MoveCaret(int row, int col, BOOL extend, BOOL show_scroll = TRUE);
 	void PreMoveCaret(BOOL extends);
@@ -302,11 +302,11 @@ private:
 
 	QWORD SetBracketColorStyle(QWORD ex_style);
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CEditCtrl)
 	public:
@@ -315,13 +315,13 @@ protected:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
-	// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+	// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 	CEditCtrl();
 	virtual ~CEditCtrl();
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	void ClearAll();
 	void SetEditData(CEditData *arg);
@@ -544,7 +544,7 @@ public:
 
 	int GetDispWidthStr(const TCHAR *str);
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CEditCtrl)
 	afx_msg void OnPaint();
@@ -587,6 +587,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Developer Studio ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_EDITCTRL_H__D78AAD60_6D2E_11D4_B06E_00E018A83B1B__INCLUDED_)

@@ -44,15 +44,15 @@ static void Combo_OnKeyUp(HWND hwnd, struct combo_subclass_state *state, int ch)
 {
 	CComboBox *combo = state->combo;
 
-	// ‰p”š“ü—Í’†‚ÍAKeyUp‚©‚ç‚Ì‘Ò‹@ŠÔ‚É‚·‚é
+	// è‹±æ•°å­—å…¥åŠ›ä¸­ã¯ã€KeyUpã‹ã‚‰ã®å¾…æ©Ÿæ™‚é–“ã«ã™ã‚‹
 	if(Combo_check_alpha_key(ch) && state->tick_count != 0) {
 		state->tick_count = GetTickCount();
 	}
 
-	// –îˆóƒL[‚ğ‰Ÿ‚µ‚Á‚Ï‚È‚µ‚ÅˆÚ“®‚·‚é‚È‚ÇAƒL[“ü—Í‚ª˜A‘±‚µ‚Äs‚í‚ê‚é
-	// ‰Â”\«‚ª‚ ‚é‚Ì‚ÅAKeyUp‚Å’Ê’m‚·‚é
+	// çŸ¢å°ã‚­ãƒ¼ã‚’æŠ¼ã—ã£ã±ãªã—ã§ç§»å‹•ã™ã‚‹ãªã©ã€ã‚­ãƒ¼å…¥åŠ›ãŒé€£ç¶šã—ã¦è¡Œã‚ã‚Œã‚‹
+	// å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§ã€KeyUpã§é€šçŸ¥ã™ã‚‹
 	if(state->last_notice_idx != combo->GetCurSel()) {
-		// ‰p”š‚â–îˆóƒL[‚ğ˜A‘±“ü—Í‚³‚ê‚½‚Æ‚«A1•¶š“ü—Í‚²‚Æ‚É’Ê’m‚µ‚È‚¢‚Å’x‰„‚³‚¹‚é
+		// è‹±æ•°å­—ã‚„çŸ¢å°ã‚­ãƒ¼ã‚’é€£ç¶šå…¥åŠ›ã•ã‚ŒãŸã¨ãã€1æ–‡å­—å…¥åŠ›ã”ã¨ã«é€šçŸ¥ã—ãªã„ã§é…å»¶ã•ã›ã‚‹
 		combo->KillTimer(COMBO_TIMER_ID);
 		combo->SetTimer(COMBO_TIMER_ID, COMBO_DELAY_MSEC, NULL);
 	}
@@ -86,7 +86,7 @@ static BOOL Combo_OnKeyDown(HWND hwnd, struct combo_subclass_state *state, int c
 	if(new_idx < 0) new_idx = item_cnt - 1;
 	if(new_idx >= item_cnt) new_idx = 0;
 	if(new_idx != cur_idx) {
-		// –îˆó‚ÅˆÚ“®‚µ‚½‚Æ‚«AƒL[“ü—Íƒoƒbƒtƒ@‚ğƒNƒŠƒA
+		// çŸ¢å°ã§ç§»å‹•ã—ãŸã¨ãã€ã‚­ãƒ¼å…¥åŠ›ãƒãƒƒãƒ•ã‚¡ã‚’ã‚¯ãƒªã‚¢
 		Combo_ClearKeyBuffer(state);
 		combo->SetCurSel(new_idx);
 		combo->KillTimer(COMBO_TIMER_ID);
@@ -120,7 +120,7 @@ static BOOL Combo_SearchNext(HWND hwnd, struct combo_subclass_state *state, int 
 		return FALSE;
 	}
 
-	// ShiftƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚éê‡Aã‚ÉŒü‚©‚Á‚ÄŒŸõ
+	// Shiftã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹å ´åˆã€ä¸Šã«å‘ã‹ã£ã¦æ¤œç´¢
 	int arrow = 1;
 	if(GetAsyncKeyState(VK_SHIFT) < 0) arrow = -1;
 
@@ -165,13 +165,13 @@ static BOOL Combo_SearchNext(HWND hwnd, struct combo_subclass_state *state, int 
 		if(idx == cur_idx) break;
 	}
 
-	// “¯‚¶•¶š‚Ì˜A‘±“ü—Í‚ÅŒ©‚Â‚©‚ç‚È‚¢ê‡Aæ“ª•¶š‚Åˆê’v‚·‚é‚©ŒŸõ
+	// åŒã˜æ–‡å­—ã®é€£ç¶šå…¥åŠ›ã§è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã€å…ˆé ­æ–‡å­—ã§ä¸€è‡´ã™ã‚‹ã‹æ¤œç´¢
 	if(find_len == 2 && state->buf[0] == state->buf[1]) {
 		Combo_ClearKeyBuffer(state);
 		return Combo_SearchNext(hwnd, state, ch);
 	}
 
-	// Œ©‚Â‚©‚ç‚È‚¢‚Æ‚«
+	// è¦‹ã¤ã‹ã‚‰ãªã„ã¨ã
 	Combo_ClearKeyBuffer(state);
 	return FALSE;
 }
@@ -226,7 +226,7 @@ static LRESULT CALLBACK Combo_SubclassWndProc(HWND hwnd, UINT message, WPARAM wP
 		combo->SetTimer(COMBO_TIMER_ID_FOR_MOUSE_WHEEL, COMBO_DELAY_MSEC, NULL);
 		break;
 	case WM_GETDLGCODE:
-		// –îˆó“ü—Í‚ğó‚¯æ‚é
+		// çŸ¢å°å…¥åŠ›ã‚’å—ã‘å–ã‚‹
 		return (CallWindowProc(proc, hwnd, message, wParam, lParam)) | DLGC_WANTARROWS;
 	}
 
@@ -246,7 +246,7 @@ void ComboBoxKeyboardExtend(CComboBox *combo)
 	state->last_notice_idx = combo->GetCurSel();
 
 	::SetWindowLongPtr (hwnd, GWLP_USERDATA, (LONG_PTR)state);
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)Combo_SubclassWndProc);
 }
 

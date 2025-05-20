@@ -1,4 +1,4 @@
-// DataEditDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// DataEditDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -25,7 +25,7 @@ static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wPa
 {
 	switch(message) {
 	case WM_SYSKEYDOWN:
-		// Alt + Enter‚ÅCOKƒ{ƒ^ƒ“‚É‚·‚é
+		// Alt + Enterã§ï¼ŒOKãƒœã‚¿ãƒ³ã«ã™ã‚‹
 		if(wParam == VK_RETURN && GetAsyncKeyState(VK_MENU) < 0) {
 			::PostMessage(::GetParent(hwnd), WMU_EDIT_RETURN, 0, 0);
 			return 0;
@@ -47,7 +47,7 @@ static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wPa
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CDataEditDlg ƒ_ƒCƒAƒƒO
+// CDataEditDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 
 CDataEditDlg::CDataEditDlg(CWnd* pParent /*=NULL*/)
@@ -86,7 +86,7 @@ BEGIN_MESSAGE_MAP(CDataEditDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CDataEditDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CDataEditDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CDataEditDlg::OnOK() 
 {
@@ -131,8 +131,8 @@ BOOL CDataEditDlg::OnInitDialog()
 		SetWindowText(m_window_title);
 	}
 	
-	return FALSE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ğİ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return FALSE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CDataEditDlg::CreateEditCtrl()
@@ -161,11 +161,11 @@ void CDataEditDlg::CreateEditCtrl()
 
 	if(m_read_only) m_edit_ctrl.SetReadOnly(TRUE);
 
-	// ƒTƒuƒNƒ‰ƒX‰»
-	// ŒÃ‚¢ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğ•Û‘¶‚·‚é
+	// ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–
+	// å¤ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’ä¿å­˜ã™ã‚‹
 	HWND hwnd = m_edit_ctrl.GetSafeHwnd();
 	::SetWindowLongPtr (hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)Edit_SubclassWndProc);
 
 	m_line_mode_right = AfxGetApp()->GetProfileInt(_T("SHOW_DATA_DLG"), _T("LINE_MODE_RIGHT"), FALSE);
@@ -311,7 +311,7 @@ void CDataEditDlg::RelayoutControls()
 	h = ok_y - edit_pt.y - edit_pt.x;
 	m_edit_ctrl.SetWindowPos(NULL, 0, 0, w, h, SWP_NOMOVE | SWP_NOZORDER);
 
-	// Cancelƒ{ƒ^ƒ“‚ğ‰üsƒR[ƒh‚Ìƒ‰ƒxƒ‹‚æ‚èã‚É•\¦‚µ‚½‚¢‚Ì‚ÅAm_cancel.RedrawWindow‚ğÅŒã‚É‚·‚é
+	// Cancelãƒœã‚¿ãƒ³ã‚’æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã®ãƒ©ãƒ™ãƒ«ã‚ˆã‚Šä¸Šã«è¡¨ç¤ºã—ãŸã„ã®ã§ã€m_cancel.RedrawWindowã‚’æœ€å¾Œã«ã™ã‚‹
 	m_combo_line_type.RedrawWindow();
 	m_static_line_type.RedrawWindow();
 	m_ok.RedrawWindow();

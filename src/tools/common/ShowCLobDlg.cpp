@@ -1,4 +1,4 @@
-// ShowCLobDlg.cpp : �C���v�������e�[�V���� �t�@�C��
+// ShowCLobDlg.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -15,7 +15,7 @@ static char THIS_FILE[] = __FILE__;
 #define CLOB_DLG_MIN_HEIGHT		150
 
 /////////////////////////////////////////////////////////////////////////////
-// CShowCLobDlg �_�C�A���O
+// CShowCLobDlg ダイアログ
 
 
 CShowCLobDlg::CShowCLobDlg(CWnd* pParent /*=NULL*/)
@@ -73,7 +73,7 @@ static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wPa
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CShowCLobDlg ���b�Z�[�W �n���h��
+// CShowCLobDlg メッセージ ハンドラ
 
 void CShowCLobDlg::OnOK() 
 {
@@ -124,7 +124,7 @@ void CShowCLobDlg::InitDialog()
 
 void CShowCLobDlg::SetColName(const TCHAR *col_name)
 {
-	m_title.Format(_T("�f�[�^�Q�� (%s)"), col_name);
+	m_title.Format(_T("データ参照 (%s)"), col_name);
 
 	if(!m_initialized) return;
 
@@ -138,8 +138,8 @@ BOOL CShowCLobDlg::OnInitDialog()
 	
 	InitDialog();
 
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 void CShowCLobDlg::CreateEditCtrl()
@@ -160,11 +160,11 @@ void CShowCLobDlg::CreateEditCtrl()
 			CRect(5, 5, rect.Width() - 5, ok_rect.top - 5), 
 			this, NULL);
 
-		// �T�u�N���X��
-		// �Â��E�B���h�E�v���V�[�W����ۑ�����
+		// サブクラス化
+		// 古いウィンドウプロシージャを保存する
 		HWND hwnd = m_edit_ctrl.GetSafeHwnd();
 		::SetWindowLongPtr (hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-		// �E�B���h�E�v���V�[�W����؂�ւ���
+		// ウィンドウプロシージャを切り替える
 		::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)Edit_SubclassWndProc);
 
 		m_line_mode_right = AfxGetApp()->GetProfileInt(_T("SHOW_DATA_DLG"), _T("LINE_MODE_RIGHT"), FALSE);
@@ -185,7 +185,7 @@ void CShowCLobDlg::CreateEditCtrl()
 
 LRESULT CShowCLobDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam) 
 {
-	// TODO: ���̈ʒu�ɌŗL�̏�����ǉ����邩�A�܂��͊�{�N���X���Ăяo���Ă�������
+	// TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
 	if(message == WMU_EDIT_ESCAPE) {
 		OnCancel();
 	}
@@ -212,7 +212,7 @@ void CShowCLobDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 	
-	// �e�E�B���h�E�̒����ɕ\������
+	// 親ウィンドウの中央に表示する
 	if(bShow) {
 		CRect	win_rect, parent_rect;
 		GetWindowRect(win_rect);
@@ -289,7 +289,7 @@ void CShowCLobDlg::OnGetMinMaxInfo( MINMAXINFO FAR* lpMMI )
 
 void CShowCLobDlg::OnClose()
 {
-	// TODO: �����Ƀ��b�Z�[�W �n���h���[ �R�[�h��ǉ����邩�A����̏������Ăяo���܂��B
+	// TODO: ここにメッセージ ハンドラー コードを追加するか、既定の処理を呼び出します。
 
 //	CDialog::OnClose();
 	OnOk2();
@@ -297,7 +297,7 @@ void CShowCLobDlg::OnClose()
 
 void CShowCLobDlg::OnCancel()
 {
-	// TODO: �����ɓ���ȃR�[�h��ǉ����邩�A�������͊��N���X���Ăяo���Ă��������B
+	// TODO: ここに特定なコードを追加するか、もしくは基底クラスを呼び出してください。
 
 //	CDialog::OnCancel();
 	OnOk2();

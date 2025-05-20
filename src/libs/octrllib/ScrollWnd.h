@@ -11,10 +11,10 @@
 #if _MSC_VER >= 1000
 #pragma once
 #endif // _MSC_VER >= 1000
-// ScrollWnd.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// ScrollWnd.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
-// FIXME: à–¾‚ð‘‚­
+// FIXME: èª¬æ˜Žã‚’æ›¸ã
 #define NO_HSCROLL_BAR		(1 << 0)
 #define NO_WS_VSCROLL		(1 << 1)
 #define NO_WS_HSCROLL		(1 << 2)
@@ -25,33 +25,33 @@
 #define KEEP_WS_VH_SCROLL_STYLE		(1 << 7)
 
 /////////////////////////////////////////////////////////////////////////////
-// CScrollWnd ƒEƒBƒ“ƒhƒE
+// CScrollWnd ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 
 class CScrollWnd : public CWnd
 {
 	DECLARE_DYNAMIC(CScrollWnd)
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
 	CScrollWnd();
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 public:
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	// overwrite scroll function
 	int GetScrollPos( int nBar ) const;
 	int SetScrollPos( int nBar, int nPos, BOOL bRedraw = TRUE );
 	virtual CScrollBar* GetScrollBarCtrl(int nBar) const;
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ð¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CScrollWnd)
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~CScrollWnd();
 
@@ -80,11 +80,11 @@ public:
 
 	BOOL IsThumbTracking() { return m_b_thumb_tracking; }
 
-// FIXME: —vƒeƒXƒg
+// FIXME: è¦ãƒ†ã‚¹ãƒˆ
 //	BOOL IsShowVScrollBar();
 //	BOOL IsShowHScrollBar();
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒžãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(CScrollWnd)
 	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
@@ -156,6 +156,6 @@ public:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ð‘}“ü‚µ‚Ü‚·B
+// Microsoft Developer Studio ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_SCROLLWND_H__3C5B7342_1244_11D5_8505_00E018A83B1B__INCLUDED_)

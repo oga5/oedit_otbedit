@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // EditorOptionFullScreen.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // EditorOptionFullScreen.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -21,7 +21,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionFullScreen ƒvƒƒpƒeƒB ƒy[ƒW
+// CEditorOptionFullScreen ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸
 
 IMPLEMENT_DYNCREATE(CEditorOptionFullScreen, CPropertyPage)
 
@@ -60,7 +60,7 @@ BEGIN_MESSAGE_MAP(CEditorOptionFullScreen, CPropertyPage)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionFullScreen ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CEditorOptionFullScreen ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CEditorOptionFullScreen::OnBtnBgImage() 
 {

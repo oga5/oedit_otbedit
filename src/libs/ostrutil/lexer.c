@@ -260,7 +260,7 @@ static int make_escape(const TCHAR *p, INT_PTR p_len, LexWord *lex_word)
 	lex_word->data = p;
 	lex_word->len = 1;		// '\'
 
-	p += get_char_len(p);	// '\'‚ðƒXƒLƒbƒv
+	p += get_char_len(p);	// '\'ã‚’ã‚¹ã‚­ãƒƒãƒ—
 	ch = get_char(p);
 
 	if(ch == '=') {
@@ -292,7 +292,7 @@ static int make_escape(const TCHAR *p, INT_PTR p_len, LexWord *lex_word)
 		int bracket_flg = 0;
 
 		(lex_word->len)++;
-		p += get_char_len(p);	// 'g'‚ðƒXƒLƒbƒv
+		p += get_char_len(p);	// 'g'ã‚’ã‚¹ã‚­ãƒƒãƒ—
 		ch = get_char(p);
 
 		if(ch == '{') {

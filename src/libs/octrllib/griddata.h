@@ -21,7 +21,7 @@
 #include "Undo.h"
 #include "UnicodeArchive.h"
 
-// ”ÍˆÍ‘I‘ð—p
+// ç¯„å›²é¸æŠžç”¨
 struct grid_data_select_area_st
 {
 	int drag_flg;
@@ -301,7 +301,7 @@ public:
 
 	void InitDispInfo(BOOL b_free_disp_info = TRUE);
 
-	// •ÒW‹@”\‚ÌƒTƒ|[ƒg
+	// ç·¨é›†æ©Ÿèƒ½ã®ã‚µãƒãƒ¼ãƒˆ
 	virtual BOOL IsEditable() { return m_grid_data->IsEditable(); }
 
 	virtual BOOL IsInsertRow(int row) { return m_grid_data->IsInsertRow(row); }

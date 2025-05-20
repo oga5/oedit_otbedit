@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // SearchDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+ // SearchDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -79,14 +79,14 @@ void LoadSearchTextList(CComboBox *combo, CString section, int max_cnt, int *sta
 	CString		text;
 	COWinApp	*pApp = GetOWinApp();
 
-	// ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğƒNƒŠƒA
+	// ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’ã‚¯ãƒªã‚¢
 	for(; combo->GetCount() != 0;) {
 		combo->DeleteString(0);
 	}
 
-	// ƒŒƒWƒXƒgƒŠ‚ÌƒeƒLƒXƒg‚ğæ“¾
+	// ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
 	for(i = 0, j = 0; i < max_cnt; i++) {
-		// ƒeƒLƒXƒg‚ğæ“¾
+		// ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
 		entry.Format(_T("%d"), i);
 		text = pApp->GetIniFileString(section, entry, _T("\f_NO_DATA_\n"));
 		if(text == _T("\f_NO_DATA_\n")) break;
@@ -117,9 +117,9 @@ void SaveSearchTextList(CString section, int max_cnt, CString cur_text,
 		goto EXIT;
 	}
 
-	// Œ»İ‚ÌƒŒƒWƒXƒgƒŠ‚ÌƒeƒLƒXƒg‚ğæ“¾
+	// ç¾åœ¨ã®ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
 	for(i = 0 ; i < max_cnt; i++) {
-		// ƒeƒLƒXƒg‚ğæ“¾
+		// ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
 		entry.Format(_T("%d"), i);
 		search_text[i] = pApp->GetIniFileString(section, entry, _T(""));
 
@@ -128,15 +128,15 @@ void SaveSearchTextList(CString section, int max_cnt, CString cur_text,
 			status[i] = pApp->GetIniFileInt(section, entry, 0);
 		}
 
-		// •ÏX‚È‚µ
+		// å¤‰æ›´ãªã—
 		if(i == 0 && search_text[0] == cur_text && status[0] == cur_status) goto EXIT;
 	}
 
-	// Œ»İ‚ÌƒŒƒWƒXƒgƒŠ‚ÌƒeƒLƒXƒg‚ğŒã‚ë‚É‚¸‚ç‚·
+	// ç¾åœ¨ã®ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å¾Œã‚ã«ãšã‚‰ã™
 	for(i = 0, j = 1; i < max_cnt && j < max_cnt; i++) {
 		if(search_text[i] == _T("") || search_text[i] == cur_text) continue;
 
-		// ƒeƒLƒXƒg‚ğ•Û‘¶
+		// ãƒ†ã‚­ã‚¹ãƒˆã‚’ä¿å­˜
 		entry.Format(_T("%d"), j);
 		pApp->WriteIniFileString(section, entry, search_text[i]);
 
@@ -148,7 +148,7 @@ void SaveSearchTextList(CString section, int max_cnt, CString cur_text,
 		j++;
 	}
 
-	// ¡‰ñg—p‚µ‚½ƒeƒLƒXƒg‚ğæ“ª‚É•Û‘¶
+	// ä»Šå›ä½¿ç”¨ã—ãŸãƒ†ã‚­ã‚¹ãƒˆã‚’å…ˆé ­ã«ä¿å­˜
 	entry.Format(_T("%d"), 0);
 	pApp->WriteIniFileString(section, entry, cur_text);
 
@@ -157,11 +157,11 @@ void SaveSearchTextList(CString section, int max_cnt, CString cur_text,
 		pApp->WriteIniFileInt(section, entry, cur_status);
 	}
 
-	// c‚è‚ğ‹ó”’‚É‚·‚é
+	// æ®‹ã‚Šã‚’ç©ºç™½ã«ã™ã‚‹
 	for(; j < SAVE_SEARCH_TEXT_CNT; j++) {
-		// ƒL[‚ğì¬
+		// ã‚­ãƒ¼ã‚’ä½œæˆ
 		entry.Format(_T("%d"), j);
-		// ƒeƒLƒXƒg‚ğ•Û‘¶
+		// ãƒ†ã‚­ã‚¹ãƒˆã‚’ä¿å­˜
 		pApp->WriteIniFileString(section, entry, NULL);
 
 		if(b_save_status) {
@@ -214,7 +214,7 @@ BOOL is_distinct_width_ascii(int status)
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CSearchDlg ƒ_ƒCƒAƒƒO
+// CSearchDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 
 CSearchDlg::CSearchDlg(CWnd* pParent /*=NULL*/)
@@ -279,7 +279,7 @@ BEGIN_MESSAGE_MAP(CSearchDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CSearchDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CSearchDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CSearchDlg::SaveSearchDlgData()
 {
@@ -353,8 +353,8 @@ void CSearchDlg::ShowDialog(CWnd *wnd, int search_message, CSearchDlgData *searc
 
 void CSearchDlg::InitDialog()
 {
-	// ƒ_ƒCƒAƒƒO‚Ì‚‚³‚ğŒˆ‚ß‚é
-	// ƒfƒBƒXƒvƒŒƒC‚Ìİ’è‚ª•ÏX‚³‚ê‚é‰Â”\«‚ª‚ ‚é‚Ì‚ÅA•\¦‚·‚é“x‚ÉŒvZ‚·‚é
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®é«˜ã•ã‚’æ±ºã‚ã‚‹
+	// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã®è¨­å®šãŒå¤‰æ›´ã•ã‚Œã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§ã€è¡¨ç¤ºã™ã‚‹åº¦ã«è¨ˆç®—ã™ã‚‹
 	CRect	btn_rect;
 	POINT pt = { 0, 0 };
 
@@ -397,8 +397,8 @@ BOOL CSearchDlg::OnInitDialog()
 		SetWindowText(m_title);
 	}
 
-	return TRUE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ğİ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return TRUE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CSearchDlg::LoadSearchTextList()
@@ -427,7 +427,7 @@ void CSearchDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 
-	// eƒEƒBƒ“ƒhƒE‚Ì’†‰›‚É•\¦‚·‚é
+	// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸­å¤®ã«è¡¨ç¤ºã™ã‚‹
 	if(bShow) {
 		CRect	win_rect, parent_rect;
 		GetWindowRect(win_rect);
@@ -479,12 +479,12 @@ CString MakeSearchMsg(int ret_v, int dir, BOOL b_looped)
 	CString msg;
 	if(ret_v != 0) {
 		MessageBeep(MB_ICONEXCLAMATION);
-		msg = _T("Œ©‚Â‚©‚è‚Ü‚¹‚ñ");
+		msg = _T("è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
 	} else if(b_looped) {
 		if(dir == 1) {
-			msg = _T("ƒtƒ@ƒCƒ‹‚Ì––”ö‚Ü‚ÅŒŸõ‚µ‚Ü‚µ‚½");
+			msg = _T("ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ«å°¾ã¾ã§æ¤œç´¢ã—ã¾ã—ãŸ");
 		} else {
-			msg = _T("ƒtƒ@ƒCƒ‹‚Ìæ“ª‚Ü‚ÅŒŸõ‚µ‚Ü‚µ‚½");
+			msg = _T("ãƒ•ã‚¡ã‚¤ãƒ«ã®å…ˆé ­ã¾ã§æ¤œç´¢ã—ã¾ã—ãŸ");
 		}
 	} else {
 		msg = _T("");
@@ -514,7 +514,7 @@ void CSearchDlg::OnSize(UINT nType, int cx, int cy)
 
 void CSearchDlg::OnGetMinMaxInfo( MINMAXINFO FAR* lpMMI )
 {
-	// ‰¡•ûŒü‚Ì‚İ‰Â•Ï‚É‚·‚é
+	// æ¨ªæ–¹å‘ã®ã¿å¯å¤‰ã«ã™ã‚‹
 	lpMMI->ptMinTrackSize.x = SEARCH_DLG_MIN_WIDTH;
 	lpMMI->ptMinTrackSize.y = m_dlg_height;
 	lpMMI->ptMaxTrackSize.y = m_dlg_height;

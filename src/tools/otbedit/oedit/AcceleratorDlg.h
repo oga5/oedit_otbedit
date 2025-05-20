@@ -11,23 +11,23 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// AcceleratorDlg.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// AcceleratorDlg.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 #include "AccelList.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CAcceleratorDlg ƒ_ƒCƒAƒƒO
+// CAcceleratorDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 class CAcceleratorDlg : public CDialog
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
-	CAcceleratorDlg(CWnd* pParent = NULL);   // •W€‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CAcceleratorDlg(CWnd* pParent = NULL);   // æ¨™æº–ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	~CAcceleratorDlg();
 
 	CAccelList		m_accel_list;
 
-// ƒ_ƒCƒAƒƒO ƒf[ƒ^
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ‡ãƒ¼ã‚¿
 	//{{AFX_DATA(CAcceleratorDlg)
 	enum { IDD = IDD_ACCELERATOR_DLG };
 	CButton	m_btn_delete;
@@ -41,17 +41,17 @@ public:
 	//}}AFX_DATA
 
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(CAcceleratorDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ƒTƒ|[ƒg
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ã‚µãƒãƒ¼ãƒˆ
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 	//{{AFX_MSG(CAcceleratorDlg)
 	virtual BOOL OnInitDialog();
 	afx_msg void OnItemchangedListCategory(NMHDR* pNMHDR, LRESULT* pResult);
@@ -76,6 +76,6 @@ private:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_AcceleratorDLG_H__A8555F84_C7AB_11D5_8505_00E018A83B1B__INCLUDED_)

@@ -15,7 +15,7 @@ class COWinApp : public CWinApp
 	DECLARE_DYNAMIC(COWinApp)
 
 public:
-	// Šù‘¶‚ÌAPI‚ÍÀ‘•‚µ‚È‚¢(ƒŠƒ“ƒNƒGƒ‰[‚É‚·‚é)
+	// æ—¢å­˜ã®APIã¯å®Ÿè£…ã—ãªã„(ãƒªãƒ³ã‚¯ã‚¨ãƒ©ãƒ¼ã«ã™ã‚‹)
 //	CString GetProfileString( LPCTSTR lpszSection, LPCTSTR lpszEntry, LPCTSTR lpszDefault = NULL);
 //	UINT GetProfileInt( LPCTSTR lpszSection, LPCTSTR lpszEntry, int nDefault);
 //	BOOL WriteProfileInt( LPCTSTR lpszSection, LPCTSTR lpszEntry, int nValue);
@@ -45,7 +45,7 @@ private:
 	CFastIniFile	m_fast_ini_file;
 };
 
-// AfxGetApp‚ğGetOWinApp‚Å’u‚«Š·‚¦‚é
+// AfxGetAppã‚’GetOWinAppã§ç½®ãæ›ãˆã‚‹
 COWinApp *GetOWinApp();
 
 #endif _OWINAPP_INCLUDED_

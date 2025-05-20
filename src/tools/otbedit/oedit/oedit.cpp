@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// oedit.cpp : ƒAƒvƒŠƒP[ƒVƒ‡ƒ“—pƒNƒ‰ƒX‚Ì‹@”\’è‹`‚ðs‚¢‚Ü‚·B
+// oedit.cpp : ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã‚¯ãƒ©ã‚¹ã®æ©Ÿèƒ½å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -76,10 +76,10 @@ BEGIN_MESSAGE_MAP(COeditApp, CWinApp)
 	ON_COMMAND(ID_FONT_SIZE_LARGE, OnFontSizeLarge)
 	ON_COMMAND(ID_FONT_SIZE_SMALL, OnFontSizeSmall)
 	//}}AFX_MSG_MAP
-	// •W€‚Ìƒtƒ@ƒCƒ‹Šî–{ƒhƒLƒ…ƒƒ“ƒg ƒRƒ}ƒ“ƒh
+	// æ¨™æº–ã®ãƒ•ã‚¡ã‚¤ãƒ«åŸºæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ ã‚³ãƒžãƒ³ãƒ‰
 	ON_COMMAND(ID_FILE_NEW, CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, CWinApp::OnFileOpen)
-	// •W€‚ÌˆóüƒZƒbƒgƒAƒbƒv ƒRƒ}ƒ“ƒh
+	// æ¨™æº–ã®å°åˆ·ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ— ã‚³ãƒžãƒ³ãƒ‰
 	ON_COMMAND(ID_FILE_PRINT_SETUP, CWinApp::OnFilePrintSetup)
 	ON_COMMAND_RANGE(ID_EDIT_MODE_1, ID_EDIT_MODE_1 + MAX_LANGUAGE_CNT, OnEditMode)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_EDIT_MODE_1, ID_EDIT_MODE_1 + MAX_LANGUAGE_CNT, OnUpdateEditMode)
@@ -88,15 +88,15 @@ BEGIN_MESSAGE_MAP(COeditApp, CWinApp)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditApp ƒNƒ‰ƒX‚Ì\’z
+// COeditApp ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰
 
 COeditApp::COeditApp()
 {
-	// TODO: ‚±‚ÌˆÊ’u‚É\’z—pƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
-	// ‚±‚±‚É InitInstance ’†‚Ìd—v‚È‰Šú‰»ˆ—‚ð‚·‚×‚Ä‹Lq‚µ‚Ä‚­‚¾‚³‚¢B
+	// TODO: ã“ã®ä½ç½®ã«æ§‹ç¯‰ç”¨ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
+	// ã“ã“ã« InitInstance ä¸­ã®é‡è¦ãªåˆæœŸåŒ–å‡¦ç†ã‚’ã™ã¹ã¦è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚
 	m_hMutex = NULL;
 
-	// ƒOƒ[ƒoƒ‹•Ï”‚Ì‰Šú‰»
+	// ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ã®åˆæœŸåŒ–
 	g_open_kanji_code = UnknownKanjiCode;
 }
 
@@ -106,31 +106,31 @@ COeditApp::~COeditApp()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// —Bˆê‚Ì COeditApp ƒIƒuƒWƒFƒNƒg
+// å”¯ä¸€ã® COeditApp ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 COeditApp theApp;
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditApp ƒNƒ‰ƒX‚Ì‰Šú‰»
+// COeditApp ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–
 
 BOOL COeditApp::InitInstance()
 {
-	// •W€“I‚È‰Šú‰»ˆ—
-	// ‚à‚µ‚±‚ê‚ç‚Ì‹@”\‚ðŽg—p‚¹‚¸AŽÀsƒtƒ@ƒCƒ‹‚ÌƒTƒCƒY‚ð¬‚³‚­
-	// ‚µ‚½‚¯‚ê‚ÎˆÈ‰º‚Ì“Á’è‚Ì‰Šú‰»ƒ‹[ƒ`ƒ“‚Ì’†‚©‚ç•s•K—v‚È‚à‚Ì
-	// ‚ðíœ‚µ‚Ä‚­‚¾‚³‚¢B
+	// æ¨™æº–çš„ãªåˆæœŸåŒ–å‡¦ç†
+	// ã‚‚ã—ã“ã‚Œã‚‰ã®æ©Ÿèƒ½ã‚’ä½¿ç”¨ã›ãšã€å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã‚’å°ã•ã
+	// ã—ãŸã‘ã‚Œã°ä»¥ä¸‹ã®ç‰¹å®šã®åˆæœŸåŒ–ãƒ«ãƒ¼ãƒãƒ³ã®ä¸­ã‹ã‚‰ä¸å¿…è¦ãªã‚‚ã®
+	// ã‚’å‰Šé™¤ã—ã¦ãã ã•ã„ã€‚
 	if(!AfxOleInit()) {
-		MessageBox(NULL, _T("OLE‚Ì‰Šú‰»‚ÉŽ¸”s‚µ‚Ü‚µ‚½B"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(NULL, _T("OLEã®åˆæœŸåŒ–ã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		return FALSE;
 	}
 
 #ifdef _AFXDLL
-	Enable3dControls();		// ‹¤—L DLL ‚Ì’†‚Å MFC ‚ðŽg—p‚·‚éê‡‚É‚Í‚±‚±‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢B
+	Enable3dControls();		// å…±æœ‰ DLL ã®ä¸­ã§ MFC ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã«ã¯ã“ã“ã‚’å‘¼ã³å‡ºã—ã¦ãã ã•ã„ã€‚
 #else
-//	Enable3dControlsStatic();	// MFC ‚ÆÃ“I‚ÉƒŠƒ“ƒN‚µ‚Ä‚¢‚éê‡‚É‚Í‚±‚±‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢B
+//	Enable3dControlsStatic();	// MFC ã¨é™çš„ã«ãƒªãƒ³ã‚¯ã—ã¦ã„ã‚‹å ´åˆã«ã¯ã“ã“ã‚’å‘¼ã³å‡ºã—ã¦ãã ã•ã„ã€‚
 #endif
 
-	// schemeƒ}ƒNƒ‚ð‰Šú‰»‚·‚é
+	// schemeãƒžã‚¯ãƒ­ã‚’åˆæœŸåŒ–ã™ã‚‹
 	if(init_scm_macro(&g_sc, _T("otbedit.scm")) == FALSE) return FALSE;
 
 	TCHAR ini_file_name[MAX_PATH];
@@ -140,19 +140,19 @@ BOOL COeditApp::InitInstance()
 
 	if(!is_file_exist(ini_file_name)) {
 		if(!RegistryToIniFile(_T("OGAWA"), _T("otbedit"), ini_file_name, local_ini_file_name)) {
-			MessageBox(NULL, _T("ƒŒƒWƒXƒgƒŠ‚©‚çINIƒtƒ@ƒCƒ‹‚Ö‚ÌˆÚs‚ÉŽ¸”s‚µ‚Ü‚µ‚½"), 
+			MessageBox(NULL, _T("ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‹ã‚‰INIãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ç§»è¡Œã«å¤±æ•—ã—ã¾ã—ãŸ"), 
 				_T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		}
 	}
 	if(is_file_exist(ini_file_name)) {
 		SetIniFileName(ini_file_name);
 		if(!LoadIniFile()) {
-			MessageBox(NULL, _T("INIƒtƒ@ƒCƒ‹‚©‚çÝ’è‚ðŽæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B\nƒfƒtƒHƒ‹ƒg‚ÌÝ’è‚Å‹N“®‚µ‚Ü‚·B"), 
+			MessageBox(NULL, _T("INIãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰è¨­å®šã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚\nãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¨­å®šã§èµ·å‹•ã—ã¾ã™ã€‚"), 
 				_T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		}
 	}
 
-	// MFC‚ªŽg‚¤Ý’è‚Ílocal_ini_file_name‚É•Û‘¶‚·‚é
+	// MFCãŒä½¿ã†è¨­å®šã¯local_ini_file_nameã«ä¿å­˜ã™ã‚‹
 	SetLocalIniFileName(local_ini_file_name);
 
 	{
@@ -165,32 +165,32 @@ BOOL COeditApp::InitInstance()
 		}
 	}
 
-	// ƒIƒvƒVƒ‡ƒ“î•ñ‚Ìƒ[ƒh
+	// ã‚ªãƒ—ã‚·ãƒ§ãƒ³æƒ…å ±ã®ãƒ­ãƒ¼ãƒ‰
 	LoadOption();
 	LoadEditMode();
 	LoadFontOption();
 
-	LoadStdProfileSettings(g_option.max_mru);  // •W€‚Ì INI ƒtƒ@ƒCƒ‹‚ÌƒIƒvƒVƒ‡ƒ“‚ðƒ[ÄÞ‚µ‚Ü‚· (MRU ‚ðŠÜ‚Þ)
+	LoadStdProfileSettings(g_option.max_mru);  // æ¨™æº–ã® INI ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ (MRU ã‚’å«ã‚€)
 
-	// ƒtƒHƒ“ƒgì¬
+	// ãƒ•ã‚©ãƒ³ãƒˆä½œæˆ
 	CreateFont();
 	CreateTabFont();
 
-	// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“—p‚ÌƒhƒLƒ…ƒƒ“ƒg ƒeƒ“ƒvƒŒ[ƒg‚ð“o˜^‚µ‚Ü‚·BƒhƒLƒ…ƒƒ“ƒg ƒeƒ“ƒvƒŒ[ƒg
-	//  ‚ÍƒhƒLƒ…ƒƒ“ƒgAƒtƒŒ[ƒ€ ƒEƒBƒ“ƒhƒE‚Æƒrƒ…[‚ðŒ‹‡‚·‚é‚½‚ß‚É‹@”\‚µ‚Ü‚·B
+	// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ç™»éŒ²ã—ã¾ã™ã€‚ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
+	//  ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã€ãƒ•ãƒ¬ãƒ¼ãƒ  ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¨ãƒ“ãƒ¥ãƒ¼ã‚’çµåˆã™ã‚‹ãŸã‚ã«æ©Ÿèƒ½ã—ã¾ã™ã€‚
 
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
 		RUNTIME_CLASS(COeditDoc),
-		RUNTIME_CLASS(CMainFrame),       // ƒƒCƒ“ SDI ƒtƒŒ[ƒ€ ƒEƒBƒ“ƒhƒE
+		RUNTIME_CLASS(CMainFrame),       // ãƒ¡ã‚¤ãƒ³ SDI ãƒ•ãƒ¬ãƒ¼ãƒ  ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 		RUNTIME_CLASS(COeditView));
 	AddDocTemplate(pDocTemplate);
 
-	// DDE Execute open ‚ðŽg—p‰Â”\‚É‚µ‚Ü‚·B
+	// DDE Execute open ã‚’ä½¿ç”¨å¯èƒ½ã«ã—ã¾ã™ã€‚
 	EnableShellOpen();
 
-	// DDEAfile open ‚È‚Ç•W€‚ÌƒVƒFƒ‹ ƒRƒ}ƒ“ƒh‚ÌƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚ð‰ðÍ‚µ‚Ü‚·B
+	// DDEã€file open ãªã©æ¨™æº–ã®ã‚·ã‚§ãƒ« ã‚³ãƒžãƒ³ãƒ‰ã®ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚’è§£æžã—ã¾ã™ã€‚
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
@@ -198,14 +198,14 @@ BOOL COeditApp::InitInstance()
 
 	if(OpenFiles(cmdInfo, m_lpCmdLine) == FALSE) return FALSE;
 
-	// ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚ÅƒfƒBƒXƒpƒbƒ` ƒRƒ}ƒ“ƒh‚ðŽw’è‚µ‚Ü‚·B
+	// ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã§ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒ ã‚³ãƒžãƒ³ãƒ‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
 
-	// ƒtƒ@ƒCƒ‹‚Ìƒhƒƒbƒv‚ðŽó‚¯Žæ‚é
+	// ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‰ãƒ­ãƒƒãƒ—ã‚’å—ã‘å–ã‚‹
 	m_pMainWnd->DragAcceptFiles();
 
-	// ƒƒCƒ“ ƒEƒBƒ“ƒhƒE‚ª‰Šú‰»‚³‚ê‚½‚Ì‚ÅA•\Ž¦‚ÆXV‚ðs‚¢‚Ü‚·B
+	// ãƒ¡ã‚¤ãƒ³ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒåˆæœŸåŒ–ã•ã‚ŒãŸã®ã§ã€è¡¨ç¤ºã¨æ›´æ–°ã‚’è¡Œã„ã¾ã™ã€‚
 	if(GetIniFileInt(_T("WINDOW"), _T("ZOOMED"), FALSE) != FALSE) {
 		m_pMainWnd->ShowWindow(SW_SHOWMAXIMIZED);
 	} else {
@@ -213,7 +213,7 @@ BOOL COeditApp::InitInstance()
 	}
 	m_pMainWnd->UpdateWindow();
 
-	// ƒAƒNƒZƒ‰ƒŒ[ƒ^‚ð‰Šú‰»‚·‚é
+	// ã‚¢ã‚¯ã‚»ãƒ©ãƒ¬ãƒ¼ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹
 	((CMainFrame *)m_pMainWnd)->InitAccelerator();
 
 	if(g_option.boot_on_ime) {
@@ -240,7 +240,7 @@ BOOL COeditApp::CheckDoubleBoot(CCommandLineInfo &cmdInfo)
 {
 	if(g_option.disable_double_boot == FALSE) return TRUE;
 
-	// “ñd‹N“®‚Ìƒ`ƒFƒbƒN
+	// äºŒé‡èµ·å‹•ã®ãƒã‚§ãƒƒã‚¯
 	static const TCHAR* STR_MUTEX_NAME = _T("UNIQUE_STRING_OTBEDIT");
 	m_hMutex = ::CreateMutex( NULL, FALSE, STR_MUTEX_NAME );
 	if ( ::GetLastError() == ERROR_ALREADY_EXISTS ) {
@@ -324,7 +324,7 @@ void COeditApp::SaveOtherSettings()
 	WriteIniFileString(_T("APPLICATION"), _T("KB_MACRO_DIR"), g_option.kb_macro_dir);
 }
 
-// ƒ_ƒCƒAƒƒO‚ðŽÀs‚·‚é‚½‚ß‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒRƒ}ƒ“ƒh
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ ã‚³ãƒžãƒ³ãƒ‰
 void COeditApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
@@ -332,7 +332,7 @@ void COeditApp::OnAppAbout()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditApp ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// COeditApp ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 int COeditApp::ExitInstance() 
 {
@@ -348,7 +348,7 @@ int COeditApp::ExitInstance()
 
 BOOL COeditApp::CreateFont()
 {
-	// ƒtƒHƒ“ƒg‚ðì¬
+	// ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½œæˆ
 	LOGFONT lf;
 	memset(&lf, 0, sizeof(lf));
 	lf.lfHeight = g_option.font.point;
@@ -362,7 +362,7 @@ BOOL COeditApp::CreateFont()
 
 BOOL COeditApp::CreateTabFont()
 {
-	// ƒtƒHƒ“ƒg‚ðì¬
+	// ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½œæˆ
 	return g_tab_font.CreatePointFont(g_option.tab_font.point, g_option.tab_font.face_name);
 }
 
@@ -370,12 +370,12 @@ void COeditApp::OnSetFont()
 {
 	CFontDialog		fontdlg;
 
-	// ƒ_ƒCƒAƒƒO‰Šú‰»
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°åˆæœŸåŒ–
 	fontdlg.m_cf.Flags &= ~CF_EFFECTS;
 	fontdlg.m_cf.Flags |= CF_INITTOLOGFONTSTRUCT;
 	g_font.GetLogFont(fontdlg.m_cf.lpLogFont);
 
-	// ƒ_ƒCƒAƒƒO•\Ž¦
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤º
 	if(fontdlg.DoModal() != IDOK) return;
 
 	g_option.font.face_name = fontdlg.GetFaceName();
@@ -427,12 +427,12 @@ void COeditApp::OnSetFontTabCtrl()
 {
 	CFontDialog		fontdlg;
 
-	// ƒ_ƒCƒAƒƒO‰Šú‰»
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°åˆæœŸåŒ–
 	fontdlg.m_cf.Flags &= ~CF_EFFECTS;
 	fontdlg.m_cf.Flags |= CF_INITTOLOGFONTSTRUCT;
 	g_tab_font.GetLogFont(fontdlg.m_cf.lpLogFont);
 
-	// ƒ_ƒCƒAƒƒO•\Ž¦
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤º
 	if(fontdlg.DoModal() != IDOK) return;
 
 	g_option.tab_font.face_name = fontdlg.GetFaceName();
@@ -476,7 +476,7 @@ CDocument *COeditApp::OpenDocumentFile2(LPCTSTR lpszFileName)
 
 void COeditApp::OnFileOpen() 
 {
-	// TODO: ‚±‚ÌˆÊ’u‚ÉƒRƒ}ƒ“ƒh ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«ã‚³ãƒžãƒ³ãƒ‰ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 //	CWinApp::OnFileOpen();	
 /*
 	CString newName;
@@ -486,7 +486,7 @@ void COeditApp::OnFileOpen()
 
 	OpenDocumentFile(newName);
 */
-	// FIXME: DoPromptFileName()‚ðƒR[ƒh‚ð‹¤—L‚·‚é
+	// FIXME: DoPromptFileName()ã‚’ã‚³ãƒ¼ãƒ‰ã‚’å…±æœ‰ã™ã‚‹
 	CString	fileName;
 
 	TCHAR	cur_dir[_MAX_PATH];
@@ -625,7 +625,7 @@ void COeditApp::OnNewWindow()
 
 	TCHAR path_buffer[_MAX_PATH];
 	if(GetModuleFileName(NULL, path_buffer, sizeof(path_buffer)) == 0) {
-		AfxMessageBox(_T("V‚µ‚¢ƒEƒBƒ“ƒhƒE‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½"), MB_OK);
+		AfxMessageBox(_T("æ–°ã—ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), MB_OK);
 		return;
 	}
 
@@ -633,7 +633,7 @@ void COeditApp::OnNewWindow()
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("V‚µ‚¢ƒEƒBƒ“ƒhƒE‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½"), MB_OK);
+		AfxMessageBox(_T("æ–°ã—ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), MB_OK);
 		return;
 	}
 
@@ -643,16 +643,16 @@ void COeditApp::OnNewWindow()
 
 BOOL COeditApp::OpenFiles(CCommandLineInfo &cmdInfo, TCHAR *cmd_line)
 {
-/* DDE‚ª‚¤‚Ü‚­“­‚©‚È‚¢ƒP[ƒX‚ª‚ ‚é‚Ì‚ÅC‚±‚±‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚­
+/* DDEãŒã†ã¾ãåƒã‹ãªã„ã‚±ãƒ¼ã‚¹ãŒã‚ã‚‹ã®ã§ï¼Œã“ã“ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 	if(strlen(cmd_line) == 0 || cmd_line[0] == '\"') {
-		// DDE’ÊM‚É‚È‚é‚Ì‚ÅC‚±‚±‚Å‚Íƒtƒ@ƒCƒ‹‚ðŠJ‚©‚È‚¢
-		// FIXME: ƒŒƒWƒXƒgƒŠ‚ðŽQÆ‚µ‚ÄCDDE‚ÌÝ’è‚É‚È‚Á‚Ä‚¢‚é‚©Šm”F‚·‚é
+		// DDEé€šä¿¡ã«ãªã‚‹ã®ã§ï¼Œã“ã“ã§ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã‹ãªã„
+		// FIXME: ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚’å‚ç…§ã—ã¦ï¼ŒDDEã®è¨­å®šã«ãªã£ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹
 		cmdInfo.m_nShellCommand = CCommandLineInfo::FileNew;
 		cmdInfo.m_strFileName = "";
 		return TRUE;
 	}
 */
-	// ƒtƒ@ƒCƒ‹‚ªƒhƒƒbƒv‚³‚ê‚½‚Æ‚«‚Ìˆ—
+	// ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‰ãƒ­ãƒƒãƒ—ã•ã‚ŒãŸã¨ãã®å‡¦ç†
 	TCHAR msg_buf[1024];
 	CBootParameter		file_names;
 	if(file_names.InitParameter(cmd_line, msg_buf) == FALSE) {
@@ -683,18 +683,18 @@ BOOL COeditApp::OpenFiles(CCommandLineInfo &cmdInfo, TCHAR *cmd_line)
 				ret_v = TRUE;
 				if(OpenDocumentFile(fname.GetString()) == NULL) return FALSE;
 			} else {
-				// ‘¶Ý‚µ‚È‚¢ƒtƒ@ƒCƒ‹–¼‚ðŽw’è‚³‚ê‚½ê‡AŽw’è‚³‚ê‚½ƒtƒ@ƒCƒ‹–¼‚Å•ÒWŠJŽn‚Å‚«‚é‚æ‚¤‚É‚·‚é
-				// ƒtƒHƒ‹ƒ_‚ª‘¶Ý‚µ‚È‚¢ê‡‚ÍƒGƒ‰[‚É‚·‚é
+				// å­˜åœ¨ã—ãªã„ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã•ã‚ŒãŸå ´åˆã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«åã§ç·¨é›†é–‹å§‹ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
+				// ãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼ã«ã™ã‚‹
 				{
 					if(_tcslen(fname.GetString()) > _MAX_PATH - 10) {
-						AfxMessageBox(_T("ƒtƒ@ƒCƒ‹–¼‚ª’·‚·‚¬‚Ü‚·"), MB_OK);
+						AfxMessageBox(_T("ãƒ•ã‚¡ã‚¤ãƒ«åãŒé•·ã™ãŽã¾ã™"), MB_OK);
 						return FALSE;
 					}
 					TCHAR path[_MAX_PATH];
 					_tcscpy(path, fname.GetString());
 					make_parent_dirname(path);
 					if(!is_directory_exist(path)) {
-						AfxMessageBox(_T("–³Œø‚ÈƒpƒX‚ªŽw’è‚³‚ê‚Ü‚µ‚½"), MB_OK);
+						AfxMessageBox(_T("ç„¡åŠ¹ãªãƒ‘ã‚¹ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸ"), MB_OK);
 						return FALSE;
 					}
 				}
@@ -735,7 +735,7 @@ BOOL COeditApp::OpenFiles(CCommandLineInfo &cmdInfo, TCHAR *cmd_line)
 	}
 	cmdInfo.m_strFileName = _T("");
 
-	// ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚ðÝ’è
+	// ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®š
 	if(file_names.GetBootDir() != _T("")) {
 		SetCurrentDirectory(file_names.GetBootDir());
 	} else if(file_names.GetFileCnt() == 0) {
@@ -758,7 +758,7 @@ void COeditApp::OnExtReg()
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("‹N“®‚ÉŽ¸”s‚µ‚Ü‚µ‚½"), MB_OK);
+		AfxMessageBox(_T("èµ·å‹•ã«å¤±æ•—ã—ã¾ã—ãŸ"), MB_OK);
 		return;
 	}
 
@@ -801,13 +801,13 @@ void COeditApp::OnKbmacroSave()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("ƒL[ƒ{[ƒhƒ}ƒNƒ‚Ì•Û‘¶"), FALSE, _T("mac"), NULL,
+	if(DoFileDlg_SetDir(_T("ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒžã‚¯ãƒ­ã®ä¿å­˜"), FALSE, _T("mac"), NULL,
 		OFN_NOREADONLYRETURN | OFN_HIDEREADONLY | OFN_PATHMUSTEXIST | OFN_EXPLORER | OFN_OVERWRITEPROMPT,
 		_T("Keyboard Macro Files (*.mac)|*.mac|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
 		
 	if(SaveKBMacro(file_name) == FALSE) {
-		MessageBox(NULL, _T("ƒL[ƒ{[ƒhƒ}ƒNƒ‚Ì•Û‘¶‚ÉŽ¸”s‚µ‚Ü‚µ‚½B"), _T("Error"),
+		MessageBox(NULL, _T("ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒžã‚¯ãƒ­ã®ä¿å­˜ã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), _T("Error"),
 			MB_ICONEXCLAMATION | MB_OK);
 	}
 }
@@ -816,13 +816,13 @@ void COeditApp::OnKbmacroLoad()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("ƒL[ƒ{[ƒhƒ}ƒNƒ‚Ì“Çž"), TRUE, _T("mac"), NULL,
+	if(DoFileDlg_SetDir(_T("ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒžã‚¯ãƒ­ã®èª­è¾¼"), TRUE, _T("mac"), NULL,
 		OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_EXPLORER,
 		_T("Keyboard Macro Files (*.mac)|*.mac|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
 
 	if(LoadKBMacro(file_name) == FALSE) {
-		MessageBox(NULL, _T("ƒL[ƒ{[ƒhƒ}ƒNƒ‚Ì“Çž‚ÉŽ¸”s‚µ‚Ü‚µ‚½B"), _T("Error"),
+		MessageBox(NULL, _T("ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒžã‚¯ãƒ­ã®èª­è¾¼ã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), _T("Error"),
 			MB_ICONEXCLAMATION | MB_OK);
 	}
 }
@@ -831,13 +831,13 @@ void COeditApp::OnKbmacroPlay()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("ƒL[ƒ{[ƒhƒ}ƒNƒ‚ÌŽÀs"), TRUE, _T("mac"), NULL,
+	if(DoFileDlg_SetDir(_T("ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒžã‚¯ãƒ­ã®å®Ÿè¡Œ"), TRUE, _T("mac"), NULL,
 		OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_EXPLORER,
 		_T("Keyboard Macro Files (*.mac)|*.mac|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
 
 	if(PlayKBMacro(file_name) == FALSE) {
-		MessageBox(NULL, _T("ƒL[ƒ{[ƒhƒ}ƒNƒ‚ÌŽÀs‚ÉŽ¸”s‚µ‚Ü‚µ‚½B"), _T("Error"),
+		MessageBox(NULL, _T("ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒžã‚¯ãƒ­ã®å®Ÿè¡Œã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), _T("Error"),
 			MB_ICONEXCLAMATION | MB_OK);
 	}
 }
@@ -886,7 +886,7 @@ void COeditApp::OnScmLoadFile()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("ƒ}ƒNƒ‚ÌŽÀs"), TRUE, _T("scm"), NULL,
+	if(DoFileDlg_SetDir(_T("ãƒžã‚¯ãƒ­ã®å®Ÿè¡Œ"), TRUE, _T("scm"), NULL,
 		OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_EXPLORER,
 		_T("Scheme Macro Files (*.scm)|*.scm|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
@@ -902,11 +902,11 @@ void COeditApp::OnScmEvalClipboard()
 	if(obj.IsDataAvailable(CF_TEXT) == FALSE && obj.IsDataAvailable(CF_OEMTEXT) == FALSE ) return;
 
 	HGLOBAL hData = obj.GetGlobalData(CF_UNICODETEXT);
-	// CF_UNICODETEXT‚ªŽæ‚ê‚È‚¢ê‡CCF_OEMTEXT, CF_TEXT‚ÌŽæ“¾‚ðŽŽ‚Ý‚é
+	// CF_UNICODETEXTãŒå–ã‚Œãªã„å ´åˆï¼ŒCF_OEMTEXT, CF_TEXTã®å–å¾—ã‚’è©¦ã¿ã‚‹
 	if(hData == NULL) {
 		hData = obj.GetGlobalData(CF_OEMTEXT);
 		if(hData == NULL) hData = obj.GetGlobalData(CF_TEXT);
-		// FIXME: •¶ŽšƒR[ƒh•ÏŠ·
+		// FIXME: æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›
 	}
 	if(hData == NULL) return;
 
@@ -923,7 +923,7 @@ CDocument* COeditApp::OpenDocumentFile(LPCTSTR lpszFileName)
 	CDocument *doc = COWinApp::OpenDocumentFile(lpszFileName);
 	if(doc == NULL) return NULL;
 
-	// on-open-file, on-tab-changed‚Ì‡‚ÉŽÀs‚·‚é
+	// on-open-file, on-tab-changedã®é †ã«å®Ÿè¡Œã™ã‚‹
 	scm_call_event_handler(g_sc, SCM_EVENT_ON_OPEN_FILE);
 	scm_call_event_handler(g_sc, SCM_EVENT_ON_CHANGE_TAB);
 	((COeditDoc *)doc)->CheckModified();

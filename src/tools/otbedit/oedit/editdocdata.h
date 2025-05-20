@@ -135,7 +135,7 @@ public:
 		CDocData	*data = FindData(idx);
 		if(data == NULL) return;
 
-		// “¯‚¶EditCtrl‚ð•\Ž¦’†‚ÉCSW_HIDE->SW_SHOW‚·‚é‚ÆƒLƒƒƒŒƒbƒg‚ªÁ‚¦‚Ä‚µ‚Ü‚¤
+		// åŒã˜EditCtrlã‚’è¡¨ç¤ºä¸­ã«ï¼ŒSW_HIDE->SW_SHOWã™ã‚‹ã¨ã‚­ãƒ£ãƒ¬ãƒƒãƒˆãŒæ¶ˆãˆã¦ã—ã¾ã†
 		if(m_cur_data == data && m_cur_data->edit_ctrl.IsWindowVisible()) {
 			return;
 		}

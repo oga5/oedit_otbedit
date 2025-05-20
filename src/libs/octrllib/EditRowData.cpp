@@ -154,7 +154,7 @@ int CEditRowData::get_x_from_width(CEditDispData *disp_data, CFontWidthHandler *
 
 int CEditRowData::get_col_from_disp_pos(int disp_col, int tabstop)
 {
-	// FIXME: ‚‘¬‰»‚·‚é
+	// FIXME: é«˜é€ŸåŒ–ã™ã‚‹
 
 	TCHAR	*pstr;
 	int		x;
@@ -181,7 +181,7 @@ int CEditRowData::add_chars(int col, const TCHAR *data, int cnt)
 		if(realloc_row_buf(buf_size) != 0) return 1;
 	}
 
-	// s‚Ì––”öˆÈŠO
+	// è¡Œã®æœ«å°¾ä»¥å¤–
 	if(col != get_char_cnt() - 1) {
 		memmove(m_buf + col + cnt, m_buf + col, ((INT_PTR)get_char_cnt() - 1 - col) * sizeof(TCHAR));
 	}

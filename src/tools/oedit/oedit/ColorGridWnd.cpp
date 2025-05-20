@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // ColorGridWnd.cpp : �C���v�������e�[�V���� �t�@�C��
+ // ColorGridWnd.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -87,13 +87,13 @@ END_MESSAGE_MAP()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CColorGridWnd ���b�Z�[�W �n���h��
+// CColorGridWnd メッセージ ハンドラ
 
 void CColorGridWnd::OnPaint() 
 {
-	CPaintDC dc(this); // �`��p�̃f�o�C�X �R���e�L�X�g
+	CPaintDC dc(this); // 描画用のデバイス コンテキスト
 	
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加してください
 	CRect	edge_rect;
 	edge_rect.top = 0;
 	edge_rect.bottom = m_y * m_col_height + 5;
@@ -149,7 +149,7 @@ void CColorGridWnd::OnPaint()
 		}
 	}
 
-	// �`��p���b�Z�[�W�Ƃ��� CWnd::OnPaint() ���Ăяo���Ă͂����܂���
+	// 描画用メッセージとして CWnd::OnPaint() を呼び出してはいけません
 }
 
 void CColorGridWnd::SetColor(int idx, COLORREF col)
@@ -199,7 +199,7 @@ void CColorGridWnd::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	SetFocus();
 
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����邩�܂��̓f�t�H���g�̏������Ăяo���Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加するかまたはデフォルトの処理を呼び出してください
 	int x = point.x / m_col_width;
 	int	y = point.y / m_col_height;
 
@@ -213,7 +213,7 @@ int CColorGridWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 	
-	// TODO: ���̈ʒu�ɌŗL�̍쐬�p�R�[�h��ǉ����Ă�������
+	// TODO: この位置に固有の作成用コードを追加してください
 	CRect	win_rect;
 	GetClientRect(win_rect);
 
@@ -230,7 +230,7 @@ BOOL CColorGridWnd::OnEraseBkgnd(CDC* pDC)
 
 void CColorGridWnd::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags) 
 {
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����邩�܂��̓f�t�H���g�̏������Ăяo���Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加するかまたはデフォルトの処理を呼び出してください
 	if(GetAsyncKeyState(VK_CONTROL) < 0) {
 		switch(nChar) {
 		case 'Z':
@@ -271,7 +271,7 @@ void CColorGridWnd::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 UINT CColorGridWnd::OnGetDlgCode() 
 {
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����邩�܂��̓f�t�H���g�̏������Ăяo���Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加するかまたはデフォルトの処理を呼び出してください
 	return DLGC_WANTARROWS | DLGC_WANTCHARS;
 //	return CWnd::OnGetDlgCode();
 }

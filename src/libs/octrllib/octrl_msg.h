@@ -9,7 +9,7 @@
 #ifndef __OCTRL_MSG_H_INCLUDED__
 #define __OCTRL_MSG_H_INCLUDED__
 
-// WM_APP + 0x100�ԑ�́Cocilib�Ŏg�p
+// WM_APP + 0x100番台は，ocilibで使用
 
 // EditCtrl
 #define EDIT_CTRL_MSG_BASE			WM_APP + 0x0200

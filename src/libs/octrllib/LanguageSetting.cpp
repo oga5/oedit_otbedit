@@ -44,7 +44,7 @@ BOOL CLanguageSetting::LoadSetting(CStrToken *str_token, TCHAR *msg_buf)
 
 	CUnicodeArchive uni_ar;
 	if(!uni_ar.OpenFile(m_config_file_name, _T("r"))) {
-		_stprintf(msg_buf, _T("Œ¾Œêİ’èƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ(%s)"), m_config_file_name.GetBuffer(0));
+		_stprintf(msg_buf, _T("è¨€èªè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“(%s)"), m_config_file_name.GetBuffer(0));
 		return FALSE;
 	}
 
@@ -58,7 +58,7 @@ BOOL CLanguageSetting::LoadSetting(CStrToken *str_token, TCHAR *msg_buf)
 		if(uni_ar.ReadLine(buf, sizeof(buf)) == NULL) break;
 		ostr_chomp(buf, ' ');
 		if(buf[0] == '\0') continue;
-		if(buf[0] == '/' && buf[1] == '/') continue;	// ƒRƒƒ“ƒgs
+		if(buf[0] == '/' && buf[1] == '/') continue;	// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 
 		p = ostr_split(buf, setting_name, ':');
 		if(ostr_strcmp_nocase(setting_name, _T("KeywordNocase")) == 0) {
@@ -89,14 +89,14 @@ BOOL CLanguageSetting::LoadSetting(CStrToken *str_token, TCHAR *msg_buf)
 			str_token->SetTagMode((ostr_strcmp_nocase(p, _T("TRUE")) == 0));
 		} else {
 			_stprintf(msg_buf, 
-				_T("Œ¾Œêİ’èƒtƒ@ƒCƒ‹‚Ì‘®‚ª•s³‚Å‚·\n")
-				_T("(ƒtƒ@ƒCƒ‹–¼F%s, sF%d)"), m_config_file_name.GetBuffer(0), line_no);
+				_T("è¨€èªè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®æ›¸å¼ãŒä¸æ­£ã§ã™\n")
+				_T("(ãƒ•ã‚¡ã‚¤ãƒ«åï¼š%s, è¡Œï¼š%d)"), m_config_file_name.GetBuffer(0), line_no);
 			return FALSE;
 		}
 	}
 
 	if(str_token->initDefaultKeyword(keyword_file_name, msg_buf) != 0) {
-		_stprintf(msg_buf, _T("ƒL[ƒ[ƒhİ’èƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ(ƒtƒ@ƒCƒ‹–¼F%s)"), p);
+		_stprintf(msg_buf, _T("ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“(ãƒ•ã‚¡ã‚¤ãƒ«åï¼š%s)"), p);
 		return FALSE;
 	}
 
@@ -171,7 +171,7 @@ BOOL CLanguageSetting::LoadInternalSetting(CStrToken *str_token, TCHAR *msg_buf)
 		keyword_file_name.Format(_T("%s\\html.txt"), m_base_dir.GetBuffer(0));
 	}
 	if(str_token->initDefaultKeyword(keyword_file_name.GetBuffer(0), msg_buf) != 0) {
-//		sprintf(msg_buf, "ƒL[ƒ[ƒhİ’èƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ(ƒtƒ@ƒCƒ‹–¼F%s)", p);
+//		sprintf(msg_buf, "ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“(ãƒ•ã‚¡ã‚¤ãƒ«åï¼š%s)", p);
 //		return FALSE;
 	}
 	return TRUE;
@@ -226,7 +226,7 @@ BOOL CLanguageSettingList::AddSetting(int idx, int line_no, const TCHAR *data, T
 	return TRUE;
 
 ERR1:
-	_stprintf(msg_buf, _T("Œ¾Œêİ’èƒtƒ@ƒCƒ‹‚Ì‘®‚ª•s³‚Å‚·(sF%d)"), line_no);
+	_stprintf(msg_buf, _T("è¨€èªè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®æ›¸å¼ãŒä¸æ­£ã§ã™(è¡Œï¼š%d)"), line_no);
 	return FALSE;
 }
 
@@ -267,42 +267,42 @@ BOOL CLanguageSettingList::InitList(const TCHAR *base_dir, UINT menu_id_base, in
 		TCHAR	buf[2048];
 		CUnicodeArchive uni_ar;
 		if(!uni_ar.OpenFile(lang_file_name.GetBuffer(0), _T("r"))) {
-			_stprintf(msg_buf, _T("Œ¾Œêİ’èƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ(%s)"), lang_file_name.GetBuffer(0));
+			_stprintf(msg_buf, _T("è¨€èªè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“(%s)"), lang_file_name.GetBuffer(0));
 			goto ERR1;
 		}
 
-		// ƒL[ƒ[ƒh‚Ì”‚ğ”‚¦‚é
+		// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®æ•°ã‚’æ•°ãˆã‚‹
 		int		line_no;
 		m_cnt = 0;
 		for(line_no = 1;; line_no++) {
 			if(uni_ar.ReadLine(buf, sizeof(buf)) == NULL) break;
 			ostr_chomp(buf, ' ');
 			if(buf[0] == '\0') continue;
-			if(buf[0] == '/' && buf[1] == '/') continue;	// ƒRƒƒ“ƒgs
+			if(buf[0] == '/' && buf[1] == '/') continue;	// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 
 			setting_list[m_cnt] = buf;
 			line_no_arr[m_cnt] = line_no;
 
 			m_cnt++;
 			if(m_cnt > max_cnt) {
-				_stprintf(msg_buf, _T("İ’è‰Â”\‚È•ÒWƒ‚[ƒh‚ÌÅ‘å”‚ğ’´‚¦‚Ä‚¢‚Ü‚·"));
+				_stprintf(msg_buf, _T("è¨­å®šå¯èƒ½ãªç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã®æœ€å¤§æ•°ã‚’è¶…ãˆã¦ã„ã¾ã™"));
 				goto ERR1;
 			}
 		}
 	}
 
-	// ”z—ñ‚Ìƒƒ‚ƒŠ‚ğŠm•Û
+	// é…åˆ—ã®ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 	m_setting_list = new CLanguageSetting*[m_cnt];
 	for(i = 0; i < m_cnt; i++) {
 		m_setting_list[i] = NULL;
 	}
-	// İ’è
+	// è¨­å®š
 	for(i = 0; i < m_cnt; i++) {
 		if(!AddSetting(i, line_no_arr[i], setting_list[i], msg_buf)) goto ERR1;
 	}
 
 	if(m_cnt == 0) {
-		_stprintf(msg_buf, _T("Œ¾Œêİ’èƒtƒ@ƒCƒ‹‚Éİ’è‚ª‚ ‚è‚Ü‚¹‚ñ(%s)"), lang_file_name.GetBuffer(0));
+		_stprintf(msg_buf, _T("è¨€èªè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«è¨­å®šãŒã‚ã‚Šã¾ã›ã‚“(%s)"), lang_file_name.GetBuffer(0));
 		goto ERR1;
 	}
 
@@ -388,7 +388,7 @@ CLanguageSetting *CLanguageSettingList::GetSetting(int idx)
 CString CLanguageSettingList::GetMessageString(int idx)
 {
 	CString s;
-	s.Format(_T("•ÒWƒ‚[ƒh‚ğ%s‚É‚·‚é"), GetSetting(idx)->GetName().GetBuffer(0));
+	s.Format(_T("ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã‚’%sã«ã™ã‚‹"), GetSetting(idx)->GetName().GetBuffer(0));
 	return s;
 }
 
@@ -397,7 +397,7 @@ CString CLanguageSettingList::GetCommandString(int idx)
 	CString s;
 
 	if(idx >= m_cnt) {
-		s.Format(_T("•ÒWƒ‚[ƒh‚ğ•ÏX‚·‚é(%d)\n•ÒWƒ‚[ƒh(%d)"), idx, idx);
+		s.Format(_T("ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã™ã‚‹(%d)\nç·¨é›†ãƒ¢ãƒ¼ãƒ‰(%d)"), idx, idx);
 	} else {
 		s.Format(_T("%s\n%s"), GetMessageString(idx).GetBuffer(0), GetSetting(idx)->GetName().GetBuffer(0));
 	}
@@ -438,7 +438,7 @@ void CLanguageSettingList::LangNameOut(CDC *dc, int x)
 	lf.lfQuality = DEFAULT_QUALITY;
 	lf.lfPitchAndFamily = FIXED_PITCH | FF_DONTCARE;
 	lf.lfHeight = -10;
-	_tcscpy(lf.lfFaceName, _T("‚l‚r ƒSƒVƒbƒN"));
+	_tcscpy(lf.lfFaceName, _T("ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯"));
 	font.CreateFontIndirect(&lf);
 
 	dc->SetBkColor(GetSysColor(COLOR_BTNFACE));
@@ -494,7 +494,7 @@ void CLanguageSettingList::AddToolBarBtn(CToolBar *pToolBar)
 		pToolBar->GetToolBarCtrl().InsertButton(lang_idx, &tb_btn);
 	}
 
-	// ƒZƒpƒŒ[ƒ^‚ğ‘}“ü
+	// ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’æŒ¿å…¥
 	tb_btn.iBitmap = -1;
 	tb_btn.idCommand = 0;
 	tb_btn.fsState = TBSTATE_ENABLED;
@@ -528,7 +528,7 @@ CString CLanguageSettingList::GetFilterSuffix(OPENFILENAME& ofn, UINT all_filter
 
 	for(int i = 0; i < GetCount(); i++) {
 		CString name;
-		name.Format(_T("%sƒtƒ@ƒCƒ‹(%s)"), 
+		name.Format(_T("%sãƒ•ã‚¡ã‚¤ãƒ«(%s)"), 
 			GetSetting(i)->GetName().GetBuffer(0),
 			GetSetting(i)->GetSuffix().GetBuffer(0));
 		AppendFilterSuffix2(strFilter, ofn, name, GetSetting(i)->GetSuffix());
@@ -542,7 +542,7 @@ void CLanguageSettingList::AddComboEditModeForSetup(CComboBox *pComboBox, CStrin
 	if(pComboBox == NULL) return;
 
 	int base = 0;
-	pComboBox->InsertString(base, _T("‘O‰ñ‹N“®‚Ìİ’è"));
+	pComboBox->InsertString(base, _T("å‰å›èµ·å‹•æ™‚ã®è¨­å®š"));
 	pComboBox->SetItemData(base, -1);
 
 	base++;

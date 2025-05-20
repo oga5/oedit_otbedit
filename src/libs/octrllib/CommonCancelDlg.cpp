@@ -29,11 +29,11 @@ BOOL CCommonCancelDlg::InitResource()
 {
 	char*  p;
 	
-	// ƒƒ‚ƒŠ res ã‚Éƒ_ƒCƒAƒƒOEƒŠƒ\[ƒX‚ğì¬‚·‚é
+	// ãƒ¡ãƒ¢ãƒª res ä¸Šã«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒ»ãƒªã‚½ãƒ¼ã‚¹ã‚’ä½œæˆã™ã‚‹
 	{
 		memset( m_res_buffer, 0, sizeof(m_res_buffer) );
 
-		// ƒ_ƒCƒAƒƒO
+		// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 		p = m_res_buffer;
 		DLGTEMPLATE*  dlg_t = (DLGTEMPLATE*)p;
 		{
@@ -49,9 +49,9 @@ BOOL CCommonCancelDlg::InitResource()
 		}
 		*(WORD*)p = 0;  p += sizeof(WORD);  // menu
 		*(WORD*)p = 0;  p += sizeof(WORD);  // winClass
-		wcscpy( (WCHAR*)p, L"Às’†" );  p += 8;  // caption
+		wcscpy( (WCHAR*)p, L"å®Ÿè¡Œä¸­" );  p += 8;  // caption
 /*	
-		// ƒXƒ^ƒeƒBƒbƒN
+		// ã‚¹ã‚¿ãƒ†ã‚£ãƒƒã‚¯
 		p = (char*)( (int)(p + 3) & ~0x3 );
 		{
 			DLGITEMTEMPLATE*  t = (DLGITEMTEMPLATE*)p;
@@ -69,7 +69,7 @@ BOOL CCommonCancelDlg::InitResource()
 		*(WORD*)p = 0x0000;  p += sizeof(WORD);  // caption
 		*(WORD*)p = 0;   p += sizeof(WORD);  // nCtrlByte
 
-		// ƒ{ƒ^ƒ“
+		// ãƒœã‚¿ãƒ³
 		p = (char*)( (int)(p + 3) & ~0x3 );
 		{
 			DLGITEMTEMPLATE*  t = (DLGITEMTEMPLATE*)p;
@@ -218,11 +218,11 @@ void CCommonCancelDlg::OnCancel()
 {
 	if(!(m_ex_style & CND_USE_CANCEL_BTN)) return;
 
-	m_cancel_flg = 2; // ƒƒbƒZ[ƒWƒ{ƒbƒNƒX•\¦’†
-	if(MessageBox(_T("ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚·‚©"), _T("Šm”F"), MB_ICONQUESTION | MB_YESNO) == IDYES) {
-		m_cancel_flg = 1; // ƒLƒƒƒ“ƒZƒ‹
+	m_cancel_flg = 2; // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹è¡¨ç¤ºä¸­
+	if(MessageBox(_T("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã™ã‹"), _T("ç¢ºèª"), MB_ICONQUESTION | MB_YESNO) == IDYES) {
+		m_cancel_flg = 1; // ã‚­ãƒ£ãƒ³ã‚»ãƒ«
 	} else {
-		m_cancel_flg = 0; // ‘±s
+		m_cancel_flg = 0; // ç¶šè¡Œ
 	}
 }
 
@@ -286,7 +286,7 @@ BOOL CCommonCancelDlg::OnRowCntMsg(INT_PTR row)
 {
 	CString		msg;
 
-	msg.Format(_T("ƒf[ƒ^æ“¾’†"));
+	msg.Format(_T("ãƒ‡ãƒ¼ã‚¿å–å¾—ä¸­"));
 	m_static_1.SetWindowText(msg);
 	m_progress.SetPos((int)row);
 	return TRUE;

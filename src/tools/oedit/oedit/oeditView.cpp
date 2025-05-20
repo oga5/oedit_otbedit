@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // oeditView.cpp : COeditView ƒNƒ‰ƒX‚Ì“®ì‚Ì’è‹`‚ğs‚¢‚Ü‚·B
+ // oeditView.cpp : COeditView ã‚¯ãƒ©ã‚¹ã®å‹•ä½œã®å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -204,7 +204,7 @@ BEGIN_MESSAGE_MAP(COeditView, CScrollView)
 	ON_COMMAND(ID_WORD_LEFT_STOP_WB_EXTEND, OnWordLeftStopWbExtend)
 	ON_COMMAND(ID_WORD_RIGHT_STOP_WB_EXTEND, OnWordRightStopWbExtend)
 	//}}AFX_MSG_MAP
-	// •W€ˆóüƒRƒ}ƒ“ƒh
+	// æ¨™æº–å°åˆ·ã‚³ãƒãƒ³ãƒ‰
 	ON_UPDATE_COMMAND_UI_RANGE(ID_TO_LOWER, ID_TO_UPPER, OnUpdateSelected)
 	ON_UPDATE_COMMAND_UI(ID_SPLIT_ROWS, OnUpdateSelected)
 	ON_UPDATE_COMMAND_UI(ID_JOIN_ROWS, OnUpdateMultiLineEdit)
@@ -216,7 +216,7 @@ BEGIN_MESSAGE_MAP(COeditView, CScrollView)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚Ì\’z/Á–Å
+// COeditView ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰/æ¶ˆæ»…
 
 
 COeditView::COeditView()
@@ -232,17 +232,17 @@ COeditView::~COeditView()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚Ì•`‰æ
+// COeditView ã‚¯ãƒ©ã‚¹ã®æç”»
 
 void COeditView::OnDraw(CDC* pDC)
 {
 	COeditDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
-	// TODO: ‚±‚ÌêŠ‚ÉƒlƒCƒeƒBƒu ƒf[ƒ^—p‚Ì•`‰æƒR[ƒh‚ğ’Ç‰Á‚µ‚Ü‚·B
+	// TODO: ã“ã®å ´æ‰€ã«ãƒã‚¤ãƒ†ã‚£ãƒ– ãƒ‡ãƒ¼ã‚¿ç”¨ã®æç”»ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¾ã™ã€‚
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚Ìf’f
+// COeditView ã‚¯ãƒ©ã‚¹ã®è¨ºæ–­
 
 #ifdef _DEBUG
 void COeditView::AssertValid() const
@@ -255,7 +255,7 @@ void COeditView::Dump(CDumpContext& dc) const
 	CScrollView::Dump(dc);
 }
 
-COeditDoc* COeditView::GetDocument() // ”ñƒfƒoƒbƒO ƒo[ƒWƒ‡ƒ“‚ÍƒCƒ“ƒ‰ƒCƒ“‚Å‚·B
+COeditDoc* COeditView::GetDocument() // éãƒ‡ãƒãƒƒã‚° ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³ã§ã™ã€‚
 {
 	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(COeditDoc)));
 	return (COeditDoc*)m_pDocument;
@@ -263,7 +263,7 @@ COeditDoc* COeditView::GetDocument() // ”ñƒfƒoƒbƒO ƒo[ƒWƒ‡ƒ“‚ÍƒCƒ“ƒ‰ƒCƒ“‚Å‚·B
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditView ƒNƒ‰ƒX‚ÌƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// COeditView ã‚¯ãƒ©ã‚¹ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 int COeditView::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
@@ -273,7 +273,7 @@ int COeditView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_edit_ctrl.SetEditData(GetDocument()->GetEditData());
 	m_edit_ctrl.SetSplitterMode(TRUE);
 /*
-	// cƒXƒNƒ[ƒ‹ƒo[‚Íí‚É•\¦
+	// ç¸¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã¯å¸¸ã«è¡¨ç¤º
 	m_edit_ctrl.SetScrollStyle(m_edit_ctrl.GetScrollStyle() | VSCROLL_ALWAYS_ON);
 
 	// for TrackPoint (WS_VSCROLL | WS_HSCROLL)
@@ -303,7 +303,7 @@ void COeditView::OnSize(UINT nType, int cx, int cy)
 
 	// for TrackPoint
 	if(m_edit_ctrl.IsSplitterMode()) {
-		// TrackPoint‚ÌƒXƒNƒ[ƒ‹‚ğ—LŒø‚É‚·‚é‚½‚ßCƒXƒNƒ[ƒ‹ƒo[‚ğView‚ÌŠO‘¤‚É•\¦‚·‚é
+		// TrackPointã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚’æœ‰åŠ¹ã«ã™ã‚‹ãŸã‚ï¼Œã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã‚’Viewã®å¤–å´ã«è¡¨ç¤ºã™ã‚‹
 		int cx2 = cx += GetSystemMetrics(SM_CXVSCROLL);
 		int cy2 = cy += GetSystemMetrics(SM_CYHSCROLL);
 		m_edit_ctrl.MoveWindow(0, 0, cx2, cy2);
@@ -614,7 +614,7 @@ LRESULT COeditView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 
 			if(g_search_data.m_all) {
 				CString msg;
-				msg.Format(_T("%dŒ’uŠ·‚µ‚Ü‚µ‚½"), replace_cnt);
+				msg.Format(_T("%dä»¶ç½®æ›ã—ã¾ã—ãŸ"), replace_cnt);
 				GetParentFrame()->SetMessageText(msg);
 			} else {
 				SearchMsg(ret_v, g_search_data.m_dir, b_looped);
@@ -636,7 +636,7 @@ LRESULT COeditView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 
 			if(ret_v == 0) {
 				CString msg;
-				msg.Format(_T("%dsíœ‚µ‚Ü‚µ‚½"), replace_cnt);
+				msg.Format(_T("%dè¡Œå‰Šé™¤ã—ã¾ã—ãŸ"), replace_cnt);
 				SearchMsg(ret_v, g_search_data.m_dir, FALSE);
 			}
 		}
@@ -809,7 +809,7 @@ void COeditView::OnFilePrint()
 	if(dlg.m_print_title) {
 		title = GetDocument()->GetTitle();
 
-		// ƒ^ƒCƒgƒ‹‚Ì" *"‚ğæ‚èœ‚­
+		// ã‚¿ã‚¤ãƒˆãƒ«ã®" *"ã‚’å–ã‚Šé™¤ã
 		if(title.Find(_T(" *"), 0) != -1) {
 			TCHAR *p;
 			p = title.GetBuffer(0);
@@ -828,7 +828,7 @@ void COeditView::OnFilePrint()
 	CEditData *edit_data = GetDocument()->GetEditData();
 	if(dlg.m_print_selected_area) {
 		if(!m_edit_ctrl.HaveSelected()) {
-			MessageBox(_T("‘I‘ğ”ÍˆÍ‚ª‚ ‚è‚Ü‚¹‚ñ"), _T("ˆóü"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("é¸æŠç¯„å›²ãŒã‚ã‚Šã¾ã›ã‚“"), _T("å°åˆ·"), MB_ICONERROR | MB_OK);
 			return;
 		}
 
@@ -846,7 +846,7 @@ void COeditView::OnFilePrint()
 		delete edit_data;
 	}
 
-	MessageBox(_T("ˆóü‚µ‚Ü‚µ‚½"), _T("ˆóü"), MB_ICONINFORMATION | MB_OK);
+	MessageBox(_T("å°åˆ·ã—ã¾ã—ãŸ"), _T("å°åˆ·"), MB_ICONINFORMATION | MB_OK);
 }
 
 void COeditView::ReplaceText(TCHAR *search_text, TCHAR *replace_text, BOOL bInfrateSelectedArea)
@@ -867,12 +867,12 @@ void COeditView::ReplaceText(TCHAR *search_text, TCHAR *replace_text, BOOL bInfr
 
 void COeditView::OnDeleteSpace() 
 {
-	ReplaceText(_T("^[\\s@]+"), _T(""));
+	ReplaceText(_T("^[\\sã€€]+"), _T(""));
 }
 
 void COeditView::OnDeleteSpaceEnd() 
 {
-	ReplaceText(_T("[\\s@]+$"), _T(""));
+	ReplaceText(_T("[\\sã€€]+$"), _T(""));
 }
 
 void COeditView::OnInsertGt() 
@@ -945,7 +945,7 @@ void COeditView::OnColorInput()
 
 void COeditView::OnUpdateColorInput(CCmdUI* pCmdUI) 
 {
-	// ƒ‚[ƒh‚ÉŠÖŒW‚È‚­—˜—p‚Å‚«‚é‚æ‚¤‚É‚·‚é
+	// ãƒ¢ãƒ¼ãƒ‰ã«é–¢ä¿‚ãªãåˆ©ç”¨ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 	pCmdUI->Enable(TRUE);
 }
 
@@ -1052,7 +1052,7 @@ void COeditView::OnContextMenu(CWnd* pWnd, CPoint point)
 
 	UINT flags = TPM_LEFTALIGN | TPM_RIGHTBUTTON;
 
-	// ƒL[ƒ{[ƒh‘€ì‚Ì‚Æ‚«‚ÍAƒLƒƒƒŒƒbƒg•t‹ß‚Éƒƒjƒ…[‚ğ•\¦‚·‚é
+	// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æ“ä½œã®ã¨ãã¯ã€ã‚­ãƒ£ãƒ¬ãƒƒãƒˆä»˜è¿‘ã«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹
 	if(point.y < 0) {
 		CPoint caret_pos = m_edit_ctrl.GetCaretPos();
 		ClientToScreen(&caret_pos);
@@ -1067,10 +1067,10 @@ void COeditView::OnContextMenu(CWnd* pWnd, CPoint point)
 		}
 	}
 
-	// CMainFrame‚ğeƒEƒBƒ“ƒhƒE‚É‚·‚é‚ÆAƒƒjƒ…[‚Ì—LŒø–³Œø‚ğAƒƒCƒ“ƒƒjƒ…[‚Æ“¯‚¶‚É‚Å‚«‚é
+	// CMainFrameã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«ã™ã‚‹ã¨ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®æœ‰åŠ¹ç„¡åŠ¹ã‚’ã€ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨åŒã˜ã«ã§ãã‚‹
 	menu.GetSubMenu(0)->TrackPopupMenu(flags, point.x, point.y, GetParentFrame());
 
-	// ƒƒjƒ…[íœ
+	// ãƒ¡ãƒ‹ãƒ¥ãƒ¼å‰Šé™¤
 	menu.DestroyMenu();
 }
 
@@ -1110,7 +1110,7 @@ void COeditView::OnSearchFile()
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("‹N“®‚É¸”s‚µ‚Ü‚µ‚½"), MB_OK);
+		AfxMessageBox(_T("èµ·å‹•ã«å¤±æ•—ã—ã¾ã—ãŸ"), MB_OK);
 		return;
 	}
 
@@ -1460,7 +1460,7 @@ void COeditView::OnDestroy()
 	CScrollView::OnDestroy();
 	
 	// Note: 2022/07/11
-	// ‚±‚±‚ÅˆÈ‰º‚Ìˆ—‚ğÀs‚·‚é‚ÆAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌI—¹‚ÉPreTranslateMessage‚ÅƒGƒ‰[‚É‚È‚é
+	// ã“ã“ã§ä»¥ä¸‹ã®å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ã¨ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®çµ‚äº†æ™‚ã«PreTranslateMessageã§ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹
 //	if(CSearchDlgSingleton::IsVisible() && CSearchDlgSingleton::GetDlg().GetWnd() == this) {
 //		CSearchDlgSingleton::GetDlg().ShowWindow(SW_HIDE);
 //	}

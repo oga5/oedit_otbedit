@@ -41,8 +41,8 @@ BOOL CAboutDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	
-	// TODO: ���̈ʒu�ɏ������̕⑫������ǉ����Ă�������
-	// exe�̃o�[�W������\��
+	// TODO: この位置に初期化の補足処理を追加してください
+	// exeのバージョンを表示
 	TCHAR	filename[MAX_PATH];
 	CString	file_version;
 
@@ -53,8 +53,8 @@ BOOL CAboutDlg::OnInitDialog()
 
 	UpdateData(FALSE);
 
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 BOOL CAboutDlg::LinkHitTest(CPoint point)
@@ -75,7 +75,7 @@ BOOL CAboutDlg::LinkHitTest(CPoint point)
 
 void CAboutDlg::OnMouseMove(UINT nFlags, CPoint point) 
 {
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����邩�܂��̓f�t�H���g�̏������Ăяo���Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加するかまたはデフォルトの処理を呼び出してください
 	if(LinkHitTest(point) == TRUE) {
 		if(CEditCtrl::m_link_cursor != NULL) {
 			SetCursor(CEditCtrl::m_link_cursor);
@@ -100,13 +100,13 @@ HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 	
-	// TODO: ���̈ʒu�� DC �̃A�g���r���[�g��ύX���Ă�������
+	// TODO: この位置で DC のアトリビュートを変更してください
 	int id = pWnd->GetDlgCtrlID();
 	if(id == IDC_STATIC_URL) {
 		pDC->SetTextColor(RGB(0, 0, 255));
 	}
 
-	// TODO: �f�t�H���g�̃u���V���]�݂̂��̂łȂ��ꍇ�ɂ́A�Ⴄ�u���V��Ԃ��Ă�������
+	// TODO: デフォルトのブラシが望みのものでない場合には、違うブラシを返してください
 	return hbr;
 }
 

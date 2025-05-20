@@ -148,7 +148,7 @@ __inline static int pop_stack(OREG_DATA *reg_data, REG_STACK **stack,
 	reg_data->stack_cnt = stack_cnt;
 	*stack = &(reg_data->stack_data[stack_cnt]);
 
-	// ƒeƒXƒg‚µ‚Ä‚¢‚È‚¢ƒ‹[ƒg‚Éi‚Ş
+	// ãƒ†ã‚¹ãƒˆã—ã¦ã„ãªã„ãƒ«ãƒ¼ãƒˆã«é€²ã‚€
 	(*stack)->node = (*stack)->node->next[1 - (*stack)->node->first_test];
 	return 0;
 }
@@ -398,7 +398,7 @@ static int check_condition(OREG_DATA *reg_data, HREG_DATASRC data_src,
 	int		old_stack_cnt = reg_data->stack_cnt;
 	int		ret_v = 0;
 
-	// ¡‚Ìstack‚ğ‰ó‚³‚È‚¢‚æ‚¤‚É‚·‚é
+	// ä»Šã®stackã‚’å£Šã•ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(push_stack(reg_data, stack) != 0) return 0;
 
 	(*stack)->node = cur_node;
@@ -418,11 +418,11 @@ static int check_condition(OREG_DATA *reg_data, HREG_DATASRC data_src,
 			ret_v = OREGEXP_FOUND;
 		}
 	} else {
-		// ³‹K•\Œ»‚ğ•]‰¿‚·‚é
+		// æ­£è¦è¡¨ç¾ã‚’è©•ä¾¡ã™ã‚‹
 		ret_v = regexp_sub(reg_data, data_src, &end_pt);
 	}
 
-	// stack‚Ìó‘Ô‚ğŠÖ”ŒÄ‚Ño‚µ‘O‚É–ß‚·
+	// stackã®çŠ¶æ…‹ã‚’é–¢æ•°å‘¼ã³å‡ºã—å‰ã«æˆ»ã™
 	reg_data->stack_cnt = old_stack_cnt;
 	*stack = &(reg_data->stack_data[old_stack_cnt]);
 
@@ -439,26 +439,26 @@ static int check_regexp(OREG_DATA *reg_data, HREG_DATASRC data_src,
 
 	assert(end_node && end_node->type == NODE_REGEXP_SUB_END);
 
-	// ¡‚Ìstack‚ğ‰ó‚³‚È‚¢‚æ‚¤‚É‚·‚é
+	// ä»Šã®stackã‚’å£Šã•ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(push_stack(reg_data, stack) != 0) return 0;
 
 	(*stack)->node = (*cur_node)->next[0];
 
 	if(regexp_sub(reg_data, data_src, &end_pt) == result) {
 		if(old_stack_cnt != reg_data->stack_cnt) {
-			// stack‚ğƒRƒs[
+			// stackã‚’ã‚³ãƒ”ãƒ¼
 			reg_data->stack_data[old_stack_cnt]	
 				= reg_data->stack_data[reg_data->stack_cnt];
 		}
 
-		// node‚ği‚ß‚é
+		// nodeã‚’é€²ã‚ã‚‹
 		*cur_node = end_node;
 
 		ret_v = 1;
 	}
-	// FIXME: ƒGƒ‰[ˆ—‚ğ“ü‚ê‚é
+	// FIXME: ã‚¨ãƒ©ãƒ¼å‡¦ç†ã‚’å…¥ã‚Œã‚‹
 
-	// stack‚Ìó‘Ô‚ğŠÖ”ŒÄ‚Ño‚µ‘O‚É–ß‚·
+	// stackã®çŠ¶æ…‹ã‚’é–¢æ•°å‘¼ã³å‡ºã—å‰ã«æˆ»ã™
 	reg_data->stack_cnt = old_stack_cnt;
 	*stack = &(reg_data->stack_data[old_stack_cnt]);
 
@@ -561,9 +561,9 @@ static void start_recursive(OREG_DATA *reg_data, HREG_DATASRC data_src,
 
 	assert(idx <= reg_data->back_ref_cnt);
 
-	// ¡‚Ìstack‚ğ‰ó‚³‚È‚¢‚æ‚¤‚É‚·‚é
+	// ä»Šã®stackã‚’å£Šã•ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(push_stack(reg_data, stack) != 0) {
-		// FIXME: push_stack‚ÍŠÖ”‚ÌŠO‚Éo‚·
+		// FIXME: push_stackã¯é–¢æ•°ã®å¤–ã«å‡ºã™
 		assert(0);
 		return;
 	}
@@ -640,10 +640,10 @@ static int regexp_sub(OREG_DATA *reg_data, HREG_DATASRC data_src,
 		assert(err_flg == 0);
 
 		/* 
-		 * stack->prev_pbuf[0] == '\0'‚ÍA
-		 * oreg_exec_main_first_check_word_sepalater‚Ådata_src->prev_char‚ª
-		 * ""‚ğ•Ô‚·‚Æ‚«‚É”­¶‚·‚é
-		 * prev_char‚ªNULL‚ğ•Ô‚·‚æ‚¤‚É‚·‚ê‚ÎA‚±‚Ìƒ`ƒFƒbƒN‚ğíœ‚Å‚«‚é
+		 * stack->prev_pbuf[0] == '\0'ã¯ã€
+		 * oreg_exec_main_first_check_word_sepalaterã§data_src->prev_charãŒ
+		 * ""ã‚’è¿”ã™ã¨ãã«ç™ºç”Ÿã™ã‚‹
+		 * prev_charãŒNULLã‚’è¿”ã™ã‚ˆã†ã«ã™ã‚Œã°ã€ã“ã®ãƒã‚§ãƒƒã‚¯ã‚’å‰Šé™¤ã§ãã‚‹
 		 */
 #ifdef LINUX
 		assert(stack->prev_pbuf == NULL ||
@@ -660,7 +660,7 @@ static int regexp_sub(OREG_DATA *reg_data, HREG_DATASRC data_src,
 
 		cur_node = stack->node;
 
-		// I—¹”»’è
+		// çµ‚äº†åˆ¤å®š
 		if(is_end_node(cur_node)) {
 			*end_pt = stack->cur_pt;
 			reg_data->back_ref = stack->back_ref;
@@ -863,8 +863,8 @@ static int regexp_sub(OREG_DATA *reg_data, HREG_DATASRC data_src,
 		if(err_flg == 0) {
 			stack->node = cur_node->next[cur_node->first_test];
 		} else {
-			// ¸”s‚µ‚½‚çCƒXƒ^ƒbƒN‚©‚çŸ‚Ìƒ‹[ƒg‚ğæ‚èo‚·
-			// ƒXƒ^ƒbƒN‚ª‹ó‚É‚È‚Á‚½‚çC‘Sƒ‹[ƒgŒŸõŠ®—¹
+			// å¤±æ•—ã—ãŸã‚‰ï¼Œã‚¹ã‚¿ãƒƒã‚¯ã‹ã‚‰æ¬¡ã®ãƒ«ãƒ¼ãƒˆã‚’å–ã‚Šå‡ºã™
+			// ã‚¹ã‚¿ãƒƒã‚¯ãŒç©ºã«ãªã£ãŸã‚‰ï¼Œå…¨ãƒ«ãƒ¼ãƒˆæ¤œç´¢å®Œäº†
 			if(pop_stack(reg_data, &stack, start_stack_cnt) != 0) {
 				break;
 			}

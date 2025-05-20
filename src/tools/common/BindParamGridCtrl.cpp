@@ -1,4 +1,4 @@
-// BindParamGridCtrl.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// BindParamGridCtrl.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -30,11 +30,11 @@ END_MESSAGE_MAP()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CBindParamGridCtrl ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CBindParamGridCtrl ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CBindParamGridCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags) 
 {
-	// TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚·‚é‚©‚Ü‚½‚ÍƒfƒtƒHƒ‹ƒg‚Ìˆ—‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã‹ã¾ãŸã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å‡¦ç†ã‚’å‘¼ã³å‡ºã—ã¦ãã ã•ã„
 	BOOL	ctrl = FALSE;
 	BOOL	shift = FALSE;
 	if(GetKeyState(VK_CONTROL) < 0) ctrl = TRUE;

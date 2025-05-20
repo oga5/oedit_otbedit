@@ -9,19 +9,19 @@
 #define __TOOL_TIP_EX_INCLUDE__
 
 /****************************************************************************/
-/* ƒEƒBƒ“ƒhƒE‚É”CˆÓ‚ÌTIP‚ğ•\¦‚·‚é                                          */
+/* ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«ä»»æ„ã®TIPã‚’è¡¨ç¤ºã™ã‚‹                                          */
 /*                                                                          */
-/* 1.ƒƒ“ƒo•Ï”‚ÉCToolTipEx‚ğ’Ç‰Á                                           */
+/* 1.ãƒ¡ãƒ³ãƒå¤‰æ•°ã«CToolTipExã‚’è¿½åŠ                                            */
 /*     CToolTipEx m_ToolTipEx;                                              */
-/* 2.OnInitialUpdate()‚ÅToolTip‚ğì¬‚·‚é                                   */
+/* 2.OnInitialUpdate()ã§ToolTipã‚’ä½œæˆã™ã‚‹                                   */
 /*     m_ToolTipEx.Create(this->GetSafeHwnd());                             */
-/* 3.PreTranslateMessage()‚ğƒI[ƒo[ƒ‰ƒCƒh‚µCCToolTipEx::Show()‚ğŒÄ‚Ño‚·  */
+/* 3.PreTranslateMessage()ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ï¼ŒCToolTipEx::Show()ã‚’å‘¼ã³å‡ºã™  */
 /*     m_ToolTipEx.Show(Msg *pMsg);                                         */
-/* 4.ƒfƒXƒgƒ‰ƒNƒ^‚ÅCCToolTipEx::Destroy()‚ğŒÄ‚Ño‚·                        */
+/* 4.ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ï¼ŒCToolTipEx::Destroy()ã‚’å‘¼ã³å‡ºã™                        */
 /*     m_ToolTipEx.Destroy();                                               */
-/* 5.•\¦‚·‚é•¶šƒtƒHƒ“ƒg‚ğİ’è‚·‚é                                         */
+/* 5.è¡¨ç¤ºã™ã‚‹æ–‡å­—ãƒ•ã‚©ãƒ³ãƒˆã‚’è¨­å®šã™ã‚‹                                         */
 /*     m_ToolTipEx.SetFont(CFont *pFont);                                   */
-/* 6.•\¦‚µ‚½‚¢•¶š‚ğİ’è‚·‚é                                               */
+/* 6.è¡¨ç¤ºã—ãŸã„æ–‡å­—ã‚’è¨­å®šã™ã‚‹                                               */
 /*     m_ToolTipEx.SetMssage(CString message);                              */
 /*                                                                          */
 /****************************************************************************/
@@ -59,16 +59,16 @@ private:
 	void CalcSize();
 
 private:
-	CString m_msg;		//•\¦‚µ‚½‚¢ƒƒbƒZ[ƒW
-	HWND m_hWnd;		//©•ª‚ÌƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
+	CString m_msg;		//è¡¨ç¤ºã—ãŸã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	HWND m_hWnd;		//è‡ªåˆ†ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
 
-	CRect m_disp_rect;	//•\¦”ÍˆÍ‚ÌRect
+	CRect m_disp_rect;	//è¡¨ç¤ºç¯„å›²ã®Rect
 
-	CPoint m_pt;		//ƒEƒBƒ“ƒhƒE‚Ì•\¦ˆÊ’u(¶ãFŒ´“_)
-	CSize m_size;		//ƒEƒBƒ“ƒhƒEƒTƒCƒY
-	COLORREF m_bk_cr;	//”wŒiF
-	COLORREF m_text_cr;	//•¶šF
-	HFONT m_font;		//•¶šƒtƒHƒ“ƒg
+	CPoint m_pt;		//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¡¨ç¤ºä½ç½®(å·¦ä¸Šï¼šåŸç‚¹)
+	CSize m_size;		//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚º
+	COLORREF m_bk_cr;	//èƒŒæ™¯è‰²
+	COLORREF m_text_cr;	//æ–‡å­—è‰²
+	HFONT m_font;		//æ–‡å­—ãƒ•ã‚©ãƒ³ãƒˆ
 
 	BOOL m_b_show;
 

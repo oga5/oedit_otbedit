@@ -1,4 +1,4 @@
-// BindParamEditorDlg.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// BindParamEditorDlg.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -13,13 +13,13 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CBindParamEditorDlg ƒ_ƒCƒAƒƒO
+// CBindParamEditorDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 CBindParamEditorDlg::CBindParamEditorDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CBindParamEditorDlg::IDD, pParent)
 {
 	//{{AFX_DATA_INIT(CBindParamEditorDlg)
-		// ƒƒ‚ - ClassWizard ‚Í‚±‚ÌˆÊ’u‚Éƒ}ƒbƒsƒ“ƒO—p‚Ìƒ}ƒNƒ‚ğ’Ç‰Á‚Ü‚½‚Ííœ‚µ‚Ü‚·B
+		// ãƒ¡ãƒ¢ - ClassWizard ã¯ã“ã®ä½ç½®ã«ãƒãƒƒãƒ”ãƒ³ã‚°ç”¨ã®ãƒã‚¯ãƒ­ã‚’è¿½åŠ ã¾ãŸã¯å‰Šé™¤ã—ã¾ã™ã€‚
 	//}}AFX_DATA_INIT
 
 	m_bind_data_org = NULL;
@@ -33,7 +33,7 @@ void CBindParamEditorDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CBindParamEditorDlg)
-		// ƒƒ‚ - ClassWizard ‚Í‚±‚ÌˆÊ’u‚Éƒ}ƒbƒsƒ“ƒO—p‚Ìƒ}ƒNƒ‚ğ’Ç‰Á‚Ü‚½‚Ííœ‚µ‚Ü‚·B
+		// ãƒ¡ãƒ¢ - ClassWizard ã¯ã“ã®ä½ç½®ã«ãƒãƒƒãƒ”ãƒ³ã‚°ç”¨ã®ãƒã‚¯ãƒ­ã‚’è¿½åŠ ã¾ãŸã¯å‰Šé™¤ã—ã¾ã™ã€‚
 	//}}AFX_DATA_MAP
 }
 
@@ -56,13 +56,13 @@ BEGIN_MESSAGE_MAP(CBindParamEditorDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CBindParamEditorDlg ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CBindParamEditorDlg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CBindParamEditorDlg::OnInitDialog() 
 {
 	CDialog::OnInitDialog();
 	
-	// TODO: ‚±‚ÌˆÊ’u‚É‰Šú‰»‚Ì•â‘«ˆ—‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+	// TODO: ã“ã®ä½ç½®ã«åˆæœŸåŒ–ã®è£œè¶³å‡¦ç†ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
 	InitData();
 	CreateGridCtrl();
 	MoveCenter();
@@ -73,8 +73,8 @@ BOOL CBindParamEditorDlg::OnInitDialog()
 	m_bind_param_editor_grid_cell_width[0] = 100;
 	m_bind_param_editor_grid_cell_width[1] = 200;
 
-	return FALSE;  // ƒRƒ“ƒgƒ[ƒ‹‚ÉƒtƒH[ƒJƒX‚ğİ’è‚µ‚È‚¢‚Æ‚«A–ß‚è’l‚Í TRUE ‚Æ‚È‚è‚Ü‚·
-	              // —áŠO: OCX ƒvƒƒpƒeƒB ƒy[ƒW‚Ì–ß‚è’l‚Í FALSE ‚Æ‚È‚è‚Ü‚·
+	return FALSE;  // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’è¨­å®šã—ãªã„ã¨ãã€æˆ»ã‚Šå€¤ã¯ TRUE ã¨ãªã‚Šã¾ã™
+	              // ä¾‹å¤–: OCX ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ãƒšãƒ¼ã‚¸ã®æˆ»ã‚Šå€¤ã¯ FALSE ã¨ãªã‚Šã¾ã™
 }
 
 void CBindParamEditorDlg::InitData()
@@ -86,13 +86,13 @@ void CBindParamEditorDlg::InitData()
 	TCHAR	word_buf[1024 * 32];
 	CString		bind_name;
 
-	// ƒoƒCƒ“ƒh•Ï”‚Ì”‚ğ”‚¦‚é
+	// ãƒã‚¤ãƒ³ãƒ‰å¤‰æ•°ã®æ•°ã‚’æ•°ãˆã‚‹
 	tmp_str_map.RemoveAll();
 	tmp_str_arr.RemoveAll();
 
 	for(p = m_sql; p != NULL;) {
 #ifdef OSQLEDIT
-		// ‘å•¶š¬•¶š‚ªˆá‚Á‚Ä‚à“¯ˆê‚Ì•Ï”‚Æ‚İ‚È‚·‚ªA‰æ–Ê•\¦‚Í“ü—Í‚³‚ê‚½•¶š—ñ‚ğ•\¦‚µ‚½‚¢
+		// å¤§æ–‡å­—å°æ–‡å­—ãŒé•ã£ã¦ã‚‚åŒä¸€ã®å¤‰æ•°ã¨ã¿ãªã™ãŒã€ç”»é¢è¡¨ç¤ºã¯å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è¡¨ç¤ºã—ãŸã„
 		TCHAR	word_buf_upr[1024 * 32];
 
 		p = m_str_token->get_word(p, word_buf, sizeof(word_buf));
@@ -128,10 +128,10 @@ void CBindParamEditorDlg::InitData()
 	m_grid_data.SetEditableCell(0, TRUE);
 	m_grid_data.SetEditableCell(1, TRUE);
 
-	m_grid_data.SetColName(0, _T("•Ï”–¼"));
-	m_grid_data.SetColName(1, _T("’l"));
+	m_grid_data.SetColName(0, _T("å¤‰æ•°å"));
+	m_grid_data.SetColName(1, _T("å€¤"));
 
-	// ƒoƒCƒ“ƒh•Ï”‚ğƒOƒŠƒbƒh‚É“WŠJ
+	// ãƒã‚¤ãƒ³ãƒ‰å¤‰æ•°ã‚’ã‚°ãƒªãƒƒãƒ‰ã«å±•é–‹
 	for(int row = 0; row < tmp_str_arr.GetSize(); row++) {
 		if(m_bind_data_org->Lookup(tmp_str_arr.GetAt(row), tmp_value) == FALSE) {
 			if(m_bind_data_tmp->Lookup(tmp_str_arr.GetAt(row), tmp_value) == FALSE) {
@@ -187,7 +187,7 @@ void CBindParamEditorDlg::OnBtnOk()
 	for(int row = 0; row < m_grid_data.Get_RowCnt(); row++) {
 		m_bind_data_tmp->SetAt(m_grid_data.Get_ColData(row, 0), m_grid_data.Get_ColData(row, 1));
 
-		// bindƒRƒ}ƒ“ƒh‚Ìİ’è‚ğ‘‚«Š·‚¦‚é
+		// bindã‚³ãƒãƒ³ãƒ‰ã®è¨­å®šã‚’æ›¸ãæ›ãˆã‚‹
 		if(m_bind_data_org->Lookup(m_grid_data.Get_ColData(row, 0), tmp_value) != FALSE) {
 			m_bind_data_org->SetAt(m_grid_data.Get_ColData(row, 0), m_grid_data.Get_ColData(row, 1));
 		}
@@ -286,7 +286,7 @@ void CBindParamEditorDlg::SaveGridCellWidth()
 
 void CBindParamEditorDlg::OnBnClickedCancel()
 {
-	// TODO: ‚±‚±‚ÉƒRƒ“ƒgƒ[ƒ‹’Ê’mƒnƒ“ƒhƒ‰[ ƒR[ƒh‚ğ’Ç‰Á‚µ‚Ü‚·B
+	// TODO: ã“ã“ã«ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«é€šçŸ¥ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¾ã™ã€‚
 	SaveGridCellWidth();
 	CDialog::OnCancel();
 }

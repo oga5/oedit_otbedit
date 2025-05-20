@@ -12,7 +12,7 @@
 #include "global.h"
 #include "scm_macro_common.h"
 
-// 実行頻度の高いイベントを上にする
+// 螳溯｡碁ｻ蠎ｦ縺ｮ鬮倥＞繧､繝吶Φ繝医ｒ荳翫↓縺吶ｋ
 #ifdef GLOBAL_H_OTBEDIT
 	#define _SCM_DEFINE_TABLE_ \
 		_SCM_DEF(SCM_EVENT_ON_CURSOR_MOVED,_T("on-cursor-moved")) \

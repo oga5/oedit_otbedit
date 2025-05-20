@@ -927,10 +927,10 @@ void _gc_mark_continuation(oscheme *sc, pcell p)
 	int		i;
 
 /* 
- Œ»İ‚Ìstack‚ğƒoƒbƒNƒAƒbƒv
- continuation‚Ìstack‚ğ‘‚«–ß‚·
+ ç¾åœ¨ã®stackã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
+ continuationã®stackã‚’æ›¸ãæˆ»ã™
  gc
- stack‚ğƒŠƒXƒgƒA
+ stackã‚’ãƒªã‚¹ãƒˆã‚¢
 */
 	for(i = 0; i < c->_dump_stack_cnt; i++) {
 		_gc_mark(sc, c->_dump_stack[i].args);
@@ -1888,7 +1888,7 @@ static och _read_in_buf(oscheme *sc)
 
 	if(port_fp(in) == stdin) {
 		if(port_end_buf(in) == port_cur_buf(in)) {
-			// FIXME: _fgetts‚Ì2”Ô–Ú‚Ìˆø”‚ªint‚Ì‚½‚ßCAST‚µ‚Ä‚¢‚é
+			// FIXME: _fgettsã®2ç•ªç›®ã®å¼•æ•°ãŒintã®ãŸã‚CASTã—ã¦ã„ã‚‹
 			if(_fgetts(port_buf(in), (int)port_buf_size(in), port_fp(in)) == NULL) {
 				return '\0';
 			}
@@ -3110,7 +3110,7 @@ pcell op_let0(oscheme *sc)
 {
 	sc->args = sc->NIL;
 	sc->value = sc->code;
-	// named-let‚©ƒ`ƒFƒbƒN
+	// named-letã‹ãƒã‚§ãƒƒã‚¯
 	sc->code = issymbol(car(sc->code)) ? cadr(sc->code) : car(sc->code);
 	s_goto(sc, OP_LET1);
 }
@@ -4671,7 +4671,7 @@ pcell op_print_list0(oscheme *sc)
 		sc->args = cadr(sc->args);
 		s_goto(sc, OP_P0LIST);
 	} else if(car(sc->args) == sc->QUOTE_VEC && ok_abbrev(sc, cdr(sc->args))) {
-		/* ‚±‚±‚É‚Í‚±‚È‚¢H */
+		/* ã“ã“ã«ã¯ã“ãªã„ï¼Ÿ */
 		port_out(sc, sc->outfp, _T("'#"));
 		sc->args = cadr(sc->args);
 		s_goto(sc, OP_P0LIST);

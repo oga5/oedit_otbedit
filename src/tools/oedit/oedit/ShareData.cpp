@@ -41,7 +41,7 @@ BOOL CShareData::OpenSharedMem()
 		PAGE_READWRITE | SEC_COMMIT, 0, sizeof(share_data_t),
 		SHARED_MEMORY_NAME);
 	if(m_mapped_file == NULL) {
-		MessageBox(NULL, _T("‹¤—Lƒƒ‚ƒŠ‚Ìì¬ƒGƒ‰["), _T("Error"), MB_OK | MB_ICONERROR);
+		MessageBox(NULL, _T("å…±æœ‰ãƒ¡ãƒ¢ãƒªã®ä½œæˆã‚¨ãƒ©ãƒ¼"), _T("Error"), MB_OK | MB_ICONERROR);
 		ReleaseMutex(m_mutex);
 		return FALSE;
 	}
@@ -50,7 +50,7 @@ BOOL CShareData::OpenSharedMem()
 		m_share_data = (share_data_t *)MapViewOfFile(m_mapped_file,
 			FILE_MAP_ALL_ACCESS, 0, 0, 0);
 		if(m_share_data == NULL) {
-			MessageBox(NULL, _T("‹¤—Lƒƒ‚ƒŠ‚Ìì¬ƒGƒ‰["), _T("Error"), MB_OK | MB_ICONERROR);
+			MessageBox(NULL, _T("å…±æœ‰ãƒ¡ãƒ¢ãƒªã®ä½œæˆã‚¨ãƒ©ãƒ¼"), _T("Error"), MB_OK | MB_ICONERROR);
 			CloseHandle(m_mapped_file);
 			ReleaseMutex(m_mutex);
 			return FALSE;
@@ -61,7 +61,7 @@ BOOL CShareData::OpenSharedMem()
 		m_share_data = (share_data_t *)MapViewOfFile(m_mapped_file,
 			FILE_MAP_ALL_ACCESS, 0, 0, 0);
 		if(m_share_data == NULL) {
-			MessageBox(NULL, _T("‹¤—Lƒƒ‚ƒŠ‚Ìì¬ƒGƒ‰["), _T("Error"), MB_OK | MB_ICONERROR);
+			MessageBox(NULL, _T("å…±æœ‰ãƒ¡ãƒ¢ãƒªã®ä½œæˆã‚¨ãƒ©ãƒ¼"), _T("Error"), MB_OK | MB_ICONERROR);
 			CloseHandle(m_mapped_file);
 			ReleaseMutex(m_mutex);
 			return FALSE;
@@ -148,7 +148,7 @@ BOOL CShareData::UnregisterWindow(HWND hwnd)
 		return FALSE;
 	}
 
-	// ‘O‚É‹l‚ß‚é
+	// å‰ã«è©°ã‚ã‚‹
 	int i;
 	for(i = idx + 1; i < m_share_data->window_cnt; i++) {
 		m_share_data->window_list[i - 1].hwnd = m_share_data->window_list[i].hwnd;

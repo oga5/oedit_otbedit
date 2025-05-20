@@ -4,19 +4,19 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// ShowCLobDlg.h : �w�b�_�[ �t�@�C��
+// ShowCLobDlg.h : ヘッダー ファイル
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CShowCLobDlg �_�C�A���O
+// CShowCLobDlg ダイアログ
 #include "resource.h"
 #include "EditData.h"
 
 class CShowCLobDlg : public CDialog
 {
-// �R���X�g���N�V����
+// コンストラクション
 public:
-	CShowCLobDlg(CWnd* pParent = NULL);   // �W���̃R���X�g���N�^
+	CShowCLobDlg(CWnd* pParent = NULL);   // 標準のコンストラクタ
 
 	void DoModal2();
 
@@ -30,7 +30,7 @@ public:
 
 	CString m_title;
 
-// �_�C�A���O �f�[�^
+// ダイアログ データ
 	//{{AFX_DATA(CShowCLobDlg)
 	enum { IDD = IDD_SHOW_CLOB_DLG };
 	CButton	m_btn_line_mode_right;
@@ -39,18 +39,18 @@ public:
 	//}}AFX_DATA
 
 
-// �I�[�o�[���C�h
-	// ClassWizard �͉��z�֐��̃I�[�o�[���C�h�𐶐����܂��B
+// オーバーライド
+	// ClassWizard は仮想関数のオーバーライドを生成します。
 	//{{AFX_VIRTUAL(CShowCLobDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV �T�|�[�g
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL
 
-// �C���v�������e�[�V����
+// インプリメンテーション
 protected:
 
-	// �������ꂽ���b�Z�[�W �}�b�v�֐�
+	// 生成されたメッセージ マップ関数
 	//{{AFX_MSG(CShowCLobDlg)
 	virtual void OnOK();
 	afx_msg void OnOk2();
@@ -81,8 +81,8 @@ public:
 	virtual void OnCancel();
 };
 
-// DlgSingletonTmpl�ł�Release�r���h�ŃG���[�ɂȂ�
-// 2��ڈȍ~�̕\���ŁA�u�T�|�[�g����Ă��Ȃ���������s���܂����v�̃G���[�ɂȂ�
+// DlgSingletonTmplではReleaseビルドでエラーになる
+// 2回目以降の表示で、「サポートされていない操作を実行しました」のエラーになる
 class CShowCLobDlgHandler
 {
 private:
@@ -117,11 +117,11 @@ public:
 		if(!AfxGetMainWnd()->IsWindowVisible()) return NULL;
 
 		if(!initialized) {
-			// ����̕\��
+			// 初回の表示
 			CreateDlg();
 		} else if(!::IsWindow(dlg->GetSafeHwnd())) {
-			// 2��ڈȍ~�̕\��
-			// �_�C�A���O���\���ɂ��鏈����DestroyWindow����̂ŁA�����Ń_�C�A���O���č쐬����
+			// 2回目以降の表示
+			// ダイアログを非表示にする処理でDestroyWindowするので、ここでダイアログを再作成する
 			Clear();
 			CreateDlg();
 		}
@@ -134,6 +134,6 @@ public:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ �͑O�s�̒��O�ɒǉ��̐錾��}�����܂��B
+// Microsoft Visual C++ は前行の直前に追加の宣言を挿入します。
 
 #endif // !defined(AFX_SHOWCLOBDLG_H__756751ED_B083_4776_92BF_52A777EC5942__INCLUDED_)

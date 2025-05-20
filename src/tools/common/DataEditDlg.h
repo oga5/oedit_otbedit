@@ -4,20 +4,20 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// DataEditDlg.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// DataEditDlg.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CDataEditDlg ƒ_ƒCƒAƒƒO
+// CDataEditDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 #include "EditCtrl.h"
 #include "GridCtrl.h"
 
 class CDataEditDlg : public CDialog
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
-	CDataEditDlg(CWnd* pParent = NULL);   // •W€‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CDataEditDlg(CWnd* pParent = NULL);   // æ¨™æº–ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 	void SetData(CEditData *edit_data, int line_type,
 		CFont *font, QWORD edit_style, COLORREF *grid_color);
@@ -27,7 +27,7 @@ public:
 
 	BOOL IsEditData();
 
-// ƒ_ƒCƒAƒƒO ƒf[ƒ^
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ‡ãƒ¼ã‚¿
 	//{{AFX_DATA(CDataEditDlg)
 	enum { IDD = IDD_DATA_EDIT_DLG };
 	CStatic	m_static_line_type;
@@ -38,18 +38,18 @@ public:
 	//}}AFX_DATA
 
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(CDataEditDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ƒTƒ|[ƒg
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ã‚µãƒãƒ¼ãƒˆ
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 	//{{AFX_MSG(CDataEditDlg)
 	virtual void OnOK();
 	afx_msg void OnOk2();
@@ -89,6 +89,6 @@ public:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_DATAEDITDLG_H__10BFC25B_FD66_49DF_ADE0_FEF20FAB6173__INCLUDED_)

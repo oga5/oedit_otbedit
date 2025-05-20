@@ -40,7 +40,7 @@ public:
 		SetDispData(grid_data->GetDispData());
 	}
 
-	// •ÒW‹@”\‚ÌƒTƒ|[ƒg
+	// ç·¨é›†æ©Ÿèƒ½ã®ã‚µãƒãƒ¼ãƒˆ
 	virtual BOOL IsEditable() { return m_grid_data->IsEditable(); }
 
 	virtual BOOL IsInsertRow(int row) { return m_grid_data->IsInsertRow(GetFilterDataRow(row)); }
@@ -115,7 +115,7 @@ public:
 	virtual int GetRowHeaderLen() { return 7; }
 	virtual const TCHAR* GetRowHeader(int row);
 
-	// ƒtƒBƒ‹ƒ^‹@”\
+	// ãƒ•ã‚£ãƒ«ã‚¿æ©Ÿèƒ½
 	virtual int FilterData(int filter_col_no, const TCHAR* search_text, BOOL b_distinct_lwr_upr, BOOL b_distinct_width_ascii, BOOL b_regexp,
 		int* find_cnt, CString* msg_str) {
 		ASSERT(0);

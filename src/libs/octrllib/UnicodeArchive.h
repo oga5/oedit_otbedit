@@ -17,7 +17,7 @@
 
 #define UNICODE_ARCHIVE_BUF_SIZE		(4096 + 1)
 
-// FIXME: ƒeƒXƒg’†
+// FIXME: ãƒ†ã‚¹ãƒˆä¸­
 //#define UNICODE_ARCHIVE_BUF_SIZE		(33)
 
 class CUnicodeArchive

@@ -5,7 +5,7 @@
  * This software is licensed under the BSD License.
  * See the LICENSE_BSD file for details.
  */
-// CodeAssistWnd.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// CodeAssistWnd.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -37,7 +37,7 @@ CCodeAssistWnd::CCodeAssistWnd()
 	m_row_height = 0;
 	m_window_pt.x = m_window_pt.y = 0;
 
-	// FIXME: option‚Åİ’è‰Â”\‚É‚·‚é
+	// FIXME: optionã§è¨­å®šå¯èƒ½ã«ã™ã‚‹
 	m_incremental_search = FALSE;
 	m_disp_cnt = CODE_ASSIST_SCROLL_ROW_CNT;
 	m_max_comment_disp_width = 240;
@@ -61,7 +61,7 @@ BEGIN_MESSAGE_MAP(CCodeAssistWnd, CGridCtrl)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CCodeAssistWnd ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CCodeAssistWnd ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CCodeAssistWnd::Create(CWnd *pParentWnd)
 {
@@ -149,7 +149,7 @@ BOOL CCodeAssistWnd::GetMatchDataForwardMatch(const TCHAR* word, int* match_row,
 	for(row = 0; row < grid_row; row++) {
 		grid_data = m_orig_griddata->Get_ColData(row, CODE_ASSIST_DATA_NAME);
 
-		// ‚‘¬‰»
+		// é«˜é€ŸåŒ–
 		grid_data_ch = get_char_nocase(grid_data);
 		if(first_ch != grid_data_ch) {
 			if(!m_incremental_search) {
@@ -423,14 +423,14 @@ void CCodeAssistWnd::LineUp(BOOL b_loop, CString word)
 		return;
 	}
 
-	// word‚Éˆê’v‚·‚éŒó•â‚ÉˆÚ“®‚·‚é
+	// wordã«ä¸€è‡´ã™ã‚‹å€™è£œã«ç§»å‹•ã™ã‚‹
 	int word_len = word.GetLength();
 	unsigned int first_ch = get_char_nocase(word.GetBuffer(0));
 
 	for(int row = m_grid_data->get_cur_row() - 1; row >= 0; row--) {
 		const TCHAR *grid_data = m_grid_data->Get_ColData(row, CODE_ASSIST_DATA_NAME);
 
-		// ‚‘¬‰»
+		// é«˜é€ŸåŒ–
 		if(get_char_nocase(grid_data) != first_ch) continue;
 
 		if(ostr_get_cmplen_nocase(word, grid_data, word_len) == word_len) {
@@ -454,14 +454,14 @@ void CCodeAssistWnd::LineDown(BOOL b_loop, CString word)
 		return;
 	}
 
-	// word‚Éˆê’v‚·‚éŒó•â‚ÉˆÚ“®‚·‚é
+	// wordã«ä¸€è‡´ã™ã‚‹å€™è£œã«ç§»å‹•ã™ã‚‹
 	int word_len = word.GetLength();
 	unsigned int first_ch = get_char_nocase(word.GetBuffer(0));
 
 	for(int row = m_grid_data->get_cur_row() + 1; row < m_grid_data->Get_RowCnt(); row++) {
 		const TCHAR *grid_data = m_grid_data->Get_ColData(row, CODE_ASSIST_DATA_NAME);
 
-		// ‚‘¬‰»
+		// é«˜é€ŸåŒ–
 		if(get_char_nocase(grid_data) != first_ch) continue;
 
 		if(ostr_get_cmplen_nocase(word, grid_data, word_len) == word_len) {

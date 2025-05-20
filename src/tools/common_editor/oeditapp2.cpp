@@ -76,8 +76,8 @@ void COeditApp::LoadOption()
 
 	g_option.text_editor.enable_word_wrap = GetIniFileInt(_T("TEXT_EDITOR"), _T("ENABLE_WORD_WRAP"), FALSE);
 	g_option.text_editor.enable_confinement = GetIniFileInt(_T("TEXT_EDITOR"), _T("ENABLE_CONFINEMENT"), FALSE);
-	g_option.first_confinement_str = GetIniFileString(_T("TEXT_EDITOR"), _T("FIRST_CONFINEMENT_STR"), _T("ÅAÅBÅCÅDÅEÅHÅIÅ[ÅXÅjÅnÅpÅvÅx"));
-	g_option.last_confinement_str = GetIniFileString(_T("TEXT_EDITOR"), _T("LAST_CONFINEMENT_STR"), _T("ÅiÅmÅoÅuÅw"));
+	g_option.first_confinement_str = GetIniFileString(_T("TEXT_EDITOR"), _T("FIRST_CONFINEMENT_STR"), _T("„ÄÅ„ÄÇÔºåÔºé„ÉªÔºüÔºÅ„Éº„ÄÖÔºâÔºΩÔΩù„Äç„Äè"));
+	g_option.last_confinement_str = GetIniFileString(_T("TEXT_EDITOR"), _T("LAST_CONFINEMENT_STR"), _T("ÔºàÔºªÔΩõ„Äå„Äé"));
 
 	g_option.boot_on_ime = GetIniFileInt(_T("APPLICATION"), _T("BOOT_ON_IME"), FALSE);
 	g_option.save_modified = GetIniFileInt(_T("APPLICATION"), _T("SAVE_MODIFIED"), TRUE);
@@ -247,7 +247,7 @@ void COeditApp::SaveOption()
 
 void COeditApp::OnOption() 
 {
-	COptionSheet dlg(_T("ÉIÉvÉVÉáÉì"), AfxGetMainWnd());
+	COptionSheet dlg(_T("„Ç™„Éó„Ç∑„Éß„É≥"), AfxGetMainWnd());
 	int		i;
 
 	dlg.m_setup_page.m_initial_dir = g_option.initial_dir;

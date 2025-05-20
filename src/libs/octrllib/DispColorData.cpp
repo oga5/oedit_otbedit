@@ -66,13 +66,13 @@ void CDispColorData::InitDispColorData(int row_len)
 {
 	if(m_disp_color_data_cnt <= row_len) {
 		m_disp_color_data_cnt = row_len + 1;
-		m_disp_color_data_cnt += 1024 - (m_disp_color_data_cnt % 1024);	// 1k’PˆÊ‚ÅŠm•Û‚·‚é
+		m_disp_color_data_cnt += 1024 - (m_disp_color_data_cnt % 1024);	// 1kå˜ä½ã§ç¢ºä¿ã™ã‚‹
 
 		m_disp_color_data = (struct _st_disp_color_data *)realloc(m_disp_color_data,
 			m_disp_color_data_cnt * sizeof(struct _st_disp_color_data));
 	}
 
-	// ƒf[ƒ^‚ð‰Šú‰»
+	// ãƒ‡ãƒ¼ã‚¿ã‚’åˆæœŸåŒ–
 	memset(m_disp_color_data, 0, sizeof(struct _st_disp_color_data) * row_len);
 
 	m_row = -1;

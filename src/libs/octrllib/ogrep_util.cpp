@@ -22,7 +22,7 @@ __inline BOOL CheckCancel(HWND hwnd, TCHAR *msg_buf)
 	for(; SendMessage(hwnd, CND_WM_QUERY_CANCEL, 0, 0) == 2;) Sleep(500);
 	if(SendMessage(hwnd, CND_WM_QUERY_CANCEL, 0, 0) == 1) {
 		if(msg_buf != NULL) {
-			_stprintf(msg_buf, _T("ŒŸõ‚ğ’†’f‚µ‚Ü‚µ‚½\n"));
+			_stprintf(msg_buf, _T("æ¤œç´¢ã‚’ä¸­æ–­ã—ã¾ã—ãŸ\n"));
 		}
 		return TRUE;
 	}
@@ -48,7 +48,7 @@ unsigned int _stdcall GrepThr(void *lpvThreadParam)
 	}
 
 	if(grep_st->ret_v == 0 && grep_st->msg_buf != NULL) {
-		_stprintf(grep_st->msg_buf, _T("%dŒÂCŒŸõ‚³‚ê‚Ü‚µ‚½B\n"), grep_st->search_cnt);
+		_stprintf(grep_st->msg_buf, _T("%då€‹ï¼Œæ¤œç´¢ã•ã‚Œã¾ã—ãŸã€‚\n"), grep_st->search_cnt);
 	}
 
 	return grep_st->ret_v;
@@ -65,7 +65,7 @@ static int GrepFile(CEditCtrl *edit_ctrl, TCHAR *search_text, TCHAR *file_name,
 	CString		msg;
 
 	if(hwnd != NULL) {
-		msg.Format(_T("ƒtƒ@ƒCƒ‹: %s"), file_name);
+		msg.Format(_T("ãƒ•ã‚¡ã‚¤ãƒ«: %s"), file_name);
 		SendMessage(hwnd, CND_WM_STATIC, 2, (LPARAM)msg.GetBuffer(0));
 	}
 
@@ -81,8 +81,8 @@ static int GrepFile(CEditCtrl *edit_ctrl, TCHAR *search_text, TCHAR *file_name,
 		e->GetErrorMessage(msg, 1024);
 		_stprintf(msg_buf, _T("Error %s: %s"), file_name, msg);
 
-		// •ÊƒXƒŒƒbƒh‚ÅEditCtrl‚Éƒy[ƒXƒg‚µ‚È‚¢‚æ‚¤‚É‚·‚é
-		// Paste“r’†‚ÅOnPaint‚ª‘–‚é‚ÆƒGƒ‰[‚É‚È‚é
+		// åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§EditCtrlã«ãƒšãƒ¼ã‚¹ãƒˆã—ãªã„ã‚ˆã†ã«ã™ã‚‹
+		// Pasteé€”ä¸­ã§OnPaintãŒèµ°ã‚‹ã¨ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹
 		edit_ctrl->SendMessage(EC_WM_PASTE_TEXT, (WPARAM)msg_buf);
 
 		e->Delete();
@@ -98,8 +98,8 @@ static int GrepFile(CEditCtrl *edit_ctrl, TCHAR *search_text, TCHAR *file_name,
 		if(ret_v == -1) break;
 
 		msg.Format(_T("%s(%d): %s\n"), file_name, pt.y + 1, edit_data.get_disp_row_text(pt.y));
-		// •ÊƒXƒŒƒbƒh‚ÅEditCtrl‚Éƒy[ƒXƒg‚µ‚È‚¢‚æ‚¤‚É‚·‚é
-		// Paste“r’†‚ÅOnPaint‚ª‘–‚é‚ÆƒGƒ‰[‚É‚È‚é
+		// åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§EditCtrlã«ãƒšãƒ¼ã‚¹ãƒˆã—ãªã„ã‚ˆã†ã«ã™ã‚‹
+		// Pasteé€”ä¸­ã§OnPaintãŒèµ°ã‚‹ã¨ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹
 		edit_ctrl->SendMessage(EC_WM_PASTE_TEXT, (WPARAM)msg.GetBuffer(0));
 
 		if(search_cnt != NULL) (*search_cnt)++;
@@ -127,19 +127,19 @@ int Grep(CEditCtrl *edit_ctrl, TCHAR *search_text, TCHAR *file_type,
 	CRegData			file_filter;
 	BOOL				all_file_flg = FALSE;
 
-	// file_type‚ª‹ó‚©*.*‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚Í‘Sƒtƒ@ƒCƒ‹‘ÎÛ
+	// file_typeãŒç©ºã‹*.*ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã¯å…¨ãƒ•ã‚¡ã‚¤ãƒ«å¯¾è±¡
 	if(file_type == NULL || _tcslen(file_type) == 0 ||
 		oregexp(_T("(?:^|;)\\*\\.\\*(?:;|$)"), file_type, NULL, NULL) == OREGEXP_FOUND) {
 		all_file_flg = TRUE;
 	} else {
 		/* 
-			file_type‚Ì‘®‚ğ³‹K•\Œ»‚É•ÏŠ·‚·‚é (•¶š—ñ‚ğˆÈ‰º‚Ì‡‚É’uŠ·‚·‚é)
-				æ“ª‚É\‚ğ’Ç‰Á
-				––”ö‚É$‚ğ’Ç‰Á
+			file_typeã®æ›¸å¼ã‚’æ­£è¦è¡¨ç¾ã«å¤‰æ›ã™ã‚‹ (æ–‡å­—åˆ—ã‚’ä»¥ä¸‹ã®é †ã«ç½®æ›ã™ã‚‹)
+				å…ˆé ­ã«\ã‚’è¿½åŠ 
+				æœ«å°¾ã«$ã‚’è¿½åŠ 
 				; -> $|\
 				. -> \.
 				* -> .+
-				\.+‚ğíœ
+				\.+ã‚’å‰Šé™¤
 		*/
 		CString file_type_regstr;
 		file_type_regstr.Format(_T("^%s$"), file_type);
@@ -149,24 +149,24 @@ int Grep(CEditCtrl *edit_ctrl, TCHAR *search_text, TCHAR *file_type,
 		file_type_regstr.Replace(_T("^.+"), _T(""));
 		if(!file_filter.Compile(file_type_regstr.GetBuffer(0), FALSE)) {
 			_stprintf(msg_buf,
-				_T("ƒtƒ@ƒCƒ‹‚Ìí—Ş‚Ìw’è‚ª•s³‚Å‚·\n")
+				_T("ãƒ•ã‚¡ã‚¤ãƒ«ã®ç¨®é¡ã®æŒ‡å®šãŒä¸æ­£ã§ã™\n")
 				_T("\n")
-				_T("ƒtƒ@ƒCƒ‹‚Ìí—Ş‚Ìİ’è—á\n")
-				_T("  (1)‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğŒŸõ‘ÎÛ‚É‚·‚éê‡ -> *.*\n")
-				_T("  (2)Šg’£q‚ğw’è‚·‚éê‡ -> *.txt\n")
-				_T("  (3)ƒtƒ@ƒCƒ‹–¼‚Ìˆê•”‚ğw’è‚·‚éê‡ -> 200704*.txt\n")
-				_T("  (4)•¡”‚ÌğŒ‚ğw’è‚·‚éê‡‚Í;‚Å‹æØ‚è‚Ü‚· -> *.txt;*.log\n"));
+				_T("ãƒ•ã‚¡ã‚¤ãƒ«ã®ç¨®é¡ã®è¨­å®šä¾‹\n")
+				_T("  (1)å…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¤œç´¢å¯¾è±¡ã«ã™ã‚‹å ´åˆ -> *.*\n")
+				_T("  (2)æ‹¡å¼µå­ã‚’æŒ‡å®šã™ã‚‹å ´åˆ -> *.txt\n")
+				_T("  (3)ãƒ•ã‚¡ã‚¤ãƒ«åã®ä¸€éƒ¨ã‚’æŒ‡å®šã™ã‚‹å ´åˆ -> 200704*.txt\n")
+				_T("  (4)è¤‡æ•°ã®æ¡ä»¶ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯;ã§åŒºåˆ‡ã‚Šã¾ã™ -> *.txt;*.log\n"));
 			return 3;
 		}
 	}
 
 	if(!reg_data.Compile2(search_text, distinct_lwr_upr, distinct_width_ascii, regexp)) {
-		_stprintf(msg_buf, _T("•s³‚È³‹K•\Œ»‚Å‚·"));
+		_stprintf(msg_buf, _T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"));
 		return 2;
 	}
 
 	if(hwnd != NULL) {
-		msg.Format(_T("ƒtƒHƒ‹ƒ_: %s"), search_folder);
+		msg.Format(_T("ãƒ•ã‚©ãƒ«ãƒ€: %s"), search_folder);
 		SendMessage(hwnd, CND_WM_STATIC, 1, (LPARAM)msg.GetBuffer(0));
 	}
 
@@ -193,7 +193,7 @@ int Grep(CEditCtrl *edit_ctrl, TCHAR *search_text, TCHAR *file_type,
 					distinct_lwr_upr, distinct_width_ascii, regexp, search_sub_folder, search_cnt, kanji_code,
 					hwnd, msg_buf);
 				if(hwnd != NULL) {
-					msg.Format(_T("ƒtƒHƒ‹ƒ_: %s"), search_folder);
+					msg.Format(_T("ãƒ•ã‚©ãƒ«ãƒ€: %s"), search_folder);
 					SendMessage(hwnd, CND_WM_STATIC, 1, (LPARAM)msg.GetBuffer(0));
 				}
 			}

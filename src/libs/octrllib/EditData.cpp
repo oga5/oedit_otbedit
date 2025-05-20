@@ -26,11 +26,11 @@
 
 #include <deque>
 
-// static•Ï”‚Ì’è‹`
+// staticå¤‰æ•°ã®å®šç¾©
 CStrToken CEditData::m_def_str_token;
 
 //
-// oregexp—p‚ÌŠÖ”
+// oregexpç”¨ã®é–¢æ•°
 //
 static const TCHAR *__str_return = _T("\n");
 
@@ -117,11 +117,11 @@ static INT_PTR get_len_edit_data(const void *src, OREG_POINT *start_pt, OREG_POI
 	int result = data->get_row_len(pt1.y) - pt1.x;
 
 	for(int i = pt1.y + 1; i < pt2.y; i++) {
-		result = result + 1; // ‰üs
+		result = result + 1; // æ”¹è¡Œ
 		result = result + data->get_row_len(i);
 	}
 
-	result = result + 1; // ‰üs
+	result = result + 1; // æ”¹è¡Œ
 	result = result + pt2.x;
 
 	return result;
@@ -175,7 +175,7 @@ static int is_selected_row_first_edit_data(const void *src, OREG_POINT *cur_pt)
 
 	if(!data->get_disp_data()->HaveSelected()) return 0;
 
-	// s‚ª‘I‘ğ”ÍˆÍ“à‚©H
+	// è¡ŒãŒé¸æŠç¯„å›²å†…ã‹ï¼Ÿ
 	if(data->get_disp_data()->GetSelectArea()->pos1.y > cur_pt->row ||
 		data->get_disp_data()->GetSelectArea()->pos2.y < cur_pt->row) return 0;
 
@@ -200,7 +200,7 @@ static int is_selected_row_last_edit_data(const void *src, OREG_POINT *cur_pt)
 
 	if(!data->get_disp_data()->HaveSelected()) return 0;
 
-	// s‚ª‘I‘ğ”ÍˆÍ“à‚©H
+	// è¡ŒãŒé¸æŠç¯„å›²å†…ã‹ï¼Ÿ
 	if(data->get_disp_data()->GetSelectArea()->pos1.y > cur_pt->row ||
 		data->get_disp_data()->GetSelectArea()->pos2.y < cur_pt->row) return 0;
 
@@ -423,7 +423,7 @@ int CEditData::add_char(TCHAR data)
 {
 	if(data == '\n') return 0;
 
-	// ƒf[ƒ^’·‚ªƒŠƒ~ƒbƒg‚ğ‰z‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+	// ãƒ‡ãƒ¼ã‚¿é•·ãŒãƒªãƒŸãƒƒãƒˆã‚’è¶Šãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(m_limit_char_cnt > 0) {
 		int data_size = get_data_size();
 		if(data == '\r') {
@@ -433,7 +433,7 @@ int CEditData::add_char(TCHAR data)
 			}
 		}
 		if(data_size + 1 > m_limit_char_cnt) {
-			// ƒ}ƒ‹ƒ`ƒoƒCƒg•¶š‚Ìæ“ªƒoƒCƒg‚ªc‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+			// ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—ã®å…ˆé ­ãƒã‚¤ãƒˆãŒæ®‹ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 			if(get_cur_col() > 0 && get_edit_row_data(m_cur_pt.y)->is_lead_byte(m_cur_pt.x - 1)) {
 				delete_char();
 			}
@@ -463,7 +463,7 @@ int CEditData::new_line()
 	m_row_buffer.new_line(m_cur_pt.y);
 
 	if(m_cur_pt.x != get_edit_row_data(m_cur_pt.y - 1)->get_char_cnt() - 1) {
-		// s‚Ì“r’†
+		// è¡Œã®é€”ä¸­
 		get_edit_row_data(m_cur_pt.y)->add_chars(get_edit_row_data(m_cur_pt.y)->get_char_cnt() - 1,
 			get_edit_row_data(m_cur_pt.y - 1)->get_buffer() + m_cur_pt.x,
 			get_edit_row_data(m_cur_pt.y - 1)->get_char_cnt() - 1 - m_cur_pt.x);
@@ -644,7 +644,7 @@ int CEditData::delete_char()
 			get_edit_row_data(m_cur_pt.y + 1)->get_buffer(),
 			get_edit_row_data(m_cur_pt.y + 1)->get_char_cnt() - 1);
 
-// VC++ŒİŠ·‚É‚·‚é
+// VC++äº’æ›ã«ã™ã‚‹
 //		if(get_edit_row_data(m_cur_pt.y + 1)->get_char_cnt() - 1 > 0) {
 //			get_edit_row_data(m_cur_pt.y)->set_data(get_edit_row_data(m_cur_pt.y + 1)->get_data());
 //		}
@@ -726,7 +726,7 @@ int CEditData::get_search_text_regexp(POINT *pt, int dir, HREG_DATA reg_data,
 	int len = search_text_regexp(pt, dir, FALSE, NULL, NULL, reg_data, NULL);
 	if(len < 0) return len;
 
-	// Œã•ûQÆ‚ğˆ—‚·‚é
+	// å¾Œæ–¹å‚ç…§ã‚’å‡¦ç†ã™ã‚‹
 	*str = make_back_ref_str(pt, len, replace_str, reg_data);
 	return len;
 }
@@ -795,16 +795,16 @@ int CEditData::replace_str_all_regexp_main(const TCHAR *replace_str,
 	
 	CString paste_str = replace_str;
 
-	// Œ»İ‚ÌƒJ[ƒ\ƒ‹ˆÊ’u‚ğ•Û‘¶
+	// ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’ä¿å­˜
 	cur_pt.y = get_cur_row();
 	cur_pt.x = get_cur_col();
 
-	// ‘I‘ğ”ÍˆÍ‚Ì––”ö‚Æs‚Ì––”ö‚ÌŠÔŠu‚ğŒvZ‚·‚é
+	// é¸æŠç¯„å›²ã®æœ«å°¾ã¨è¡Œã®æœ«å°¾ã®é–“éš”ã‚’è¨ˆç®—ã™ã‚‹
 	if(start_pt != NULL && end_pt != NULL) {
 		end_pt_x_offset = get_row_len(end_pt->y) - end_pt->x;
 	}
 
-	// æ“ª‚©‚ç––”ö‚ÉŒü‚©‚Á‚ÄŒŸõ‚·‚é
+	// å…ˆé ­ã‹ã‚‰æœ«å°¾ã«å‘ã‹ã£ã¦æ¤œç´¢ã™ã‚‹
 	if(start_pt != NULL && end_pt != NULL) {
 		set_cur_row(start_pt->y);
 		if(box) {
@@ -834,13 +834,13 @@ int CEditData::replace_str_all_regexp_main(const TCHAR *replace_str,
 			len = search_text_regexp(&pt1, 1, FALSE, NULL, NULL, reg_data, NULL);
 			if(len == -1) break;
 	
-			// Œã•ûQÆ‚ğˆ—‚·‚é
+			// å¾Œæ–¹å‚ç…§ã‚’å‡¦ç†ã™ã‚‹
 			if(b_need_make_replace_str) {
 				paste_str = make_back_ref_str(&pt1, len, replace_str, reg_data);
 			}
 		}
 
-		// –³ŒÀƒ‹[ƒv‚ğŒŸo
+		// ç„¡é™ãƒ«ãƒ¼ãƒ—ã‚’æ¤œå‡º
 		if(prev_pos.y == pt1.y && prev_pos.x == pt1.x && len == 0) {
 			if(is_end_of_text()) break;
 			move_right();
@@ -849,22 +849,22 @@ int CEditData::replace_str_all_regexp_main(const TCHAR *replace_str,
 		prev_pos.y = pt1.y;
 		prev_pos.x = pt1.x;
 
-		// ŒŸõŒ‹‰Ê‚ÌI“_‚ğŒvZ
+		// æ¤œç´¢çµæœã®çµ‚ç‚¹ã‚’è¨ˆç®—
 		pt2 = pt1;
 		calc_find_last_pos(&pt2, len);
 
-		// ŒŸõŒ‹‰Ê‚ª‘I‘ğ”ÍˆÍ“à‚É‚ ‚é‚©’²‚×‚é
+		// æ¤œç´¢çµæœãŒé¸æŠç¯„å›²å†…ã«ã‚ã‚‹ã‹èª¿ã¹ã‚‹
 		if(start_pt != NULL && end_pt != NULL) {
 			if(end_pt->y < pt2.y) break;
 			if(!box && end_pt->y == pt2.y && end_pt->x < pt2.x) break;
 
 			if(box) {
-				if(pt1.y != pt2.y) { // ŒŸõŒ‹‰Ê‚ª•¡”s‚Ì‚Æ‚«‚Í’uŠ·‚Å‚«‚È‚¢
+				if(pt1.y != pt2.y) { // æ¤œç´¢çµæœãŒè¤‡æ•°è¡Œã®ã¨ãã¯ç½®æ›ã§ããªã„
 					move_right();
 					continue;
 				}
 
-				// ’uŠ·”ÍˆÍ‚ğ’²®
+				// ç½®æ›ç¯„å›²ã‚’èª¿æ•´
 				if(prev_box_y != pt1.y) {
 					get_box_x2(pt1.y, &rep_start_x, &rep_end_x);
 					rep_end_x_offset = get_row_len(pt2.y) - rep_end_x;
@@ -884,31 +884,31 @@ int CEditData::replace_str_all_regexp_main(const TCHAR *replace_str,
 			}
 		}
 
-		// ³‹K•\Œ»‚Ì‚Æ‚«‚ÍC•¶š—ñ‚ğ’uŠ·‚·‚é‘O‚ÉCŸ‚ÌŒŸõˆÊ’u‚ğ’T‚·
+		// æ­£è¦è¡¨ç¾ã®ã¨ãã¯ï¼Œæ–‡å­—åˆ—ã‚’ç½®æ›ã™ã‚‹å‰ã«ï¼Œæ¬¡ã®æ¤œç´¢ä½ç½®ã‚’æ¢ã™
 		if(b_regexp) {
 			set_cur(pt2.y, pt2.x);
 
 			if(!is_end_of_text() || len > 0) {
 				if(len == 0) move_right();
 				next_len = search_text_regexp(&next_pos, 1, FALSE, NULL, NULL, reg_data, NULL);
-				// Œã•ûQÆ‚ğˆ—‚·‚é
+				// å¾Œæ–¹å‚ç…§ã‚’å‡¦ç†ã™ã‚‹
 				if(b_need_make_replace_str && next_len >= 0) {
 					next_paste_str = make_back_ref_str(&next_pos, next_len, replace_str, reg_data);
 				}
 			}
 		}
 
-		if(!undo_obj.IsSetMode()) undo_obj.Start();	// UNDOƒXƒ^[ƒg
-		int old_row_cnt = get_row_cnt();			// ’uŠ·‘O‚Ìs”‚ğŠo‚¦‚Ä‚¨‚­
+		if(!undo_obj.IsSetMode()) undo_obj.Start();	// UNDOã‚¹ã‚¿ãƒ¼ãƒˆ
+		int old_row_cnt = get_row_cnt();			// ç½®æ›å‰ã®è¡Œæ•°ã‚’è¦šãˆã¦ãŠã
 
-		// ’uŠ·Às
+		// ç½®æ›å®Ÿè¡Œ
 		ret_v = del_main(&pt1, &pt2, FALSE);
 		if(ret_v != 0) return ret_v;
 		ret_v = paste(paste_str, FALSE);
 		if(ret_v != 0) return ret_v;
 		replace_cnt++;
 
-		// Ÿ‚ÌŒŸõˆÊ’u‚ğ’²®‚·‚é(’uŠ·‚Å‚¸‚ê‚Ä‚µ‚Ü‚¤‚½‚ß)
+		// æ¬¡ã®æ¤œç´¢ä½ç½®ã‚’èª¿æ•´ã™ã‚‹(ç½®æ›ã§ãšã‚Œã¦ã—ã¾ã†ãŸã‚)
 		if(b_regexp && next_len >= 0) {
 			if(pt2.y == next_pos.y) {
 				next_pos.x += get_str_last_row_len(paste_str) - pt2.x;
@@ -920,29 +920,29 @@ int CEditData::replace_str_all_regexp_main(const TCHAR *replace_str,
 			if(!is_valid_point(next_pos)) break;
 		}
 
-		// ’uŠ·‚ÌŒ‹‰ÊAs‚Ì”‚ª•Ï‚í‚Á‚½‚Æ‚«A‘I‘ğ”ÍˆÍ‚ğ’²®‚·‚é
+		// ç½®æ›ã®çµæœã€è¡Œã®æ•°ãŒå¤‰ã‚ã£ãŸã¨ãã€é¸æŠç¯„å›²ã‚’èª¿æ•´ã™ã‚‹
 		if(end_pt != NULL && old_row_cnt != get_row_cnt()) {
 			end_pt->y += get_row_cnt() - old_row_cnt;
 		}
 
-		// ÅIs‚Ì’uŠ·‚Ì‚Æ‚«C‘I‘ğ”ÍˆÍ‚ğ’²®‚·‚é
+		// æœ€çµ‚è¡Œã®ç½®æ›ã®ã¨ãï¼Œé¸æŠç¯„å›²ã‚’èª¿æ•´ã™ã‚‹
 		if(end_pt != NULL && pt1.y == end_pt->y) {
 			end_pt->x = get_row_len(end_pt->y) - end_pt_x_offset;
 		}
 
-		// ³‹K•\Œ»‚ÅCŸ‚ÌŒŸõŒ‹‰Ê‚ª‚È‚¢‚Æ‚«‚ÍI—¹
+		// æ­£è¦è¡¨ç¾ã§ï¼Œæ¬¡ã®æ¤œç´¢çµæœãŒãªã„ã¨ãã¯çµ‚äº†
 		if(b_regexp && next_len < 0) break;
 	}
 
 	clear_disp_col();
 
-	// ”ÍˆÍw’è‚Ì’uŠ·‚Ì‚Æ‚«CƒJ[ƒ\ƒ‹ˆÊ’u‚ğ’²®‚·‚é
+	// ç¯„å›²æŒ‡å®šã®ç½®æ›ã®ã¨ãï¼Œã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’èª¿æ•´ã™ã‚‹
 	if(start_pt != NULL && end_pt != NULL) {
 		if(start_pt->y != cur_pt.y || start_pt->x != cur_pt.x) {
 			cur_pt = *end_pt;
 		}
 	}
-	// ƒJ[ƒ\ƒ‹‚ğŒ³‚É–ß‚·
+	// ã‚«ãƒ¼ã‚½ãƒ«ã‚’å…ƒã«æˆ»ã™
 	if(cur_pt.y >= get_row_cnt()) cur_pt.y = get_row_cnt() - 1;
 	if(cur_pt.x > get_row_len(cur_pt.y)) cur_pt.x = get_row_len(cur_pt.y);
 	set_cur(cur_pt.y, cur_pt.x);
@@ -970,7 +970,7 @@ int CEditData::filter_str(int start_row, int end_row, int *pdel_row_cnt,
 		int len = search_text_regexp(&pt1, 1, FALSE, NULL, NULL, reg_data, NULL);
 		if(b_del_flg && (len == -1 || pt1.y > end_row)) break;
 		
-		if(!undo_obj.IsSetMode()) undo_obj.Start();	// UNDOƒXƒ^[ƒg
+		if(!undo_obj.IsSetMode()) undo_obj.Start();	// UNDOã‚¹ã‚¿ãƒ¼ãƒˆ
 
 		pt2 = pt1;
 		calc_find_last_pos(&pt2, len);
@@ -1101,7 +1101,7 @@ int CEditData::replace_str_box(const TCHAR *pstr)
 		p1 = p2;
 	}
 
-	// ƒf[ƒ^‚ª—]‚Á‚½ê‡C•’Ê‚Éƒy[ƒXƒg‚·‚é
+	// ãƒ‡ãƒ¼ã‚¿ãŒä½™ã£ãŸå ´åˆï¼Œæ™®é€šã«ãƒšãƒ¼ã‚¹ãƒˆã™ã‚‹
 	for(; p1 != NULL && p1[0] != '\0';) {
 		p2 = my_mbschr(p1, '\n');
 		if(p2 != NULL) {
@@ -1110,7 +1110,7 @@ int CEditData::replace_str_box(const TCHAR *pstr)
 			p2++;
 		}
 
-		// Ÿ‚Ìs‚ÉˆÚ“®
+		// æ¬¡ã®è¡Œã«ç§»å‹•
 		if(get_cur_row() + 1 < get_row_cnt()) {
 			int x = get_edit_row_data(get_cur_row() + 1)->get_x_from_width(&m_disp_data, dchandler, get_tabstop(), start_w);
 			set_cur(get_cur_row() + 1, x);
@@ -1145,7 +1145,7 @@ int CEditData::paste_main(const TCHAR *pstr)
 
 	for(p = pstr; *p != '\0'; p++) {
 		if(*p == '\n') {
-			// '\r'‚È‚µ‚Å'\n'‚ª‚«‚½‚Æ‚«‚Ìˆ—
+			// '\r'ãªã—ã§'\n'ãŒããŸã¨ãã®å‡¦ç†
 			if(p == pstr || *(p-1) != '\r') {
 				if(add_char('\r') != 0) return 1;
 			}
@@ -1158,7 +1158,7 @@ int CEditData::paste_main(const TCHAR *pstr)
 
 int CEditData::paste_no_undo(const TCHAR * pstr)
 {
-	// ‚‘¬‰»
+	// é«˜é€ŸåŒ–
 	clear_cur_operation();
 	return fast_paste_main(pstr);
 }
@@ -1191,13 +1191,13 @@ int CEditData::fast_new_line(CEditRowData **&new_rows, int &new_rows_alloc_cnt,
 }
 
 /*----------------------------------------------------------------------
-  strchr‚Ìinline”Å(’Tõ‚·‚é•¶š‚ª2‚Â)
+  strchrã®inlineç‰ˆ(æ¢ç´¢ã™ã‚‹æ–‡å­—ãŒ2ã¤)
 ----------------------------------------------------------------------*/
 __inline static const TCHAR *str_strchr2(const TCHAR *s, unsigned int c1, unsigned int c2)
 {
 /*
-	// ƒTƒƒQ[ƒgƒyƒA‚ª•ªŠ„‚³‚ê‚Ä‚­‚é‚ÆA‰º‹L‚ÌƒR[ƒh‚Å‚Í“®ì‚µ‚È‚¢
-	// get_char, get_char_len‚ğg‚í‚È‚¢‚æ‚¤‚É‚·‚é
+	// ã‚µãƒ­ã‚²ãƒ¼ãƒˆãƒšã‚¢ãŒåˆ†å‰²ã•ã‚Œã¦ãã‚‹ã¨ã€ä¸‹è¨˜ã®ã‚³ãƒ¼ãƒ‰ã§ã¯å‹•ä½œã—ãªã„
+	// get_char, get_char_lenã‚’ä½¿ã‚ãªã„ã‚ˆã†ã«ã™ã‚‹
 	unsigned int ch;
 
 	for( ; *s != '\0'; s += get_char_len(s) ) {
@@ -1250,14 +1250,14 @@ int CEditData::fast_paste_main(const TCHAR * pstr)
 		if(fast_new_line(new_rows, new_rows_alloc_cnt, new_row_cnt) != 0) return 1;
 		row_data = new_rows[new_row_cnt - 1];
 
-		// ‰üsƒR[ƒh‚ª"\r\n"‚Ì‚Æ‚«‚ÍC'\n'‚ğƒXƒLƒbƒv‚·‚é
+		// æ”¹è¡Œã‚³ãƒ¼ãƒ‰ãŒ"\r\n"ã®ã¨ãã¯ï¼Œ'\n'ã‚’ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹
 		if(*p2 == '\r' && *(p2 + 1) == '\n') p2++;
 
 		p2++;
 		p1 = p2;
 	}
 
-	// •¡”s‚Ì‚Æ‚«Cˆêƒf[ƒ^‚ğsƒoƒbƒtƒ@‚É’Ç‰Á‚·‚é
+	// è¤‡æ•°è¡Œã®ã¨ãï¼Œä¸€æ™‚ãƒ‡ãƒ¼ã‚¿ã‚’è¡Œãƒãƒƒãƒ•ã‚¡ã«è¿½åŠ ã™ã‚‹
 	if(new_rows != NULL) {
 		m_row_buffer.add_new_rows(new_rows, m_cur_pt.y, m_cur_pt.x, new_row_cnt, new_row_pt);
 
@@ -1350,7 +1350,7 @@ int CEditData::del_main(POINT *pt1, POINT *pt2, BOOL recalc, BOOL make_undo)
 
 	m_edit_seq++;
 
-	// UNDOƒf[ƒ^‚ğì¬
+	// UNDOãƒ‡ãƒ¼ã‚¿ã‚’ä½œæˆ
 	if(make_undo) {
 		m_undo->next_undo(OPE_DELETE);
 		m_undo->get_cur_undo_data()->set_row(pt1->y);
@@ -1377,7 +1377,7 @@ int CEditData::del_main(POINT *pt1, POINT *pt2, BOOL recalc, BOOL make_undo)
 		clear_cur_operation();
 	}
 
-	// ƒf[ƒ^‚ğíœ
+	// ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤
 	if(pt1->y == pt2->y) {
 		get_edit_row_data(pt1->y)->delete_chars(pt1->x, pt2->x - pt1->x);
 		m_char_cnt -= (pt2->x - pt1->x);
@@ -1442,7 +1442,7 @@ int CEditData::calc_char_cnt_box()
 		get_box_x2(row, &start_x, &end_x);
 
 		TCHAR *p = get_row_buf(row);
-		result = result + m_copy_line_type_len; // ‰üs
+		result = result + m_copy_line_type_len; // æ”¹è¡Œ
 		result = result + ostr_str_char_cnt(p + start_x, p + end_x);
 	}
 
@@ -1467,11 +1467,11 @@ int CEditData::calc_char_cnt(POINT *pt1, POINT *pt2)
 	result = ostr_str_char_cnt(p + pt1->x, NULL);
 
 	for(i = pt1->y + 1; i < pt2->y; i++) {
-		result = result + m_copy_line_type_len; // ‰üs
+		result = result + m_copy_line_type_len; // æ”¹è¡Œ
 		result = result + ostr_str_char_cnt(get_row_buf(i), NULL);
 	}
 
-	result = result + m_copy_line_type_len; // ‰üs
+	result = result + m_copy_line_type_len; // æ”¹è¡Œ
 	p = get_row_buf(pt2->y);
 	result = result + ostr_str_char_cnt(p, p + pt2->x);
 
@@ -1505,11 +1505,11 @@ int CEditData::calc_buf_size(POINT * pt1, POINT * pt2)
 		result = get_edit_row_data(pt1->y)->get_char_cnt() - pt1->x - 1;
 
 		for(int i = pt1->y + 1; i < pt2->y; i++) {
-			result = result + m_copy_line_type_len; // ‰üs
+			result = result + m_copy_line_type_len; // æ”¹è¡Œ
 			result = result + get_edit_row_data(i)->get_char_cnt() - 1;
 		}
 
-		result = result + m_copy_line_type_len; // ‰üs
+		result = result + m_copy_line_type_len; // æ”¹è¡Œ
 		result = result + pt2->x;
 
 		result = result + 1; // '\0'
@@ -1540,7 +1540,7 @@ CString CEditData::get_all_text()
 
 int CEditData::copy_text_data(POINT *pt1, POINT *pt2, TCHAR *buf, int bufsize)
 {
-	// FIXME: bufsize‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+	// FIXME: bufsizeã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 	int		i;
 	TCHAR	*p;
 
@@ -1600,7 +1600,7 @@ int CEditData::input_char(unsigned int data)
 
 	m_edit_seq++;
 
-	// ‹æØ‚è•¶š‚Ì‘OŒã‚ÍC•Ê‚ÌUndo‚É‚·‚é
+	// åŒºåˆ‡ã‚Šæ–‡å­—ã®å‰å¾Œã¯ï¼Œåˆ¥ã®Undoã«ã™ã‚‹
 	if(m_undo->get_cur_operation() != OPE_INPUT || 
 		(m_prev_input_char != data &&
 			(m_str_token->isBreakChar(data) || m_str_token->isBreakChar(m_prev_input_char)))) {
@@ -1626,7 +1626,7 @@ int CEditData::input_char(unsigned int data)
 		if(data != '\r') undo_obj.Start();
 		code_indenter.DoIndent(this, data);
 	} else if(m_indent_mode == INDENT_MODE_AUTO && data == '\r') {
-		// ©“®ƒCƒ“ƒfƒ“ƒg
+		// è‡ªå‹•ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆ
 		code_indenter.AutoIndent(this);
 	}
 
@@ -1659,12 +1659,12 @@ BOOL CEditData::search_brackets_ex(unsigned int open_char, unsigned int close_ch
 
 	struct check_char_type_cache cache;
 
-	// check_char_type_cache‚ğ‰Šú‰»
+	// check_char_type_cacheã‚’åˆæœŸåŒ–
 	cache.row = -1;
 	cache.char_type_arr = cache.ini_buf;
 	cache.char_type_arr_cnt = CHECK_CHAR_TYPE_CACHE_BUF_SIZE;
 
-	// ŒŸõI—¹ˆÊ’u‚ğİ’è‚·‚é
+	// æ¤œç´¢çµ‚äº†ä½ç½®ã‚’è¨­å®šã™ã‚‹
 	POINT	end_pt;
 	if(!p_end_pt || p_end_pt->y < 0 || p_end_pt->y >= get_row_cnt()) {
 		if(arrow > 0) {
@@ -1677,23 +1677,23 @@ BOOL CEditData::search_brackets_ex(unsigned int open_char, unsigned int close_ch
 		end_pt = *p_end_pt;
 	}
 
-	// ŒŸõ—p‚Ìƒe[ƒuƒ‹‚ğì¬
+	// æ¤œç´¢ç”¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆ
 	char ch_tbl[256];
 	memset(ch_tbl, 0, sizeof(ch_tbl));
 	ch_tbl[open_char] = 1;
 	ch_tbl[close_char] = 1;
 	if(end_char != '\0') ch_tbl[end_char] = 1;
 
-	// ƒeƒLƒXƒg‚ğ’¼ÚQÆ‚µ‚Ä‚‘¬‰»‚·‚é
+	// ãƒ†ã‚­ã‚¹ãƒˆã‚’ç›´æ¥å‚ç…§ã—ã¦é«˜é€ŸåŒ–ã™ã‚‹
 	if(arrow > 0) {
 		TCHAR *p = get_row_buf(cur_pt.y) + cur_pt.x;
 		TCHAR *p_end = get_row_buf(cur_pt.y) + get_row_len(cur_pt.y);
 		
 		for(;;) {
-			// I—¹ˆÊ’u‚Ì”»’è
+			// çµ‚äº†ä½ç½®ã®åˆ¤å®š
 			if(inline_pt_cmp(&cur_pt, &end_pt) >= 0) break;
 
-			// ˆÚ“®‚·‚é
+			// ç§»å‹•ã™ã‚‹
 			if(p == p_end) {
 				if(cur_pt.y == get_row_cnt() - 1) break;
 				cur_pt.y++;
@@ -1725,10 +1725,10 @@ BOOL CEditData::search_brackets_ex(unsigned int open_char, unsigned int close_ch
 		TCHAR *p_start = get_row_buf(cur_pt.y);
 		
 		for(;;) {
-			// I—¹ˆÊ’u‚Ì”»’è
+			// çµ‚äº†ä½ç½®ã®åˆ¤å®š
 			if(inline_pt_cmp(&cur_pt, &end_pt) <= 0) break;
 
-			// ˆÚ“®‚·‚é
+			// ç§»å‹•ã™ã‚‹
 			if(cur_pt.x == 0) {
 				if(cur_pt.y == 0) break;
 				cur_pt.y--;
@@ -1740,7 +1740,7 @@ BOOL CEditData::search_brackets_ex(unsigned int open_char, unsigned int close_ch
 				p--;
 			}
 
-			// ‚QƒoƒCƒg•¶š‚ÌŠÔ‚ÉˆÊ’u‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+			// ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã®é–“ã«ä½ç½®ã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 			if(is_low_surrogate(*p) && cur_pt.x > 0) {
 				cur_pt.x--;
 				p--;
@@ -1931,7 +1931,7 @@ void CEditData::move_col(POINT *pt, int cnt)
 		}
 	}
 
-	// ‚QƒoƒCƒg•¶š‚ÌŠÔ‚ÉˆÊ’u‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+	// ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã®é–“ã«ä½ç½®ã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(pt->x != 0 && get_edit_row_data(pt->y)->is_lead_byte(pt->x - 1)) {
 		if(cnt > 0) {
 			pt->x++;
@@ -2071,7 +2071,7 @@ void CEditData::calc_del_rows_pos(int row1, int row2, POINT *pt1, POINT *pt2)
 	pt2->x = 0;
 	pt2->y = row2 + 1;
 
-	// ÅIs‚Ìˆ—
+	// æœ€çµ‚è¡Œã®å‡¦ç†
 	if(pt2->y == get_row_cnt()) {
 		if(row1 > 0) {
 			pt1->y = row1 - 1;
@@ -2111,7 +2111,7 @@ int CEditData::strstr_dir_regexp(int row, int col, int dir, int *hit_len, HREG_D
 	int			len;
 	int			result_col;
 
-	// æ“ª‚©‚çŒŸõ‚·‚é
+	// å…ˆé ­ã‹ã‚‰æ¤œç´¢ã™ã‚‹
 	search_start.col = 0;
 
 	if(oreg_exec(reg_data, &m_data_src, &search_start, &search_end,
@@ -2121,15 +2121,15 @@ int CEditData::strstr_dir_regexp(int row, int col, int dir, int *hit_len, HREG_D
 	len = (int)get_len_edit_data(this, &result_start, &result_end);
 	result_col = (int)result_start.col;
 
-	// Œ»İˆÊ’u‚Ìê‡
+	// ç¾åœ¨ä½ç½®ã®å ´åˆ
 	if(col > 0 && len == 0) return -1;
 
-	// ŒŸõ”ÍˆÍ‚ğ’´‚¦‚½ê‡
+	// æ¤œç´¢ç¯„å›²ã‚’è¶…ãˆãŸå ´åˆ
 	if(col > 0 && (result_start.row != result_end.row || result_end.col > col)) {
 		return -1;
 	}
 
-	// ÅŒã‚©”»’f‚·‚é
+	// æœ€å¾Œã‹åˆ¤æ–­ã™ã‚‹
 	int			tmp_len;
 	for(;;) {
 		search_start.row = row;
@@ -2191,10 +2191,10 @@ int CEditData::search_text_regexp(const TCHAR *reg_str, POINT *pt,
 }
 
 //
-// •¶š‚ğ’T‚·
-// text		ŒŸõ•¶š—ñ
-// pt		Œ©‚Â‚©‚Á‚½ˆÊ’u
-// dir		-1 ã•ûŒü‚ÉŒŸõC1 ‰º•ûŒü‚ÉŒŸõ
+// æ–‡å­—ã‚’æ¢ã™
+// text		æ¤œç´¢æ–‡å­—åˆ—
+// pt		è¦‹ã¤ã‹ã£ãŸä½ç½®
+// dir		-1 ä¸Šæ–¹å‘ã«æ¤œç´¢ï¼Œ1 ä¸‹æ–¹å‘ã«æ¤œç´¢
 //
 int CEditData::search_text_regexp(POINT *pt, int dir, BOOL loop, POINT *start_pt, 
 	HWND loop_msg_wnd, HREG_DATA reg_data, BOOL *b_looped)
@@ -2203,7 +2203,7 @@ int CEditData::search_text_regexp(POINT *pt, int dir, BOOL loop, POINT *start_pt
 		start_pt, NULL, loop_msg_wnd, reg_data, b_looped);
 }
 
-// end_pt‚àw’è‚Å‚«‚é‚æ‚¤‚É‚µ‚½ƒo[ƒWƒ‡ƒ“
+// end_ptã‚‚æŒ‡å®šã§ãã‚‹ã‚ˆã†ã«ã—ãŸãƒãƒ¼ã‚¸ãƒ§ãƒ³
 int CEditData::search_text_regexp_end_pt(POINT *pt, int dir,
 	BOOL loop, POINT *start_pt, POINT *end_pt, 
 	HWND loop_msg_wnd, HREG_DATA reg_data, BOOL *b_looped)
@@ -2222,17 +2222,17 @@ int CEditData::search_text_regexp_end_pt(POINT *pt, int dir,
 		start_col = start_pt->x;
 	}
 
-	// •s³‚Èdirection‚Ì‚Æ‚«‚ÍCÀs‚µ‚È‚¢
+	// ä¸æ­£ãªdirectionã®ã¨ãã¯ï¼Œå®Ÿè¡Œã—ãªã„
 	if(dir != 1 && dir != -1) return -1;
 
-	// Œ»İ‚ÌƒJ[ƒ\ƒ‹ˆÊ’u‚©‚çŒŸõ
+	// ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‹ã‚‰æ¤œç´¢
 	if(dir == 1 || start_col != 0) {
 		int col = strstr_dir_regexp(start_row, start_col, dir, &len, reg_data);
 		if(col >= 0) {
 			pt->y = start_row;
 			pt->x = col;
 
-			// end_pt‚ªw’è‚³‚ê‚½‚Æ‚«AŒŸõ”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚é
+			// end_ptãŒæŒ‡å®šã•ã‚ŒãŸã¨ãã€æ¤œç´¢ç¯„å›²ã‚’è¶…ãˆã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 			if(end_pt) {
 				if(dir == 1) {
 					if(inline_pt_cmp(pt, end_pt) > 0) return -1;
@@ -2246,7 +2246,7 @@ int CEditData::search_text_regexp_end_pt(POINT *pt, int dir,
 	}
 
 	if(dir == 1) {
-		// Œ»İ‚Ìs‚©‚çC‰º‚ğŒŸõ
+		// ç¾åœ¨ã®è¡Œã‹ã‚‰ï¼Œä¸‹ã‚’æ¤œç´¢
 		row = start_row + 1;
 		loop_cnt = get_row_cnt() - start_row - 1;
 
@@ -2254,7 +2254,7 @@ int CEditData::search_text_regexp_end_pt(POINT *pt, int dir,
 			loop_cnt = end_pt->y - start_row - 1;
 		}
 	} else {
-		// Œ»İ‚Ìs‚©‚çCã‚ğŒŸõ
+		// ç¾åœ¨ã®è¡Œã‹ã‚‰ï¼Œä¸Šã‚’æ¤œç´¢
 		row = start_row - 1;
 		loop_cnt = start_row;
 
@@ -2265,7 +2265,7 @@ int CEditData::search_text_regexp_end_pt(POINT *pt, int dir,
 
 	len = search_text_loop_regexp(pt, dir, row, loop_cnt, reg_data);
 	if(len != -1) {
-		// end_pt‚ªw’è‚³‚ê‚½‚Æ‚«AŒŸõ”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚é
+		// end_ptãŒæŒ‡å®šã•ã‚ŒãŸã¨ãã€æ¤œç´¢ç¯„å›²ã‚’è¶…ãˆã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 		if(end_pt) {
 			if(dir == 1) {
 				if(inline_pt_cmp(pt, end_pt) > 0) return -1;
@@ -2280,22 +2280,22 @@ int CEditData::search_text_regexp_end_pt(POINT *pt, int dir,
 		if(loop_msg_wnd != NULL) {
 			if(dir == 1) {
 				if(MessageBox(loop_msg_wnd,
-					_T("ƒtƒ@ƒCƒ‹‚ÌI‚í‚è‚Ü‚ÅŒŸõ‚µ‚Ü‚µ‚½B\n")
-					_T("ƒtƒ@ƒCƒ‹‚Ìæ“ª‚©‚çŒŸõ‚µ‚Ü‚·‚©H"),
+					_T("ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ‚ã‚ã‚Šã¾ã§æ¤œç´¢ã—ã¾ã—ãŸã€‚\n")
+					_T("ãƒ•ã‚¡ã‚¤ãƒ«ã®å…ˆé ­ã‹ã‚‰æ¤œç´¢ã—ã¾ã™ã‹ï¼Ÿ"),
 					_T("Message"), MB_ICONQUESTION | MB_OKCANCEL) != IDOK) return -2;
 			} else {
 				if(MessageBox(loop_msg_wnd,
-					_T("ƒtƒ@ƒCƒ‹‚Ìæ“ª‚Ü‚ÅŒŸõ‚µ‚Ü‚µ‚½B\n")
-					_T("ƒtƒ@ƒCƒ‹‚ÌI‚í‚è‚©‚çŒŸõ‚µ‚Ü‚·‚©H"),
+					_T("ãƒ•ã‚¡ã‚¤ãƒ«ã®å…ˆé ­ã¾ã§æ¤œç´¢ã—ã¾ã—ãŸã€‚\n")
+					_T("ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ‚ã‚ã‚Šã‹ã‚‰æ¤œç´¢ã—ã¾ã™ã‹ï¼Ÿ"),
 					_T("Message"), MB_ICONQUESTION | MB_OKCANCEL) != IDOK) return -2;
 			}
 		}
 		if(dir == 1) {
-			// æ“ª‚É–ß‚Á‚ÄCŒ»İ‚Ìs‚Ü‚ÅŒŸõ
+			// å…ˆé ­ã«æˆ»ã£ã¦ï¼Œç¾åœ¨ã®è¡Œã¾ã§æ¤œç´¢
 			row = 0;
 			loop_cnt = start_row + 1;
 		} else {
-			// ––”ö‚É–ß‚Á‚ÄCŒ»İ‚Ìs‚Ü‚ÅŒŸõ
+			// æœ«å°¾ã«æˆ»ã£ã¦ï¼Œç¾åœ¨ã®è¡Œã¾ã§æ¤œç´¢
 			row = get_row_cnt() - 1;
 			loop_cnt = get_row_cnt() - start_row;
 		}
@@ -2337,7 +2337,7 @@ int CEditData::swap_row(int row1, int row2, BOOL b_make_undo)
 
 	m_row_buffer.swap_row(row1, row2);
 
-	// Å‘å•‚Ìs‚ğ“ü‚ê‘Ö‚¦‚é
+	// æœ€å¤§å¹…ã®è¡Œã‚’å…¥ã‚Œæ›¿ãˆã‚‹
 	if(is_max_disp_width_row(get_edit_row_data(row1))) set_max_disp_width_row(row2);
 	if(is_max_disp_width_row(get_edit_row_data(row2))) set_max_disp_width_row(row1);
 
@@ -2351,7 +2351,7 @@ int CEditData::reverse_rows(int start_row, int end_row)
 	int		ret_v = 0;
 	int		row1, row2;
 
-	// •ÏXŠJn
+	// å¤‰æ›´é–‹å§‹
 	CUndoSetMode undo_obj(m_undo);
 	save_cursor_pos();
 
@@ -2423,7 +2423,7 @@ int CEditData::sort_rows(int start_row, int end_row, BOOL desc)
 {
 	int		ret_v;
 
-	// •ÏXŠJn
+	// å¤‰æ›´é–‹å§‹
 	CUndoSetMode undo_obj(m_undo);
 	save_cursor_pos();
 
@@ -2454,30 +2454,30 @@ int CEditData::get_char_type(unsigned int ch)
 
 	if(ch == ' ' || ch == '\t') return CHAR_TYPE_SPACE;
 
-	// ‹æØ‚è•¶š
+	// åŒºåˆ‡ã‚Šæ–‡å­—
 	if(m_str_token->isBreakChar(ch)) return CHAR_TYPE_BREAK;
 
-	// ‚»‚Ì‘¼ASCII•¶š
+	// ãã®ä»–ASCIIæ–‡å­—
 	if(ch <= 0xff) return CHAR_TYPE_ASCII;
 
-	// ƒ}ƒ‹ƒ`ƒoƒCƒg
-	// '['‚Í“Áêˆ—
+	// ãƒãƒ«ãƒãƒã‚¤ãƒˆ
+	// 'ãƒ¼'ã¯ç‰¹æ®Šå‡¦ç†
 	if(ch == 0x30fc) return CHAR_TYPE_M_HIRA_KATA;
-	// ”šCƒAƒ‹ƒtƒ@ƒxƒbƒg
+	// æ•°å­—ï¼Œã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆ
 	if(ch >= 0xff10 && ch <= 0xff19) return CHAR_TYPE_M_ALPHA;
 	if(ch >= 0xff21 && ch <= 0xff3a) return CHAR_TYPE_M_ALPHA;
 	if(ch >= 0xff41 && ch <= 0xff5a) return CHAR_TYPE_M_ALPHA;
-	// ‘SŠp‹L† (‘SŠp”šAƒAƒ‹ƒtƒ@ƒxƒbƒgˆÈŠO)
+	// å…¨è§’è¨˜å· (å…¨è§’æ•°å­—ã€ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆä»¥å¤–)
 	if(ch >= 0xff01 && ch <= 0xff60) return CHAR_TYPE_M_MARK;
-	// ‚Ğ‚ç‚ª‚È
+	// ã²ã‚‰ãŒãª
 	if(ch >= 0x3040 && ch <= 0x309f) return CHAR_TYPE_M_HIRA;
-	// ƒJƒ^ƒJƒi
+	// ã‚«ã‚¿ã‚«ãƒŠ
 	if(ch >= 0x30a0 && ch <= 0x30ff) return CHAR_TYPE_M_KATA;
 	if(ch >= 0x31f0 && ch <= 0x31ff) return CHAR_TYPE_M_KATA;
-	// ”¼ŠpƒJƒ^ƒJƒi
+	// åŠè§’ã‚«ã‚¿ã‚«ãƒŠ
 	if(ch >= 0xff61 && ch <= 0xff9f) return CHAR_TYPE_M_HALF_KATA;
 
-	// Š¿š
+	// æ¼¢å­—
 	return CHAR_TYPE_M_KANJI;
 }
 
@@ -2488,7 +2488,7 @@ BOOL CEditData::same_char_type(unsigned int ch1, unsigned int ch2)
 
 	if(type1 == type2) return TRUE;
 
-	// '['‚ÍCƒJƒ^ƒJƒi‚Æ•½‰¼–¼‚Æ“¯‚¶í—Ş‚Æ”»’f‚·‚é
+	// 'ãƒ¼'ã¯ï¼Œã‚«ã‚¿ã‚«ãƒŠã¨å¹³ä»®åã¨åŒã˜ç¨®é¡ã¨åˆ¤æ–­ã™ã‚‹
 	if(type1 == CHAR_TYPE_M_HIRA_KATA) {
 		if(type2 == CHAR_TYPE_M_HIRA || type2 == CHAR_TYPE_M_KATA) return TRUE;
 	}
@@ -2684,7 +2684,7 @@ int CEditData::load_file(const TCHAR *file_name, TCHAR *msg_buf)
 	CFile	file;
 	CFileException	e;
 
-	// ‘¼ƒvƒƒZƒX‚ªg—p’†‚Ìƒtƒ@ƒCƒ‹‚Å‚à‹¤—Lˆá”½‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// ä»–ãƒ—ãƒ­ã‚»ã‚¹ãŒä½¿ç”¨ä¸­ã®ãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚‚å…±æœ‰é•åã«ãªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(!file.Open(file_name, CFile::modeRead|CFile::shareDenyNone, &e)) {
 		if(msg_buf) {
 			_tcscpy(msg_buf, _T(""));
@@ -2779,7 +2779,7 @@ int CEditData::save_file_main(CUnicodeArchive &uni_ar)
 		uni_ar.WriteString(get_row_buf(i));
 		uni_ar.WriteNextLine();
 	}
-	// ÅŒã‚Ìs‚ÍC‰üs‚ğ‚¢‚ê‚È‚¢
+	// æœ€å¾Œã®è¡Œã¯ï¼Œæ”¹è¡Œã‚’ã„ã‚Œãªã„
 	if(get_row_cnt() != 0) {
 		uni_ar.WriteString(get_row_buf(i));
 	}
@@ -2799,7 +2799,7 @@ int CEditData::save_file(CArchive &ar, int kanji_code, int line_type)
 
 char CEditData::check_char_type(int row, int col, struct check_char_type_cache *cache)
 {
-	// FIXME: HTML‚È‚Çƒ^ƒOŒ¾Œê‚Æ‚«Cƒ^ƒO‚ÌŠO‚Ìquot‚Í–³‹‚·‚éˆ—‚ª•K—v
+	// FIXME: HTMLãªã©ã‚¿ã‚°è¨€èªã¨ãï¼Œã‚¿ã‚°ã®å¤–ã®quotã¯ç„¡è¦–ã™ã‚‹å‡¦ç†ãŒå¿…è¦
 	int				len;
 	TCHAR	*p;
 	int				cur_x;
@@ -2897,7 +2897,7 @@ char CEditData::check_char_type(int row, int col, struct check_char_type_cache *
 
 int CEditData::tab_to_space_all()
 {
-	// ‘S•”‚Ìƒ^ƒu‚ğƒXƒy[ƒX‚É•ÏŠ·‚·‚é
+	// å…¨éƒ¨ã®ã‚¿ãƒ–ã‚’ã‚¹ãƒšãƒ¼ã‚¹ã«å¤‰æ›ã™ã‚‹
 	int		row;
 
 	int		buf_size = 1024;
@@ -3101,7 +3101,7 @@ CString CEditData::get_word(GET_WORD_OPT opt, GET_WORD_MOVE_METHOD_OPT move_meth
 
 	POINT	cur_pt, pt1, pt2;
 
-	// Œ»İˆÊ’u‚ğ•Û‘¶
+	// ç¾åœ¨ä½ç½®ã‚’ä¿å­˜
 	cur_pt.y = get_cur_row();
 	cur_pt.x = get_cur_col();
 
@@ -3129,27 +3129,27 @@ CString CEditData::get_word(GET_WORD_OPT opt, GET_WORD_MOVE_METHOD_OPT move_meth
 		pt2.y = get_cur_row();
 		pt2.x = get_cur_col();
 	} else {
-		// ’PŒê‚Ì––”öˆÊ’u‚ğæ“¾
+		// å˜èªã®æœ«å°¾ä½ç½®ã‚’å–å¾—
 		if(opt == GET_WORD_NORMAL) (this->*move_method_func)(1);
 		pt2.y = get_cur_row();
 		pt2.x = get_cur_col();
 
-		// ’PŒê‚Ìæ“ªˆÊ’u‚ğæ“¾
+		// å˜èªã®å…ˆé ­ä½ç½®ã‚’å–å¾—
 		(this->*move_method_func)(-1);
 		pt1.y = get_cur_row();
 		pt1.x = get_cur_col();
 	}
 
 	if(ex_opt & GET_WORD_EX_OPT_MOVE_CURSOR) {
-		// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğ’PŒê‚ÌI—¹ˆÊ’u‚ÉˆÚ“®
+		// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’å˜èªã®çµ‚äº†ä½ç½®ã«ç§»å‹•
 		set_cur(pt2.y, pt2.x);
 	} else {
-		// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğ–ß‚·
+		// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’æˆ»ã™
 		set_cur(cur_pt.y, cur_pt.x);
 	}
 
 	if(ex_opt & GET_WORD_EX_OPT_CONSIDER_QUOTE_WORD) {
-		// ƒNƒH[ƒg‚Ì’PŒê‚ğæ“¾‚·‚éê‡A•¡”s‚ÌƒeƒLƒXƒg‚àæ“¾‚Å‚«‚é‚æ‚¤‚É‚·‚é
+		// ã‚¯ã‚©ãƒ¼ãƒˆã®å˜èªã‚’å–å¾—ã™ã‚‹å ´åˆã€è¤‡æ•°è¡Œã®ãƒ†ã‚­ã‚¹ãƒˆã‚‚å–å¾—ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 		if(pt1.y == pt2.y && pt1.x == pt2.x) return _T("");
 	} else {
 		if((pt1.y != pt2.y) || (pt1.y == pt2.y && pt1.x == pt2.x)) return _T("");
@@ -3208,7 +3208,7 @@ POINT CEditData::skip_comment_and_space(POINT pt, BOOL b_skip_2byte_space, BOOL 
 			ch_len = get_char_len(p);
 			pt.x += ch_len;
 			p += ch_len;
-		} else if(b_skip_2byte_space && ::get_char(p) == L'@') {
+		} else if(b_skip_2byte_space && ::get_char(p) == L'ã€€') {
 			ch_len = get_char_len(p);
 			pt.x += ch_len;
 			p += ch_len;
@@ -3241,7 +3241,7 @@ void CEditData::set_valid_point(POINT *pt)
 	if(pt->x < 0) pt->x = 0;
 	if(pt->x > get_row_len(pt->y)) pt->x = get_row_len(pt->y);
 
-	// 2byte•¶š‚ÌŠÔ‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// 2byteæ–‡å­—ã®é–“ã«ãªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(pt->x != 0 && get_edit_row_data(pt->y)->is_lead_byte(pt->x - 1)) {
 		(pt->x)--;
 	}
@@ -3264,11 +3264,11 @@ int CEditData::hankaku_zenkaku_convert(POINT *start_pt, POINT *end_pt, BOOL b_al
 
 	POINT	cur_pt;
 
-	// Œ»İ‚ÌƒJ[ƒ\ƒ‹ˆÊ’u‚ğ•Û‘¶
+	// ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’ä¿å­˜
 	cur_pt.y = get_cur_row();
 	cur_pt.x = get_cur_col();
 
-	// æ“ª‚©‚ç––”ö‚ÉŒü‚©‚Á‚ÄŒŸõ‚·‚é
+	// å…ˆé ­ã‹ã‚‰æœ«å°¾ã«å‘ã‹ã£ã¦æ¤œç´¢ã™ã‚‹
 	set_cur_row(start_pt->y);
 	set_cur_col(start_pt->x);
 
@@ -3321,14 +3321,14 @@ int CEditData::hankaku_zenkaku_convert(POINT *start_pt, POINT *end_pt, BOOL b_al
 			ret_v = paste(p_buf, FALSE);
 			if(ret_v != 0) goto ERR1;
 
-			// ‘I‘ğ”ÍˆÍ‚ğ’²ß
+			// é¸æŠç¯„å›²ã‚’èª¿ç¯€
 			if(row == end_pt->y) end_pt->x = get_cur_col();
 		}
 	}
 
 	clear_disp_col();
 
-	// ƒJ[ƒ\ƒ‹‚ğŒ³‚É–ß‚·
+	// ã‚«ãƒ¼ã‚½ãƒ«ã‚’å…ƒã«æˆ»ã™
 	if(start_pt->y != cur_pt.y || start_pt->x != cur_pt.x) {
 		cur_pt = *end_pt;
 	}
@@ -3368,7 +3368,7 @@ int CEditData::without_comment_and_literal_convert(POINT* start_pt, POINT* end_p
 
 	struct check_char_type_cache cache;
 
-	// check_char_type_cache‚ğ‰Šú‰»
+	// check_char_type_cacheã‚’åˆæœŸåŒ–
 	cache.row = -1;
 	cache.char_type_arr = cache.ini_buf;
 	cache.char_type_arr_cnt = CHECK_CHAR_TYPE_CACHE_BUF_SIZE;
@@ -3377,10 +3377,10 @@ int CEditData::without_comment_and_literal_convert(POINT* start_pt, POINT* end_p
 	TCHAR* p_end = get_row_buf(cur_pt.y) + get_row_len(cur_pt.y);
 
 	for(;;) {
-		// I—¹ˆÊ’u‚Ì”»’è
+		// çµ‚äº†ä½ç½®ã®åˆ¤å®š
 		if(inline_pt_cmp(&cur_pt, end_pt) >= 0) break;
 
-		// ˆÚ“®‚·‚é
+		// ç§»å‹•ã™ã‚‹
 		if(p == p_end) {
 			if(cur_pt.y == get_row_cnt() - 1) break;
 			cur_pt.y++;
@@ -3413,7 +3413,7 @@ int CEditData::without_comment_and_literal_convert(POINT* start_pt, POINT* end_p
 
 	*buf_p = '\0';
 
-	// Undoƒf[ƒ^‚Ì‹L˜^‚ğŠJn
+	// Undoãƒ‡ãƒ¼ã‚¿ã®è¨˜éŒ²ã‚’é–‹å§‹
 	CUndoSetMode undo_obj(m_undo);
 	del(start_pt, end_pt, FALSE);
 	paste(buf);
@@ -3486,7 +3486,7 @@ int CEditData::check_confinement(const TCHAR *p_start, int offset)
 	const TCHAR *p = p_start + offset;
 	const TCHAR *prev_p = get_prev_str(p);
 
-	// ‹Ö‘¥ˆ—
+	// ç¦å‰‡å‡¦ç†
 	if(m_first_confinement && is_first_confinement_char(::get_char(p))) {
 		if(is_first_confinement_char(::get_char(p + get_char_len(p)))) {
 			offset -= get_char_len(prev_p);
@@ -3525,9 +3525,9 @@ int CEditData::get_next_line_len(const TCHAR *pstr, int width,
 		}
 
 		if(disp_width + ch_width > width) {
-			// ‹Ö‘¥ˆ—
+			// ç¦å‰‡å‡¦ç†
 			offset = check_confinement(p_start, offset);
-			// ƒ[ƒhƒ‰ƒbƒv‚É‘Î‰‚·‚é
+			// ãƒ¯ãƒ¼ãƒ‰ãƒ©ãƒƒãƒ—ã«å¯¾å¿œã™ã‚‹
 			offset = check_word_wrap(p_start, offset, 0);
 			break;
 		} else {
@@ -3648,10 +3648,10 @@ int CEditData::calc_disp_row_split_cnt(int row, CFontWidthHandler *dchandler)
 		if(disp_width + ch_width > width) {
 			disp_width = 0;
 
-			// ‹Ö‘¥ˆ—
+			// ç¦å‰‡å‡¦ç†
 			offset = check_confinement(pbuf, offset);
 
-			// ƒ[ƒhƒ‰ƒbƒv‚É‘Î‰‚·‚é
+			// ãƒ¯ãƒ¼ãƒ‰ãƒ©ãƒƒãƒ—ã«å¯¾å¿œã™ã‚‹
 			offset = check_word_wrap(pbuf, offset, prev_offset);
 			prev_offset = offset;
 
@@ -3702,7 +3702,7 @@ int CEditData::split_rows(POINT *start_pt, POINT *end_pt)
 	typedef PointContainer::iterator	IPointIterator;
 	PointContainer	m_pt_list;
 
-	// ‰üs‚ğ‘}“ü‚·‚éˆÊ’u‚ÌƒŠƒXƒg‚ğì¬‚·‚é
+	// æ”¹è¡Œã‚’æŒ¿å…¥ã™ã‚‹ä½ç½®ã®ãƒªã‚¹ãƒˆã‚’ä½œæˆã™ã‚‹
 	for(int row = start_pt->y; row <= end_pt->y; row++) {
 		int idx = get_scroll_row(row);
 		int cur_row = row;
@@ -3718,18 +3718,18 @@ int CEditData::split_rows(POINT *start_pt, POINT *end_pt)
 		}
 	}
 
-	// •ÒW‰ÓŠ‚ª–³‚¢ê‡CI—¹
+	// ç·¨é›†ç®‡æ‰€ãŒç„¡ã„å ´åˆï¼Œçµ‚äº†
 	if(m_pt_list.empty()) return 0;
 
-	// ‘I‘ğ”ÍˆÍ‚ÌI—¹ˆÊ’u‚ğ’²ß‚·‚é
+	// é¸æŠç¯„å›²ã®çµ‚äº†ä½ç½®ã‚’èª¿ç¯€ã™ã‚‹
 	POINT last_pt = m_pt_list.back();
 	if(last_pt.y == end_pt->y) end_pt->x -= last_pt.x;
 	end_pt->y += (int)m_pt_list.size();
 
-	// Undoƒf[ƒ^‚Ì‹L˜^‚ğŠJn
+	// Undoãƒ‡ãƒ¼ã‚¿ã®è¨˜éŒ²ã‚’é–‹å§‹
 	CUndoSetMode undo_obj(m_undo);
 
-	// ‰üs‚Ì‘}“ü‚ğÀs‚·‚é
+	// æ”¹è¡Œã®æŒ¿å…¥ã‚’å®Ÿè¡Œã™ã‚‹
 	for(IPointIterator it = m_pt_list.begin(); it != m_pt_list.end(); it++) {
 		set_cur_row((*it).y);
 		set_cur_col((*it).x);
@@ -3763,7 +3763,7 @@ int CEditData::get_disp_offset(int idx, int *psplit_idx)
 
 	int row = disp_row_arr->GetData(idx);
 
-	// s‚Ì•Ï‚í‚è–Ú‚ğ’T‚·
+	// è¡Œã®å¤‰ã‚ã‚Šç›®ã‚’æ¢ã™
 	idx--;
 	int split_idx = 0;
 	for(; idx >= 0; idx--, split_idx++) {
@@ -3797,7 +3797,7 @@ void CEditData::check_comment_row(int start_row, int end_row, QWORD ex_style, BO
 {
 	if(ex_style & ECS_NO_COMMENT_CHECK) return;
 
-	/* ‚±‚ÌŠÖ”‚ÍÀs‚ÉŠÔ‚ª‚©‚©‚é‚½‚ßC•p”É‚ÉŒÄ‚Ño‚³‚È‚¢‚±‚Æ */
+	/* ã“ã®é–¢æ•°ã¯å®Ÿè¡Œã«æ™‚é–“ãŒã‹ã‹ã‚‹ãŸã‚ï¼Œé »ç¹ã«å‘¼ã³å‡ºã•ãªã„ã“ã¨ */
 
 	register TCHAR	*p;
 	int		row;
@@ -3812,8 +3812,8 @@ void CEditData::check_comment_row(int start_row, int end_row, QWORD ex_style, BO
 	if(p_invalidate) *p_invalidate = FALSE;
 
 	if(start_row > 0) {
-		// 1s‘O‚©‚çƒ`ƒFƒbƒN‚·‚é
-		// •¶š‚Ìíœ‚Ås‚ª˜AŒ‹‚³‚ê‚é‚Æ‚«C‰º‚Ìs‚Ìƒf[ƒ^‚Åƒtƒ‰ƒO‚ªã‘‚«‚³‚ê‚Ä‚µ‚Ü‚¤‚½‚ß
+		// 1è¡Œå‰ã‹ã‚‰ãƒã‚§ãƒƒã‚¯ã™ã‚‹
+		// æ–‡å­—ã®å‰Šé™¤ã§è¡ŒãŒé€£çµã•ã‚Œã‚‹ã¨ãï¼Œä¸‹ã®è¡Œã®ãƒ‡ãƒ¼ã‚¿ã§ãƒ•ãƒ©ã‚°ãŒä¸Šæ›¸ãã•ã‚Œã¦ã—ã¾ã†ãŸã‚
 		start_row--;
 		if(get_row_data_flg(start_row, ROW_DATA_COMMENT)) comment = TRUE;
 		if(get_row_data_flg(start_row, ROW_DATA_IN_TAG)) in_tag = TRUE;
@@ -3824,7 +3824,7 @@ void CEditData::check_comment_row(int start_row, int end_row, QWORD ex_style, BO
 	if(start_row < 0) start_row = 0;
 	if(end_row < 0) end_row = get_row_cnt() - 1;
 
-	// ‚‘¬‰»
+	// é«˜é€ŸåŒ–
 	CStrToken	*str_token = get_str_token();
 	TCHAR	*close_comment = str_token->GetCloseComment();
 
@@ -3864,7 +3864,7 @@ void CEditData::check_comment_row(int start_row, int end_row, QWORD ex_style, BO
 		}
 
 /*
-//		ƒNƒH[ƒg‚ª•Â‚¶‚ç‚ê‚Ä‚¢‚È‚¢‚Æ‚«CˆÈ~‚Ìs‚É‰e‹¿‚µ‚È‚¢‚æ‚¤‚É‚µ‚½
+//		ã‚¯ã‚©ãƒ¼ãƒˆãŒé–‰ã˜ã‚‰ã‚Œã¦ã„ãªã„ã¨ãï¼Œä»¥é™ã®è¡Œã«å½±éŸ¿ã—ãªã„ã‚ˆã†ã«ã—ãŸ
 		if(in_quote == TRUE) {
 			if(!(get_row_data(row) & ROW_DATA_IN_QUOTE)) {
 				InvalidateRow(row);
@@ -3878,7 +3878,7 @@ void CEditData::check_comment_row(int start_row, int end_row, QWORD ex_style, BO
 		}
 */
 		for(;;) {
-			for(; *p != '\0'; p++) { // ‚±‚Ìƒ‹[ƒv‚É•‰‰×‚ª‚©‚©‚é
+			for(; *p != '\0'; p++) { // ã“ã®ãƒ«ãƒ¼ãƒ—ã«è² è·ãŒã‹ã‹ã‚‹
 				if(is_lead_byte(*p)) {
 					p++;
 					if(*p == '\0') break;
@@ -3886,7 +3886,7 @@ void CEditData::check_comment_row(int start_row, int end_row, QWORD ex_style, BO
 				}
 				if(str_token->isCommentChar(*p)) break;
 				if((ex_style & ECS_BRACKET_MULTI_COLOR) && (*p == '(' || *p == ')')) {
-					// NOTE: Œ»İ‚Í‰üs‚ğ‚Ü‚½‚ª‚Á‚½in_quote‚Íl—¶‚µ‚È‚¢‚Ì‚ÅA‚±‚±‚Å‚Íin_quote‚Íƒ`ƒFƒbƒN‚µ‚È‚¢
+					// NOTE: ç¾åœ¨ã¯æ”¹è¡Œã‚’ã¾ãŸãŒã£ãŸin_quoteã¯è€ƒæ…®ã—ãªã„ã®ã§ã€ã“ã“ã§ã¯in_quoteã¯ãƒã‚§ãƒƒã‚¯ã—ãªã„
 					if(comment == FALSE && in_tag == FALSE) {
 						if(*p == '(') {
 							bracket_cnt++;

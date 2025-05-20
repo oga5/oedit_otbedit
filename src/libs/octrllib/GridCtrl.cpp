@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// GridCtrl.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// GridCtrl.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -58,7 +58,7 @@ CGridData CGridCtrl::m_null_grid_data;
 
 /////////////////////////////////////////////////////////////////////////////
 
-// •ÒW—pƒGƒfƒBƒbƒgƒRƒ“ƒgƒ[ƒ‹‚ÌCƒTƒuƒNƒ‰ƒXŒã‚ÌƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ
+// ç·¨é›†ç”¨ã‚¨ãƒ‡ã‚£ãƒƒãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ï¼Œã‚µãƒ–ã‚¯ãƒ©ã‚¹å¾Œã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message) {
@@ -170,7 +170,7 @@ BEGIN_MESSAGE_MAP(CGridCtrl, CScrollWnd)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CGridCtrl ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CGridCtrl ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 void CGridCtrl::SetCellPadding(int top, int bottom, int left, int right)
 {
@@ -184,14 +184,14 @@ void CGridCtrl::SetCellPadding(int top, int bottom, int left, int right)
 
 BOOL CGridCtrl::IsSelectedCellColor(int y, int x)
 {
-	// FIXME: ‘I‘ğƒ_ƒCƒAƒƒO•\¦’†‚ÍCŒ»İ‚ÌƒZƒ‹‚ğ•’Ê‚Ì”wŒiF‚É‚·‚é
+	// FIXME: é¸æŠãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤ºä¸­ã¯ï¼Œç¾åœ¨ã®ã‚»ãƒ«ã‚’æ™®é€šã®èƒŒæ™¯è‰²ã«ã™ã‚‹
 
 	if(IsSelectedCell(y, x)) {
 		if(y != m_grid_data->get_cur_row() || x != m_grid_data->get_cur_col() || 
 			(m_gridStyle & GRS_LINE_SELECT)) {
 			return TRUE;
 		}
-		// •ªŠ„•\¦‚ÅCƒtƒH[ƒJƒX‚ª–³‚¢ê‡
+		// åˆ†å‰²è¡¨ç¤ºã§ï¼Œãƒ•ã‚©ãƒ¼ã‚«ã‚¹ãŒç„¡ã„å ´åˆ
 		if(!IsActiveSplitter()) {
 			return TRUE;
 		}
@@ -314,7 +314,7 @@ void CGridCtrl::Paint2byteSpace(CDC *pdc, CDC *p_paintdc, int top, int left, int
 	rect.top = top + 2;
 	rect.bottom = top + m_font_height - 2;
 	rect.left = left + 1;
-	rect.right = rect.left + GetFontWidth(pdc, L'@') - 3;
+	rect.right = rect.left + GetFontWidth(pdc, L'ã€€') - 3;
 
 	CPen	pen;
 	pen.CreatePen(PS_SOLID, 0, GetColor(GRID_MARK_COLOR));
@@ -439,7 +439,7 @@ int CGridCtrl::PaintTextMain(CDC *pdc, CDC *p_paintdc, RECT rect, const TCHAR *d
 			if(tmp_rect.right > rect.left) {
 				COLORREF bk_cr = pdc->SetBkColor(GetColor(GRID_SEARCH_COLOR));
 
-				// ŒŸõŒ‹‰Ê‚Ì”wŒi‚Å“h‚é
+				// æ¤œç´¢çµæœã®èƒŒæ™¯ã§å¡—ã‚‹
 				rect.left = TextOut2(pdc, p_paintdc, p, (int)search_len, tmp_rect, tmp_rect.left, 
 					ETO_CLIPPED | ETO_OPAQUE, left_offset);
 
@@ -480,11 +480,11 @@ void CGridCtrl::PaintLineFeed(CDC *pdc, CDC *p_paintdc, int top, int left)
 	y1 = rect.top + m_font_height / 8 + 2;
 	y2 = rect.bottom - m_font_height / 8 - 2;
 
-	// cü
+	// ç¸¦ç·š
 	pdc->MoveTo(x, y1);
 	pdc->LineTo(x, y2);
 
-	// –îˆó
+	// çŸ¢å°
 	pdc->MoveTo(x, y2);
 	pdc->LineTo(x + width / 2, y2 - m_font_height / 4);
 	pdc->MoveTo(x, y2);
@@ -524,7 +524,7 @@ void CGridCtrl::PaintCellData(CDC *pdc, CDC *p_paintdc, RECT rect, int y, int x)
 
 	int len = (int)_tcslen(data);
 	if(m_grid_data->Get_ColDataType(y, x) == GRID_DATA_NUMBER_TYPE) {
-		// ‰EŠñ‚¹‚Å•\¦
+		// å³å¯„ã›ã§è¡¨ç¤º
 		int w = m_grid_data->GetColWidth(data, rect.right - rect.left, pdc, NULL, NULL);
 		int left_offset = (rect.right - rect.left) - w;
 		PaintTextMain(pdc, p_paintdc, rect, data, len, left_offset);
@@ -558,7 +558,7 @@ void CGridCtrl::PaintData(CDC *pdc, CDC *p_paintdc, int show_row, int show_col, 
 	bk_cr = pdc->GetBkColor();
 	GetDispRect(winrect);
 
-	// ƒf[ƒ^
+	// ãƒ‡ãƒ¼ã‚¿
 	rect.bottom = m_col_header_height;
 	for(y = scr_pt.y; y < scr_pt.y + show_row; y++) {
 		rect.top = rect.bottom;
@@ -624,7 +624,7 @@ void CGridCtrl::PaintRowNumber(CDC *pdc, CDC *p_paintdc, int show_row, CPoint &s
 			}
 			pdc->SetTextColor(GetColor(GRID_TEXT_COLOR));
 
-			// ‹ó”’‚Í”š‚Ì•¶š•‚Å•`‰æ‚·‚é
+			// ç©ºç™½ã¯æ•°å­—ã®æ–‡å­—å¹…ã§æç”»ã™ã‚‹
 			int space_cnt = 0;
 			int buf_len = (int)_tcslen(buf);
 			for(; *buf == ' '; buf++) {
@@ -669,7 +669,7 @@ void CGridCtrl::PaintNoDispColLine(CDC *pdc, CDC *p_paintdc, int left, int top, 
 
 	CPen *old_pen = pdc->SelectObject(&pen);
 
-	// ‘O‚ÌƒJƒ‰ƒ€‚ª”ñ•\¦‚Ì‚Æ‚«
+	// å‰ã®ã‚«ãƒ©ãƒ ãŒéè¡¨ç¤ºã®ã¨ã
 	pdc->MoveTo(left, top);
 	pdc->LineTo(left, bottom);
 
@@ -732,7 +732,7 @@ void CGridCtrl::PaintColHeaderMain(CDC *pdc, CDC *p_paintdc, int x, CRect &rect)
 		pdc->SelectObject(pOldPen);
 
 		if(x != 0 && m_grid_data->GetDispFlg(x - 1) == FALSE) {
-			// ‘O‚ÌƒJƒ‰ƒ€‚ª”ñ•\¦‚Ì‚Æ‚«
+			// å‰ã®ã‚«ãƒ©ãƒ ãŒéè¡¨ç¤ºã®ã¨ã
 			PaintNoDispColLine(pdc, p_paintdc, rect.left, rect.top, rect.bottom);
 		}
 	}
@@ -743,7 +743,7 @@ void CGridCtrl::PaintColHeader(CDC *pdc, CDC *p_paintdc, int show_col, CPoint &s
 	CRect		rect;
 	int			x;
 
-	// €–Ú–¼
+	// é …ç›®å
 	if(m_gridStyle & GRS_COL_HEADER) {
 		rect.right = m_row_header_width;
 		rect.top = 0;
@@ -771,7 +771,7 @@ void CGridCtrl::PaintColHeader(CDC *pdc, CDC *p_paintdc, int show_col, CPoint &s
 
 				if(m_grid_data->Get_ColCnt() > 0 &&
 						m_grid_data->GetDispFlg(m_grid_data->Get_ColCnt() - 1) == FALSE) {
-					// ÅIƒJƒ‰ƒ€‚ª”ñ•\¦‚Ì‚Æ‚«
+					// æœ€çµ‚ã‚«ãƒ©ãƒ ãŒéè¡¨ç¤ºã®ã¨ã
 					PaintNoDispColLine(pdc, p_paintdc, rect.left, rect.top, rect.bottom);
 				}
 			}
@@ -795,7 +795,7 @@ void CGridCtrl::PaintColHeader(CDC *pdc, CDC *p_paintdc, int show_col, CPoint &s
 int CGridCtrl::GetLineRight(CPoint &scr_pt, CRect &winrect)
 {
 /*
-	// ‰¡ü‚ªC‰E’[‚ÌƒZƒ‹‚©‚ç‚Í‚İ‚¾‚³‚È‚¢‚æ‚¤‚É‚·‚é
+	// æ¨ªç·šãŒï¼Œå³ç«¯ã®ã‚»ãƒ«ã‹ã‚‰ã¯ã¿ã ã•ãªã„ã‚ˆã†ã«ã™ã‚‹
 	int		result = m_row_header_width;
 
 	for(int x = scr_pt.x; x < m_grid_data->Get_ColCnt(); x++) {
@@ -817,7 +817,7 @@ void CGridCtrl::PaintGrid(CDC *pdc, CDC *p_paintdc, int show_row, int show_col, 
 	CPen	pen;
 	pen.CreatePen(PS_SOLID, 0, GetColor(GRID_LINE_COLOR));
 
-	// ‰¡ü
+	// æ¨ªç·š
 	pOldPen = pdc->SelectObject(&pen);
 
 	rect.bottom = m_col_header_height;
@@ -832,7 +832,7 @@ void CGridCtrl::PaintGrid(CDC *pdc, CDC *p_paintdc, int show_row, int show_col, 
 		}
 	}
 
-	// cü
+	// ç¸¦ç·š
 	rect.top = m_col_header_height;
 	rect.bottom = (min(show_row, m_grid_data->Get_RowCnt() - scr_pt.y)) * m_row_height + rect.top;
 	rect.right = m_row_header_width;
@@ -865,7 +865,7 @@ void CGridCtrl::OnPaint()
 	CPaintDC dc(this);
 
 #ifdef USE_DOUBLE_BUFFERING
-	// ƒ_ƒuƒ‹ƒoƒbƒtƒ@ƒŠƒ“ƒO‚ÅC‰æ–Ê‚Ì‚¿‚ç‚Â‚«‚ğ—}‚¦‚é
+	// ãƒ€ãƒ–ãƒ«ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã§ï¼Œç”»é¢ã®ã¡ã‚‰ã¤ãã‚’æŠ‘ãˆã‚‹
 	RECT rcClient;
 	GetDispRect(&rcClient);
 
@@ -912,7 +912,7 @@ void CGridCtrl::PaintMain(CDC *pdc, CDC *p_paintdc)
 
 	bk_cr = pdc->GetBkColor();
 
-	// ¶ã‚Ì‹ó”’
+	// å·¦ä¸Šã®ç©ºç™½
 	if(m_gridStyle & GRS_COL_HEADER && m_gridStyle & GRS_ROW_HEADER) {
 		rect.top = 0;
 		rect.left = 0;
@@ -933,23 +933,23 @@ void CGridCtrl::PaintMain(CDC *pdc, CDC *p_paintdc)
 		}
 	}
 	
-	// €–Ú–¼
+	// é …ç›®å
 	PaintColHeader(pdc, p_paintdc, show_col, scr_pt, winrect);
 
-	// s”Ô†
+	// è¡Œç•ªå·
 	PaintRowNumber(pdc, p_paintdc, show_row, scr_pt, winrect);
 
 	pdc->SetBkColor(bk_cr);
 
-	// ƒf[ƒ^
+	// ãƒ‡ãƒ¼ã‚¿
 	PaintData(pdc, p_paintdc, show_row, show_col, scr_pt);
 
 	pdc->SelectObject(pOldFont);
 
-	// ˜g
+	// æ 
 	PaintGrid(pdc, p_paintdc, show_row, show_col, scr_pt, winrect);
 
-	// ‘I‘ğ˜g
+	// é¸æŠæ 
 	if(!(m_gridStyle & GRS_LINE_SELECT)) {
 		if(IsFixColMode() ||
 			(m_grid_data->get_cur_col() >= scr_pt.x && m_grid_data->get_cur_col() <= scr_pt.x + show_col && 
@@ -1007,11 +1007,11 @@ BOOL CGridCtrl::CreateEditData()
 		this, EDIT_CELL_ID);
 	m_edit_cell->SetExStyle2(ECS_GRID_EDITOR | ECS_NO_COMMENT_CHECK);
 
-	// ƒTƒuƒNƒ‰ƒX‰»
-	// ŒÃ‚¢ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğ•Û‘¶‚·‚é
+	// ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–
+	// å¤ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’ä¿å­˜ã™ã‚‹
 	HWND hwnd = m_edit_cell->GetSafeHwnd();
 	::SetWindowLongPtr (hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	::SetWindowLongPtr (hwnd, GWLP_WNDPROC, (LONG_PTR)Edit_SubclassWndProc);
 
 	return TRUE;
@@ -1097,7 +1097,7 @@ int CGridCtrl::GetShowCol()
 
 void CGridCtrl::CalcShowRow()
 {
-	// WindowƒTƒCƒY•ÏXCƒtƒHƒ“ƒg•ÏX‚ÉÄŒvZ
+	// Windowã‚µã‚¤ã‚ºå¤‰æ›´ï¼Œãƒ•ã‚©ãƒ³ãƒˆå¤‰æ›´æ™‚ã«å†è¨ˆç®—
 	CRect	winrect;
 	GetDispRect(winrect);
 	m_show_row = ((winrect.Height() - m_col_header_height) / m_row_height);
@@ -1421,7 +1421,7 @@ void CGridCtrl::ShowToolTip()
 	int col = HitColHeader(m_tool_tip_pt);
 	if(col == -1) return;
 
-	// ƒEƒBƒ“ƒhƒE•ªŠ„‚ğ‰ğœ‚µ‚½‚Æ‚«AƒtƒHƒ“ƒg‚Ìİ’è‚ª‰Šú‰»‚³‚ê‚é–â‘è‚ğ‰ñ”ğ
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦åˆ†å‰²ã‚’è§£é™¤ã—ãŸã¨ãã€ãƒ•ã‚©ãƒ³ãƒˆã®è¨­å®šãŒåˆæœŸåŒ–ã•ã‚Œã‚‹å•é¡Œã‚’å›é¿
 	m_grid_data->GetDispData()->GetToolTip()->SetFont(&m_font);
 
 	m_grid_data->GetDispData()->GetToolTip()->SetMessage(m_grid_data->Get_DispColName(col));
@@ -1493,14 +1493,14 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 	int	col;
 	int row;
 
-	// —ñƒwƒbƒ_‚Ì‹«ŠE
+	// åˆ—ãƒ˜ãƒƒãƒ€ã®å¢ƒç•Œ
 	col = HitColSeparator(point);
 	if(col != -1) {
 		PreDragHeader(point, col);
 		return;
 	}
 
-	// sƒwƒbƒ_
+	// è¡Œãƒ˜ãƒƒãƒ€
 	row = HitRowHeader(point);
 	if(row != -1) {
 		SelectRow(row);
@@ -1508,7 +1508,7 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 		return;
 	}
 
-	// —ñƒwƒbƒ_
+	// åˆ—ãƒ˜ãƒƒãƒ€
 	col = HitColHeader(point);
 	if(col != -1) {
 		SelectCol(col);
@@ -1516,7 +1516,7 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 		return;
 	}
 
-	// ‘S‘I‘ğ
+	// å…¨é¸æŠ
 	if(HitAllSelectArea(point)) {
 		SelectAll();
 		return;
@@ -1529,7 +1529,7 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 	m_grid_data->GetSelectArea()->select_mode = SELECT_MODE_NORMAL;
 	SelChanged(&pt);
 
-	// ƒhƒ‰ƒbƒO‘I‘ğ‚Ì€”õ
+	// ãƒ‰ãƒ©ãƒƒã‚°é¸æŠã®æº–å‚™
 	PreDragSelected(SELECT_MODE_NORMAL);
 
 	CWnd::OnLButtonDown(nFlags, point);
@@ -1602,10 +1602,10 @@ int CGridCtrl::AdjustColWidth(int col, BOOL use_col_name, BOOL force_window_widt
 	}
 	if(cancel_flg && *cancel_flg) return GRID_CTRL_ADJUST_COL_WIDTH_CANCEL;
 
-	// m_adjust_min_col_chars‚æ‚è¬‚³‚­‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// m_adjust_min_col_charsã‚ˆã‚Šå°ã•ããªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(m_adjust_min_col_chars * m_font_width > max_width) max_width= m_adjust_min_col_chars * m_font_width;
 
-	// ƒJƒ‰ƒ€–¼‚æ‚è¬‚³‚­‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// ã‚«ãƒ©ãƒ åã‚ˆã‚Šå°ã•ããªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(use_col_name) {
 		int col_name_width = m_grid_data->GetColWidth(
 			GetDispColNameWithNotNullFlg(col), win_width, NULL, &dchandler, NULL);
@@ -1614,7 +1614,7 @@ int CGridCtrl::AdjustColWidth(int col, BOOL use_col_name, BOOL force_window_widt
 
 	SetDispColWidth(col, max_width + m_cell_padding_left + m_cell_padding_right);
 
-	// ƒEƒBƒ“ƒhƒE‚æ‚è•L‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚ˆã‚Šå¹…åºƒã«ãªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(!force_window_width && GetDispColWidth(col) > winrect.Width() - m_row_header_width - 10) {
 		SetDispColWidth(col, winrect.Width() - m_row_header_width - 10);
 	}
@@ -1626,13 +1626,13 @@ void CGridCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
 	int	col;
 
-	// —ñƒwƒbƒ_‚Ì‹«ŠE
+	// åˆ—ãƒ˜ãƒƒãƒ€ã®å¢ƒç•Œ
 	col = HitColSeparator(point);
 	if(col != -1) {
 		BOOL use_colname = !(m_gridStyle & GRS_ADJUST_COL_WIDTH_NO_USE_COL_NAME);
 
 		if(HaveSelectedCol(col)) {
-			// ‘I‘ğ”ÍˆÍ‚ÌƒZƒ‹‚Ì•‚ğ’²®
+			// é¸æŠç¯„å›²ã®ã‚»ãƒ«ã®å¹…ã‚’èª¿æ•´
 			int start_x = min(m_grid_data->GetSelectArea()->pos1.x, m_grid_data->GetSelectArea()->pos2.x);
 			int end_x = max(m_grid_data->GetSelectArea()->pos1.x, m_grid_data->GetSelectArea()->pos2.x);
 			for(col = start_x; col <= end_x; col++) AdjustColWidth(col, use_colname, FALSE);
@@ -1646,13 +1646,13 @@ void CGridCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 	POINT	pt;
 	HitCell(point, &pt);
 	if(pt.x >= 0 && pt.y >= 0) {
-		// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚ÅƒZƒ‹‚ğ•ÒWƒ‚[ƒh‚É‚·‚é
+		// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã§ã‚»ãƒ«ã‚’ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã«ã™ã‚‹
 		if(EnterEdit(TRUE)) {
-			// ƒ}ƒEƒXƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚½•¶š‚ÌˆÊ’u‚ÉƒJ[ƒ\ƒ‹‚ğˆÚ“®‚·‚é
+			// ãƒã‚¦ã‚¹ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ãŸæ–‡å­—ã®ä½ç½®ã«ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç§»å‹•ã™ã‚‹
 			INPUT input[2];
 			ZeroMemory(input, sizeof(input));
 			if(GetSystemMetrics(SM_SWAPBUTTON)) {
-				// ƒ}ƒEƒX‚Ìİ’è‚Åuå‚Æ•›‚Ìƒ{ƒ^ƒ“‚ğØ‚è‘Ö‚¦‚év‚ª—LŒø‚Èê‡‚Ì‘Î‰
+				// ãƒã‚¦ã‚¹ã®è¨­å®šã§ã€Œä¸»ã¨å‰¯ã®ãƒœã‚¿ãƒ³ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ã€ãŒæœ‰åŠ¹ãªå ´åˆã®å¯¾å¿œ
 				input[0].type = INPUT_MOUSE;
 				input[0].mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
 				input[0].mi.dwExtraInfo = GetMessageExtraInfo();
@@ -1753,7 +1753,7 @@ void CGridCtrl::SelChanged(POINT *pt, BOOL b_area_select, BOOL b_no_clear_select
 {
 	LeaveEdit();
 
-	// ”ñ•\¦‚ÌƒZƒ‹‚ÉˆÚ“®‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+	// éè¡¨ç¤ºã®ã‚»ãƒ«ã«ç§»å‹•ã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if(m_grid_data->GetDispFlg(pt->x) == FALSE) {
 		int col = pt->x;
 		if(col < m_grid_data->get_cur_col()) {
@@ -1799,14 +1799,14 @@ void CGridCtrl::SelChanged(POINT *pt, BOOL b_area_select, BOOL b_no_clear_select
 	show.x = GetShowCol();
 	show.y = GetShowRow();
 
-	// s”Ô†‚ğÄ•`‰æ
+	// è¡Œç•ªå·ã‚’å†æç”»
 	if(((m_gridStyle & GRS_SHOW_CUR_ROW) || (m_gridStyle & GRS_HIGHLIGHT_HEADER)) &&
 			m_grid_data->get_cur_row() != pt->y) {
 		InvalidateRowHeader_AllWnd(m_grid_data->get_cur_row());
 		InvalidateRowHeader_AllWnd(pt->y);
 	}
 
-	// ƒJƒ‰ƒ€–¼‚ğÄ•`‰æ
+	// ã‚«ãƒ©ãƒ åã‚’å†æç”»
 	if((m_gridStyle & GRS_HIGHLIGHT_HEADER) && m_grid_data->get_cur_col() != pt->x) {
 		InvalidateCellHeader_AllWnd(m_grid_data->get_cur_col());
 		InvalidateCellHeader_AllWnd(pt->x);
@@ -1814,16 +1814,16 @@ void CGridCtrl::SelChanged(POINT *pt, BOOL b_area_select, BOOL b_no_clear_select
 
 	if(m_change_active_row_text_color) {
 		if(m_gridStyle & GRS_SWAP_ROW_COL_MODE) {
-			// FIXME: InvalidateCol, InvalidateCol_AllWnd‚ğÀ‘•‚·‚éH
+			// FIXME: InvalidateCol, InvalidateCol_AllWndã‚’å®Ÿè£…ã™ã‚‹ï¼Ÿ
 			Invalidate_AllWnd();
 		} else {
-			// s‘S‘Ì‚ğÄ•`‰æ‚·‚é
+			// è¡Œå…¨ä½“ã‚’å†æç”»ã™ã‚‹
 			InvalidateRow_AllWnd(m_grid_data->get_cur_row());
 			InvalidateRow_AllWnd(pt->y);
 		}
 	}
 
-	// ˆÚ“®‘O‚ÌƒZƒ‹
+	// ç§»å‹•å‰ã®ã‚»ãƒ«
 	if(m_grid_data->get_cur_col() >= scr_pt.x && m_grid_data->get_cur_col() <= scr_pt.x + show.x && 
 		m_grid_data->get_cur_row() >= scr_pt.y && m_grid_data->get_cur_row() <= scr_pt.y + show.y) {
 		InvalidateCell_AllWnd(m_grid_data->get_cur_cell());
@@ -1831,7 +1831,7 @@ void CGridCtrl::SelChanged(POINT *pt, BOOL b_area_select, BOOL b_no_clear_select
 		InvalidateCell_AllWnd(m_grid_data->get_cur_cell());
 	}
 
-	// ˆÚ“®Œã‚ÌƒZƒ‹
+	// ç§»å‹•å¾Œã®ã‚»ãƒ«
 	if(pt->x >= scr_pt.x && pt->x < scr_pt.x + show.x && 
 		pt->y >= scr_pt.y && pt->y < scr_pt.y + show.y) {
 		InvalidateCell_AllWnd(pt);
@@ -1853,7 +1853,7 @@ void CGridCtrl::SelChanged(POINT *pt, BOOL b_area_select, BOOL b_no_clear_select
 
 	SetEditCellPos();
 
-	// ƒZƒ‹‚ÌˆÊ’u‚ğeƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+	// ã‚»ãƒ«ã®ä½ç½®ã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 	GetParent()->SendMessage(GC_WM_CHANGE_CELL_POS, pt->x, pt->y);
 }
 
@@ -2165,7 +2165,7 @@ void CGridCtrl::InvalidateCellHeader(int col)
 
 void CGridCtrl::InvalidateCell(POINT *pt)
 {
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍŒvZ‚µ‚È‚¢
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯è¨ˆç®—ã—ãªã„
 	if(pt->y < GetScrollPos(SB_VERT) || pt->y > GetScrollPos(SB_VERT) + GetShowRow()) return;
 
 	RECT	rect;
@@ -2194,7 +2194,7 @@ void CGridCtrl::InvalidateRowHeader_AllWnd(int row)
 
 void CGridCtrl::InvalidateRowHeader(int row)
 {
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍŒvZ‚µ‚È‚¢
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯è¨ˆç®—ã—ãªã„
 	if(row < GetScrollPos(SB_VERT) || row > GetScrollPos(SB_VERT) + GetShowRow()) return;
 
 	RECT	rect;
@@ -2221,7 +2221,7 @@ void CGridCtrl::InvalidateRow_AllWnd(int row)
 
 void CGridCtrl::InvalidateRow(int row)
 {
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍŒvZ‚µ‚È‚¢
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯è¨ˆç®—ã—ãªã„
 	if(row < GetScrollPos(SB_VERT) || row > GetScrollPos(SB_VERT) + GetShowRow()) return;
 
 	RECT	rect;
@@ -2315,7 +2315,7 @@ void CGridCtrl::OnSetFocus(CWnd* pOldWnd)
 		LeaveEdit();
 	}
 
-	// ƒZƒ‹‚ÌˆÊ’u‚ğeƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+	// ã‚»ãƒ«ã®ä½ç½®ã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 	GetParent()->SendMessage(GC_WM_CHANGE_CELL_POS, m_grid_data->get_cur_col(), m_grid_data->get_cur_row());
 
 	if(m_edit_cell_focused && IsEnterEdit()) {
@@ -2358,12 +2358,12 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 	int result = 0;
 	BOOL b_escape = FALSE;
 
-	// ƒZƒpƒŒ[ƒ^‚ÌƒTƒCƒY‚ğİ’è
+	// ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚µã‚¤ã‚ºã‚’è¨­å®š
 	switch(copy_format) {
 	case GR_COPY_FORMAT_TAB:
 	case GR_COPY_FORMAT_TAB_CNAME:
 		if(m_gridStyle & GRS_COPY_ESCAPE_DBL_QUOTE) {
-			sepa_size = 3;	// tab‚Ææ“ªE––”ö‚Ì'"' ('"'‚Íg‚í‚È‚¢‚Æ‚«‚à‚ ‚é)
+			sepa_size = 3;	// tabã¨å…ˆé ­ãƒ»æœ«å°¾ã®'"' ('"'ã¯ä½¿ã‚ãªã„ã¨ãã‚‚ã‚ã‚‹)
 			b_escape = TRUE;
 		} else {
 			sepa_size = 1;
@@ -2372,7 +2372,7 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 		break;
 	case GR_COPY_FORMAT_CSV:
 	case GR_COPY_FORMAT_CSV_CNAME:
-		sepa_size = 3;	// "data",‚É‚·‚é‚Ì‚ÅC'"'2‚Â‚ÆC","‚Ì3ƒoƒCƒg‚ğ’Ç‰Á
+		sepa_size = 3;	// "data",ã«ã™ã‚‹ã®ã§ï¼Œ'"'2ã¤ã¨ï¼Œ","ã®3ãƒã‚¤ãƒˆã‚’è¿½åŠ 
 		b_escape = TRUE;
 		quote_char = '"';
 		break;
@@ -2384,18 +2384,18 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 		sepa_size = 3;
 		break;
 	case GR_COPY_FORMAT_SQL:
-		sepa_size = 3;	// 'data',‚É‚·‚é‚Ì‚ÅC"'"2‚Â‚ÆC","‚Ì3ƒoƒCƒg‚ğ’Ç‰Á
+		sepa_size = 3;	// 'data',ã«ã™ã‚‹ã®ã§ï¼Œ"'"2ã¤ã¨ï¼Œ","ã®3ãƒã‚¤ãƒˆã‚’è¿½åŠ 
 		b_escape = TRUE;
 		quote_char = '\'';
 		break;
 	case GR_COPY_FORMAT_WHERE_CLAUSE:
-		sepa_size = 10;	// 'data'\r\n‚É‚·‚é‚Ì‚ÅC"'"2‚Â‚ÆC"\n"‚Ì3ƒoƒCƒg‚ğ’Ç‰Á
-						// is null\r\n‚Ìê‡‚à‚ ‚é‚½‚ßA10‚É‚·‚é
+		sepa_size = 10;	// 'data'\r\nã«ã™ã‚‹ã®ã§ï¼Œ"'"2ã¤ã¨ï¼Œ"\n"ã®3ãƒã‚¤ãƒˆã‚’è¿½åŠ 
+						// is null\r\nã®å ´åˆã‚‚ã‚ã‚‹ãŸã‚ã€10ã«ã™ã‚‹
 		b_escape = TRUE;
 		quote_char = '\'';
 		break;
 	case GR_COPY_FORMAT_IN_CLAUSE:
-		sepa_size = 5;	// 'data',‚É‚·‚é‚Ì‚ÅC"'"2‚Â‚ÆC","‚Ì3ƒoƒCƒg‚ğ’Ç‰Á, ‰üs‚à’Ç‰Á‚·‚éê‡‚ª‚ ‚é‚Ì‚Å5ƒoƒCƒg‚É‚·‚é
+		sepa_size = 5;	// 'data',ã«ã™ã‚‹ã®ã§ï¼Œ"'"2ã¤ã¨ï¼Œ","ã®3ãƒã‚¤ãƒˆã‚’è¿½åŠ , æ”¹è¡Œã‚‚è¿½åŠ ã™ã‚‹å ´åˆãŒã‚ã‚‹ã®ã§5ãƒã‚¤ãƒˆã«ã™ã‚‹
 		b_escape = TRUE;
 		quote_char = '\'';
 		break;
@@ -2403,7 +2403,7 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 		return 0;
 	}
 
-	// ŒÅ’è’·
+	// å›ºå®šé•·
 	if(copy_format == GR_COPY_FORMAT_FIX_LEN || copy_format == GR_COPY_FORMAT_FIX_LEN_CNAME) {
 		int		row;
 		row = y_end - y_start + 1;
@@ -2417,14 +2417,14 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 		for(x = x_start; x <= x_end; x++) {
 			result += m_grid_data->Get_ColMaxSize(x) * row;
 		}
-		// ‰üsƒR[ƒh
+		// æ”¹è¡Œã‚³ãƒ¼ãƒ‰
 		result += 2 * row;
 		result++; // \0
 
 		goto RESULT;
 	}
 
-	// ƒJƒ‰ƒ€–¼
+	// ã‚«ãƒ©ãƒ å
 	if(copy_format == GR_COPY_FORMAT_TAB_CNAME || copy_format == GR_COPY_FORMAT_CSV_CNAME ||
 		copy_format == GR_COPY_FORMAT_COLUMN_NAME || copy_format == GR_COPY_FORMAT_WHERE_CLAUSE ||
 		copy_format == GR_COPY_FORMAT_IN_CLAUSE) {
@@ -2433,21 +2433,21 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 				pdata = m_grid_data->Get_DispColName(x);
 				result = result + (int)_tcslen(pdata) + sepa_size;
 				if(b_escape) {
-					// "‚ÍC""‚É•ÏŠ·‚·‚é‚Ì‚ÅC‚»‚Ì•ª‚ğŒvZ
+					// "ã¯ï¼Œ""ã«å¤‰æ›ã™ã‚‹ã®ã§ï¼Œãã®åˆ†ã‚’è¨ˆç®—
 					result += ostr_str_cnt(pdata, quote_char);
 				}
 			}
-			result = result + 2;	// ‰üsƒR[ƒh
+			result = result + 2;	// æ”¹è¡Œã‚³ãƒ¼ãƒ‰
 		} else {
 			for(y = y_start; y <= y_end; y++) {
 				pdata = m_grid_data->GetRowHeader(y);
 				result = result + (int)_tcslen(pdata) + sepa_size;
 				if(b_escape) {
-					// "‚ÍC""‚É•ÏŠ·‚·‚é‚Ì‚ÅC‚»‚Ì•ª‚ğŒvZ
+					// "ã¯ï¼Œ""ã«å¤‰æ›ã™ã‚‹ã®ã§ï¼Œãã®åˆ†ã‚’è¨ˆç®—
 					result += ostr_str_cnt(pdata, quote_char);
 				}
 			}
-			result = result + 2;	// ‰üsƒR[ƒh
+			result = result + 2;	// æ”¹è¡Œã‚³ãƒ¼ãƒ‰
 		}
 	}
 
@@ -2459,12 +2459,12 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 			col_cnt = row_cnt;
 			row_cnt = tmp_cnt;
 		}
-		result += col_cnt * 12;	// where/and/=‚È‚Ç‚Ì•ª
-		result *= row_cnt;		// ƒŒƒR[ƒh”‚ğŠ|‚¯‚é
+		result += col_cnt * 12;	// where/and/=ãªã©ã®åˆ†
+		result *= row_cnt;		// ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°ã‚’æ›ã‘ã‚‹
 	}
 
 	if(copy_format == GR_COPY_FORMAT_COLUMN_NAME) {
-		result += 2;	// ‰üsƒR[ƒh
+		result += 2;	// æ”¹è¡Œã‚³ãƒ¼ãƒ‰
 		result++;	// '\0'
 		goto RESULT;
 	}
@@ -2472,11 +2472,11 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 	ASSERT(y_start >= 0 && x_start >= 0);
 	if(y_start < 0 || x_start < 0) goto RESULT;
 
-	// ƒf[ƒ^
+	// ãƒ‡ãƒ¼ã‚¿
 	for(y = y_start; y <= y_end; y++) {
 		for(x = x_start; x <= x_end; x++) {
 			if(copy_option & GR_COPY_OPTION_USE_NULL && m_grid_data->IsColDataNull(y, x)) {
-				// NULL‚ğo—Í
+				// NULLã‚’å‡ºåŠ›
 				pdata = _T("");
 				result += 4 + sepa_size;
 			} else {
@@ -2486,7 +2486,7 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 				if(pdata != NULL) {
 					result = result + (int)_tcslen(pdata) + sepa_size;
 					if(b_escape) {
-						// "‚ÍC""‚É•ÏŠ·‚·‚é‚Ì‚ÅC‚»‚Ì•ª‚ğŒvZ
+						// "ã¯ï¼Œ""ã«å¤‰æ›ã™ã‚‹ã®ã§ï¼Œãã®åˆ†ã‚’è¨ˆç®—
 						result += ostr_str_cnt(pdata, quote_char);
 					}
 				}
@@ -2494,11 +2494,11 @@ int CGridCtrl::CalcCopyDataSize(int copy_format, int y_start, int y_end, int x_s
 			}
 		}
 		if(pdata != NULL && copy_option & GR_COPY_OPTION_CONVERT_CRLF) {
-			// ‰üsƒR[ƒh‚ğchr(10)‚È‚Ç‚É•ÏŠ·‚·‚é
+			// æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’chr(10)ãªã©ã«å¤‰æ›ã™ã‚‹
 			result += (ostr_str_cnt(pdata, '\r') * 20);
 			result += (ostr_str_cnt(pdata, '\n') * 20);
 		}
-		result += 2;	// ‰üsƒR[ƒh
+		result += 2;	// æ”¹è¡Œã‚³ãƒ¼ãƒ‰
 	}
 	result++;	// '\0'
 
@@ -2694,7 +2694,7 @@ void CGridCtrl::GetCopyData(TCHAR *buf, int copy_format,
 		sepa = ',';
 		str_cpy_func = str_sql_cpy;
 		b_line_sepa_is_crlf = FALSE;
-		x_crlf_cnt = 5;		// ‰üs‚ğ“ü‚ê‚éˆÊ’u‚ğw’è
+		x_crlf_cnt = 5;		// æ”¹è¡Œã‚’å…¥ã‚Œã‚‹ä½ç½®ã‚’æŒ‡å®š
 		break;
 	default:
 		return;
@@ -2813,7 +2813,7 @@ void CGridCtrl::GetCopyData(TCHAR *buf, int copy_format,
 			}
 			if(copy_format == GR_COPY_FORMAT_COLUMN_NAME) {
 				if(y == y_end) {
-					// ÅŒã‚Ìsepa‚Í•s—v
+					// æœ€å¾Œã®sepaã¯ä¸è¦
 					*p--;
 					*p = '\r';
 					p++;
@@ -2828,7 +2828,7 @@ void CGridCtrl::GetCopyData(TCHAR *buf, int copy_format,
 
 		for(x = x_start; x <= x_end; x++) {
 			if(copy_option & GR_COPY_OPTION_USE_NULL && m_grid_data->IsColDataNull(y, x)) {
-				// NULL‚ğo—Í
+				// NULLã‚’å‡ºåŠ›
 				pdata = _T("");
 				p = str_tsv_cpy(p, _T("NULL"), 0);
 			} else {
@@ -2849,15 +2849,15 @@ void CGridCtrl::GetCopyData(TCHAR *buf, int copy_format,
 			*p = '\n';
 			p++;
 		}
-		// IN CLAUSE—p‚Ìˆ—
+		// IN CLAUSEç”¨ã®å‡¦ç†
 		if (!b_line_sepa_is_crlf) {
-			// ÅŒã‚Ìƒf[ƒ^‚ÌŒã‚Í','‚ğo—Í‚µ‚È‚¢
+			// æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã®å¾Œã¯','ã‚’å‡ºåŠ›ã—ãªã„
 			if (y != y_end) {
 				*p = sepa;
 				p++;
 			}
-			// x_crlf_cnt‚Åw’è‚µ‚½ŒÂ”o—Í‚µ‚½ê‡A‰üs‚·‚é
-			// ÅIƒf[ƒ^‚ÌŒã‚à‰üs‚·‚é
+			// x_crlf_cntã§æŒ‡å®šã—ãŸå€‹æ•°å‡ºåŠ›ã—ãŸå ´åˆã€æ”¹è¡Œã™ã‚‹
+			// æœ€çµ‚ãƒ‡ãƒ¼ã‚¿ã®å¾Œã‚‚æ”¹è¡Œã™ã‚‹
 			if ((y == y_end) ||
 				(x_crlf_cnt > 0 && (output_data_cnt % x_crlf_cnt) == 0)) {
 				*p = '\r';
@@ -2872,7 +2872,7 @@ RESULT:
 	*p = '\0';
 	if(p == buf) return;
 
-	// ’Pˆês‚ÌƒRƒs[‚Ì‚Æ‚«‚ÍC‰üs‚µ‚È‚¢
+	// å˜ä¸€è¡Œã®ã‚³ãƒ”ãƒ¼ã®ã¨ãã¯ï¼Œæ”¹è¡Œã—ãªã„
 	if(!(m_gridStyle & GRS_SWAP_ROW_COL_MODE) && y_start == y_end) {
 		*(p - 2) = '\0';
 	}
@@ -2897,7 +2897,7 @@ CString CGridCtrl::GetCopyString(int copy_format, int y_start, int y_end, int x_
 
 void CGridCtrl::Copy(int copy_format, int y_start, int y_end, int x_start, int x_end, int copy_option)
 {
-	// ƒRƒs[‚·‚éƒZƒ‹‚ª‘½‚¢‚Æ‚«‚Íwait cursor‚É‚·‚é
+	// ã‚³ãƒ”ãƒ¼ã™ã‚‹ã‚»ãƒ«ãŒå¤šã„ã¨ãã¯wait cursorã«ã™ã‚‹
 	int copy_cell_cnt = (abs(y_end - y_start) + 1) * (abs(x_end - x_start) + 1);
 
 	if(copy_cell_cnt > 100) {
@@ -2924,12 +2924,12 @@ void CGridCtrl::CopyToClipboard(int copy_format, int y_start, int y_end, int x_s
 	HGLOBAL hData = GlobalAlloc(GHND, 
 		CalcCopyDataSize(copy_format, y_start, y_end, x_start, x_end, copy_option));
 	if(hData == NULL) {
-		AfxMessageBox( _T("ƒƒ‚ƒŠŠm•Û‚É¸”s‚µ‚Ü‚µ‚½") );
+		AfxMessageBox( _T("ãƒ¡ãƒ¢ãƒªç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸ") );
 		return;
 	}
 	TCHAR *pstr = (TCHAR *)GlobalLock(hData);
 	if(pstr == NULL) {
-		AfxMessageBox( _T("ƒƒ‚ƒŠŠm•Û‚É¸”s‚µ‚Ü‚µ‚½") );
+		AfxMessageBox( _T("ãƒ¡ãƒ¢ãƒªç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸ") );
 		return;
 	}
 
@@ -3090,7 +3090,7 @@ int CGridCtrl::SearchText2(const TCHAR *search_text, int dir, BOOL b_distinct_lw
 
 	HREG_DATA reg_data = m_search_data.MakeRegData2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp);
 	if(reg_data == NULL) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 	SaveSearchData2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp);
@@ -3104,7 +3104,7 @@ int CGridCtrl::SearchText2(const TCHAR *search_text, int dir, BOOL b_distinct_lw
 
 	if(m_grid_data->SearchDataRegexp(pt1, &pt2, dir,
 		b_loop, b_looped, b_cur_cell, b_selected_area, reg_data) == 0) {
-		//MessageBox("Œ©‚Â‚©‚è‚Ü‚¹‚ñ", "ŒŸõ", MB_OK | MB_ICONINFORMATION);
+		//MessageBox("è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“", "æ¤œç´¢", MB_OK | MB_ICONINFORMATION);
 		return 1;
 	}
 
@@ -3173,15 +3173,15 @@ int CGridCtrl::SearchUpdateCellNext(BOOL *b_looped)
 
 	*b_looped = FALSE;
 
-	// Œ»İ‚ÌˆÊ’u‚ğæ“¾
+	// ç¾åœ¨ã®ä½ç½®ã‚’å–å¾—
 	pt1 = *m_grid_data->get_cur_cell();
 
-	// Œ»İ‚ÌƒZƒ‹‚Ì‰E‘¤‚ğ’T‚·
+	// ç¾åœ¨ã®ã‚»ãƒ«ã®å³å´ã‚’æ¢ã™
 	for(row = pt1.y, col = pt1.x + 1; col <= right; col++) {
 		if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
 	}
 
-	// Œ»İ‚Ìs‚ÌŸ‚©‚çÅIs‚Ü‚Å’T‚·
+	// ç¾åœ¨ã®è¡Œã®æ¬¡ã‹ã‚‰æœ€çµ‚è¡Œã¾ã§æ¢ã™
 	for(row = pt1.y + 1; row <= bottom; row++) {
 		for(col = left; col <= right; col++) {
 			if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
@@ -3190,23 +3190,23 @@ int CGridCtrl::SearchUpdateCellNext(BOOL *b_looped)
 
 	*b_looped = TRUE;
 
-	// æ“ª‚©‚çŒ»İ‚Ìs‚Ì‘O‚Ü‚Å’T‚·
+	// å…ˆé ­ã‹ã‚‰ç¾åœ¨ã®è¡Œã®å‰ã¾ã§æ¢ã™
 	for(row = 0; row < pt1.y; row++) {
 		for(col = left; col <= right; col++) {
 			if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
 		}
 	}
 
-	// Œ»İ‚ÌƒZƒ‹‚Ì¶‘¤‚ğ’T‚·
+	// ç¾åœ¨ã®ã‚»ãƒ«ã®å·¦å´ã‚’æ¢ã™
 	for(row = pt1.y, col = left; col <= pt1.x; col++) {
 		if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
 	}
 
-	// Œ©‚Â‚©‚ç‚È‚©‚Á‚½
+	// è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸ
 	return 0;
 
 FOUND:
-	// Œ©‚Â‚©‚Á‚½
+	// è¦‹ã¤ã‹ã£ãŸ
 	pt1.y = row;
 	pt1.x = col;
 
@@ -3239,15 +3239,15 @@ int CGridCtrl::SearchUpdateCellPrev(BOOL *b_looped)
 
 	*b_looped = FALSE;
 
-	// Œ»İ‚ÌˆÊ’u‚ğæ“¾
+	// ç¾åœ¨ã®ä½ç½®ã‚’å–å¾—
 	pt1 = *m_grid_data->get_cur_cell();
 
-	// Œ»İ‚ÌƒZƒ‹‚Ì¶‘¤‚ğ’T‚·
+	// ç¾åœ¨ã®ã‚»ãƒ«ã®å·¦å´ã‚’æ¢ã™
 	for(row = pt1.y, col = pt1.x - 1; col >= left; col--) {
 		if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
 	}
 
-	// Œ»İ‚Ìs‚Ì‘O‚©‚çæ“ªs‚Ü‚Å’T‚·
+	// ç¾åœ¨ã®è¡Œã®å‰ã‹ã‚‰å…ˆé ­è¡Œã¾ã§æ¢ã™
 	for(row = pt1.y - 1; row >= top; row--) {
 		for(col = right; col >= left; col--) {
 			if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
@@ -3256,23 +3256,23 @@ int CGridCtrl::SearchUpdateCellPrev(BOOL *b_looped)
 
 	*b_looped = TRUE;
 
-	// ––”ö‚©‚çŒ»İ‚Ìs‚ÌŸ‚Ü‚Å’T‚·
+	// æœ«å°¾ã‹ã‚‰ç¾åœ¨ã®è¡Œã®æ¬¡ã¾ã§æ¢ã™
 	for(row = bottom; row > pt1.y; row--) {
 		for(col = right; col >= left; col--) {
 			if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
 		}
 	}
 
-	// Œ»İ‚ÌƒZƒ‹‚Ì‰E‘¤‚ğ’T‚·
+	// ç¾åœ¨ã®ã‚»ãƒ«ã®å³å´ã‚’æ¢ã™
 	for(row = pt1.y, col = right; col >= pt1.x; col--) {
 		if(IsUpdateDispRowAndDispCol(row, col)) goto FOUND;
 	}
 
-	// Œ©‚Â‚©‚ç‚È‚©‚Á‚½
+	// è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸ
 	return 0;
 
 FOUND:
-	// Œ©‚Â‚©‚Á‚½
+	// è¦‹ã¤ã‹ã£ãŸ
 	pt1.y = row;
 	pt1.x = col;
 
@@ -3317,7 +3317,7 @@ void CGridCtrl::ClearSelected(BOOL b_notify_parent_wnd)
 			x2 = m_grid_data->GetSelectArea()->pos1.x;
 		}
 
-		// Ä•`‰æ‚Ì”ÍˆÍ‚ğC•\¦’†‚Ì”ÍˆÍ‚É‚·‚é
+		// å†æç”»ã®ç¯„å›²ã‚’ï¼Œè¡¨ç¤ºä¸­ã®ç¯„å›²ã«ã™ã‚‹
 		if(IsSplitterMode()) {
 			POINT pt1, pt2;
 			pt1 = m_grid_data->GetSelectArea()->pos1;
@@ -3327,7 +3327,7 @@ void CGridCtrl::ClearSelected(BOOL b_notify_parent_wnd)
 			pt.y = max(m_grid_data->GetSelectArea()->pos1.y, GetScrollPos(SB_VERT));
 			int loop = min(m_grid_data->GetSelectArea()->pos2.y, GetScrollPos(SB_VERT) + GetShowRow());
 
-			// Ä•`‰æÀs
+			// å†æç”»å®Ÿè¡Œ
 			for(; pt.y <= loop; (pt.y)++) {
 				for(pt.x = x1; pt.x <= x2; (pt.x)++) {
 					InvalidateCell_AllWnd(&pt);
@@ -3340,7 +3340,7 @@ void CGridCtrl::ClearSelected(BOOL b_notify_parent_wnd)
 		m_grid_data->GetSelectArea()->select_mode = SELECT_MODE_NORMAL;
 
 		if(b_notify_parent_wnd) {
-			// ‘I‘ğ”ÍˆÍ‚ª•Ï‚í‚Á‚½‚±‚Æ‚ğeƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+			// é¸æŠç¯„å›²ãŒå¤‰ã‚ã£ãŸã“ã¨ã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 			GetParent()->SendMessage(GC_WM_CHANGE_SELECT_AREA, 0, 0);
 		}
 	}
@@ -3375,7 +3375,7 @@ void CGridCtrl::SelectCell(CPoint pt)
 		m_grid_data->GetSelectArea()->pos2.y = m_grid_data->Get_RowCnt() - 1;
 	}
 
-	// ‘I‘ğ”ÍˆÍ‚ğÄ•`‰æ
+	// é¸æŠç¯„å›²ã‚’å†æç”»
 	if(cur_pos1.y == -1) {
 		if(m_grid_data->GetSelectArea()->pos2.y - m_grid_data->GetSelectArea()->pos1.y > 50) {
 			Invalidate_AllWnd();
@@ -3385,34 +3385,34 @@ void CGridCtrl::SelectCell(CPoint pt)
 			}
 		}
 	} else {
-		CRect	rect1(cur_pos1, cur_pos2);						// ˆÈ‘O‚Ì‘I‘ğ”ÍˆÍ
-		CRect	rect2(m_grid_data->GetSelectArea()->pos1, m_grid_data->GetSelectArea()->pos2);	// Œ»İ‚Ì‘I‘ğ”ÍˆÍ
+		CRect	rect1(cur_pos1, cur_pos2);						// ä»¥å‰ã®é¸æŠç¯„å›²
+		CRect	rect2(m_grid_data->GetSelectArea()->pos1, m_grid_data->GetSelectArea()->pos2);	// ç¾åœ¨ã®é¸æŠç¯„å›²
 		CRect	rect3(0, 0, 0, 0);
 		CRect	rect4(0, 0, 0, 0);
 
 		rect1.NormalizeRect();
 		rect2.NormalizeRect();
-		{	// rect1, rect2‚ğŠÜ‚ŞCÅ‘å‚ÌlŠpŒ`‚ğ‹‚ß‚é
+		{	// rect1, rect2ã‚’å«ã‚€ï¼Œæœ€å¤§ã®å››è§’å½¢ã‚’æ±‚ã‚ã‚‹
 			rect3.left = min(rect1.left, rect2.left);
 			rect3.right = max(rect1.right, rect2.right);
 			rect3.top = min(rect1.top, rect2.top);
 			rect3.bottom = max(rect1.bottom, rect2.bottom);
 		}
 		
-		{	// rect1, rect2‚Åd‚È‚é•”•ª‚ğ‹‚ß‚é
+		{	// rect1, rect2ã§é‡ãªã‚‹éƒ¨åˆ†ã‚’æ±‚ã‚ã‚‹
 			rect4.left = max(rect1.left, rect2.left);
 			rect4.right = min(rect1.right, rect2.right);
 			rect4.top = max(rect1.top, rect2.top);
 			rect4.bottom = min(rect1.bottom, rect2.bottom);
 
-			// normalizerect‚¶‚á‚È‚¢‚Æ‚«C‹ó‚É‚·‚é
+			// normalizerectã˜ã‚ƒãªã„ã¨ãï¼Œç©ºã«ã™ã‚‹
 			if(rect4.left > rect4.right || rect4.top > rect4.bottom) {
 				rect4.left = 0;
 				rect4.right = 0;
 				rect4.top = 0;
 				rect4.bottom = 0;
 			} else {
-				// CRect::PtInRect‚Åˆ—‚Å‚«‚é‚æ‚¤‚ÉCbottom‚Æright‚ğL‚°‚é
+				// CRect::PtInRectã§å‡¦ç†ã§ãã‚‹ã‚ˆã†ã«ï¼Œbottomã¨rightã‚’åºƒã’ã‚‹
 				rect4.right = rect4.right + 1;
 				rect4.bottom = rect4.bottom + 1;
 			}
@@ -3437,7 +3437,7 @@ void CGridCtrl::SelectCell(CPoint pt)
 		}
 	}
 
-	// ‘I‘ğ”ÍˆÍ‚ª•Ï‚í‚Á‚½‚±‚Æ‚ğeƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+	// é¸æŠç¯„å›²ãŒå¤‰ã‚ã£ãŸã“ã¨ã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 	GetParent()->SendMessage(GC_WM_CHANGE_SELECT_AREA, 0, 0);
 }
 
@@ -3781,10 +3781,10 @@ void CGridCtrl::OnEditKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGridCtrl::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags) 
 {
-	// ƒhƒ‰ƒbƒO‘I‘ğ’†‚ÍC•¶š‚Ì“ü—Í‚ğó‚¯•t‚¯‚È‚¢
+	// ãƒ‰ãƒ©ãƒƒã‚°é¸æŠä¸­ã¯ï¼Œæ–‡å­—ã®å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ãªã„
 	if(m_grid_data->GetSelectArea()->drag_flg == DO_DRAG) return;
 
-	// ƒRƒ“ƒgƒ[ƒ‹ƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚é‚Æ‚«‚ÍA•¶š‚Ì“ü—Í‚ğó‚¯•t‚¯‚È‚¢
+	// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹ã¨ãã¯ã€æ–‡å­—ã®å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ãªã„
 	if(GetKeyState(VK_CONTROL) < 0) {
 		if(m_gridStyle & GRS_ON_DIALOG) {
 			switch(nChar) {
@@ -3936,7 +3936,7 @@ void CGridCtrl::Paste()
 	if(Paste(pstr) != 0) {
 		CString msg = m_grid_data->GetLastErrorMessage();
 		if(!msg.IsEmpty()) {
-			m_edit_data->del_all();	// MessageBox‚Ìƒ^ƒCƒ~ƒ“ƒO‚Å2‰ñ–Ú‚ªÀs‚³‚ê‚éH
+			m_edit_data->del_all();	// MessageBoxã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§2å›ç›®ãŒå®Ÿè¡Œã•ã‚Œã‚‹ï¼Ÿ
 			MessageBox(msg, _T("Error"), MB_OK | MB_ICONERROR);
 		}
 	}
@@ -4036,7 +4036,7 @@ BOOL CGridCtrl::EnterEdit(BOOL b_cursor_first /* = FALSE */, BOOL b_focus /* = F
 		m_edit_cell->ClearSearchText();
 	}
 
-	// FIXME: singleline, ‰EŠñ‚¹/¶Šñ‚¹‚Ìİ’è‚ğ‰Â”\‚É‚·‚é
+	// FIXME: singleline, å³å¯„ã›/å·¦å¯„ã›ã®è¨­å®šã‚’å¯èƒ½ã«ã™ã‚‹
 	m_edit_data->del_all();
 	m_edit_data->set_limit_text(m_grid_data->Get_ColLimit(pt.y, pt.x));
 	m_edit_data->paste(GetEnterEditData(pt.y, pt.x));
@@ -4085,15 +4085,15 @@ BOOL CGridCtrl::LeaveEdit()
 	BOOL b_update_row = m_grid_data->IsUpdateRow(edit_row);
 	BOOL b_result = TRUE;
 
-	// •ÒWŒ‹‰Ê‚ğƒZƒbƒg
+	// ç·¨é›†çµæœã‚’ã‚»ãƒƒãƒˆ
 	if(m_edit_data->is_edit_data()) {
 		CString str = GetLeaveEditData();
 
 		if(m_grid_data->UpdateCell(pt.y, pt.x, str.GetBuffer(0), -1) != 0) {
-			// •ÒWŒ‹‰Ê‚Ì•Û‘¶‚É¸”s
+			// ç·¨é›†çµæœã®ä¿å­˜ã«å¤±æ•—
 			CString msg = m_grid_data->GetLastErrorMessage();
 			if(!msg.IsEmpty()) {
-				m_edit_data->del_all();	// MessageBox‚Ìƒ^ƒCƒ~ƒ“ƒO‚Å2‰ñ–Ú‚ªÀs‚³‚ê‚éH
+				m_edit_data->del_all();	// MessageBoxã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§2å›ç›®ãŒå®Ÿè¡Œã•ã‚Œã‚‹ï¼Ÿ
 				MessageBox(msg, _T("Error"), MB_OK | MB_ICONERROR);
 			}
 			b_result = FALSE;
@@ -4365,7 +4365,7 @@ BOOL CGridCtrl::HaveSelectedRow(int row)
 
 void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point) 
 {
-	// sƒwƒbƒ_
+	// è¡Œãƒ˜ãƒƒãƒ€
 	int row = HitRowHeader(point);
 	if(row != -1) {
 		if(!HaveSelectedRow(row)) SelectRow(row);
@@ -4373,7 +4373,7 @@ void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point)
 		return;
 	}
 
-	// —ñƒwƒbƒ_
+	// åˆ—ãƒ˜ãƒƒãƒ€
 	int col = HitColHeader(point);
 	if(col != -1) {
 		if(!HaveSelectedCol(col)) SelectCol(col);
@@ -4381,14 +4381,14 @@ void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point)
 		return;
 	}
 
-	// ‘S‘I‘ğ
+	// å…¨é¸æŠ
 	if(HitAllSelectArea(point)) {
 		SelectAll();
 		CScrollWnd::OnRButtonDown(nFlags, point);
 		return;
 	}
 
-	// ƒZƒ‹‘I‘ğ
+	// ã‚»ãƒ«é¸æŠ
 	POINT	pt;
 	HitCell(point, &pt);
 	if(pt.x == -1 || pt.y == -1) {
@@ -4396,7 +4396,7 @@ void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point)
 		return;
 	}
 
-	// ‘I‘ğ”ÍˆÍ“à
+	// é¸æŠç¯„å›²å†…
 	if(HitSelectedArea(pt) == TRUE) {
 		CScrollWnd::OnRButtonDown(nFlags, point);
 		return;
@@ -4416,7 +4416,7 @@ int CGridCtrl::ReplaceTextAll(const TCHAR *search_text, const TCHAR *replace_tex
 	CRegData reg_data;
 
 	if(!reg_data.Compile2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp)) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 
@@ -4435,7 +4435,7 @@ int CGridCtrl::ReplaceTextAll(const TCHAR *search_text, const TCHAR *replace_tex
 
 	int replace_cnt = 0;
 
-	BOOL	b_cur_cell = TRUE;	// Å‰‚Ì‚P‰ñ–Ú‚ÌŒŸõ‚Ì‚Æ‚«‚ÍCŒ»İ‚ÌƒZƒ‹‚à’²‚×‚é
+	BOOL	b_cur_cell = TRUE;	// æœ€åˆã®ï¼‘å›ç›®ã®æ¤œç´¢ã®ã¨ãã¯ï¼Œç¾åœ¨ã®ã‚»ãƒ«ã‚‚èª¿ã¹ã‚‹
 
 	for(;;) {
 		if(m_grid_data->SearchDataRegexp(cur_pt, &searched_pt, 1,  
@@ -4534,7 +4534,7 @@ void CGridCtrl::SetColor(int type, COLORREF color)
 		m_grid_data->SetDefaultTextColor(color);
 		m_grid_data->GetDispData()->GetToolTip()->SetTextColor(color);
 
-		// ŒİŠ·«‚Ì‚½‚ß‚Ìİ’è (Œ»İs‚ÌƒeƒLƒXƒg‚ğ“¯‚¶F‚É‚·‚é)
+		// äº’æ›æ€§ã®ãŸã‚ã®è¨­å®š (ç¾åœ¨è¡Œã®ãƒ†ã‚­ã‚¹ãƒˆã‚’åŒã˜è‰²ã«ã™ã‚‹)
 		SetColor(GRID_CUR_ROW_TEXT_COLOR, color);
 		break;
 	case GRID_BG_COLOR:
@@ -4557,7 +4557,7 @@ COLORREF CGridCtrl::GetColor(int type)
 
 BOOL CGridCtrl::IsActiveSplitter()
 {
-	// •ªŠ„ƒ‚[ƒh‚Ì‚Æ‚«CÅŒã‚ÉƒAƒNƒeƒBƒu‚É‚È‚Á‚½ƒEƒBƒ“ƒhƒE‚©’²‚×‚é
+	// åˆ†å‰²ãƒ¢ãƒ¼ãƒ‰ã®ã¨ãï¼Œæœ€å¾Œã«ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‹èª¿ã¹ã‚‹
 	if(IsSplitterMode() && !m_last_active_wnd) return FALSE;
 	return TRUE;
 }
@@ -4667,7 +4667,7 @@ int CGridCtrl::SearchColumn2(const TCHAR *search_text, int dir, BOOL b_distinct_
 
 	CRegData	reg_data;
 	if(!reg_data.Compile2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp)) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 
@@ -4676,14 +4676,14 @@ int CGridCtrl::SearchColumn2(const TCHAR *search_text, int dir, BOOL b_distinct_
 	if(!(m_gridStyle & GRS_SWAP_ROW_COL_MODE)) {
 		if(m_grid_data->SearchColumnRegexp(m_grid_data->get_cur_col(), &result_col, dir,
 			b_loop, b_looped, FALSE, reg_data.GetRegData()) == 0) {
-			// Œ©‚Â‚©‚ç‚È‚¢
+			// è¦‹ã¤ã‹ã‚‰ãªã„
 			return 1;
 		}
 		SelectCol(result_col);
 	} else {
 		if(m_grid_data->SearchColumnRegexp(m_grid_data->get_cur_row(), &result_col, dir,
 			b_loop, b_looped, FALSE, reg_data.GetRegData()) == 0) {
-			// Œ©‚Â‚©‚ç‚È‚¢
+			// è¦‹ã¤ã‹ã‚‰ãªã„
 			return 1;
 		}
 		SelectRow(result_col);

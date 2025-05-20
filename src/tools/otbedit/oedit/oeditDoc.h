@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // oeditDoc.h : COeditDoc ƒNƒ‰ƒX‚ÌéŒ¾‚¨‚æ‚ÑƒCƒ“ƒ^[ƒtƒFƒCƒX‚Ì’è‹`‚ğ‚µ‚Ü‚·B
+ // oeditDoc.h : COeditDoc ã‚¯ãƒ©ã‚¹ã®å®£è¨€ãŠã‚ˆã³ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã®å®šç¾©ã‚’ã—ã¾ã™ã€‚
 //
 /////////////////////////////////////////////////////////////////////////////
 
@@ -41,14 +41,14 @@
 
 class COeditDoc : public CDocument
 {
-protected: // ƒVƒŠƒAƒ‰ƒCƒY‹@”\‚Ì‚İ‚©‚çì¬‚µ‚Ü‚·B
+protected: // ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºæ©Ÿèƒ½ã®ã¿ã‹ã‚‰ä½œæˆã—ã¾ã™ã€‚
 	COeditDoc();
 	DECLARE_DYNCREATE(COeditDoc)
 
-// ƒAƒgƒŠƒrƒ…[ƒg
+// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 public:
 
-// ƒIƒyƒŒ[ƒVƒ‡ƒ“
+// ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	CEditData *GetEditData() { return &(m_doc_data_arr.GetCurrentDocData()->edit_data); }
 	CCodeAssistEditCtrl *GetEditCtrl() { return &(m_doc_data_arr.GetCurrentDocData()->edit_ctrl); }
@@ -68,8 +68,8 @@ public:
 	void SetEditDataOption();
 	void SetEditDataOption(CEditData *edit_data);
 
-//ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+//ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(COeditDoc)
 	public:
 	virtual BOOL OnNewDocument();
@@ -83,7 +83,7 @@ public:
 	virtual BOOL SaveModified();
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 public:
 	virtual ~COeditDoc();
 #ifdef _DEBUG
@@ -107,7 +107,7 @@ public:
 
 protected:
 
-// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 protected:
 	//{{AFX_MSG(COeditDoc)
 	afx_msg void OnFileLoadEuc();
@@ -161,6 +161,6 @@ private:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Visual C++ ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_OEDITDOC_H__52A23F4B_4E07_11D5_8505_00E018A83B1B__INCLUDED_)

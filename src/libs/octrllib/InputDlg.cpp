@@ -46,7 +46,7 @@ BOOL CInputDlg::OnInitDialog()
 {
 	SetWindowText(m_title);
 
-	m_font.CreatePointFont(90, _T("‚l‚r ƒSƒVƒbƒN"));
+	m_font.CreatePointFont(90, _T("ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯"));
 	SetFont(&m_font);
 
 	CRect dlg_rect;

@@ -115,7 +115,7 @@ int CSJISArchive::CheckKanjiCode(CArchive *ar, int default_kanji_code)
 
 int check_line_type(const char *p, int len)
 {
-	// UNICODE‚É‘Î‰‚·‚é‚½‚ßC*p != '\0'‚Íƒ`ƒFƒbƒN‚µ‚È‚¢
+	// UNICODEã«å¯¾å¿œã™ã‚‹ãŸã‚ï¼Œ*p != '\0'ã¯ãƒã‚§ãƒƒã‚¯ã—ãªã„
 	for(; len > 0; p++, len--) {
 		if(*p == '\r' || *p == '\n') break;
 	}
@@ -789,12 +789,12 @@ TCHAR *CSJISArchive::UNICODERead()
 	int		len;
 
 	if(m_init == FALSE) {
-		// 0xff 0xfe‚ğ“Ç‚İ”ò‚Î‚·
+		// 0xff 0xfeã‚’èª­ã¿é£›ã°ã™
 		len = m_ar->GetFile()->Read((char *)m_buf, 2);
 		if(len == 0) return NULL;
 
 		if(check_unicode_signature(m_buf) == 0) {
-			// signature–³‚µ
+			// signatureç„¡ã—
 			m_ar->GetFile()->SeekToBegin();
 		}
 
@@ -802,7 +802,7 @@ TCHAR *CSJISArchive::UNICODERead()
 	}
 
 	int		read_len = sizeof(m_buf) - 3;
-	// ‹ô”‚É‚·‚é
+	// å¶æ•°ã«ã™ã‚‹
 	read_len -= 2 - read_len % 2;
 
 	len = m_ar->GetFile()->Read((char *)m_buf, read_len);
@@ -812,7 +812,7 @@ TCHAR *CSJISArchive::UNICODERead()
 
 	m_buf_p = unicodetosjis((wchar_t *)m_buf, m_conv_buf);
 
-	// '\r'‚Æ'\n'‚ğØ‚è—£‚³‚È‚¢
+	// '\r'ã¨'\n'ã‚’åˆ‡ã‚Šé›¢ã•ãªã„
 	if(len == read_len && *(m_buf_p - 1) == '\r') {
 		*(m_buf_p - 1) = '\0';
 		m_ar->GetFile()->Seek(-2, CFile::current);
@@ -827,8 +827,8 @@ TCHAR *sjistounicode(TCHAR *src, wchar_t *dst, int dst_size, int *dst_byte)
 	
 	*dst_byte = 0;
 
-	dst_size -= 2 - dst_size % 2; // ‹ô”‚É‚·‚é
-	dst_size -= 2;	// L'\0'‚Ì•ª‚ğŠm•Û
+	dst_size -= 2 - dst_size % 2; // å¶æ•°ã«ã™ã‚‹
+	dst_size -= 2;	// L'\0'ã®åˆ†ã‚’ç¢ºä¿
 
 	for(;;) {
 		if(*src == '\0') break;
@@ -858,7 +858,7 @@ void CSJISArchive::UNICODEWriteString(TCHAR *buf)
 	int			dst_byte;
 
 	if(m_init == FALSE) {
-		// 0xff 0xfe‚ğ‘‚«‚Ş
+		// 0xff 0xfeã‚’æ›¸ãè¾¼ã‚€
 		if(m_mode == KANJI_CODE_UNICODE) {
 			TCHAR uni_head[2];
 			uni_head[0] = 0xff;
@@ -907,7 +907,7 @@ TCHAR *utf8tosjis(TCHAR *src, TCHAR *dst, int *back_cnt)
 			*back_cnt = _tcslen(src);
 			if(*back_cnt < 3) break;
 
-			// error(1byte“Ç‚İ”ò‚Î‚·)
+			// error(1byteèª­ã¿é£›ã°ã™)
 			*back_cnt = 0;
 			memcpy(dst, src, 1);
 			src++;
@@ -939,12 +939,12 @@ TCHAR *CSJISArchive::UTF8Read()
 	int		len;
 
 	if(m_init == FALSE) {
-		// UTF-8 signature(0xef 0xbb 0xbf)‚ğ“Ç‚İ”ò‚Î‚·
+		// UTF-8 signature(0xef 0xbb 0xbf)ã‚’èª­ã¿é£›ã°ã™
 		len = m_ar->GetFile()->Read((char *)m_buf, 3);
 		if(len == 0) return NULL;
 
 		if(check_utf8_signature(m_buf) == 0) {
-			// signature–³‚µ
+			// signatureç„¡ã—
 			m_ar->GetFile()->SeekToBegin();
 		}
 
@@ -963,7 +963,7 @@ TCHAR *CSJISArchive::UTF8Read()
 	if(len == read_len && back_cnt != 0) {
 		m_ar->GetFile()->Seek(-back_cnt, CFile::current);
 	} else if(len == read_len && *(m_buf_p - 1) == '\r') {
-		// '\r'‚Æ'\n'‚ğØ‚è—£‚³‚È‚¢
+		// '\r'ã¨'\n'ã‚’åˆ‡ã‚Šé›¢ã•ãªã„
 		*(m_buf_p - 1) = '\0';
 		m_ar->GetFile()->Seek(-1, CFile::current);
 	}
@@ -1009,7 +1009,7 @@ TCHAR *sjistoutf8(TCHAR *src, TCHAR *dst, int dst_size)
 	int		utf8_len;
 	wchar_t	unicode_char;
 
-	// utf8ƒf[ƒ^‚ª“r’†‚ÅØ‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+	// utf8ãƒ‡ãƒ¼ã‚¿ãŒé€”ä¸­ã§åˆ‡ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 	dst_size -= 4;
 
 	for(;;) {
@@ -1041,7 +1041,7 @@ void CSJISArchive::UTF8WriteString(TCHAR *buf)
 {
 	if(m_init == FALSE) {
 		if(m_mode == KANJI_CODE_UTF8) {
-			// 0xef 0xbb 0xbf‚ğ‘‚«‚Ş
+			// 0xef 0xbb 0xbfã‚’æ›¸ãè¾¼ã‚€
 			TCHAR uni_head[3];
 			uni_head[0] = 0xef;
 			uni_head[1] = 0xbb;
@@ -1082,7 +1082,7 @@ void CSJISArchive::SetKanjiCodeCombo(CComboBox *p_combo_kanji, int kanji_code, B
 
 	int base = 0;
 	if(b_add_autodetect) {
-		p_combo_kanji->InsertString(0, _T("©“®”»•Ê"));
+		p_combo_kanji->InsertString(0, _T("è‡ªå‹•åˆ¤åˆ¥"));
 		p_combo_kanji->SetItemData(0, UnknownKanjiCode);
 		base = 1;
 	}

@@ -67,7 +67,7 @@ COLORREF CCodeAssistData::GetCellTextColor(int row, int col)
 	if(type == 2) color = m_keyword2_color;
 
 	if(m_gray_candidate && !IsEnableRow(row)) {
-		// ”wŒiF‚ÆƒeƒLƒXƒg‚ğƒuƒŒƒ“ƒh‚·‚é
+		// èƒŒæ™¯è‰²ã¨ãƒ†ã‚­ã‚¹ãƒˆã‚’ãƒ–ãƒ¬ãƒ³ãƒ‰ã™ã‚‹
 		color = mix_color(m_bk_color, color, 0.5);
 	}
 

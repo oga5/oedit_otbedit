@@ -1,4 +1,4 @@
-// oextregDlg.cpp : �C���v�������e�[�V���� �t�@�C��
+// oextregDlg.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -28,26 +28,26 @@ enum connect_info_list {
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// �A�v���P�[�V�����̃o�[�W�������Ŏg���Ă��� CAboutDlg �_�C�A���O
+// アプリケーションのバージョン情報で使われている CAboutDlg ダイアログ
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// �_�C�A���O �f�[�^
+// ダイアログ データ
 	//{{AFX_DATA(CAboutDlg)
 	enum { IDD = IDD_ABOUTBOX };
 	CString	m_static_version;
 	//}}AFX_DATA
 
-	// ClassWizard �͉��z�֐��̃I�[�o�[���C�h�𐶐����܂�
+	// ClassWizard は仮想関数のオーバーライドを生成します
 	//{{AFX_VIRTUAL(CAboutDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV �̃T�|�[�g
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV のサポート
 	//}}AFX_VIRTUAL
 
-// �C���v�������e�[�V����
+// インプリメンテーション
 protected:
 	//{{AFX_MSG(CAboutDlg)
 	virtual BOOL OnInitDialog();
@@ -83,8 +83,8 @@ BOOL CAboutDlg::OnInitDialog()
 	m_static_version = "oextreg Version " + file_version;
 	UpdateData(FALSE);
 	
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
@@ -93,7 +93,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COextregDlg �_�C�A���O
+// COextregDlg ダイアログ
 
 COextregDlg::COextregDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(COextregDlg::IDD, pParent)
@@ -103,7 +103,7 @@ COextregDlg::COextregDlg(CWnd* pParent /*=NULL*/)
 	m_check_txt = FALSE;
 	m_ie_source_viewer = FALSE;
 	//}}AFX_DATA_INIT
-	// ����: LoadIcon �� Win32 �� DestroyIcon �̃T�u�V�[�P���X��v�����܂���B
+	// メモ: LoadIcon は Win32 の DestroyIcon のサブシーケンスを要求しません。
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_hSmallIcon = (HICON)::LoadImage(AfxGetInstanceHandle(),
 		MAKEINTRESOURCE(IDR_MAINFRAME),
@@ -139,15 +139,15 @@ BEGIN_MESSAGE_MAP(COextregDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COextregDlg ���b�Z�[�W �n���h��
+// COextregDlg メッセージ ハンドラ
 
 BOOL COextregDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// "�o�[�W�������..." ���j���[���ڂ��V�X�e�� ���j���[�֒ǉ����܂��B
+	// "バージョン情報..." メニュー項目をシステム メニューへ追加します。
 
-	// IDM_ABOUTBOX �̓R�}���h ���j���[�͈̔͂łȂ���΂Ȃ�܂���B
+	// IDM_ABOUTBOX はコマンド メニューの範囲でなければなりません。
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -163,24 +163,24 @@ BOOL COextregDlg::OnInitDialog()
 		}
 	}
 
-	// ���̃_�C�A���O�p�̃A�C�R����ݒ肵�܂��B�t���[�����[�N�̓A�v���P�[�V�����̃��C��
-	// �E�B���h�E���_�C�A���O�łȂ����͎����I�ɐݒ肵�܂���B
-	SetIcon(m_hIcon, TRUE);			// �傫���A�C�R����ݒ�
-	SetIcon(m_hSmallIcon, FALSE);		// �������A�C�R����ݒ�
+	// このダイアログ用のアイコンを設定します。フレームワークはアプリケーションのメイン
+	// ウィンドウがダイアログでない時は自動的に設定しません。
+	SetIcon(m_hIcon, TRUE);			// 大きいアイコンを設定
+	SetIcon(m_hSmallIcon, FALSE);		// 小さいアイコンを設定
 	
-	// TODO: ���ʂȏ��������s�����͂��̏ꏊ�ɒǉ����Ă��������B
+	// TODO: 特別な初期化を行う時はこの場所に追加してください。
 	ListView_SetExtendedListViewStyle(m_ext_list.GetSafeHwnd(), LVS_EX_FULLROWSELECT);
 
-	m_ext_list.InsertColumn(LIST_FILTER_EXT, _T("�g���q"), LVCFMT_LEFT, 50);
-	m_ext_list.InsertColumn(LIST_FILE_TYPE_NAME, _T("�t�@�C�����"), LVCFMT_LEFT, 200);
-	m_ext_list.InsertColumn(LIST_EXPLORER_RCLICK, _T("�E�N���b�N"), LVCFMT_LEFT, 80);
+	m_ext_list.InsertColumn(LIST_FILTER_EXT, _T("拡張子"), LVCFMT_LEFT, 50);
+	m_ext_list.InsertColumn(LIST_FILE_TYPE_NAME, _T("ファイル種別"), LVCFMT_LEFT, 200);
+	m_ext_list.InsertColumn(LIST_EXPLORER_RCLICK, _T("右クリック"), LVCFMT_LEFT, 80);
 
 	m_ext_list.SetWindowText(OEXTREG_WINDOW_NAME);
 
 	InitExtList();
 	InitIESourceViewer();
 	
-	return TRUE;  // TRUE ��Ԃ��ƃR���g���[���ɐݒ肵���t�H�[�J�X�͎����܂���B
+	return TRUE;  // TRUE を返すとコントロールに設定したフォーカスは失われません。
 }
 
 void COextregDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -196,19 +196,19 @@ void COextregDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// �����_�C�A���O�{�b�N�X�ɍŏ����{�^����ǉ�����Ȃ�΁A�A�C�R����`�悷��
-// �R�[�h���ȉ��ɋL�q����K�v������܂��BMFC �A�v���P�[�V������ document/view
-// ���f�����g���Ă���̂ŁA���̏����̓t���[�����[�N�ɂ�莩���I�ɏ�������܂��B
+// もしダイアログボックスに最小化ボタンを追加するならば、アイコンを描画する
+// コードを以下に記述する必要があります。MFC アプリケーションは document/view
+// モデルを使っているので、この処理はフレームワークにより自動的に処理されます。
 
 void COextregDlg::OnPaint() 
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // �`��p�̃f�o�C�X �R���e�L�X�g
+		CPaintDC dc(this); // 描画用のデバイス コンテキスト
 
 		SendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);
 
-		// �N���C�A���g�̋�`�̈���̒���
+		// クライアントの矩形領域内の中央
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -216,7 +216,7 @@ void COextregDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// �A�C�R����`�悵�܂��B
+		// アイコンを描画します。
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -225,8 +225,8 @@ void COextregDlg::OnPaint()
 	}
 }
 
-// �V�X�e���́A���[�U�[���ŏ����E�B���h�E���h���b�O���Ă���ԁA
-// �J�[�\����\�����邽�߂ɂ������Ăяo���܂��B
+// システムは、ユーザーが最小化ウィンドウをドラッグしている間、
+// カーソルを表示するためにここを呼び出します。
 HCURSOR COextregDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hSmallIcon;
@@ -257,9 +257,9 @@ void COextregDlg::RegisterShellFileTypes(TCHAR *ext, TCHAR *fileTypeName, BOOL b
 	CString fileTypeId2 = GetFileTypeId(ext);
 	if(fileTypeId2 != "" && fileTypeId2 != fileTypeId) {
 		CString		msg;
-		msg.Format(_T("%s�́C%s�Ɋ֘A�t������Ă��܂��B�ύX���Ă�낵���ł����H"),
+		msg.Format(_T("%sは，%sに関連付けされています。変更してよろしいですか？"),
 			filterExt, GetFileTypeName(ext));
-		if(MessageBox(msg, _T("�m�F"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
+		if(MessageBox(msg, _T("確認"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
 	}
 
 	UnRegisterShellFileTypes(ext);
@@ -346,7 +346,7 @@ void COextregDlg::AddExtList(TCHAR *ext)
 	m_ext_list.SetItemText(item.iItem, LIST_FILE_TYPE_NAME, fileTypeName);
 
 	if(explorer_rclick) {
-		m_ext_list.SetItemText(item.iItem, LIST_EXPLORER_RCLICK, _T("��"));
+		m_ext_list.SetItemText(item.iItem, LIST_EXPLORER_RCLICK, _T("○"));
 	}
 
 	if(filterExt == _T(".txt")) m_check_txt = TRUE;
@@ -362,7 +362,7 @@ void COextregDlg::OnOK()
 void COextregDlg::OnItemchangedExtList(NMHDR* pNMHDR, LRESULT* pResult) 
 {
 	NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
-	// TODO: ���̈ʒu�ɃR���g���[���ʒm�n���h���p�̃R�[�h��ǉ����Ă�������
+	// TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
 
 	*pResult = 0;
 
@@ -409,9 +409,9 @@ void COextregDlg::OnBtnDelete()
 	ext.ReleaseBuffer();
 
 	CString		msg;
-	msg.Format(_T("%s���폜���܂��B��낵���ł����H"), ext);
+	msg.Format(_T("%sを削除します。よろしいですか？"), ext);
 
-	if(MessageBox(msg, _T("�폜"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
+	if(MessageBox(msg, _T("削除"), MB_YESNO | MB_ICONQUESTION) == IDNO) return;
 
 	UnRegisterShellFileTypes(ext.GetBuffer(0));
 	InitExtList();
@@ -467,7 +467,7 @@ void COextregDlg::OnCheckJava()
 	UpdateData(TRUE);
 
 	if(m_check_java) {
-		RegisterShellFileTypes(_T(".java"), _T("Java�\�[�X�t�@�C��"), FALSE);	
+		RegisterShellFileTypes(_T(".java"), _T("Javaソースファイル"), FALSE);	
 	} else {
 		UnRegisterShellFileTypes(_T(".java"));
 	}
@@ -481,7 +481,7 @@ void COextregDlg::OnCheckTxt()
 	UpdateData(TRUE);
 
 	if(m_check_txt) {
-		RegisterShellFileTypes(_T(".txt"), _T("�e�L�X�g�t�@�C��"), TRUE);
+		RegisterShellFileTypes(_T(".txt"), _T("テキストファイル"), TRUE);
 	} else {
 		UnRegisterShellFileTypes(_T(".txt"));
 	}
@@ -496,9 +496,9 @@ void COextregDlg::OnIeSourceViewer()
 
 	if(m_ie_source_viewer) {
 		CString msg;
-		msg.Format(_T("%s��InternetExplorer�̃\�[�X��\������G�f�B�^�ɐݒ肵�܂��B\n")
-			_T("��낵���ł����H"), APP_NAME);
-		if(MessageBox(msg, _T("�m�F"), MB_YESNO | MB_ICONQUESTION) == IDYES) {
+		msg.Format(_T("%sをInternetExplorerのソースを表示するエディタに設定します。\n")
+			_T("よろしいですか？"), APP_NAME);
+		if(MessageBox(msg, _T("確認"), MB_YESNO | MB_ICONQUESTION) == IDYES) {
 			CString appFileName;
 			appFileName.Format(_T("%s%s.exe"), GetAppPath(), APP_NAME);
 			SetIESourceViewer(appFileName.GetBuffer(0));

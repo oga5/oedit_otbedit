@@ -221,7 +221,7 @@ void UnRegisterShellFileTypes(TCHAR *ext)
 
 	CString strTemp;
 
-	// コマンドを削除
+	// 繧ｳ繝槭Φ繝峨ｒ蜑企勁
 	strTemp.Format(_afxShellOpenFmt, fileTypeId);
 	DeleteRegKey(strTemp);
 	strTemp.Format(_afxShellPrintFmt, fileTypeId);
@@ -231,15 +231,15 @@ void UnRegisterShellFileTypes(TCHAR *ext)
 	strTemp.Format(_afxDdeExecFmt, fileTypeId);
 	DeleteRegKey(strTemp);
 
-	// アイコンを削除
+	// 繧｢繧､繧ｳ繝ｳ繧貞炎髯､
 	strTemp.Format(_afxDefaultIconFmt, fileTypeId);
 	DeleteRegKey(strTemp);
 
-	// アイコンを削除
+	// 繧｢繧､繧ｳ繝ｳ繧貞炎髯､
 	strTemp.Format(_afxDefaultIconFmt, fileTypeId);
 	RegDeleteKey(HKEY_CLASSES_ROOT, strTemp);
 
-	// 拡張子を削除
+	// 諡｡蠑ｵ蟄舌ｒ蜑企勁
 	RegDeleteKeyRecursive(HKEY_CLASSES_ROOT, filterExt);
 }
 
@@ -253,26 +253,26 @@ void RegisterShellFileTypes(TCHAR *ext, TCHAR *fileTypeId, TCHAR *fileTypeName, 
 	CString	strTemp;
 	CString strPathName;
 
-	// ドキュメントタイプを登録
+	// 繝峨く繝･繝｡繝ｳ繝医ち繧､繝励ｒ逋ｻ骭ｲ
 	(void)SetRegKey(HKEY_CLASSES_ROOT, fileTypeId, fileTypeName);
 
-	// ファイルオープンコマンドを登録
+	// 繝輔ぃ繧､繝ｫ繧ｪ繝ｼ繝励Φ繧ｳ繝槭Φ繝峨ｒ逋ｻ骭ｲ
 	strTemp.Format(_afxShellOpenFmt, fileTypeId);
 	CString strOpenCommandLine;
 	strOpenCommandLine.Format(_T("%s \"%%1\""), appFileName);
 	(void)SetRegKey(HKEY_CLASSES_ROOT, strTemp, strOpenCommandLine);
 
-	// アイコンを登録
+	// 繧｢繧､繧ｳ繝ｳ繧堤匳骭ｲ
 	strTemp.Format(_afxDefaultIconFmt, fileTypeId);
 	CString strDefaultIconCommandLine;
 	strDefaultIconCommandLine.Format(_T("%s,%d"), iconFileName, iconIdx);
 	(void)SetRegKey(HKEY_CLASSES_ROOT, strTemp, strDefaultIconCommandLine);
 
-	// 拡張子を登録
+	// 諡｡蠑ｵ蟄舌ｒ逋ｻ骭ｲ
 	(void)SetRegKey(HKEY_CLASSES_ROOT, filterExt, fileTypeId);
 
 	if(b_dde) {
-		// DDEを登録
+		// DDE繧堤匳骭ｲ
 		strTemp.Format(_afxDdeExecFmt, fileTypeId);
 		CString strDdeExecValue;
 		strDdeExecValue.Format(_T("%s"), _afxDdeExecValue);
@@ -280,7 +280,7 @@ void RegisterShellFileTypes(TCHAR *ext, TCHAR *fileTypeId, TCHAR *fileTypeName, 
 	}
 
 	if(b_explorer_rclick) {
-		// エクスプローラの右クリックメニューに登録
+		// 繧ｨ繧ｯ繧ｹ繝励Ο繝ｼ繝ｩ縺ｮ蜿ｳ繧ｯ繝ｪ繝�繧ｯ繝｡繝九Η繝ｼ縺ｫ逋ｻ骭ｲ
 		strTemp.Format(_afxShellNewFmt, filterExt);
 		(void)SetRegKey(HKEY_CLASSES_ROOT, strTemp, _afxShellNewValue, _afxShellNewValueName);
 	}

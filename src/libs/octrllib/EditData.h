@@ -51,7 +51,7 @@ enum GET_WORD_MOVE_METHOD_OPT {
 #define GET_WORD_EX_OPT_CONSIDER_QUOTE_WORD		(0x0001 << 1)
 
 
-// FIXME class‚É‚µ‚ÄAƒƒ‚ƒŠ‚ÌŠÇ—‚ðƒNƒ‰ƒX–³‚¢‚Ås‚¤ (ini_buf‚ÌŠÇ—AƒfƒXƒgƒ‰ƒNƒ^‚Å‰ð•ú‚È‚Ç)
+// FIXME classã«ã—ã¦ã€ãƒ¡ãƒ¢ãƒªã®ç®¡ç†ã‚’ã‚¯ãƒ©ã‚¹ç„¡ã„ã§è¡Œã† (ini_bufã®ç®¡ç†ã€ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§è§£æ”¾ãªã©)
 #define CHECK_CHAR_TYPE_CACHE_BUF_SIZE	256
 struct check_char_type_cache {
 	char			*char_type_arr;
@@ -75,34 +75,34 @@ struct check_char_type_cache {
 #define ECS_SHOW_2BYTE_SPACE	((QWORD)1 << 9)
 #define ECS_CLICKABLE_URL		((QWORD)1 << 10)
 #define ECS_SEARCH_LOOP_MSG		((QWORD)1 << 11)
-#define ECS_DISABLE_KEY_DOWN	((QWORD)1 << 12)	// ƒAƒNƒZƒ‰ƒŒ[ƒ^ƒL[‚ðƒJƒXƒ^ƒ}ƒCƒY‚·‚é‚Æ‚«‚ÉÝ’è‚·‚é
+#define ECS_DISABLE_KEY_DOWN	((QWORD)1 << 12)	// ã‚¢ã‚¯ã‚»ãƒ©ãƒ¬ãƒ¼ã‚¿ã‚­ãƒ¼ã‚’ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºã™ã‚‹ã¨ãã«è¨­å®šã™ã‚‹
 #define ECS_DRAG_DROP_EDIT		((QWORD)1 << 13)
 #define ECS_SHOW_ROW_LINE		((QWORD)1 << 14)
 #define ECS_SHOW_EDIT_ROW		((QWORD)1 << 15)
 #define ECS_DRAG_SELECT_COPY	((QWORD)1 << 16)
-#define ECS_V_SCROLL_EX			((QWORD)1 << 17)	// •ÒWs‚ª‰æ–Ê‚Ì‰º’[‚É‚­‚Á‚Â‚©‚È‚¢‚æ‚¤‚É‚·‚é
+#define ECS_V_SCROLL_EX			((QWORD)1 << 17)	// ç·¨é›†è¡ŒãŒç”»é¢ã®ä¸‹ç«¯ã«ãã£ã¤ã‹ãªã„ã‚ˆã†ã«ã™ã‚‹
 #define ECS_NO_BLINK_CARET		((QWORD)1 << 18)
-#define ECS_ROW_COPY_AT_NO_SEL	((QWORD)1 << 19)	// ‘I‘ð”ÍˆÍ‚ª‚È‚¢‚Æ‚«‚ÍCsƒRƒs[‚·‚é
+#define ECS_ROW_COPY_AT_NO_SEL	((QWORD)1 << 19)	// é¸æŠžç¯„å›²ãŒãªã„ã¨ãã¯ï¼Œè¡Œã‚³ãƒ”ãƒ¼ã™ã‚‹
 #define ECS_SHOW_SPACE			((QWORD)1 << 20)
 #define ECS_SHOW_LINE_END		((QWORD)1 << 21)
 #define ECS_NO_INVERT_SELECT_TEXT	((QWORD)1 << 22)
 #define ECS_IME_CARET_COLOR		((QWORD)1 << 23)
 #define ECS_TEXT_DROP_EDIT		((QWORD)1 << 24)
-#define ECS_SHOW_BRACKETS_BOLD	((QWORD)1 << 25)	// Œ»Ý‚ÌƒJ[ƒ\ƒ‹ˆÊ’u‚É‘Î‰ž‚·‚éŠ‡ŒÊ‚ð‹­’²•\Ž¦
-#define ECS_WORD_SELECT_MODE	((QWORD)1 << 26)	// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Å‘I‘ðŠJŽn‚µ‚½‚Æ‚«A’PŒê’PˆÊ‚Å‘I‘ð‚·‚é
-#define ECS_DRAW_ANTIALIAS		((QWORD)1 << 27)	// TrueTypeFont‚Ì‚Æ‚«A•¶Žš‚ðƒAƒ“ƒ`ƒGƒCƒŠƒAƒX‚Å•`‰æ‚·‚é
-#define ECS_FULL_SCREEN_MODE	((QWORD)1 << 28)	// ƒtƒ‹ƒXƒNƒŠ[ƒ“ƒ‚[ƒh
-#define ECS_SHOW_RULED_LINE		((QWORD)1 << 29)	// Œrü•\Ž¦
-#define ECS_CLEAR_AFTER_COPY	((QWORD)1 << 30)	// ƒRƒs[‚µ‚½‚ç‘I‘ð”ÍˆÍ‚ðƒNƒŠƒA‚·‚é
-#define ECS_MODIFIED_BK_COLOR	((QWORD)1 << 31)	// •ÒW‚³‚ê‚½‚Æ‚«”wŒiF‚ð•ÏX‚·‚é
+#define ECS_SHOW_BRACKETS_BOLD	((QWORD)1 << 25)	// ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã«å¯¾å¿œã™ã‚‹æ‹¬å¼§ã‚’å¼·èª¿è¡¨ç¤º
+#define ECS_WORD_SELECT_MODE	((QWORD)1 << 26)	// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã§é¸æŠžé–‹å§‹ã—ãŸã¨ãã€å˜èªžå˜ä½ã§é¸æŠžã™ã‚‹
+#define ECS_DRAW_ANTIALIAS		((QWORD)1 << 27)	// TrueTypeFontã®ã¨ãã€æ–‡å­—ã‚’ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§æç”»ã™ã‚‹
+#define ECS_FULL_SCREEN_MODE	((QWORD)1 << 28)	// ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ãƒ¢ãƒ¼ãƒ‰
+#define ECS_SHOW_RULED_LINE		((QWORD)1 << 29)	// ç½«ç·šè¡¨ç¤º
+#define ECS_CLEAR_AFTER_COPY	((QWORD)1 << 30)	// ã‚³ãƒ”ãƒ¼ã—ãŸã‚‰é¸æŠžç¯„å›²ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
+#define ECS_MODIFIED_BK_COLOR	((QWORD)1 << 31)	// ç·¨é›†ã•ã‚ŒãŸã¨ãèƒŒæ™¯è‰²ã‚’å¤‰æ›´ã™ã‚‹
 
-#define ECS_BRACKET_MULTI_COLOR_ENABLE	((QWORD)1 << 32)	// “ü‚êŽq‚É‚È‚Á‚½ƒJƒbƒR‚ðF•ª‚¯‚µ‚Ä•\Ž¦‚ð—LŒø‚É‚·‚é‚©
-#define ECS_BRACKET_MULTI_COLOR	((QWORD)1 << 33)	// “ü‚êŽq‚É‚È‚Á‚½ƒJƒbƒR‚ðF•ª‚¯‚µ‚Ä•\Ž¦
+#define ECS_BRACKET_MULTI_COLOR_ENABLE	((QWORD)1 << 32)	// å…¥ã‚Œå­ã«ãªã£ãŸã‚«ãƒƒã‚³ã‚’è‰²åˆ†ã‘ã—ã¦è¡¨ç¤ºã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹
+#define ECS_BRACKET_MULTI_COLOR	((QWORD)1 << 33)	// å…¥ã‚Œå­ã«ãªã£ãŸã‚«ãƒƒã‚³ã‚’è‰²åˆ†ã‘ã—ã¦è¡¨ç¤º
 
-#define ECS_TEXT_ALIGN_RIGHT	((QWORD)1 << 34)	// ‰EŠñ‚¹•\Ž¦
+#define ECS_TEXT_ALIGN_RIGHT	((QWORD)1 << 34)	// å³å¯„ã›è¡¨ç¤º
 
 
-// ((QWORD)1 << 63)‚Ü‚Å—˜—p‰Â”\
+// ((QWORD)1 << 63)ã¾ã§åˆ©ç”¨å¯èƒ½
 
 class CEditDataListener
 {
@@ -132,10 +132,10 @@ private:
 	static CStrToken	m_def_str_token;
 	CStrToken	*m_str_token;
 
-	int		m_saved_undo_sequence;	// ƒf[ƒ^‚ð•Û‘¶‚µ‚½‚Æ‚«‚Ìundo_seq
+	int		m_saved_undo_sequence;	// ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã—ãŸã¨ãã®undo_seq
 	int		m_undo_redo_mode;
 
-	UINT	m_edit_seq;				// ƒf[ƒ^‚ª•ÒW‚³‚ê‚é‚½‚Ñ‚É‘‚¦‚é
+	UINT	m_edit_seq;				// ãƒ‡ãƒ¼ã‚¿ãŒç·¨é›†ã•ã‚Œã‚‹ãŸã³ã«å¢—ãˆã‚‹
 
 	unsigned int	m_prev_input_char;
 
@@ -202,7 +202,7 @@ public:
 		HWND loop_msg_wnd, HREG_DATA reg_data, BOOL *b_looped);
 	int search_text_regexp(const TCHAR *reg_str, POINT *pt,
 		BOOL b_distinct_lwr_upr, POINT *start_pt);
-	// end_pt‚àŽw’è‚Å‚«‚é‚æ‚¤‚É‚µ‚½ƒo[ƒWƒ‡ƒ“
+	// end_ptã‚‚æŒ‡å®šã§ãã‚‹ã‚ˆã†ã«ã—ãŸãƒãƒ¼ã‚¸ãƒ§ãƒ³
 	int search_text_regexp_end_pt(POINT *pt, int dir, 
 		BOOL loop, POINT *start_pt, POINT *end_pt, 
 		HWND loop_msg_wnd, HREG_DATA reg_data, BOOL *b_looped);

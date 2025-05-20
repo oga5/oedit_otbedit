@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // EditorOptionPage2.cpp : �C���v�������e�[�V���� �t�@�C��
+ // EditorOptionPage2.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -20,7 +20,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionPage2 �v���p�e�B �y�[�W
+// CEditorOptionPage2 プロパティ ページ
 
 IMPLEMENT_DYNCREATE(CEditorOptionPage2, CPropertyPage)
 
@@ -80,11 +80,11 @@ BEGIN_MESSAGE_MAP(CEditorOptionPage2, CPropertyPage)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditorOptionPage2 ���b�Z�[�W �n���h��
+// CEditorOptionPage2 メッセージ ハンドラ
 
 void CEditorOptionPage2::OnOK() 
 {
-	// TODO: ���̈ʒu�ɂ��̑��̌��ؗp�̃R�[�h��ǉ����Ă�������
+	// TODO: この位置にその他の検証用のコードを追加してください
 	UpdateData(TRUE);
 	
 	CPropertyPage::OnOK();
@@ -104,8 +104,8 @@ BOOL CEditorOptionPage2::OnInitDialog()
 	CheckConfinementCtrl();
 	CheckTextDrop();
 
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 void CEditorOptionPage2::CheckConfinementCtrl()

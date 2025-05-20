@@ -116,7 +116,7 @@ TCHAR *CStrToken::skipSpace(const TCHAR *p)
 
 TCHAR *CStrToken::skipSpaceMultibyte(const TCHAR *p)
 {
-	for(; *p == ' ' || *p == '\t' || *p == '\n' || *p == '\r' || get_char(p) == L'@'; ) {
+	for(; *p == ' ' || *p == '\t' || *p == '\n' || *p == '\r' || get_char(p) == L'ã€€'; ) {
 		p += get_char_len(p);
 	}
 
@@ -227,7 +227,7 @@ void CStrToken::freeKeyword()
 }
 
 /*----------------------------------------------------------------------
-  ƒL[ƒ[ƒh‚ğƒNƒCƒbƒNƒ\[ƒg‚·‚é(s‚Ì“ü‚ê‘Ö‚¦)
+  ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ã‚¯ã‚¤ãƒƒã‚¯ã‚½ãƒ¼ãƒˆã™ã‚‹(è¡Œã®å…¥ã‚Œæ›¿ãˆ)
 ----------------------------------------------------------------------*/
 __inline static void key_word_st_swap(struct _key_word_st *key_words, int r1, int r2) 
 {
@@ -239,8 +239,8 @@ __inline static void key_word_st_swap(struct _key_word_st *key_words, int r1, in
 }
 
 /*----------------------------------------------------------------------
-  ƒL[ƒ[ƒh‚ğƒNƒCƒbƒNƒ\[ƒg‚·‚é(ƒƒCƒ“‚ÌÄ‹AŠÖ”)
-  ¸‡ƒ\[ƒg
+  ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ã‚¯ã‚¤ãƒƒã‚¯ã‚½ãƒ¼ãƒˆã™ã‚‹(ãƒ¡ã‚¤ãƒ³ã®å†å¸°é–¢æ•°)
+  æ˜‡é †ã‚½ãƒ¼ãƒˆ
 ----------------------------------------------------------------------*/
 void CStrToken::key_words_qsort(struct _key_word_st *key_words, int left, int right)
 {
@@ -267,8 +267,8 @@ void CStrToken::key_words_qsort(struct _key_word_st *key_words, int left, int ri
 }
 
 /*----------------------------------------------------------------------
-  ƒL[ƒ[ƒh‚ğ“o˜^‚µ‚½‚ ‚Æ‚Ìˆ—
-  ƒ\[ƒg‚Æch_map‚ÌŒvZ
+  ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ç™»éŒ²ã—ãŸã‚ã¨ã®å‡¦ç†
+  ã‚½ãƒ¼ãƒˆã¨ch_mapã®è¨ˆç®—
 ----------------------------------------------------------------------*/
 void CStrToken::postAddKeyword(struct _key_word_st* key_words, int key_word_cnt)
 {
@@ -278,16 +278,16 @@ void CStrToken::postAddKeyword(struct _key_word_st* key_words, int key_word_cnt)
 		key_words[i].ch_map = calc_ch_map(key_words[i].lwr_str);
 	}
 
-	// ƒL[ƒ[ƒh‚ğƒ\[ƒg‚·‚é(ƒoƒCƒiƒŠƒT[ƒ`‚·‚é‚½‚ß)
-	// bounds checker‚ÅCƒ_ƒ“ƒOƒŠƒ“ƒOƒƒ‚ƒŠƒGƒ‰[‚É‚È‚é‚Ì‚ÅC©‘O‚Ìqsort‚ğg‚¤
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹(ãƒã‚¤ãƒŠãƒªã‚µãƒ¼ãƒã™ã‚‹ãŸã‚)
+	// bounds checkerã§ï¼Œãƒ€ãƒ³ã‚°ãƒªãƒ³ã‚°ãƒ¡ãƒ¢ãƒªã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã®ã§ï¼Œè‡ªå‰ã®qsortã‚’ä½¿ã†
 	//qsort(key_words, key_word_cnt, sizeof(struct _key_word_st), compare_key_word);
 	key_words_qsort(key_words, 0, key_word_cnt - 1);
 }
 
 /*----------------------------------------------------------------------
-  s––‚Ì‰üsƒR[ƒh‚Æsepa‚Åw’è‚µ‚½•¶š‚ğíœ‚·‚é
+  è¡Œæœ«ã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã¨sepaã§æŒ‡å®šã—ãŸæ–‡å­—ã‚’å‰Šé™¤ã™ã‚‹
 ----------------------------------------------------------------------*/
-// FIXME: •¶š—ñˆ—ƒ‰ƒCƒuƒ‰ƒŠ‚ğì¬‚·‚é
+// FIXME: æ–‡å­—åˆ—å‡¦ç†ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½œæˆã™ã‚‹
 static void str_chomp(TCHAR *buf, TCHAR sepa)
 {
 	TCHAR    *c1;
@@ -320,7 +320,7 @@ int CStrToken::initKeywordBuf(TCHAR *msg_buf)
 	m_key_word_buf_len = m_max_key_word_len + 2;
 	if(m_key_word_buf_len < 128) m_key_word_buf_len = 128;
 
-	// ƒL[ƒ[ƒhƒ}ƒbƒ`ˆ—‚Å1•¶š‘½‚­ƒRƒs[‚·‚é•ª‚ÆC'\0'‚Ì‚½‚ßCmax_key_word_len + 2•¶š•ªŠm•Û‚·‚é
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒãƒƒãƒå‡¦ç†ã§1æ–‡å­—å¤šãã‚³ãƒ”ãƒ¼ã™ã‚‹åˆ†ã¨ï¼Œ'\0'ã®ãŸã‚ï¼Œmax_key_word_len + 2æ–‡å­—åˆ†ç¢ºä¿ã™ã‚‹
 	m_key_word_buf = (TCHAR *)malloc(m_key_word_buf_len * sizeof(TCHAR));
 	if(m_key_word_buf == NULL) {
 		_stprintf(msg_buf, _T("CStrToken::initDefaultKeyword(): memory allocate error"));
@@ -417,9 +417,9 @@ unsigned int CStrToken::calc_ch_map(const TCHAR* p)
 {
 	unsigned int ch_map = 0;
 
-	// ƒL[ƒ[ƒh’†‚Ég‚í‚ê‚Ä‚¢‚é•¶š‚©‚çAND‰‰Z—p‚Ì”’l‚ğ¶¬‚·‚é
-	// a:1, b:2...z:25‚Æ‚µ‚Äbit‚ğ—§‚Ä‚Ä‚¢‚­
-	// a-zˆÈŠO‚Í26`31‚ğg‚¤ 26: $, 27: 0-9, 28`31‚Í–¢g—p
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ä¸­ã«ä½¿ã‚ã‚Œã¦ã„ã‚‹æ–‡å­—ã‹ã‚‰ANDæ¼”ç®—ç”¨ã®æ•°å€¤ã‚’ç”Ÿæˆã™ã‚‹
+	// a:1, b:2...z:25ã¨ã—ã¦bitã‚’ç«‹ã¦ã¦ã„ã
+	// a-zä»¥å¤–ã¯26ã€œ31ã‚’ä½¿ã† 26: $, 27: 0-9, 28ã€œ31ã¯æœªä½¿ç”¨
 
 	for(; *p != '\0'; p++) {
 		if(*p >= 'a' && *p <= 'z') {
@@ -481,24 +481,24 @@ int CStrToken::addKeyword(const TCHAR *file_name, TCHAR *msg_buf)
 		return 1;
 	}
 
-	// ƒL[ƒ[ƒh‚Ì”‚ğ”‚¦‚é
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®æ•°ã‚’æ•°ãˆã‚‹
 	cnt = 0;
 	for(;;) {
 		if(uni_ar.ReadLine(buf, sizeof(buf)) == NULL) break;
 		str_chomp(buf, ' ');
 		if(buf[0] == '\0') continue;
-		if(buf[0] == '/' && buf[1] == '/') continue;	// ƒRƒƒ“ƒgs
+		if(buf[0] == '/' && buf[1] == '/') continue;	// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 		cnt++;
 	}
 	if(cnt == 0) return 0;
 
-	// ƒL[ƒ[ƒh\‘¢‘Ì‚Ì‰Šú‰»
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æ§‹é€ ä½“ã®åˆæœŸåŒ–
 	if(!realloc_keywords(m_key_word_cnt + cnt, msg_buf)) {
 		freeKeyword();
 		return 1;
 	}
 
-	// ƒtƒ@ƒCƒ‹‚Ìæ“ª‚É–ß‚Á‚ÄCƒL[ƒ[ƒh‚ğİ’è
+	// ãƒ•ã‚¡ã‚¤ãƒ«ã®å…ˆé ­ã«æˆ»ã£ã¦ï¼Œã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®š
 	if(!uni_ar.ReOpenFile()) {
 		_stprintf(msg_buf, _T("CStrToken::initDefaultKeyword(): fopen error(%s)"), file_name);
 		return 1;
@@ -510,7 +510,7 @@ int CStrToken::addKeyword(const TCHAR *file_name, TCHAR *msg_buf)
 		if(uni_ar.ReadLine(buf, sizeof(buf)) == NULL) break;
 		str_chomp(buf, ' ');
 		if(buf[0] == '\0') continue;
-		if(buf[0] == '/' && buf[1] == '/') continue;	// ƒRƒƒ“ƒgs
+		if(buf[0] == '/' && buf[1] == '/') continue;	// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 
 		int type = gettype(buf);
 		str_chomp(buf, ' ');
@@ -523,7 +523,7 @@ int CStrToken::addKeyword(const TCHAR *file_name, TCHAR *msg_buf)
 	}
 
 	if(m_keyword_lower_upper) {
-		// ‘å•¶š‚à‘ÎÛ‚É‚·‚é‚½‚ßCƒ`ƒFƒbƒN‚·‚é”ÍˆÍ‚ğL‚°‚é
+		// å¤§æ–‡å­—ã‚‚å¯¾è±¡ã«ã™ã‚‹ãŸã‚ï¼Œãƒã‚§ãƒƒã‚¯ã™ã‚‹ç¯„å›²ã‚’åºƒã’ã‚‹
 		if(is_lead_byte(m_min_keyword_ch) == FALSE && inline_islower(m_min_keyword_ch)) {
 			m_min_keyword_ch = toupper(m_min_keyword_ch);
 		}
@@ -571,7 +571,7 @@ __inline static int inline_strncmp_nocase_for_strtoken(
 int CStrToken::post_binary_search_key_word(const TCHAR *p, 
 	const TCHAR *first_word, unsigned int first_word_len, int row)
 {
-	// Å’·ˆê’v‚ÌƒL[ƒ[ƒh‚ğ’T‚·
+	// æœ€é•·ä¸€è‡´ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’æ¢ã™
 	int result_row = -1;
 
 	if(m_keyword_lower_upper) {
@@ -604,7 +604,7 @@ int CStrToken::binary_search_key_word(const TCHAR *p, unsigned int first_word_le
 			idx = get_key_word_idx(*p);
 		}
 	}
-	// ƒCƒ“ƒfƒbƒNƒX‚ğg‚Á‚ÄCl‚Ær‚ğ’²®‚·‚é
+	// ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ä½¿ã£ã¦ï¼Œlã¨rã‚’èª¿æ•´ã™ã‚‹
 	int l = m_key_word_idx[idx].start_pos;
 	if(l == -1) return -1;
 
@@ -630,7 +630,7 @@ int CStrToken::binary_search_key_word(const TCHAR *p, unsigned int first_word_le
 	if(m_key_word_idx[idx].break_char_flg) {
 		if(first_word_len == 1) {
 			//ASSERT(m_key_word_idx[idx].break_char_flg == BREAK_CHAR_FLG_ONE_CHAR);
-			// Å’·ˆê’v‚ÌƒL[ƒ[ƒh‚ğ’T‚·
+			// æœ€é•·ä¸€è‡´ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’æ¢ã™
 			return post_binary_search_key_word(p, first_word, first_word_len, l);
 		}
 
@@ -643,11 +643,11 @@ int CStrToken::binary_search_key_word(const TCHAR *p, unsigned int first_word_le
 			} else if(cmp > 0) {
 				l = row + 1;
 			} else { // cmp == 0
-				// Å‰‚Ì’PŒê‚Ìæ“ªˆÊ’u‚ğ’T‚·
+				// æœ€åˆã®å˜èªã®å…ˆé ­ä½ç½®ã‚’æ¢ã™
 				for(; row > 0; row--) {
 					if(inline_strncmp(first_word, m_key_words[row - 1].str, first_word_len) != 0) break;
 				}
-				// Å’·ˆê’v‚ÌƒL[ƒ[ƒh‚ğ’T‚·
+				// æœ€é•·ä¸€è‡´ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’æ¢ã™
 				return post_binary_search_key_word(p, first_word, first_word_len, row);
 			}
 		}
@@ -662,13 +662,13 @@ int CStrToken::binary_search_key_word(const TCHAR *p, unsigned int first_word_le
 				l = row + 1;
 			} else { // cmp == 0
 				if(m_key_words[row].len == first_word_len) return row;
-				// first_word‚Ì‚Ù‚¤‚ª’·‚¢
+				// first_wordã®ã»ã†ãŒé•·ã„
 				l = row + 1;
 			}
 		}
 	}
 
-	// ƒL[ƒ[ƒh‚È‚µ
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãªã—
 	return -1;
 }
 #pragma function(memcpy)
@@ -692,7 +692,7 @@ int CStrToken::GetKeywordType(const TCHAR *p, unsigned int *len, unsigned int fi
 	if(m_min_keyword_ch > *p || m_max_keyword_ch < *p) return type;
 	if(first_word_len > m_max_key_word_len) return type;
 
-	// ƒoƒCƒiƒŠƒT[ƒ`
+	// ãƒã‚¤ãƒŠãƒªã‚µãƒ¼ãƒ
 	int row = binary_search_key_word(p, first_word_len);
 	if(row == -1) return type;
 
@@ -720,17 +720,17 @@ static int binary_search_key_word_for_completion(const TCHAR *word, int *cnt, BO
 				int end = word_cnt;
 
 				if(reverse) {
-					// Å‰‚ÌˆÊ’u‚Ì‚Æ‚«‚ÍCƒqƒbƒg‚µ‚È‚¢
+					// æœ€åˆã®ä½ç½®ã®ã¨ãã¯ï¼Œãƒ’ãƒƒãƒˆã—ãªã„
 					if(*cnt == 0) return -1;
 
 					if(*cnt == -1) {
-						// Å‰‚ÌÀs‚Ì‚Æ‚«‚ÍCÅŒã‚ÌˆÊ’u‚ğ’T‚·
+						// æœ€åˆã®å®Ÿè¡Œã®ã¨ãã¯ï¼Œæœ€å¾Œã®ä½ç½®ã‚’æ¢ã™
 						for(; row < end; row++, (*cnt)++) {
 							if(_tcsncmp(word, word_list[row].str, len) != 0) break;
 						}
 						row--;
 					} else {
-						// ‚Ğ‚Æ‚Â‘O‚ğ’²‚×‚é
+						// ã²ã¨ã¤å‰ã‚’èª¿ã¹ã‚‹
 						(*cnt)--;
 						row = row + *cnt;
 						if(row >= end || _tcsncmp(word, word_list[row].str, len) != 0) return -1;
@@ -751,7 +751,7 @@ static int binary_search_key_word_for_completion(const TCHAR *word, int *cnt, BO
 		}
 	}
 
-	// ƒL[ƒ[ƒh‚È‚µ
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãªã—
 	return -1;
 }
 
@@ -770,7 +770,7 @@ int CStrToken::KeywordCompletion(const TCHAR *str, int cnt, TCHAR *buf,
 	row = binary_search_key_word_for_completion(m_key_word_buf, &cnt, reverse, word_list, word_cnt);
 	if(row == -1) return -1;
 
-	// bufsize‚Íbyte’PˆÊ‚Å‚­‚é‚Ì‚ÅA* sizeof(TCHAR)‚µ‚Äƒ`ƒFƒbƒN‚·‚é
+	// bufsizeã¯byteå˜ä½ã§ãã‚‹ã®ã§ã€* sizeof(TCHAR)ã—ã¦ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 	if((word_list[row].len) * sizeof(TCHAR) >= bufsize) return -1;
 
 	_tcscpy(buf, word_list[row].str);
@@ -1017,7 +1017,7 @@ static int binary_search_key_word_for_get_completion_list(
 		} else if(cmp > 0) {
 			l = row + 1;
 		} else { // cmp == 0
-			// æ“ªˆÊ’u‚ğ’T‚·
+			// å…ˆé ­ä½ç½®ã‚’æ¢ã™
 			for(; row > 0; row--) {
 				if(inline_strncmp(word, word_list[row - 1].lwr_str, len) != 0) break;
 			}
@@ -1025,7 +1025,7 @@ static int binary_search_key_word_for_get_completion_list(
 		}
 	}
 
-	// ƒL[ƒ[ƒh‚È‚µ
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãªã—
 	return -1;
 }
 
@@ -1043,7 +1043,7 @@ BOOL CStrToken::GetCompletionList(CCodeAssistData &grid_data, const TCHAR *str)
 
 	if(m_assist_match_type == ASSIST_FORWARD_MATCH) {
 		if(!m_keyword_lower_upper) {
-			// ‘å•¶š¬•¶š‚ğ‹æ•Ê‚·‚éŒ¾Œê(Java/C++)‚Ì‚Æ‚«C‘SƒL[ƒ[ƒh‚ğ’²‚×‚é
+			// å¤§æ–‡å­—å°æ–‡å­—ã‚’åŒºåˆ¥ã™ã‚‹è¨€èª(Java/C++)ã®ã¨ãï¼Œå…¨ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’èª¿ã¹ã‚‹
 			for(int row = 0; row < m_comp_key_word_cnt; row++) {
 				if(inline_strncmp(m_key_word_buf, m_comp_key_words[row].lwr_str, key_word_len) != 0) continue;
 
@@ -1055,7 +1055,7 @@ BOOL CStrToken::GetCompletionList(CCodeAssistData &grid_data, const TCHAR *str)
 				}
 			}
 		} else {
-			// æ“ªˆÊ’u‚ğ’T‚·
+			// å…ˆé ­ä½ç½®ã‚’æ¢ã™
 			int row = binary_search_key_word_for_get_completion_list(
 				m_comp_key_words, m_comp_key_word_cnt,
 				m_key_word_buf, key_word_len);

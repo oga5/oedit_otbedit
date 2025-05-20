@@ -38,9 +38,9 @@ public:
 	void *get_buf_data();
 
 	void set_data(INT_PTR data) { 
-		// NOTE: m_char_cnt(m_data‚Æunion)‚ÍC•¶š—ñ‚ğİ’è‚µ‚½‚Æ‚«‚Í•¶š—ñ‚Ì’·‚³Cƒf[ƒ^‚ğİ’è‚µ‚½‚Æ‚«‚Í‚»‚Ì’l‚ğ•Û‚·‚é
-		//       ‚»‚Ì‚½‚ßC•¶š—ñ‚Æƒf[ƒ^‚Í•Ğ•û‚µ‚©İ’è‚Å‚«‚È‚¢
-		ASSERT(m_buf == NULL);	// m_buf != NULL‚Ì‚Æ‚«Cæ‚É•¶š—ñ‚ª“o˜^‚³‚ê‚Ä‚¢‚é
+		// NOTE: m_char_cnt(m_dataã¨union)ã¯ï¼Œæ–‡å­—åˆ—ã‚’è¨­å®šã—ãŸã¨ãã¯æ–‡å­—åˆ—ã®é•·ã•ï¼Œãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ãŸã¨ãã¯ãã®å€¤ã‚’ä¿æŒã™ã‚‹
+		//       ãã®ãŸã‚ï¼Œæ–‡å­—åˆ—ã¨ãƒ‡ãƒ¼ã‚¿ã¯ç‰‡æ–¹ã—ã‹è¨­å®šã§ããªã„
+		ASSERT(m_buf == NULL);	// m_buf != NULLã®ã¨ãï¼Œå…ˆã«æ–‡å­—åˆ—ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹
 		m_data = data;
 	}
 	INT_PTR get_data() { return m_data; }
@@ -68,7 +68,7 @@ private:
 	int		m_row;
 	int		m_col;
 	union {
-		INT_PTR		m_char_cnt;		// set_data()/get_data()‚Å‚àg‚¤
+		INT_PTR		m_char_cnt;		// set_data()/get_data()ã§ã‚‚ä½¿ã†
 		INT_PTR		m_data;
 	};
 	size_t  m_buf_size;

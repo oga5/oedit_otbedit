@@ -20,11 +20,11 @@ CRenderer::~CRenderer()
 }
 
 //
-//U+0000-007F 	Basic Latin 	Šî–{ƒ‰ƒeƒ“•¶š iASCIIŒİŠ·j
-//U+3040-309F 	Hiragana 	•½‰¼–¼
-//U+30A0-30FF 	Katakana 	•Ğ‰¼–¼
-//U+4E00-9FFF 	CJK Unified Ideographs 	CJK“‡Š¿š
-//U+FF00-FFEF 	Halfwidth and Fullwidth Forms 	”¼ŠpE‘SŠpŒ`
+//U+0000-007F 	Basic Latin 	åŸºæœ¬ãƒ©ãƒ†ãƒ³æ–‡å­— ï¼ˆASCIIäº’æ›ï¼‰
+//U+3040-309F 	Hiragana 	å¹³ä»®å
+//U+30A0-30FF 	Katakana 	ç‰‡ä»®å
+//U+4E00-9FFF 	CJK Unified Ideographs 	CJKçµ±åˆæ¼¢å­—
+//U+FF00-FFEF 	Halfwidth and Fullwidth Forms 	åŠè§’ãƒ»å…¨è§’å½¢
 
 static inline int _is_basic_latin(unsigned int ch) {
 	return (ch <= 0x0080);
@@ -58,19 +58,19 @@ int CRenderer::TextOut2(CDC *pdc, CDC *p_paintdc, const TCHAR *p, int len, const
 	int		left = rect.left + left_offset;
 	int		i;
 
-	// dx_width‚Ì”z—ñ‚Ì”ÍˆÍ‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
-	// ƒTƒƒQ[ƒgƒyƒA‚ª‚ ‚é‚½‚ßA-1‚·‚é
+	// dx_widthã®é…åˆ—ã®ç¯„å›²ã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
+	// ã‚µãƒ­ã‚²ãƒ¼ãƒˆãƒšã‚¢ãŒã‚ã‚‹ãŸã‚ã€-1ã™ã‚‹
 	int dx_width_limit = (sizeof(dx_width) / sizeof(dx_width[0])) - 1;
 
 	int tab_width = font_width->GetTabWidth();
 
 	for(; len > 0;) {
-		// ƒ^ƒu‚Ì•\¦
+		// ã‚¿ãƒ–ã®è¡¨ç¤º
 		if(get_char(p) == '\t') {
 			if(m_fixed_tab_width) {
 				dx_width[0] = font_width->GetFontWidth(pdc, ' ', NULL) + font_width->GetCharSpaceSetting();
 			} else {
-				// row_left‚Íƒ^ƒuˆÊ’u‚ğ’²®‚·‚é‚½‚ß‚Ég—p‚·‚é
+				// row_leftã¯ã‚¿ãƒ–ä½ç½®ã‚’èª¿æ•´ã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã™ã‚‹
 				dx_width[0] = tab_width - ((rect2.left - row_left) % tab_width);
 			}
 			rect2.left = left;
@@ -97,7 +97,7 @@ int CRenderer::TextOut2(CDC *pdc, CDC *p_paintdc, const TCHAR *p, int len, const
 
 			for(i = 0; i < tmp_len;) {
 				unsigned int ch = get_char(tmp_p);
-				// ƒ^ƒu‚Ìè‘O‚Ü‚Å•\¦‚·‚é
+				// ã‚¿ãƒ–ã®æ‰‹å‰ã¾ã§è¡¨ç¤ºã™ã‚‹
 				if(ch == '\t') {
 					tmp_len = i;
 					break;

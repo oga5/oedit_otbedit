@@ -101,8 +101,8 @@ bool CFastIniFileImpl::LoadIniFile()
 		ostr_chomp(buf, '\0');
 		ostr_trimleft(buf);
 
-		if(buf[0] == '\0') continue;		// ‹ós
-		if(buf[0] == '#') continue;			// ƒRƒƒ“ƒgs
+		if(buf[0] == '\0') continue;		// ç©ºè¡Œ
+		if(buf[0] == '#') continue;			// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 		
 		if(buf[0] == '[') {					// section
 			TCHAR *close_p = _tcschr(buf, ']');
@@ -115,7 +115,7 @@ bool CFastIniFileImpl::LoadIniFile()
 		}
 
 		TCHAR *p = _tcschr(buf, '=');
-		if(p == NULL) continue;				// –³Œø‚Ès
+		if(p == NULL) continue;				// ç„¡åŠ¹ãªè¡Œ
 
 		_sntprintf(entry, sizeof(entry)/sizeof(entry[0]), _T("%.*s"), (int)(p - buf), buf);
 		_tcscpy(data_buf, p + 1);
@@ -151,7 +151,7 @@ bool CFastIniFileImpl::SaveIniFile()
 
 	for(p = m_ini_data.begin(); p != m_ini_data.end(); p++) {
 		if(_tcscmp(section, p->first.first.c_str()) != 0) {
-			// section‚ÌØ‚è‘Ö‚¦
+			// sectionã®åˆ‡ã‚Šæ›¿ãˆ
 			_tcscpy(section, p->first.first.c_str());
 			_ftprintf(fp, _T("\n[%s]\n"), section);
 		}
@@ -212,7 +212,7 @@ bool CFastIniFileImpl::WriteIniFileString(const TCHAR *section, const TCHAR *ent
 {
 	DeleteIniFileEntry(section, entry);
 
-	// ƒf[ƒ^‚ªNULL‚¾‚Á‚½‚çŠù‘¶‚ÌƒGƒ“ƒgƒŠ‚ğíœ‚·‚é‚¾‚¯‚ÅI‚í‚è
+	// ãƒ‡ãƒ¼ã‚¿ãŒNULLã ã£ãŸã‚‰æ—¢å­˜ã®ã‚¨ãƒ³ãƒˆãƒªã‚’å‰Šé™¤ã™ã‚‹ã ã‘ã§çµ‚ã‚ã‚Š
 	if(lpszValue == NULL) return true;
 
 	insert_data(section, entry, lpszValue);
@@ -278,7 +278,7 @@ bool CFastIniFileImpl::RegistryKeyToIniFile(HKEY parent_key, TCHAR *key_name, FI
 	HKEY hSubKey = NULL;
 	TCHAR sub_key_name[1024] = _T("");
 
-	// BarState-*‚ÆRecent File List‚Ílocal iniƒtƒ@ƒCƒ‹‚ÖˆÚs‚·‚é
+	// BarState-*ã¨Recent File Listã¯local iniãƒ•ã‚¡ã‚¤ãƒ«ã¸ç§»è¡Œã™ã‚‹
 	if(_tcsncmp(key_name, _T("BarState-"), 8) == 0 || _tcscmp(key_name, _T("Recent File List")) == 0) {
 		fp = local_fp;
 	}

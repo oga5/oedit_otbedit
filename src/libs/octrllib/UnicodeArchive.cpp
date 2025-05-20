@@ -91,8 +91,8 @@ static BUF_BYTE *sjistounicode(BUF_BYTE *src, wchar_t *dst, int dst_size, BUF_BY
 	
 	if(back_flg) *back_flg = '\0';
 
-	dst_size -= 2 - dst_size % 2; // ‹ô”‚É‚·‚é
-	dst_size -= 2;	// L'\0'‚Ì•ª‚ðŠm•Û
+	dst_size -= 2 - dst_size % 2; // å¶æ•°ã«ã™ã‚‹
+	dst_size -= 2;	// L'\0'ã®åˆ†ã‚’ç¢ºä¿
 
 	wchar_t *dst_start = dst;
 	wchar_t *dst_end = dst_start + dst_size;
@@ -107,7 +107,7 @@ static BUF_BYTE *sjistounicode(BUF_BYTE *src, wchar_t *dst, int dst_size, BUF_BY
 			src++;
 			dst++;
 		} else {
-			// u81`9Fv ‚ÆuE0`EFv‚ðƒ`ƒFƒbƒN
+			// ã€Œ81ã€œ9Fã€ ã¨ã€ŒE0ã€œEFã€ã‚’ãƒã‚§ãƒƒã‚¯
 			if(*(src + 1) == '\0') {
 				if((*src >= 0x81 && *src <= 0x9F) || (*src >= 0xE0 && *src <= 0xFC)) {
 					if(back_flg) *back_flg = *src;
@@ -151,8 +151,8 @@ int CUnicodeArchive::CheckKanjiCode(CArchive *ar, int default_kanji_code)
 
 	CFile	*file = ar->GetFile();
 
-	// NOTE: ƒoƒbƒtƒ@‚ÌØ‚ê–Ú‚Åƒ}ƒ‹ƒ`ƒoƒCƒg•¶Žš‚ª•ªŠ„‚³‚ê‚½ê‡
-	// ³‚µ‚­ŒŸo‚Å‚«‚È‚¢‚Ì‚ÅA‘å‚«‚Èƒoƒbƒtƒ@‚Éˆê“x‚É“Ç‚Þ
+	// NOTE: ãƒãƒƒãƒ•ã‚¡ã®åˆ‡ã‚Œç›®ã§ãƒžãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—ãŒåˆ†å‰²ã•ã‚ŒãŸå ´åˆ
+	// æ­£ã—ãæ¤œå‡ºã§ããªã„ã®ã§ã€å¤§ããªãƒãƒƒãƒ•ã‚¡ã«ä¸€åº¦ã«èª­ã‚€
 	len = file->Read(buf, buf_size - 1);
 	if(len == 0) goto END;
 	buf[len] = '\0';
@@ -262,7 +262,7 @@ int CUnicodeArchive::CheckLineTypeW()
 
 int CUnicodeArchive::CheckLineType()
 {
-	// Unicode—p‚ÆMBCS—p‚ÅŠÖ”‚ð•ª‚¯‚é
+	// Unicodeç”¨ã¨MBCSç”¨ã§é–¢æ•°ã‚’åˆ†ã‘ã‚‹
 	if(is_utf16(m_mode)) {
 		m_line_type = CheckLineTypeW();
 	} else {
@@ -1039,12 +1039,12 @@ TCHAR *CUnicodeArchive::UNICODERead()
 	CFile *file = m_ar->GetFile();
 
 	if(m_init == FALSE) {
-		// 0xff 0xfe‚ð“Ç‚Ý”ò‚Î‚·
+		// 0xff 0xfeã‚’èª­ã¿é£›ã°ã™
 		len = file->Read((char *)m_buf, 2);
 		if(len == 0) return NULL;
 
 		if(check_utf16le_signature(m_buf) == 0) {
-			// signature–³‚µ
+			// signatureç„¡ã—
 			file->SeekToBegin();
 		}
 
@@ -1054,7 +1054,7 @@ TCHAR *CUnicodeArchive::UNICODERead()
 	}
 
 	int		read_buf_size = sizeof(m_buf) - 5;
-	// ‹ô”‚É‚·‚é
+	// å¶æ•°ã«ã™ã‚‹
 	read_buf_size -= 2 - read_buf_size % 2;
 
 	if(m_back_buf[0] != '\0') {
@@ -1071,11 +1071,11 @@ TCHAR *CUnicodeArchive::UNICODERead()
 	m_buf[len] = '\0';
 	m_buf[len + 1] = '\0';
 
-	// ƒoƒCƒiƒŠƒtƒ@ƒCƒ‹‚È‚Ç‚ðUTF16‚ÉŒëŒŸo‚µ‚½ê‡Aƒoƒbƒtƒ@‚ð‰z‚¦‚È‚¢‚æ‚¤‚ÉNULL•¶Žš‚ð‘‚â‚·
+	// ãƒã‚¤ãƒŠãƒªãƒ•ã‚¡ã‚¤ãƒ«ãªã©ã‚’UTF16ã«èª¤æ¤œå‡ºã—ãŸå ´åˆã€ãƒãƒƒãƒ•ã‚¡ã‚’è¶Šãˆãªã„ã‚ˆã†ã«NULLæ–‡å­—ã‚’å¢—ã‚„ã™
 	m_buf[len + 2] = '\0';
 	m_buf[len + 3] = '\0';
 
-	// '\r'‚Æ'\n'‚ðØ‚è—£‚³‚È‚¢
+	// '\r'ã¨'\n'ã‚’åˆ‡ã‚Šé›¢ã•ãªã„
 	if(len > 2 && m_buf[len - 2] == '\r' && m_buf[len - 1] == '\0') {
 		m_back_buf[0] = '\r';
 		m_back_buf[1] = '\0';
@@ -1083,7 +1083,7 @@ TCHAR *CUnicodeArchive::UNICODERead()
 		m_buf[len - 2] = '\0';
 	}
 
-	// ƒTƒƒQ[ƒgƒyƒA‚ð•ª—£‚µ‚È‚¢
+	// ã‚µãƒ­ã‚²ãƒ¼ãƒˆãƒšã‚¢ã‚’åˆ†é›¢ã—ãªã„
 	if(len > 2 && is_high_surrogate_ch(m_buf[len - 1])) {
 		m_back_buf[0] = m_buf[len - 2];
 		m_back_buf[1] = m_buf[len - 1];
@@ -1097,7 +1097,7 @@ TCHAR *CUnicodeArchive::UNICODERead()
 void CUnicodeArchive::UNICODEWriteString(const TCHAR *buf)
 {
 	if(m_init == FALSE) {
-		// 0xff 0xfe‚ð‘‚«ž‚Þ
+		// 0xff 0xfeã‚’æ›¸ãè¾¼ã‚€
 		if(m_mode == KANJI_CODE_UTF16LE) {
 			BUF_BYTE uni_head[2];
 			uni_head[0] = 0xff;
@@ -1117,12 +1117,12 @@ TCHAR *CUnicodeArchive::UTF16BERead()
 	CFile *file = m_ar->GetFile();
 
 	if(m_init == FALSE) {
-		// 0xfe 0xff‚ð“Ç‚Ý”ò‚Î‚·
+		// 0xfe 0xffã‚’èª­ã¿é£›ã°ã™
 		len = file->Read((char *)m_buf, 2);
 		if(len == 0) return NULL;
 
 		if(check_utf16be_signature(m_buf) == 0) {
-			// signature–³‚µ
+			// signatureç„¡ã—
 			file->SeekToBegin();
 		}
 
@@ -1132,7 +1132,7 @@ TCHAR *CUnicodeArchive::UTF16BERead()
 	}
 
 	int		read_buf_size = sizeof(m_buf) - 5;
-	// ‹ô”‚É‚·‚é
+	// å¶æ•°ã«ã™ã‚‹
 	read_buf_size -= 2 - read_buf_size % 2;
 
 	if(m_back_buf[0] != '\0') {
@@ -1150,11 +1150,11 @@ TCHAR *CUnicodeArchive::UTF16BERead()
 	m_buf[len] = '\0';
 	m_buf[len + 1] = '\0';
 
-	// ƒoƒCƒiƒŠƒtƒ@ƒCƒ‹‚È‚Ç‚ðUTF16‚ÉŒëŒŸo‚µ‚½ê‡Aƒoƒbƒtƒ@‚ð‰z‚¦‚È‚¢‚æ‚¤‚ÉNULL•¶Žš‚ð‘‚â‚·
+	// ãƒã‚¤ãƒŠãƒªãƒ•ã‚¡ã‚¤ãƒ«ãªã©ã‚’UTF16ã«èª¤æ¤œå‡ºã—ãŸå ´åˆã€ãƒãƒƒãƒ•ã‚¡ã‚’è¶Šãˆãªã„ã‚ˆã†ã«NULLæ–‡å­—ã‚’å¢—ã‚„ã™
 	m_buf[len + 2] = '\0';
 	m_buf[len + 3] = '\0';
 
-	// '\r'‚Æ'\n'‚ðØ‚è—£‚³‚È‚¢
+	// '\r'ã¨'\n'ã‚’åˆ‡ã‚Šé›¢ã•ãªã„
 	if(len > 2 && m_buf[len - 2] == '\r' && m_buf[len - 1] == '\0') {
 		m_back_buf[0] = '\r';
 		m_back_buf[1] = '\0';
@@ -1162,7 +1162,7 @@ TCHAR *CUnicodeArchive::UTF16BERead()
 		m_buf[len - 2] = '\0';
 	}
 
-	// ƒTƒƒQ[ƒgƒyƒA‚ð•ª—£‚µ‚È‚¢
+	// ã‚µãƒ­ã‚²ãƒ¼ãƒˆãƒšã‚¢ã‚’åˆ†é›¢ã—ãªã„
 	if(len > 2 && is_high_surrogate_ch(m_buf[len - 1])) {
 		m_back_buf[0] = m_buf[len - 2];
 		m_back_buf[1] = m_buf[len - 1];
@@ -1176,7 +1176,7 @@ TCHAR *CUnicodeArchive::UTF16BERead()
 void CUnicodeArchive::UTF16BEWriteString(const TCHAR *buf)
 {
 	if(m_init == FALSE) {
-		// 0xff 0xfe‚ð‘‚«ž‚Þ
+		// 0xff 0xfeã‚’æ›¸ãè¾¼ã‚€
 		if(m_mode == KANJI_CODE_UTF16BE) {
 			BUF_BYTE uni_head[2];
 			uni_head[0] = 0xfe;
@@ -1230,7 +1230,7 @@ static BUF_BYTE *utf8tounicode(BUF_BYTE *src, wchar_t *dst, BUF_BYTE *back_buf)
 				break;
 			}
 
-			// error(1byte“Ç‚Ý”ò‚Î‚·)
+			// error(1byteèª­ã¿é£›ã°ã™)
 			dst = put_char(dst, '?');
 			src++;
 			continue;
@@ -1242,7 +1242,7 @@ static BUF_BYTE *utf8tounicode(BUF_BYTE *src, wchar_t *dst, BUF_BYTE *back_buf)
 		dst = put_char(dst, ch);
 	}
 
-	// '\r'‚Æ'\n'‚ðØ‚è—£‚³‚È‚¢
+	// '\r'ã¨'\n'ã‚’åˆ‡ã‚Šé›¢ã•ãªã„
 	if(ch == '\r' && back_buf) {
 		*(dst - 1) = '\0';
 		strcpy((char *)back_buf, "\r");
@@ -1258,12 +1258,12 @@ TCHAR *CUnicodeArchive::UTF8Read()
 	CFile *file = m_ar->GetFile();
 
 	if(m_init == FALSE) {
-		// UTF-8 signature(0xef 0xbb 0xbf)‚ð“Ç‚Ý”ò‚Î‚·
+		// UTF-8 signature(0xef 0xbb 0xbf)ã‚’èª­ã¿é£›ã°ã™
 		len = file->Read((char *)m_buf, 3);
 		if(len == 0) return NULL;
 
 		if(check_utf8_signature(m_buf) == 0) {
-			// signature–³‚µ
+			// signatureç„¡ã—
 			file->SeekToBegin();
 		}
 
@@ -1334,7 +1334,7 @@ const TCHAR *unicodetoutf8(const TCHAR *src, BUF_BYTE *dst, int dst_size, int *l
 	unsigned int ch;
 	BUF_BYTE *dst_start = dst;
 
-	// utf8ƒf[ƒ^‚ª“r’†‚ÅØ‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+	// utf8ãƒ‡ãƒ¼ã‚¿ãŒé€”ä¸­ã§åˆ‡ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 	dst_size -= 4;
 
 	*len = 0;
@@ -1362,7 +1362,7 @@ void CUnicodeArchive::UTF8WriteString(const TCHAR *buf)
 {
 	if(m_init == FALSE) {
 		if(m_mode == KANJI_CODE_UTF8) {
-			// 0xef 0xbb 0xbf‚ð‘‚«ž‚Þ
+			// 0xef 0xbb 0xbfã‚’æ›¸ãè¾¼ã‚€
 			BUF_BYTE uni_head[3];
 			uni_head[0] = 0xef;
 			uni_head[1] = 0xbb;
@@ -1406,7 +1406,7 @@ void CUnicodeArchive::SetKanjiCodeCombo(CComboBox *p_combo_kanji, int kanji_code
 
 	int base = 0;
 	if(b_add_autodetect) {
-		p_combo_kanji->InsertString(0, _T("Ž©“®”»•Ê"));
+		p_combo_kanji->InsertString(0, _T("è‡ªå‹•åˆ¤åˆ¥"));
 		p_combo_kanji->SetItemData(0, UnknownKanjiCode);
 		base = 1;
 	}

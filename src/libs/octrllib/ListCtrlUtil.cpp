@@ -85,7 +85,7 @@ void ListCtrl_SelectAll(CListCtrl* p_list)
 	}
 }
 
-// CListCtrl‚ÌƒTƒuƒNƒ‰ƒX‰»
+// CListCtrlã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–
 static LRESULT CALLBACK ListCtrl_MouseHWheel_SubclassWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message) {
@@ -106,10 +106,10 @@ static LRESULT CALLBACK ListCtrl_MouseHWheel_SubclassWndProc(HWND hwnd, UINT mes
 
 void ListCtrl_EnableMouseHWheel(CListCtrl* p_list)
 {
-	// ƒTƒuƒNƒ‰ƒX‰»
-	// ƒfƒtƒHƒ‹ƒg‚ÌƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğ•Û‘¶‚·‚é
+	// ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–
+	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’ä¿å­˜ã™ã‚‹
 	HWND hwnd = p_list->GetSafeHwnd();
 	::SetWindowLongPtr(hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-	// ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ‚ğØ‚è‘Ö‚¦‚é
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	::SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)ListCtrl_MouseHWheel_SubclassWndProc);
 }

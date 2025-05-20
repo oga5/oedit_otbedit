@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// EditCtrl.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// EditCtrl.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -224,7 +224,7 @@ END_MESSAGE_MAP()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CEditCtrl ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CEditCtrl ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CEditCtrl::IsCheckCommentChar(unsigned int ch)
 {
@@ -247,7 +247,7 @@ int CEditCtrl::CalcSplitCnt(int row)
 
 void CEditCtrl::MakeDispData(BOOL all_recalc_split, int start_row, int recalc_split_cnt)
 {
-	// FIXME: •ªŠ„ƒEƒBƒ“ƒhƒE‚Ì‚Æ‚«C•¡”‰ñÀs‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+	// FIXME: åˆ†å‰²ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã¨ãï¼Œè¤‡æ•°å›å®Ÿè¡Œã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 
 	ASSERT(start_row < m_edit_data->get_row_cnt());
 	if(start_row >= m_edit_data->get_row_cnt()) return;
@@ -267,7 +267,7 @@ void CEditCtrl::MakeDispData(BOOL all_recalc_split, int start_row, int recalc_sp
 	CIntArray *disp_row_arr = m_edit_data->get_disp_data()->GetDispRowArr();
 
 	if(disp_row_arr->AllocData(m_edit_data->get_row_cnt()) == FALSE) {
-		MessageBox(_T("ƒƒ‚ƒŠ‚ªŠm•Û‚Å‚«‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ãƒ¡ãƒ¢ãƒªãŒç¢ºä¿ã§ãã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return;
 	}
 
@@ -284,7 +284,7 @@ void CEditCtrl::MakeDispData(BOOL all_recalc_split, int start_row, int recalc_sp
 
 		if(disp_row_arr->GetAllocedSize() <= disp_row) {
 			if(disp_row_arr->AllocData(disp_row) == FALSE) {
-				MessageBox(_T("ƒƒ‚ƒŠ‚ªŠm•Û‚Å‚«‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+				MessageBox(_T("ãƒ¡ãƒ¢ãƒªãŒç¢ºä¿ã§ãã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 				return;
 			}
 		}
@@ -304,11 +304,11 @@ void CEditCtrl::MakeDispData(BOOL all_recalc_split, int start_row, int recalc_sp
 
 void CEditCtrl::CheckCommentRow(int start_row, int end_row)
 {
-	// FIXME: •ªŠ„ƒEƒBƒ“ƒhƒE‚Ì‚Æ‚«C•¡”‰ñÀs‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+	// FIXME: åˆ†å‰²ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã¨ãï¼Œè¤‡æ•°å›å®Ÿè¡Œã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 
 	if(m_ex_style & ECS_NO_COMMENT_CHECK) return;
 
-	/* ‚±‚ÌŠÖ”‚ÍÀs‚ÉŠÔ‚ª‚©‚©‚é‚½‚ßC•p”É‚ÉŒÄ‚Ño‚³‚È‚¢‚±‚Æ */
+	/* ã“ã®é–¢æ•°ã¯å®Ÿè¡Œã«æ™‚é–“ãŒã‹ã‹ã‚‹ãŸã‚ï¼Œé »ç¹ã«å‘¼ã³å‡ºã•ãªã„ã“ã¨ */
 	BOOL invalidate = FALSE;
 
 	m_edit_data->check_comment_row(start_row, end_row, m_ex_style, &invalidate);
@@ -401,7 +401,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 
 	int char_space = m_edit_data->get_disp_data()->GetCharSpace(m_num_width);
 
-	// •¶š‚ğ•`‚­
+	// æ–‡å­—ã‚’æã
 	CRect char_rect = rect2;
 	col = 0;
 	for(x = 0;; x += 10) {
@@ -422,11 +422,11 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 				FillBackGroundRect(pdc, &invert_rect, GetColor(SELECTED_COLOR));
 			}
 
-			// FIXME: 20ƒoƒCƒgŒÅ’è‚ğ‚â‚ß‚é
+			// FIXME: 20ãƒã‚¤ãƒˆå›ºå®šã‚’ã‚„ã‚ã‚‹
 			TCHAR	col_num[20];
 			_stprintf(col_num, _T("%d"), col);
 
-			// 1•¶š‚¸‚Â•\¦‚·‚é
+			// 1æ–‡å­—ãšã¤è¡¨ç¤ºã™ã‚‹
 			int col_num_len = (int)_tcslen(col_num);
 
 			for(i = 0; i < col_num_len; i++) {
@@ -439,7 +439,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 				if(col_num_rect.right > max_right) col_num_rect.right = max_right;
 				TextOut2(pdc, p_paintdc, col_num + i, 1, col_num_rect);
 
-				// •¶š‚ğ”½“]•\¦
+				// æ–‡å­—ã‚’åè»¢è¡¨ç¤º
 				if(col_num_rect.PtInRect(CPoint(caret_rect.left, caret_rect.top)) ||
 					col_num_rect.PtInRect(CPoint(caret_rect.right, caret_rect.top))) {
 
@@ -472,7 +472,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		char_rect.left = char_rect.right;
 	}
 
-	// ü‚ğˆø‚­
+	// ç·šã‚’å¼•ã
 	RECT line_rect = rect2;
 	col = 0;
 	for(x = 0;; x += 10) {
@@ -514,7 +514,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		line_rect.left = line_rect.right;
 	}
 
-	// ‰º‘¤‚ÌŒ„ŠÔ‚ğ”’‚­“h‚é
+	// ä¸‹å´ã®éš™é–“ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.top = line_bottom + 1;
 	bk_rect.bottom = m_col_header_height;
 	bk_rect.left = 0;
@@ -523,7 +523,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		FillBackGroundRect(pdc, &bk_rect, GetColor(BG_COLOR));
 	}
 
-	// ¶‘¤‚ÌŒ„ŠÔ‚ğ”’‚­“h‚é
+	// å·¦å´ã®éš™é–“ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.left = 0;
 	bk_rect.right = m_row_header_width;
 	bk_rect.top = 0;
@@ -531,13 +531,13 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 	if(p_paintdc->RectVisible(&bk_rect)) {
 		FillBackGroundRect(pdc, &bk_rect, GetColor(BG_COLOR));
 
-		// ü‚Ì¶’[
+		// ç·šã®å·¦ç«¯
 		bk_rect.left = m_left_space;
 		pdc->MoveTo(bk_rect.left, line_bottom);
 		pdc->LineTo(bk_rect.right, line_bottom);
 	}
 
-	// ‰E‘¤‚ğ”’‚­“h‚é
+	// å³å´ã‚’ç™½ãå¡—ã‚‹
 	if(line_rect.left < winrect.right) {
 		bk_rect.top = 0;
 		bk_rect.bottom = m_col_header_height;
@@ -580,7 +580,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 
 	CPen *old_pen = pdc->SelectObject(m_edit_data->get_disp_data()->GetRulerPen());
 
-	// •¶š‚ğ•`‚­
+	// æ–‡å­—ã‚’æã
 	RECT char_rect = rect2;
 	col = 0;
 	for(x = 0;; x += 10) {
@@ -592,11 +592,11 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		if(char_rect.right > 0 && p_paintdc->RectVisible(&char_rect)) {
 			FillBackGroundRect(pdc, &char_rect, GetColor(BG_COLOR));
 
-			// FIXME: 20ƒoƒCƒgŒÅ’è‚ğ‚â‚ß‚é
+			// FIXME: 20ãƒã‚¤ãƒˆå›ºå®šã‚’ã‚„ã‚ã‚‹
 			TCHAR	col_num[20];
 			_stprintf(col_num, _T("%d"), col);
 
-			// 1•¶š‚¸‚Â•\¦‚·‚é
+			// 1æ–‡å­—ãšã¤è¡¨ç¤ºã™ã‚‹
 			int col_num_len = _tcslen(col_num);
 
 			for(i = 0; i < col_num_len; i++) {
@@ -615,7 +615,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		char_rect.left = char_rect.right;
 	}
 
-	// Œ»İ‚ÌCaretˆÊ’u‚ğ”½“]‚·‚é
+	// ç¾åœ¨ã®Caretä½ç½®ã‚’åè»¢ã™ã‚‹
 	{
 		RECT caret_rect;
 		caret_rect.left = GetCaretPos().x + 1;
@@ -643,7 +643,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		}
 	}
 
-	// ü‚ğˆø‚­
+	// ç·šã‚’å¼•ã
 	RECT line_rect = rect2;
 	col = 0;
 	for(x = 0;; x += 10) {
@@ -685,7 +685,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		line_rect.left = line_rect.right;
 	}
 
-	// ‰º‘¤‚ÌŒ„ŠÔ‚ğ”’‚­“h‚é
+	// ä¸‹å´ã®éš™é–“ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.top = line_bottom + 1;
 	bk_rect.bottom = m_col_header_height;
 	bk_rect.left = 0;
@@ -694,7 +694,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 		FillBackGroundRect(pdc, &bk_rect, GetColor(BG_COLOR));
 	}
 
-	// ¶‘¤‚ÌŒ„ŠÔ‚ğ”’‚­“h‚é
+	// å·¦å´ã®éš™é–“ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.left = 0;
 	bk_rect.right = m_row_header_width;
 	bk_rect.top = 0;
@@ -702,13 +702,13 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 	if(p_paintdc->RectVisible(&bk_rect)) {
 		FillBackGroundRect(pdc, &bk_rect, GetColor(BG_COLOR));
 
-		// ü‚Ì¶’[
+		// ç·šã®å·¦ç«¯
 		bk_rect.left = m_left_space;
 		pdc->MoveTo(bk_rect.left, line_bottom);
 		pdc->LineTo(bk_rect.right, line_bottom);
 	}
 
-	// ‰E‘¤‚ğ”’‚­“h‚é
+	// å³å´ã‚’ç™½ãå¡—ã‚‹
 	if(line_rect.left < winrect.right) {
 		bk_rect.top = 0;
 		bk_rect.bottom = m_col_header_height;
@@ -725,7 +725,7 @@ void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
 */
 
 //
-// ƒeƒLƒXƒg‚ğo—Í‚·‚é(ÀÛ‚É‰æ–Ê‚É•`‚¢‚Ä‚¢‚é‚Ì‚Í‚±‚±)
+// ãƒ†ã‚­ã‚¹ãƒˆã‚’å‡ºåŠ›ã™ã‚‹(å®Ÿéš›ã«ç”»é¢ã«æã„ã¦ã„ã‚‹ã®ã¯ã“ã“)
 //
 LPBYTE GetBits(HBITMAP hbmp, int x, int y)
 {
@@ -763,7 +763,7 @@ int CEditCtrl::TextOutAA(CDC *pdc, CDC *p_paintdc, const TCHAR *p, int len, RECT
 		GLYPHMETRICS gm;
 		CONST MAT2 Mat = {{0,1},{0,0},{0,0},{0,1}};
 
-		// •¶šƒR[ƒhæ“¾
+		// æ–‡å­—ã‚³ãƒ¼ãƒ‰å–å¾—
 		int font_width = GetFontWidth(pdc, get_char(p));
 		UINT code = get_char(p);
 
@@ -773,7 +773,7 @@ int CEditCtrl::TextOutAA(CDC *pdc, CDC *p_paintdc, const TCHAR *p, int len, RECT
 			FillBackGroundRect(pdc, &bk_rect, bk);
 
 			if(code != ' ') {
-				// ƒrƒbƒgƒ}ƒbƒvæ“¾
+				// ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—å–å¾—
 				DWORD size = GetGlyphOutline(hdc, code, GGO_GRAY8_BITMAP, &gm, 0, NULL, &Mat);
 
 				BYTE *ptr;
@@ -808,7 +808,7 @@ int CEditCtrl::TextOutAA(CDC *pdc, CDC *p_paintdc, const TCHAR *p, int len, RECT
 					}
 				}
 
-				// Œã•Ğ•t‚¯
+				// å¾Œç‰‡ä»˜ã‘
 				if(ptr != glyph_buf) delete[] ptr;
 			}
 		}
@@ -851,7 +851,7 @@ int CEditCtrl::TextOut2(CDC *pdc, CDC *p_paintdc, const TCHAR *p, int len, RECT 
 }
 
 //
-// ƒeƒLƒXƒg‚ğÜ‚è•Ô‚µ‚È‚ª‚ço—Í‚·‚é
+// ãƒ†ã‚­ã‚¹ãƒˆã‚’æŠ˜ã‚Šè¿”ã—ãªãŒã‚‰å‡ºåŠ›ã™ã‚‹
 //
 int CEditCtrl::TextOut(CDispColorData *color_data, CDC *pdc, CDC *p_paintdc,
 	const TCHAR *p, int len, RECT &rect, int &line_len, int row,
@@ -863,7 +863,7 @@ int CEditCtrl::TextOut(CDispColorData *color_data, CDC *pdc, CDC *p_paintdc,
 	if(rect.bottom > win_bottom) rect.bottom = win_bottom;
 
 	for(;;) {
-		// Ü‚è•Ô‚µˆÊ’u‚©”»’è‚·‚é
+		// æŠ˜ã‚Šè¿”ã—ä½ç½®ã‹åˆ¤å®šã™ã‚‹
 		if(split < (GetDispRowSplitCnt(row) - 1) && line_len + len > GetDispOffset(idx + split + 1)) {
 			int tmp_len = GetDispOffset(idx + split + 1) - line_len;
 			if(tmp_len > 0 && is_lead_byte(p[tmp_len - 1])) tmp_len--;
@@ -883,7 +883,7 @@ int CEditCtrl::TextOut(CDispColorData *color_data, CDC *pdc, CDC *p_paintdc,
 			if(rect.bottom > win_bottom) rect.bottom = win_bottom;
 			rect.left = -(h_scr_pos * m_char_width) + m_row_header_width;
 
-			// ƒEƒBƒ“ƒhƒE‚Ì‰º’[‚ğ’´‚¦‚½‚çCI‚í‚è
+			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸‹ç«¯ã‚’è¶…ãˆãŸã‚‰ï¼Œçµ‚ã‚ã‚Š
 			if(rect.top > win_bottom) break;
 		} else {
 			if(rect.bottom > m_col_header_height) {
@@ -905,7 +905,7 @@ __inline void CEditCtrl::SetDispColor(CDispColorData *color_data, COLORREF color
 }
 
 //
-// s‚ğ‰ğÍ‚µ‚ÄCƒeƒLƒXƒg‚ÌF‚ğŒˆ’è‚·‚é
+// è¡Œã‚’è§£æã—ã¦ï¼Œãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’æ±ºå®šã™ã‚‹
 //
 void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCHAR *p)
 {
@@ -927,7 +927,7 @@ void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCH
 		(m_ex_style & ECS_NO_COMMENT_CHECK) == 0) comment = TRUE;
 	if(m_edit_data->get_row_data_flg(row, ROW_DATA_IN_TAG) &&
 		(m_ex_style & ECS_HTML_MODE)) in_tag = TRUE;
-	//ƒNƒH[ƒg‚ª•Â‚¶‚ç‚ê‚Ä‚¢‚È‚¢‚Æ‚«CˆÈ~‚Ìs‚É‰e‹¿‚µ‚È‚¢‚æ‚¤‚É‚µ‚½
+	//ã‚¯ã‚©ãƒ¼ãƒˆãŒé–‰ã˜ã‚‰ã‚Œã¦ã„ãªã„ã¨ãï¼Œä»¥é™ã®è¡Œã«å½±éŸ¿ã—ãªã„ã‚ˆã†ã«ã—ãŸ
 	//if(m_edit_data->get_row_data(row) & ROW_DATA_IN_QUOTE) in_quote = TRUE;
 
 	int bracket_cnt = m_edit_data->get_row_bracket_cnt(row);
@@ -962,11 +962,11 @@ void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCH
 
 		if(m_ex_style & ECS_HTML_MODE) {
 			if(comment == FALSE) {
-				// ƒ^ƒO‚Ìƒ`ƒFƒbƒN
+				// ã‚¿ã‚°ã®ãƒã‚§ãƒƒã‚¯
 				if(p[0] == '<' && str_token->isOpenComment(p) == FALSE && in_tag == FALSE) {
 					in_tag = TRUE;
 				}
-				//  ƒ^ƒO‚ÌŠO‚É‚ ‚éƒL[ƒ[ƒh‚ÍCF‚ğ‚Â‚¯‚È‚¢
+				//  ã‚¿ã‚°ã®å¤–ã«ã‚ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¯ï¼Œè‰²ã‚’ã¤ã‘ãªã„
 				if(in_tag == FALSE) {
 					key_word_type = 0;
 					in_quote = FALSE;
@@ -975,7 +975,7 @@ void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCH
 					key_word_type = str_token->GetKeywordType(p, &key_word_len, len);
 					is_operator = str_token->isOperatorChar(p[0]);
 				}
-				// ƒ^ƒO‚Ìƒ`ƒFƒbƒN
+				// ã‚¿ã‚°ã®ãƒã‚§ãƒƒã‚¯
 				if(p[0] == '>' && in_tag == TRUE) {
 					in_tag = FALSE;
 				}
@@ -986,21 +986,21 @@ void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCH
 		}
 
 		if(row_comment == TRUE || comment == TRUE) {
-			// ƒRƒƒ“ƒg
+			// ã‚³ãƒ¡ãƒ³ãƒˆ
 			disp_color = GetColor(COMMENT_COLOR);
 		} else if(key_word_type == 1) {
-			// ƒL[ƒ[ƒh
+			// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 			len = key_word_len;
 			disp_color = GetColor(KEYWORD_COLOR);
 		} else if(key_word_type == 2) {
-			// ƒL[ƒ[ƒh
+			// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 			len = key_word_len;
 			disp_color = GetColor(KEYWORD2_COLOR);
 		} else if(in_quote && p[0] != (TCHAR)m_no_quote_color_char) {
-			// ˆÍ‚İ•¶š‚Ì’†
+			// å›²ã¿æ–‡å­—ã®ä¸­
 			disp_color = GetColor(QUOTE_COLOR);
 		} else if(is_operator) {
-			// ‹L†
+			// è¨˜å·
 			disp_color = GetColor(OPERATOR_COLOR);
 
 			if(m_ex_style & ECS_BRACKET_MULTI_COLOR) {
@@ -1013,11 +1013,11 @@ void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCH
 				}
 			}
 	} else {
-			// ‚»‚Ì‘¼
+			// ãã®ä»–
 			disp_color = GetColor(TEXT_COLOR);
 		}
 		if(disp_color != RGB(0, 0, 0)) {
-			// 0‚Å‰Šú‰»‚µ‚Ä‚¢‚é‚Ì‚ÅC•‚Ì‚Æ‚«‚Íˆ—‚ğƒXƒLƒbƒv
+			// 0ã§åˆæœŸåŒ–ã—ã¦ã„ã‚‹ã®ã§ï¼Œé»’ã®ã¨ãã¯å‡¦ç†ã‚’ã‚¹ã‚­ãƒƒãƒ—
 			SetDispColor(color_data, disp_color, cur_x, len);
 		}
 
@@ -1032,14 +1032,14 @@ void CEditCtrl::MakeDispColorData(CDispColorData *color_data, int row, const TCH
 }
 
 //
-// ‘I‘ğ”ÍˆÍ‚ğİ’è‚·‚é
+// é¸æŠç¯„å›²ã‚’è¨­å®šã™ã‚‹
 //
 void CEditCtrl::MakeDispSelectedData(CDispColorData *color_data, int row, const TCHAR *p)
 {
 	if(HaveSelected() == FALSE) return;
 	if(IsSelectedRow(row) == FALSE) return;
 
-	// ‘I‘ğ”ÍˆÍ‚ğİ’è
+	// é¸æŠç¯„å›²ã‚’è¨­å®š
 	int		invert_start_x;
 	int		invert_end_x;
 
@@ -1064,18 +1064,18 @@ void CEditCtrl::MakeDispSelectedData(CDispColorData *color_data, int row, const 
 }
 
 //
-// ƒ}[ƒN‚ğİ’è‚·‚é
+// ãƒãƒ¼ã‚¯ã‚’è¨­å®šã™ã‚‹
 //
 void CEditCtrl::MakeDispMarkData(CDispColorData *color_data, const TCHAR *p)
 {
 	const TCHAR *p_start = p;
 	unsigned int ch;
 
-	// Tab, ”¼Šp‹ó”’, ‘SŠp‹ó”’‚ğƒ}[ƒN
+	// Tab, åŠè§’ç©ºç™½, å…¨è§’ç©ºç™½ã‚’ãƒãƒ¼ã‚¯
 	for(p = p_start; *p != '\0'; p += get_char_len(p)) {
 		ch = get_char(p);
 
-		if(ch == L'@') {
+		if(ch == L'ã€€') {
 			color_data->SetMark((int)(p - p_start), MARK_2BYTE_SPACE);
 		} else if(ch == '\t') {
 			color_data->SetMark((int)(p - p_start), MARK_TAB);
@@ -1093,7 +1093,7 @@ void CEditCtrl::SetSearchData(CDispColorData *color_data, int pos, int len)
 }
 
 //
-// ŒŸõŒ‹‰Ê‚ğİ’è‚·‚é
+// æ¤œç´¢çµæœã‚’è¨­å®šã™ã‚‹
 //
 void CEditCtrl::MakeDispSearchData(CDispColorData *color_data, int row, const TCHAR *p)
 {
@@ -1107,7 +1107,7 @@ void CEditCtrl::MakeDispSearchData(CDispColorData *color_data, int row, const TC
 		if(col < 0 || len == 0) break;
 
 		if(col + len > m_edit_data->get_row_len(row)) {
-			// FIXME: ŒŸõŒ‹‰Ê‚ª•¡”s‚É‚È‚éê‡‚É‘Î‰‚·‚é
+			// FIXME: æ¤œç´¢çµæœãŒè¤‡æ•°è¡Œã«ãªã‚‹å ´åˆã«å¯¾å¿œã™ã‚‹
 			int disp_len = m_edit_data->get_row_len(row) - col + 1;
 			SetSearchData(color_data, col, disp_len);
 			return;
@@ -1119,7 +1119,7 @@ void CEditCtrl::MakeDispSearchData(CDispColorData *color_data, int row, const TC
 }
 
 //
-// ƒNƒŠƒbƒJƒuƒ‹URL‚ğİ’è‚·‚é
+// ã‚¯ãƒªãƒƒã‚«ãƒ–ãƒ«URLã‚’è¨­å®šã™ã‚‹
 //
 void CEditCtrl::SetDispClickable(CDispColorData *color_data, int pos, int len)
 {
@@ -1130,7 +1130,7 @@ void CEditCtrl::SetDispClickable(CDispColorData *color_data, int pos, int len)
 }
 
 //
-// ƒNƒŠƒbƒJƒuƒ‹URL‚ğİ’è‚·‚é
+// ã‚¯ãƒªãƒƒã‚«ãƒ–ãƒ«URLã‚’è¨­å®šã™ã‚‹
 //
 void CEditCtrl::MakeDispClickableDataMain(CDispColorData *color_data, const TCHAR *p, TCHAR *clickable_text)
 {
@@ -1148,7 +1148,7 @@ void CEditCtrl::MakeDispClickableDataMain(CDispColorData *color_data, const TCHA
 				*p == '"' || *p == '<' || *p == '>' || 
 				*p == '[' || *p == ']' || *p >= 0x80) break;
 
-			// URL’†‚É()‚ªg‚¦‚é‚æ‚¤‚É‚·‚é
+			// URLä¸­ã«()ãŒä½¿ãˆã‚‹ã‚ˆã†ã«ã™ã‚‹
 			if(*p == '(' || *p == ')') {
 				BOOL break_flg = FALSE;
 				int cnt = 1;
@@ -1182,7 +1182,7 @@ void CEditCtrl::MakeDispClickableDataMail(CDispColorData *color_data, const TCHA
 		p_at = my_mbschr(p, '@');
 		if(p_at == NULL) break;
 
-		// æ“ªˆÊ’u‚ğ‹‚ß‚é
+		// å…ˆé ­ä½ç½®ã‚’æ±‚ã‚ã‚‹
 		for(p = p_at - 1; p >= p_start; p--) {
 			if(!inline_isalnum(*p) && *p != '_' && *p != '-' && *p != '.' && *p != '+') {
 				if(is_low_surrogate(*p)) p++;
@@ -1200,7 +1200,7 @@ void CEditCtrl::MakeDispClickableDataMail(CDispColorData *color_data, const TCHA
 			continue;
 		}
 
-		// I—¹ˆÊ’u‚ğ‹‚ß‚é
+		// çµ‚äº†ä½ç½®ã‚’æ±‚ã‚ã‚‹
 		p = p_at + 1;
 		for(; *p != '\0'; p++, len++) {
 			if(is_lead_byte(*p)) break;
@@ -1223,7 +1223,7 @@ void CEditCtrl::MakeDispClickableData(CDispColorData *color_data, const TCHAR *p
 }
 
 //
-// Š‡ŒÊ‚Ì‹­’²•\¦‚ğİ’è‚·‚é
+// æ‹¬å¼§ã®å¼·èª¿è¡¨ç¤ºã‚’è¨­å®šã™ã‚‹
 //
 void CEditCtrl::MakeDispBracketsData(CDispColorData* color_data, int row, const TCHAR* p)
 {
@@ -1236,7 +1236,7 @@ void CEditCtrl::MakeDispBracketsData(CDispColorData* color_data, int row, const 
 }
 
 //
-// w’è‚³‚ê‚½F‚É]‚Á‚ÄCƒeƒLƒXƒg‚ğo—Í‚·‚é
+// æŒ‡å®šã•ã‚ŒãŸè‰²ã«å¾“ã£ã¦ï¼Œãƒ†ã‚­ã‚¹ãƒˆã‚’å‡ºåŠ›ã™ã‚‹
 //
 void CEditCtrl::PaintTextMain(CDispColorData *color_data, CDC *pdc, CDC *p_paintdc, 
 	int h_scr_pos, int rect_top, int row, const TCHAR *p)
@@ -1275,13 +1275,13 @@ void CEditCtrl::PaintTextMain(CDispColorData *color_data, CDC *pdc, CDC *p_paint
 	for(;;) {
 		if(*p == '\0' || *p == '\n') break;
 
-		// ÅŒã‚Ìs‚ÅCƒEƒBƒ“ƒhƒE‚Ì‰E’[‚ğ’´‚¦‚½‚çCI‚í‚è
+		// æœ€å¾Œã®è¡Œã§ï¼Œã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å³ç«¯ã‚’è¶…ãˆãŸã‚‰ï¼Œçµ‚ã‚ã‚Š
 		if(rect.left > disp_right && split == GetDispRowSplitCnt(row) - 1) break;
-		// ƒEƒBƒ“ƒhƒE‚Ì‰º’[‚ğ’´‚¦‚½‚çCI‚í‚è
+		// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸‹ç«¯ã‚’è¶…ãˆãŸã‚‰ï¼Œçµ‚ã‚ã‚Š
 		if(rect.top > disp_bottom) break;
 
 		for(len = 1, pos = cur_x;; len++, pos++) {
-			// 2byte•¶š‚Ì“r’†‚ÅØ‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+			// 2byteæ–‡å­—ã®é€”ä¸­ã§åˆ‡ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 			if(is_lead_byte(*(p + len - 1))) {
 				if(color_data->DispColorDataCmp(pos, pos + 1) != 0) break;
 				len++;
@@ -1345,10 +1345,10 @@ void CEditCtrl::PaintTextMain(CDispColorData *color_data, CDC *pdc, CDC *p_paint
 	}
 	pdc->SetBkColor(bk_color_org);
 
-	// s”Ô†‚â‰E’[‚Ì‹ó”’‚ğ•`‚­
+	// è¡Œç•ªå·ã‚„å³ç«¯ã®ç©ºç™½ã‚’æã
 	PaintTextSpace(color_data, pdc, p_paintdc, row, split, rect.top, rect.left);
 
-	// Š‡ŒÊ‚Ì‘Î‰‚ğ•\¦
+	// æ‹¬å¼§ã®å¯¾å¿œã‚’è¡¨ç¤º
 	if(row == m_edit_data->get_disp_data()->GetHighlightPos().y) {
 		InvertPt(pdc, m_edit_data->get_disp_data()->GetHighlightPos());
 	}
@@ -1363,9 +1363,9 @@ void CEditCtrl::InvertPt(CDC *pdc, POINT char_pt)
 	GetDispDataPoint(char_pt, &disp_pt);
 	GetDispCaretPoint(disp_pt, &caret_pt);
 
-	// FIXME: ã‰º¶‰E‚Ìspace‚ğl—¶‚·‚é
+	// FIXME: ä¸Šä¸‹å·¦å³ã®spaceã‚’è€ƒæ…®ã™ã‚‹
 
-	// “_–Å’†‚É•ÒW‚³‚ê‚ÄA–³Œø‚ÈˆÊ’u‚É‚È‚Á‚½ê‡‚Ìˆ—
+	// ç‚¹æ»…ä¸­ã«ç·¨é›†ã•ã‚Œã¦ã€ç„¡åŠ¹ãªä½ç½®ã«ãªã£ãŸå ´åˆã®å‡¦ç†
 	if(!m_edit_data->is_valid_point(char_pt)) {
 		return;
 	}
@@ -1382,7 +1382,7 @@ void CEditCtrl::InvertPt(CDC *pdc, POINT char_pt)
 }
 
 //
-// s‚ÌƒeƒLƒXƒg‚ğo—Í‚·‚é
+// è¡Œã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å‡ºåŠ›ã™ã‚‹
 //
 void CEditCtrl::PaintText(CDC *pdc, CDC *p_paintdc, int h_scr_pos, int rect_top, int row, int *bottom)
 {
@@ -1439,7 +1439,7 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 
 	GetDispRect(&winrect);
 
-	// ‰E‘¤‚ğ”’‚­“h‚é
+	// å³å´ã‚’ç™½ãå¡—ã‚‹
 	if(left < winrect.right) {
 		bk_rect.top = top;
 		bk_rect.bottom = bk_rect.top + m_row_height;
@@ -1478,7 +1478,7 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 		}
 	}
 
-	// ¶‘¤‚ÌŒ„ŠÔ‚ğ”’‚­“h‚é
+	// å·¦å´ã®éš™é–“ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.top = top;
 	bk_rect.bottom = bk_rect.top + m_row_height;
 	bk_rect.left = 0;
@@ -1487,7 +1487,7 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 		FillBackGroundRect(pdc, &bk_rect, GetColor(BG_COLOR));
 
 		if(m_left_space > 1) {
-			// ƒuƒbƒNƒ}[ƒN
+			// ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯
 			if(split == 0 && m_edit_data->get_row_data_flg(row, ROW_DATA_BOOK_MARK)) {
 				RECT	book_mark_rect = bk_rect;
 				book_mark_rect.left = 1;
@@ -1497,7 +1497,7 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 				}
 			}
 
-			// •ÒWƒ}[ƒN
+			// ç·¨é›†ãƒãƒ¼ã‚¯
 			if(m_edit_data->is_edit_row(row) && (m_ex_style & ECS_SHOW_EDIT_ROW)) {
 				RECT	book_mark_rect = bk_rect;
 				book_mark_rect.left = 1 + m_left_space / 2;
@@ -1508,14 +1508,14 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 			}
 		}
 
-		// Œ»İs‚ğ”½“]‚·‚é
+		// ç¾åœ¨è¡Œã‚’åè»¢ã™ã‚‹
 		BOOL invert_flg = FALSE;
 
 		if(row == m_edit_data->get_cur_row() && split == m_edit_data->get_cur_split()) {
 			invert_flg = TRUE;
 		}
 
-		// s”Ô†
+		// è¡Œç•ªå·
 		if(m_ex_style & ECS_SHOW_ROW_NUM) {
 			if(invert_flg) {
 				bk_rect.left = m_left_space;
@@ -1537,7 +1537,7 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 					pdc->SetTextColor(GetColor(RULER_COLOR));
 				}
 
-				// FIXME: 20ƒoƒCƒgŒÅ’è‚ğ‚â‚ß‚é
+				// FIXME: 20ãƒã‚¤ãƒˆå›ºå®šã‚’ã‚„ã‚ã‚‹
 				TCHAR	row_num[20];
 				_stprintf(row_num, _T("%d"), row + 1);
 				int num_len = (int)_tcslen(row_num);
@@ -1650,11 +1650,11 @@ void CEditCtrl::PaintLineFeed(CDC *pdc, const RECT &client_rect, int top, int le
 	y1 = rect.top + m_font_height / 8 + 2;
 	y2 = rect.bottom - m_font_height / 8 - 2;
 
-	// cü
+	// ç¸¦ç·š
 	pdc->MoveTo(x, y1);
 	pdc->LineTo(x, y2);
 
-	// –îˆó
+	// çŸ¢å°
 	pdc->MoveTo(x, y2);
 	pdc->LineTo(x + width / 2, y2 - m_font_height / 4);
 	pdc->MoveTo(x, y2);
@@ -1722,7 +1722,7 @@ void CEditCtrl::Paint2byteSpace(CDC *pdc, const RECT &client_rect, int top, int 
 	rect.top = top + 2;
 	rect.bottom = top + m_font_height - 2;
 	rect.left = left + 1;
-	rect.right = rect.left + GetFontWidth(pdc, L'@') - 3;
+	rect.right = rect.left + GetFontWidth(pdc, L'ã€€') - 3;
 
 	if(!RectVisibleMark(client_rect, rect)) return;
 
@@ -1848,12 +1848,12 @@ void CEditCtrl::PaintMain(CDC *pdc, CDC *p_paintdc)
 
 	pdc->SetBkColor(GetColor(BG_COLOR));
 
-	// —ñ”Ô†‚ğo—Í
+	// åˆ—ç•ªå·ã‚’å‡ºåŠ›
 	old_font = pdc->SelectObject(&m_font);
 	PaintColNum(pdc, p_paintdc);
 	pdc->SelectObject(old_font);
 
-	// ƒeƒLƒXƒg‚ğo—Í
+	// ãƒ†ã‚­ã‚¹ãƒˆã‚’å‡ºåŠ›
 	old_font = pdc->SelectObject(&m_font);
 	int row_bottom = GetDispRowBottom();
 	int row = GetDispRowTop();
@@ -1868,12 +1868,12 @@ void CEditCtrl::PaintMain(CDC *pdc, CDC *p_paintdc)
 	RECT	winrect, bk_rect;
 	GetDispRect(&winrect);
 
-	// Œ»İs‚Éü‚ğo—Í
+	// ç¾åœ¨è¡Œã«ç·šã‚’å‡ºåŠ›
 	if(m_ex_style & ECS_SHOW_ROW_LINE) {
 		PaintRowLine(pdc, p_paintdc);
 	}
 
-	// ‰º‘¤‚ğ”’‚­“h‚é
+	// ä¸‹å´ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.left = 0;
 	bk_rect.right = winrect.right;
 	bk_rect.top = bottom;
@@ -1882,7 +1882,7 @@ void CEditCtrl::PaintMain(CDC *pdc, CDC *p_paintdc)
 		FillBackGroundRect(pdc, &bk_rect, GetColor(BG_COLOR));
 	}
 
-	// ã‘¤‚ğ”’‚­“h‚é
+	// ä¸Šå´ã‚’ç™½ãå¡—ã‚‹
 	bk_rect.left = 0;
 	bk_rect.right = winrect.right;
 	bk_rect.top = 0;
@@ -1914,7 +1914,7 @@ void CEditCtrl::PaintBackGround(CDC *pdc, int width, int height)
 
 	bk_dc.FillSolidRect(CRect(0, 0, width, height), GetColor(BG_COLOR));
 
-	// ”wŒi‰æ‘œ
+	// èƒŒæ™¯ç”»åƒ
 	if(m_iPicture != NULL) {
 		if(!m_bg_screen_size) {
 			int dpi_y = bk_dc.GetDeviceCaps(LOGPIXELSY);
@@ -1932,7 +1932,7 @@ void CEditCtrl::PaintBackGround(CDC *pdc, int width, int height)
 		}
 	}
 
-	// Œrü
+	// ç½«ç·š
 	if(m_ex_style & ECS_SHOW_RULED_LINE) {
 		CBrush b;
 		b.CreateSolidBrush(GetColor(RULED_LINE_COLOR));
@@ -1967,10 +1967,10 @@ void CEditCtrl::PaintBackGround(CDC *pdc, int width, int height)
 
 void CEditCtrl::OnPaint() 
 {
-	CPaintDC dc(this); // •`‰æ—p‚ÌƒfƒoƒCƒX ƒRƒ“ƒeƒLƒXƒg
+	CPaintDC dc(this); // æç”»ç”¨ã®ãƒ‡ãƒã‚¤ã‚¹ ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 
 #ifdef USE_DOUBLE_BUFFERING
-	// ƒ_ƒuƒ‹ƒoƒbƒtƒ@ƒŠƒ“ƒO‚ÅC‰æ–Ê‚Ì‚¿‚ç‚Â‚«‚ğ—}‚¦‚é
+	// ãƒ€ãƒ–ãƒ«ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã§ï¼Œç”»é¢ã®ã¡ã‚‰ã¤ãã‚’æŠ‘ãˆã‚‹
 	RECT rcClient;
 	GetDispRect(&rcClient);
 
@@ -2026,7 +2026,7 @@ void CEditCtrl::OnPaint()
 
 void CEditCtrl::CalcShowRow()
 {
-	// WindowƒTƒCƒY•ÏXCƒtƒHƒ“ƒg•ÏX‚ÉÄŒvZ
+	// Windowã‚µã‚¤ã‚ºå¤‰æ›´ï¼Œãƒ•ã‚©ãƒ³ãƒˆå¤‰æ›´æ™‚ã«å†è¨ˆç®—
 	CRect	winrect;
 	GetDispRect(winrect);
 	m_show_row = ((winrect.Height() - m_col_header_height - m_bottom_space) / m_row_height) + 1;
@@ -2034,7 +2034,7 @@ void CEditCtrl::CalcShowRow()
 
 int CEditCtrl::GetShowRow()
 {
-/* Às‚³‚ê‚é‰ñ”‚ª‘½‚¢‚Ì‚ÅCCalcShowRow()‚Å–‘O‚ÉŒvZ‚µ‚Ä‚¨‚­‚æ‚¤‚É•ÏX
+/* å®Ÿè¡Œã•ã‚Œã‚‹å›æ•°ãŒå¤šã„ã®ã§ï¼ŒCalcShowRow()ã§äº‹å‰ã«è¨ˆç®—ã—ã¦ãŠãã‚ˆã†ã«å¤‰æ›´
 	int		result;
 	CRect	winrect;
 
@@ -2065,7 +2065,7 @@ BOOL CEditCtrl::HaveSelected()
 
 BOOL CEditCtrl::HaveSelectedFullOneLine()
 {
-	// 1s‘S‘Ì‚ğ‘I‘ğ‚µ‚Ä‚¢‚é‚Æ‚«CTRUE‚ğ•Ô‚·
+	// 1è¡Œå…¨ä½“ã‚’é¸æŠã—ã¦ã„ã‚‹ã¨ãï¼ŒTRUEã‚’è¿”ã™
 	if(HaveSelected() == FALSE) return FALSE;
 
 	if(GetSelectArea()->pos1.y != GetSelectArea()->pos2.y) return FALSE;
@@ -2087,7 +2087,7 @@ BOOL CEditCtrl::HaveSelectedMultiLine()
 
 void CEditCtrl::SetSelectedPoint(POINT pt1, POINT pt2, BOOL box_select)
 {
-	// ”ÍˆÍ‘I‘ğ‚ÌŠJnˆÊ’u‚ÆI—¹ˆÊ’u‚ª“¯‚¶‚Æ‚«‚ÍAƒJ[ƒ\ƒ‹‚ğˆÚ“®‚µ‚ÄI—¹
+	// ç¯„å›²é¸æŠã®é–‹å§‹ä½ç½®ã¨çµ‚äº†ä½ç½®ãŒåŒã˜ã¨ãã¯ã€ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç§»å‹•ã—ã¦çµ‚äº†
 	if(!box_select && inline_pt_cmp(&pt1, &pt2) == 0) {
 		m_edit_data->set_cur(pt1.y, pt2.x);
 		SetCaret(TRUE, 1);
@@ -2111,11 +2111,11 @@ void CEditCtrl::ClearSelected(BOOL redraw)
 		if(redraw) InvalidateRows_AllWnd(GetSelectArea()->pos1.y, GetSelectArea()->pos2.y);
 		m_edit_data->get_disp_data()->ClearSelected();
 
-		// eƒEƒBƒ“ƒhƒE‚É’Ê’m
+		// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥
 		GetParent()->SendMessage(EC_WM_CHANGE_SELECTED_TEXT, 0, 0);
 	}
 
-	// ƒL[ƒ[ƒh•âŠ®‚Ìó‘Ô‚ğƒNƒŠƒA
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰è£œå®Œã®çŠ¶æ…‹ã‚’ã‚¯ãƒªã‚¢
 	ClearKeywordCompletion();
 }
 
@@ -2272,14 +2272,14 @@ void CEditCtrl::InvalidateEditData(int old_row_cnt, int old_char_cnt, int old_sp
 {
 	ASSERT(start_row < m_edit_data->get_row_cnt());
 
-	// FIXME: old_char_cnt‚Í—LŒø‚Ég‚¦‚Ä‚È‚¢
-	// ˆÈ‰º‚ÌƒƒWƒbƒN‚É‚·‚é‚©
-	// (1)old_char_cnt‚Ì‘ã‚í‚è‚ÉAmax_disp_width‚ğ•Û‚µ‚Ä‚¨‚­
-	// (2)is_max_disp_width_row()‚ªTRUE‚È‚çAdisp_width‚ğÄŒvZ
-	// (3)(1)‚Å•Û‚µ‚Ä‚¢‚½’l‚ÆA(2)‚ÌŒ‹‰Ê‚ªˆÙ‚È‚éê‡A‘S‘Ì‚ğÄ•`‰æ
+	// FIXME: old_char_cntã¯æœ‰åŠ¹ã«ä½¿ãˆã¦ãªã„
+	// ä»¥ä¸‹ã®ãƒ­ã‚¸ãƒƒã‚¯ã«ã™ã‚‹ã‹
+	// (1)old_char_cntã®ä»£ã‚ã‚Šã«ã€max_disp_widthã‚’ä¿æŒã—ã¦ãŠã
+	// (2)is_max_disp_width_row()ãŒTRUEãªã‚‰ã€disp_widthã‚’å†è¨ˆç®—
+	// (3)(1)ã§ä¿æŒã—ã¦ã„ãŸå€¤ã¨ã€(2)ã®çµæœãŒç•°ãªã‚‹å ´åˆã€å…¨ä½“ã‚’å†æç”»
 
-	// s‚ª•Ï‚í‚Á‚½‚Æ‚«‚Í‘S‘Ì‚ğÄ•`‰æ
-	// 1s‚ÌÅ‘å‚Ì•‚ª•ÏX‚³‚ê‚½‚Æ‚«‚à‘S‘Ì‚ğÄ•`‰æ
+	// è¡ŒãŒå¤‰ã‚ã£ãŸã¨ãã¯å…¨ä½“ã‚’å†æç”»
+	// 1è¡Œã®æœ€å¤§ã®å¹…ãŒå¤‰æ›´ã•ã‚ŒãŸã¨ãã‚‚å…¨ä½“ã‚’å†æç”»
 	if(old_row_cnt != m_edit_data->get_row_cnt() || 
 		m_edit_data->is_max_disp_width_row(m_edit_data->get_cur_row())) {
 
@@ -2290,22 +2290,22 @@ void CEditCtrl::InvalidateEditData(int old_row_cnt, int old_char_cnt, int old_sp
 
 		SetHeaderSize();
 
-		// ƒXƒNƒ[ƒ‹ƒo[
+		// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼
 		CheckScrollBar();
 
-		// Ä•`‰æ
+		// å†æç”»
 		m_edit_data->get_disp_data()->GetDispColorDataPool()->ClearAllData();
 		Invalidate();
 	} else {
 		if(CalcSplitCnt(m_edit_data->get_cur_row()) != old_split_cnt) {
 			if(b_make_edit_data) MakeDispData(FALSE, start_row, 1);
 
-			// Ä•`‰æ
+			// å†æç”»
 			//m_edit_data->get_disp_data()->GetDispColorDataPool()->ClearAllData();
 			Invalidate();
 		}
 
-		// ƒXƒNƒ[ƒ‹ƒo[
+		// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼
 		CheckScrollBar();
 
 		InvalidateRow(m_edit_data->get_cur_row());
@@ -2322,7 +2322,7 @@ void CEditCtrl::InvalidateRow_AllWnd(int row)
 
 void CEditCtrl::InvalidateRow(int row)
 {
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍŒvZ‚µ‚È‚¢
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯è¨ˆç®—ã—ãªã„
 	if(row < GetDispRowTop() || row > GetDispRowBottom()) return;
 	if(row >= m_edit_data->get_row_cnt()) return;
 
@@ -2337,7 +2337,7 @@ void CEditCtrl::InvalidateRow(int row)
 	if(rect.bottom > winrect.bottom) rect.bottom = winrect.bottom;
 	InvalidateRect(&rect);
 
-	// •ÒWƒ}[ƒN‚ğÄ•`‰æ
+	// ç·¨é›†ãƒãƒ¼ã‚¯ã‚’å†æç”»
 	rect.left = 0;
 	rect.right = m_left_space;
 	InvalidateRect(&rect);
@@ -2357,8 +2357,8 @@ void CEditCtrl::InvalidateRowHeader(int idx)
 	int idx1 = GetScrollPos(SB_VERT);
 	int idx2 = idx1 + GetShowRow() - 1;
 
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍŒvZ‚µ‚È‚¢
-	// FIXME: —vƒeƒXƒg
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯è¨ˆç®—ã—ãªã„
+	// FIXME: è¦ãƒ†ã‚¹ãƒˆ
 	if(idx < idx1 || idx > idx2) {
 		return;
 	}
@@ -2391,7 +2391,7 @@ void CEditCtrl::InvalidateColHeader(int x)
 
 	x = x - m_row_header_width;
 
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍŒvZ‚µ‚È‚¢
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯è¨ˆç®—ã—ãªã„
 	if(x < 0 || x > winrect.right) return;
 	
 	RECT		rect;
@@ -2414,7 +2414,7 @@ void CEditCtrl::InvalidateRows_AllWnd(int row1, int row2)
 
 void CEditCtrl::InvalidateRows(int row1, int row2)
 {
-	// ‰æ–Ê‚Ì”ÍˆÍŠO‚ÍCƒ‹[ƒv‚ğ‰ñ‚³‚È‚¢‚æ‚¤‚É‚·‚é
+	// ç”»é¢ã®ç¯„å›²å¤–ã¯ï¼Œãƒ«ãƒ¼ãƒ—ã‚’å›ã•ãªã„ã‚ˆã†ã«ã™ã‚‹
 	int row = max(row1, GetDispRowTop());
 	int loop_cnt = min(row2, GetDispRowBottom());
 
@@ -2471,8 +2471,8 @@ BOOL CEditCtrl::VisiblePoint(const POINT *pt)
 
 void CEditCtrl::SetCaret(BOOL show_scroll, int focus_mode, BOOL b_line_end)
 {
-	// focus_mode‚ª0‚©‚Âfocus‚ª‚È‚¢ƒEƒBƒ“ƒhƒE‚Ìê‡‚ÍCˆ—‚µ‚È‚¢
-	// focus_mode‚ª1‚Ì‚Æ‚«‚ÍCí‚Éˆ—‚·‚é
+	// focus_modeãŒ0ã‹ã¤focusãŒãªã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å ´åˆã¯ï¼Œå‡¦ç†ã—ãªã„
+	// focus_modeãŒ1ã®ã¨ãã¯ï¼Œå¸¸ã«å‡¦ç†ã™ã‚‹
 	if(focus_mode == 0 && GetFocus() != this) return;
 
 	POINT		disp_data_pt;
@@ -2492,12 +2492,12 @@ void CEditCtrl::SetCaret(BOOL show_scroll, int focus_mode, BOOL b_line_end)
 
 		caret_point.y += m_row_space_top;
 
-		// ƒJƒŒƒbƒg‚ªs”Ô†E—ñ”Ô†‚ÌˆÊ’u‚É•\¦‚³‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+		// ã‚«ãƒ¬ãƒƒãƒˆãŒè¡Œç•ªå·ãƒ»åˆ—ç•ªå·ã®ä½ç½®ã«è¡¨ç¤ºã•ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 		if(!VisiblePoint(&caret_point)) caret_point.y = -m_row_height;
 
 		POINT	prev_caret_pos = GetCaretPos();
 		{
-			// ƒJƒŒƒbƒg‚Ìc‘œ‚ğ‚È‚­‚·ˆ—
+			// ã‚«ãƒ¬ãƒƒãƒˆã®æ®‹åƒã‚’ãªãã™å‡¦ç†
 			RECT	rect;
 			rect.top = prev_caret_pos.y;
 			rect.bottom = rect.top + m_font_height;
@@ -2515,7 +2515,7 @@ void CEditCtrl::SetCaret(BOOL show_scroll, int focus_mode, BOOL b_line_end)
 
 		InvalidateColHeader_AllWnd(caret_point.x);
 
-		// ƒJƒŒƒbƒg‚ÌˆÊ’u‚ğeƒEƒBƒ“ƒhƒE‚É’Ê’m‚·‚é
+		// ã‚«ãƒ¬ãƒƒãƒˆã®ä½ç½®ã‚’è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥ã™ã‚‹
 		CFontWidthHandler dchandler(this, &m_font);
 		int caret_x = m_edit_data->get_cur_caret_col(&dchandler);
 		GetParent()->SendMessage(EC_WM_CHANGE_CARET_POS, caret_x, m_edit_data->get_cur_row());
@@ -2545,12 +2545,12 @@ void CEditCtrl::SetCaret(BOOL show_scroll, int focus_mode, BOOL b_line_end)
 
 void CEditCtrl::SetBracketsPt()
 {
-	// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“’¼ŒãAmax_disp_idx‚È‚Ç‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢‚Æ‚«‚Íˆ—‚µ‚È‚¢
+	// ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³ç›´å¾Œã€max_disp_idxãªã©ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã¨ãã¯å‡¦ç†ã—ãªã„
 	if(m_edit_data->get_disp_data()->GetMaxDispIdx() == 1 && m_edit_data->get_row_cnt() > 1) {
 		return;
 	}
 
-	// ƒJ[ƒ\ƒ‹‚ª‰æ–Ê“à‚É‚È‚¢ê‡‚ÍCÀs‚µ‚È‚¢
+	// ã‚«ãƒ¼ã‚½ãƒ«ãŒç”»é¢å†…ã«ãªã„å ´åˆã¯ï¼Œå®Ÿè¡Œã—ãªã„
 	if(m_edit_data->get_cur_row() < GetDispRowTop()) return;
 	if(m_edit_data->get_cur_row() > GetDispRowBottom()) return;
 
@@ -2564,7 +2564,7 @@ void CEditCtrl::SetBracketsPt()
 	const TCHAR *brackets_str = m_edit_data->get_str_token()->GetBracketStr();
 	UINT searched_char = '\0';
 
-	// Å‰‚ÌŠJ‚«Š‡ŒÊ‚ğ’T‚·
+	// æœ€åˆã®é–‹ãæ‹¬å¼§ã‚’æ¢ã™
 	search_end_pt.y = GetDispRowTop();
 	search_end_pt.x = GetDispOffset(GetScrollPos(SB_VERT));
 
@@ -2578,15 +2578,15 @@ void CEditCtrl::SetBracketsPt()
 			if(open_pt.y == -1 || inline_pt_cmp(&tmp_pt, &open_pt) > 0) {
 				searched_char = close_char;
 				open_pt = tmp_pt;
-				// ŒŸõ”ÍˆÍ‚ğ‹·‚­‚·‚é
+				// æ¤œç´¢ç¯„å›²ã‚’ç‹­ãã™ã‚‹
 				search_end_pt = tmp_pt;
 			}
 		}
 	}
 
-	// •Â‚¶Š‡ŒÊ‚ğ’T‚·
+	// é–‰ã˜æ‹¬å¼§ã‚’æ¢ã™
 
-	// ŒŸõ”ÍˆÍ‚ğÅ¬‚É‚·‚é
+	// æ¤œç´¢ç¯„å›²ã‚’æœ€å°ã«ã™ã‚‹
 	int last_idx = (GetScrollPos(SB_VERT) + GetShowRow());
 	if(last_idx < 0 || last_idx >= m_edit_data->get_disp_data()->GetMaxDispIdx()) {
 		search_end_pt = m_edit_data->get_end_of_text_pt();
@@ -2598,12 +2598,12 @@ void CEditCtrl::SetBracketsPt()
 	if(searched_char != '\0') {
 		UINT open_char = m_edit_data->get_str_token()->getOpenBrackets(searched_char);
 
-		// Œ»İˆÊ’u‚ª•Â‚¶Š‡ŒÊ‚Ì‚Æ‚«C‚»‚ê‚ğg‚¤
+		// ç¾åœ¨ä½ç½®ãŒé–‰ã˜æ‹¬å¼§ã®ã¨ãï¼Œãã‚Œã‚’ä½¿ã†
 		if(m_edit_data->get_cur_char() == searched_char
 			&& m_edit_data->check_char_type() == CHAR_TYPE_NORMAL) {
 			close_pt = m_edit_data->get_cur_pt();
 		} else {
-			// Œ»İˆÊ’u‚ªŠJ‚«Š‡ŒÊ‚Ì‚Æ‚«CğŒ‚ğ’²ß‚·‚é
+			// ç¾åœ¨ä½ç½®ãŒé–‹ãæ‹¬å¼§ã®ã¨ãï¼Œæ¡ä»¶ã‚’èª¿ç¯€ã™ã‚‹
 			int start_cnt = -1;
 			if(m_edit_data->get_cur_char() == open_char
 				&& m_edit_data->check_char_type() == CHAR_TYPE_NORMAL) {
@@ -2616,8 +2616,8 @@ void CEditCtrl::SetBracketsPt()
 			}
 		}
 	} else {
-		// ŠJ‚«Š‡ŒÊ‚ªŒ©‚Â‚©‚ç‚È‚¢‚Æ‚«CÅ‰‚Ì•Â‚¶Š‡ŒÊ‚ğ’T‚·
-		// Œ»İˆÊ’u‚ª•Â‚¶Š‡ŒÊ‚Ì‚Æ‚«C‚»‚ê‚ğg‚¤
+		// é–‹ãæ‹¬å¼§ãŒè¦‹ã¤ã‹ã‚‰ãªã„ã¨ãï¼Œæœ€åˆã®é–‰ã˜æ‹¬å¼§ã‚’æ¢ã™
+		// ç¾åœ¨ä½ç½®ãŒé–‰ã˜æ‹¬å¼§ã®ã¨ãï¼Œãã‚Œã‚’ä½¿ã†
 		if(m_edit_data->get_str_token()->isCloseBrackets(m_edit_data->get_cur_char())
 			&& m_edit_data->check_char_type() == CHAR_TYPE_NORMAL) {
 			close_pt = m_edit_data->get_cur_pt();
@@ -2628,7 +2628,7 @@ void CEditCtrl::SetBracketsPt()
 				UINT close_char = *brackets_str;
 				UINT open_char = m_edit_data->get_str_token()->getOpenBrackets(close_char);
 
-				// Œ»İˆÊ’u‚ªŠJ‚«Š‡ŒÊ‚Ì‚Æ‚«CğŒ‚ğ’²ß‚·‚é
+				// ç¾åœ¨ä½ç½®ãŒé–‹ãæ‹¬å¼§ã®ã¨ãï¼Œæ¡ä»¶ã‚’èª¿ç¯€ã™ã‚‹
 				int start_cnt = -1;
 				if(m_edit_data->get_cur_char() == open_char
 					&& m_edit_data->check_char_type() == CHAR_TYPE_NORMAL) {
@@ -2639,7 +2639,7 @@ void CEditCtrl::SetBracketsPt()
 					start_cnt, &search_end_pt, '\0', 1, &tmp_pt)) {
 					if(close_pt.y == -1 || inline_pt_cmp(&tmp_pt, &close_pt) < 0) {
 						close_pt = tmp_pt;
-						// ŒŸõ”ÍˆÍ‚ğ‹·‚­‚·‚é
+						// æ¤œç´¢ç¯„å›²ã‚’ç‹­ãã™ã‚‹
 						search_end_pt = tmp_pt;
 					}
 				}
@@ -2647,9 +2647,9 @@ void CEditCtrl::SetBracketsPt()
 		}
 	}
 
-	// ‘O‰ñ‚ÌŒ‹‰Ê‚Æ¡‰ñ‚ÌŒ‹‰Ê‚ª“¯‚¶‚Æ‚«‚ÍCÄ•`‰æˆ—‚ğÈ—ª‚·‚é
+	// å‰å›ã®çµæœã¨ä»Šå›ã®çµæœãŒåŒã˜ã¨ãã¯ï¼Œå†æç”»å‡¦ç†ã‚’çœç•¥ã™ã‚‹
 	if(inline_pt_cmp(&open_pt, &m_edit_data->get_disp_data()->GetBracketPos()) != 0) {
-		// ‘O‰ñ‚Ìƒf[ƒ^‚ğƒNƒŠƒA
+		// å‰å›ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã‚¯ãƒªã‚¢
 		if(m_edit_data->get_disp_data()->GetBracketPos().y != -1) {
 			POINT pt = m_edit_data->get_disp_data()->GetBracketPos();
 			CDispColorData *p_disp_color_data = 
@@ -2662,7 +2662,7 @@ void CEditCtrl::SetBracketsPt()
 	}
 
 	if(inline_pt_cmp(&close_pt, &m_edit_data->get_disp_data()->GetBracketPos2()) != 0) {
-		// ‘O‰ñ‚Ìƒf[ƒ^‚ğƒNƒŠƒA
+		// å‰å›ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã‚¯ãƒªã‚¢
 		if(m_edit_data->get_disp_data()->GetBracketPos2().y != -1) {
 			POINT pt = m_edit_data->get_disp_data()->GetBracketPos2();
 			CDispColorData *p_disp_color_data = 
@@ -2689,9 +2689,9 @@ void CEditCtrl::MoveCaretRow(int row, BOOL extend, BOOL page_scr)
 
 	GetDataPoint(point, &pt, TRUE);
 
-	// row, col‚ğ“¯‚ÉˆÚ“®‚·‚é‚ÆCcolˆÊ’u‚ª‚¸‚ê‚Ä‚µ‚Ü‚¤
-	// (colˆÊ’u‚ğ•Û‘¶‚µ‚È‚ª‚çsˆÚ“®‚·‚é‚½‚ß)
-	{	// s‚Ì’[‚ÉƒJ[ƒ\ƒ‹‚ª‚ ‚é‚Æ‚«CƒJ[ƒ\ƒ‹‚ªs“ª‚Æs––‚ğŒğŒİ‚É•\¦‚³‚ê‚é‚Ì‚ğ‰ñ”ğ
+	// row, colã‚’åŒæ™‚ã«ç§»å‹•ã™ã‚‹ã¨ï¼Œcolä½ç½®ãŒãšã‚Œã¦ã—ã¾ã†
+	// (colä½ç½®ã‚’ä¿å­˜ã—ãªãŒã‚‰è¡Œç§»å‹•ã™ã‚‹ãŸã‚)
+	{	// è¡Œã®ç«¯ã«ã‚«ãƒ¼ã‚½ãƒ«ãŒã‚ã‚‹ã¨ãï¼Œã‚«ãƒ¼ã‚½ãƒ«ãŒè¡Œé ­ã¨è¡Œæœ«ã‚’äº¤äº’ã«è¡¨ç¤ºã•ã‚Œã‚‹ã®ã‚’å›é¿
 		PreMoveCaret(extend);
 		m_edit_data->move_cur_row(pt.y - m_edit_data->get_cur_row());
 		m_edit_data->move_cur_col(pt.x - m_edit_data->get_cur_col());
@@ -2752,10 +2752,10 @@ void CEditCtrl::MoveCaret(int row, int col, BOOL extend, BOOL show_scroll)
 	PostMoveCaret(extend, show_scroll);
 }
 
-// DeleteWordAfterCaret(), DeleteWordBeforeCaret()‚Ìíœ”ÍˆÍ‚ğæ“¾‚·‚é
+// DeleteWordAfterCaret(), DeleteWordBeforeCaret()ã®å‰Šé™¤ç¯„å›²ã‚’å–å¾—ã™ã‚‹
 CPoint CEditCtrl::GetNextWordPt(int allow)
 {
-	// Œ»İ‚ÌƒJ[ƒ\ƒ‹ˆÊ’u‚ğ•Û‘¶
+	// ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’ä¿å­˜
 	CPoint cur_pt = m_edit_data->get_cur_pt();
 
 	if(allow < 0) m_edit_data->skip_space(-1);
@@ -2764,7 +2764,7 @@ CPoint CEditCtrl::GetNextWordPt(int allow)
 
 	CPoint word_pt = m_edit_data->get_cur_pt();
 
-	// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğŒ³‚É–ß‚·
+	// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’å…ƒã«æˆ»ã™
 	m_edit_data->set_cur(cur_pt.y, cur_pt.x);
 
 	return word_pt;
@@ -2775,7 +2775,7 @@ void CEditCtrl::MoveNextSpace(int allow, BOOL extend)
 	unsigned int ch_arr[3];
 	ch_arr[0] = L' ';
 	ch_arr[1] = L'\t';
-	ch_arr[2] = L'@';
+	ch_arr[2] = L'ã€€';
 
 	PreMoveCaret(extend);
 
@@ -2805,10 +2805,10 @@ void CEditCtrl::SetConversionWindow(int x, int y)
 	hIMC = ImmGetContext(this->GetSafeHwnd());
 //	TRACE(_T("%d:%d,%d\n"), x, m_ime_rect.right, m_ime_rect.left);
 	if (x >= 0) {
-		// IMEƒEƒBƒ“ƒhƒE‚ªÁ‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+		// IMEã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒæ¶ˆãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 		// Note(2019/2/12)
-		//  x > m_ime_rect.right‚ğ x >= m_ime_rect.right‚ÉC³
-		//  w’èŒ…”‚ÅÜ‚è•Ô‚µ•\¦‚Ì‚Æ‚«AÜ‚è•Ô‚µˆÊ’u‚©‚çIME“ü—Í‚ğŠJn‚µ‚½‚Æ‚«AŸ‚Ìs‚É•\¦‚·‚é
+		//  x > m_ime_rect.rightã‚’ x >= m_ime_rect.rightã«ä¿®æ­£
+		//  æŒ‡å®šæ¡æ•°ã§æŠ˜ã‚Šè¿”ã—è¡¨ç¤ºã®ã¨ãã€æŠ˜ã‚Šè¿”ã—ä½ç½®ã‹ã‚‰IMEå…¥åŠ›ã‚’é–‹å§‹ã—ãŸã¨ãã€æ¬¡ã®è¡Œã«è¡¨ç¤ºã™ã‚‹
 		if(x >= m_ime_rect.right) {
 			x = m_ime_rect.left;
 			y += m_row_height;
@@ -2843,8 +2843,8 @@ void CEditCtrl::SelectText(CPoint pt, BOOL mouse_select)
 		GetSelectArea()->box_end_w = m_edit_data->get_disp_width_pt(pt, &dchandler);
 	}
 
-	// ƒoƒOŒŸo
-	// ‘I‘ğ”ÍˆÍ‚ª‚ ‚éê‡Cpos1‚©pos2‚ªCstart_pt‚Æˆê’v‚µ‚Ä‚¢‚È‚¯‚ê‚Î‚È‚ç‚È‚¢
+	// ãƒã‚°æ¤œå‡º
+	// é¸æŠç¯„å›²ãŒã‚ã‚‹å ´åˆï¼Œpos1ã‹pos2ãŒï¼Œstart_ptã¨ä¸€è‡´ã—ã¦ã„ãªã‘ã‚Œã°ãªã‚‰ãªã„
 	ASSERT(HaveSelected() == FALSE ||
 		(GetSelectArea()->start_pt.y == GetSelectArea()->pos1.y && GetSelectArea()->start_pt.x == GetSelectArea()->pos1.x) ||
 		(GetSelectArea()->start_pt.y == GetSelectArea()->pos2.y && GetSelectArea()->start_pt.x == GetSelectArea()->pos2.x));
@@ -2852,14 +2852,14 @@ void CEditCtrl::SelectText(CPoint pt, BOOL mouse_select)
 	cur_pos1 = GetSelectArea()->pos1;
 	cur_pos2 = GetSelectArea()->pos2;
 
-	// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Å‘I‘ğ‚µ‚½‚Æ‚«‚Ìˆ—
+	// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã§é¸æŠã—ãŸã¨ãã®å‡¦ç†
 	if(GetSelectArea()->start_pt2.y != -1) {
 		if(IsPtInArea(&GetSelectArea()->start_pt1, &GetSelectArea()->start_pt2, &pt)) {
-			// ‘I‘ğŠJn‚Ì”ÍˆÍ“à‚Ì‚Æ‚«‚ÍC‘I‘ğ”ÍˆÍ‚ğ•ÏX‚µ‚È‚¢
+			// é¸æŠé–‹å§‹ã®ç¯„å›²å†…ã®ã¨ãã¯ï¼Œé¸æŠç¯„å›²ã‚’å¤‰æ›´ã—ãªã„
 			GetSelectArea()->start_pt = GetSelectArea()->start_pt1;
 			pt = GetSelectArea()->start_pt2;
 		} else {
-			// ‘I‘ğŠJn‚Ì”ÍˆÍ‚Ì‘OŒã‚ÅC‘I‘ğ”ÍˆÍ‚ÌŠJnˆÊ’u‚ğ•ÏX‚·‚é
+			// é¸æŠé–‹å§‹ã®ç¯„å›²ã®å‰å¾Œã§ï¼Œé¸æŠç¯„å›²ã®é–‹å§‹ä½ç½®ã‚’å¤‰æ›´ã™ã‚‹
 			if(GetSelectArea()->start_pt1.y > pt.y ||
 				(GetSelectArea()->start_pt.y == pt.y && GetSelectArea()->start_pt.x > pt.x)) {
 				GetSelectArea()->start_pt = GetSelectArea()->start_pt2;
@@ -2879,14 +2879,14 @@ void CEditCtrl::SelectText(CPoint pt, BOOL mouse_select)
 	}
 
 	int		i, loop_cnt;
-	if(cur_pos1.y == -1) {	// ‘I‘ğŠJn‚Ì‚Æ‚«
+	if(cur_pos1.y == -1) {	// é¸æŠé–‹å§‹ã®ã¨ã
 		i = max(GetSelectArea()->pos1.y, GetDispRowTop());
 		loop_cnt = min(GetSelectArea()->pos2.y, GetDispRowBottom());
 		for(; i <= loop_cnt; i++) {
 			InvalidateRow_AllWnd(i);
 		}
 	} else if(GetSelectArea()->box_select) {
-		// ‘I‘ğ‘OŒã‚Åd‚È‚ç‚È‚¢s‚ğÄ•`‰æ
+		// é¸æŠå‰å¾Œã§é‡ãªã‚‰ãªã„è¡Œã‚’å†æç”»
 		i = max(cur_pos1.y, GetDispRowTop());
 		loop_cnt = min(cur_pos2.y, GetDispRowBottom());
 		for(; i <= loop_cnt; i++) {
@@ -2895,19 +2895,19 @@ void CEditCtrl::SelectText(CPoint pt, BOOL mouse_select)
 			}
 		}
 
-		// ‘I‘ğ”ÍˆÍ‚ğÄ•`‰æ
+		// é¸æŠç¯„å›²ã‚’å†æç”»
 		InvalidateRows_AllWnd(max(GetSelectArea()->pos1.y, GetDispRowTop()),
 			min(GetSelectArea()->pos2.y, GetDispRowBottom()));
 	} else {
 		if(IsSplitterMode()) {
-			// •ªŠ„ƒEƒBƒ“ƒhƒE‚É’Ê’m
+			// åˆ†å‰²ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«é€šçŸ¥
 			m_edit_data->get_disp_data()->SendNotifyMessage(GetSafeHwnd(), 
 				EC_WM_INVALIDATE_ROWS, 
 				min(cur_pos1.y, GetSelectArea()->pos1.y),
 				max(cur_pos2.y, GetSelectArea()->pos2.y)); 
 		}
 
-		// ‘I‘ğ‘OŒã‚Åd‚È‚ç‚È‚¢s‚ğÄ•`‰æ
+		// é¸æŠå‰å¾Œã§é‡ãªã‚‰ãªã„è¡Œã‚’å†æç”»
 		i = max(cur_pos1.y, GetDispRowTop());
 		loop_cnt = min(cur_pos2.y, GetDispRowBottom());
 		for(; i <= loop_cnt; i++) {
@@ -2924,8 +2924,8 @@ void CEditCtrl::SelectText(CPoint pt, BOOL mouse_select)
 			}
 		}
 
-		// FIXME: Œ»İ‚ÌƒJ[ƒ\ƒ‹s‚ª‚¿‚ç‚Â‚©‚È‚¢‚æ‚¤‚É‚·‚é
-		// ‘I‘ğ‘OŒã‚Ì’[‚Ìs‚ğÄ•`‰æ
+		// FIXME: ç¾åœ¨ã®ã‚«ãƒ¼ã‚½ãƒ«è¡ŒãŒã¡ã‚‰ã¤ã‹ãªã„ã‚ˆã†ã«ã™ã‚‹
+		// é¸æŠå‰å¾Œã®ç«¯ã®è¡Œã‚’å†æç”»
 		if(cur_pos1.y == GetSelectArea()->start_pt.y) {
 			InvalidateRow(cur_pos2.y);
 		} else {
@@ -2937,13 +2937,13 @@ void CEditCtrl::SelectText(CPoint pt, BOOL mouse_select)
 			InvalidateRow(GetSelectArea()->pos1.y);
 		}
 
-		// ‘I‘ğ”ÍˆÍ‚Ìã‰º‚ª•Ï‚í‚Á‚½‚Æ‚«C‘I‘ğŠJns‚ğÄ•`‰æ
+		// é¸æŠç¯„å›²ã®ä¸Šä¸‹ãŒå¤‰ã‚ã£ãŸã¨ãï¼Œé¸æŠé–‹å§‹è¡Œã‚’å†æç”»
 		if(cur_pos1.y < GetSelectArea()->start_pt.y && GetSelectArea()->pos2.y > GetSelectArea()->start_pt.y ||
 			cur_pos2.y > GetSelectArea()->start_pt.y && GetSelectArea()->pos1.y < GetSelectArea()->start_pt.y) {
 			InvalidateRow(GetSelectArea()->start_pt.y);
 		}
 
-		// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Å‘I‘ğ‚µ‚½‚Æ‚«‚ÅC‘I‘ğ”ÍˆÍ‚Ìã‰º‚ª•Ï‚í‚Á‚½‚Æ‚«‚Ìˆ—
+		// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã§é¸æŠã—ãŸã¨ãã§ï¼Œé¸æŠç¯„å›²ã®ä¸Šä¸‹ãŒå¤‰ã‚ã£ãŸã¨ãã®å‡¦ç†
 		if(GetSelectArea()->start_pt2.y != -1) {
 			if(cur_pos2.y == GetSelectArea()->start_pt2.y && cur_pos2.x != GetSelectArea()->start_pt2.x &&
 				GetSelectArea()->pos1.y < GetSelectArea()->start_pt1.y) {
@@ -2978,7 +2978,7 @@ void CEditCtrl::DoDragSelected(CPoint point, BOOL show_scroll)
 
 	POINT		cur_pt = pt;
 
-	// s”Ô†‚ğ‘I‘ğ’†
+	// è¡Œç•ªå·ã‚’é¸æŠä¸­
 	if(pt.y > GetSelectArea()->start_pt.y && HitTestRowHeader(point) != -1) {
 		if(pt.y == m_edit_data->get_row_cnt() - 1) {
 			pt.x = m_edit_data->get_row_len(pt.y);
@@ -3034,7 +3034,7 @@ int CEditCtrl::FilterText2(const TCHAR *search_text,
 
 	CRegData reg_data;
 	if(!reg_data.Compile2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp)) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 
@@ -3071,7 +3071,7 @@ int CEditCtrl::ReplaceTextAll(const TCHAR *search_text, const TCHAR *replace_tex
 {
 	CRegData reg_data;
 	if(!reg_data.Compile2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp)) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 
@@ -3111,10 +3111,10 @@ int CEditCtrl::ReplaceText2(const TCHAR *search_text, const TCHAR *replace_text,
 			b_selected_area, preplace_cnt);
 	}
 
-	// reg_data‚ÍCm_search_data‚ÅƒLƒƒƒbƒVƒ…‚µ‚Ä‚é‚Ì‚ÅC‚±‚ÌŠÖ”“à‚ÅŠJ•ú‚µ‚È‚¢
+	// reg_dataã¯ï¼Œm_search_dataã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã‚‹ã®ã§ï¼Œã“ã®é–¢æ•°å†…ã§é–‹æ”¾ã—ãªã„
 	HREG_DATA reg_data = m_search_data.MakeRegData2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp);
 	if(reg_data == NULL) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 	SaveSearchData2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp);
@@ -3166,7 +3166,7 @@ int CEditCtrl::PostSearchText(int len, POINT *pt)
 {
 	if(len == -1) {
 		if(m_ex_style & ECS_SEARCH_LOOP_MSG) {
-			MessageBox(_T("Œ©‚Â‚©‚è‚Ü‚¹‚ñ"), _T("ŒŸõ"), MB_OK | MB_ICONINFORMATION);
+			MessageBox(_T("è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“"), _T("æ¤œç´¢"), MB_OK | MB_ICONINFORMATION);
 		}
 		return 1;
 	}
@@ -3198,7 +3198,7 @@ int CEditCtrl::SearchText2(const TCHAR *search_text, int dir, BOOL b_distinct_lw
 	}
 	if(dir != 1 && dir != -1) return 1;
 
-	// ³‹K•\Œ»‚Å"^"‚È‚ÇŒŸõŒ‹‰Ê‚Ì’·‚³‚ª0‚É‚È‚éŒŸõ‚ğÀs‚µ‚½‚Æ‚«CŸ‚ÌŒŸõ‚ª‚Å‚«‚È‚¢ƒoƒO‚ğC³
+	// æ­£è¦è¡¨ç¾ã§"^"ãªã©æ¤œç´¢çµæœã®é•·ã•ãŒ0ã«ãªã‚‹æ¤œç´¢ã‚’å®Ÿè¡Œã—ãŸã¨ãï¼Œæ¬¡ã®æ¤œç´¢ãŒã§ããªã„ãƒã‚°ã‚’ä¿®æ­£
 	if(b_regexp && dir == 1 &&
 		GetSelectArea()->pos1.y == m_edit_data->get_cur_row() &&
 		GetSelectArea()->pos1.x == m_edit_data->get_cur_col() &&
@@ -3224,10 +3224,10 @@ int CEditCtrl::SearchText2(const TCHAR *search_text, int dir, BOOL b_distinct_lw
 		}
 	}
 
-	// reg_data‚ÍCm_search_data‚ÅƒLƒƒƒbƒVƒ…‚µ‚Ä‚é‚Ì‚ÅC‚±‚ÌŠÖ”“à‚ÅŠJ•ú‚µ‚È‚¢
+	// reg_dataã¯ï¼Œm_search_dataã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã‚‹ã®ã§ï¼Œã“ã®é–¢æ•°å†…ã§é–‹æ”¾ã—ãªã„
 	HREG_DATA reg_data = m_search_data.MakeRegData2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp);
 	if(reg_data == NULL) {
-		MessageBox(_T("•s³‚È³‹K•\Œ»‚Å‚·"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("ä¸æ­£ãªæ­£è¦è¡¨ç¾ã§ã™"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return 1;
 	}
 	SaveSearchData2(search_text, b_distinct_lwr_upr, b_distinct_width_ascii, b_regexp);
@@ -3335,7 +3335,7 @@ void CEditCtrl::IndentMain(BOOL del, BOOL space_flg, int space_cnt, UINT input_c
 			ClearSelected();
 
 			if(m_edit_data->is_blank_row(m_edit_data->get_cur_row())) {
-				// ‹ó”’‚Ì‚İ‚Ìs‚Ìê‡AƒJ[ƒ\ƒ‹ˆÊ’u‚ğŒ³‚É–ß‚·
+				// ç©ºç™½ã®ã¿ã®è¡Œã®å ´åˆã€ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’å…ƒã«æˆ»ã™
 				int new_col = m_edit_data->get_cur_col();
 				int new_line_len = m_edit_data->get_row_len(m_edit_data->get_cur_row());
 				int new_pos = old_col - (old_line_len - new_line_len);
@@ -3348,7 +3348,7 @@ void CEditCtrl::IndentMain(BOOL del, BOOL space_flg, int space_cnt, UINT input_c
 				
 				SetCaret(TRUE);
 			} else {
-				// æ“ª‚Ì’PŒê‚ÉˆÚ“®
+				// å…ˆé ­ã®å˜èªã«ç§»å‹•
 				LineStart(FALSE);
 			}
 		}
@@ -3398,7 +3398,7 @@ void CEditCtrl::InputChar(UINT nChar)
 {
 	if(m_read_only == TRUE) return;
 
-	// ECS_GRID_EDITOR‚Ì‚Æ‚«‚ÍC‰üs‚Æƒ^ƒu‚ğó‚¯•t‚¯‚È‚¢
+	// ECS_GRID_EDITORã®ã¨ãã¯ï¼Œæ”¹è¡Œã¨ã‚¿ãƒ–ã‚’å—ã‘ä»˜ã‘ãªã„
 	if(nChar == VK_RETURN && m_ex_style & ECS_GRID_EDITOR) return;
 	if(nChar == VK_TAB && m_ex_style & ECS_GRID_EDITOR) return;
 
@@ -3407,7 +3407,7 @@ void CEditCtrl::InputChar(UINT nChar)
 
 	if(nChar == VK_TAB) {
 		if(HaveSelected() == TRUE && GetSelectArea()->pos1.y != GetSelectArea()->pos2.y) {
-			// shiftƒL[‚Ì‚Æ‚«‚ÍCtabíœ
+			// shiftã‚­ãƒ¼ã®ã¨ãã¯ï¼Œtabå‰Šé™¤
 			BOOL	del = FALSE;
 			if(GetKeyState(VK_SHIFT) < 0) del = TRUE;
 
@@ -3423,7 +3423,7 @@ void CEditCtrl::InputChar(UINT nChar)
 
 	if(HaveSelected() == TRUE) {
 		if(HaveSelectedMultiLine()) {
-			old_row_cnt = -1; // ‘Sƒf[ƒ^‚ğÄ•`‰æ
+			old_row_cnt = -1; // å…¨ãƒ‡ãƒ¼ã‚¿ã‚’å†æç”»
 		}
 		cur_row = min(GetSelectArea()->pos1.y, GetSelectArea()->pos2.y);
 
@@ -3438,15 +3438,15 @@ void CEditCtrl::InputChar(UINT nChar)
 
 		ClearSelected();
 
-		// ƒRƒƒ“ƒg‚ÌF•ª‚¯‘Î‰
+		// ã‚³ãƒ¡ãƒ³ãƒˆã®è‰²åˆ†ã‘å¯¾å¿œ
 		CheckCommentRow(cur_row, m_edit_data->get_cur_row());
 	} else {
 		cur_row = m_edit_data->get_cur_row();
 
 		if(m_overwrite && !m_edit_data->is_end_of_text()) {
-			// ã‘‚«ƒ‚[ƒh‚Ì‚Æ‚«‚ÍAEnterƒL[‚ÅŸ‚Ìs‚ÉˆÚ“®‚·‚é
+			// ä¸Šæ›¸ããƒ¢ãƒ¼ãƒ‰ã®ã¨ãã¯ã€Enterã‚­ãƒ¼ã§æ¬¡ã®è¡Œã«ç§»å‹•ã™ã‚‹
 			if(nChar == VK_RETURN) {
-				// ÅIs‚Ì‚Æ‚«‚ÍˆÚ“®‚µ‚È‚¢
+				// æœ€çµ‚è¡Œã®ã¨ãã¯ç§»å‹•ã—ãªã„
 				if(!m_edit_data->is_end_line()) {
 					LineDown(FALSE);
 					LineStart(FALSE, TRUE);
@@ -3460,7 +3460,7 @@ void CEditCtrl::InputChar(UINT nChar)
 			InputMain(nChar);
 		}
 
-		// ƒRƒƒ“ƒg‚ÌF•ª‚¯‘Î‰
+		// ã‚³ãƒ¡ãƒ³ãƒˆã®è‰²åˆ†ã‘å¯¾å¿œ
 		if(IsCheckCommentChar(nChar) || old_row_cnt != m_edit_data->get_row_cnt()) {
 			CheckCommentRow(cur_row, m_edit_data->get_cur_row());
 		}
@@ -3472,12 +3472,12 @@ void CEditCtrl::InputChar(UINT nChar)
 
 	SetCaret(TRUE);
 
-	// Š‡ŒÊ‚Ì‘Î‰‚ğ•\¦‚·‚é
+	// æ‹¬å¼§ã®å¯¾å¿œã‚’è¡¨ç¤ºã™ã‚‹
 	if(m_ex_style & ECS_INVERT_BRACKETS) {
 		if(m_edit_data->get_str_token()->isCloseBrackets(nChar)) {
-			// ƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚ğ•Û‘¶
+			// ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®ã‚’ä¿å­˜
 			CEditDataSaveCurPt	saved_pt(m_edit_data);
-			// “ü—Í‘O‚ÌˆÊ’u‚É‚·‚é
+			// å…¥åŠ›å‰ã®ä½ç½®ã«ã™ã‚‹
 			m_edit_data->move_cur_col(-1);
 			InvertBrackets(nChar);
 		}
@@ -3486,7 +3486,7 @@ void CEditCtrl::InputChar(UINT nChar)
 
 void CEditCtrl::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags) 
 {
-	// ƒRƒ“ƒgƒ[ƒ‹ƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚é‚Æ‚«‚ÍA•¶š‚Ì“ü—Í‚ğó‚¯•t‚¯‚È‚¢
+	// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹ã¨ãã¯ã€æ–‡å­—ã®å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ãªã„
 	if(GetKeyState(VK_CONTROL) < 0) {
 		if(m_ex_style & ECS_ON_DIALOG) {
 			switch(nChar) {
@@ -3537,40 +3537,40 @@ void CEditCtrl::KeywordCompletion(BOOL reverse)
 
 	if(m_read_only == TRUE) return;
 
-	// Œ»İˆÊ’u‚ª’PŒê‚Ì––”ö‚Å‚È‚¢‚Æ‚«‚ÍC•âŠ®‚µ‚È‚¢
+	// ç¾åœ¨ä½ç½®ãŒå˜èªã®æœ«å°¾ã§ãªã„ã¨ãã¯ï¼Œè£œå®Œã—ãªã„
 	unsigned int ch = m_edit_data->get_cur_char();
 	if(!(m_edit_data->get_str_token()->isBreakChar(ch))) return;
 
 	POINT	pt1, pt2;
 
-	if(m_completion_data.cnt != -1) { // ˜A‘±Às
-		// Œ³‚Ì•¶š‚É–ß‚·
-		// Undo()Œã‚ÉCm_completion_data.cnt‚ªƒNƒŠƒA‚³‚ê‚é‚Ì‚ğ‰ñ”ğ
+	if(m_completion_data.cnt != -1) { // é€£ç¶šå®Ÿè¡Œ
+		// å…ƒã®æ–‡å­—ã«æˆ»ã™
+		// Undo()å¾Œã«ï¼Œm_completion_data.cntãŒã‚¯ãƒªã‚¢ã•ã‚Œã‚‹ã®ã‚’å›é¿
 		int cnt = m_completion_data.cnt;
 		Undo();
 		m_completion_data.cnt = cnt;
 	}
 
-	// ’PŒê‚Ì––”öˆÊ’u‚ğæ“¾
+	// å˜èªã®æœ«å°¾ä½ç½®ã‚’å–å¾—
 	pt2.y = m_edit_data->get_cur_row();
 	pt2.x = m_edit_data->get_cur_col();
 	if(pt2.x == 0) return;
 
-	// ’PŒê‚Ìæ“ªˆÊ’u‚ğæ“¾
+	// å˜èªã®å…ˆé ­ä½ç½®ã‚’å–å¾—
 	m_edit_data->move_word(-1);
 	pt1.y = m_edit_data->get_cur_row();
 	pt1.x = m_edit_data->get_cur_col();
 	m_edit_data->set_cur(pt2.y, pt2.x);
 
-	if(m_completion_data.cnt == -1) { // Å‰‚ÌÀs
-		// ’PŒê‚Ì’·‚³‚ğŒvZ
+	if(m_completion_data.cnt == -1) { // æœ€åˆã®å®Ÿè¡Œ
+		// å˜èªã®é•·ã•ã‚’è¨ˆç®—
 		int bufsize = m_edit_data->calc_buf_size(&pt1, &pt2);
 		if(bufsize > sizeof(m_completion_data.org_str)) return;
 
 		m_edit_data->copy_text_data(&pt1, &pt2, m_completion_data.org_str, bufsize);
 	}
 
-	// ƒL[ƒ[ƒh•âŠ®
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰è£œå®Œ
 	TCHAR buf[EDIT_CTRL_MAX_WORD_LEN];
 
 	m_completion_data.cnt = m_edit_data->get_str_token()->KeywordCompletion(
@@ -3597,7 +3597,7 @@ void CEditCtrl::BackSpace()
 		return;
 	}
 
-	// ƒeƒLƒXƒg‚Ìæ“ª‚Å‚ÍAbackspace‚µ‚È‚¢
+	// ãƒ†ã‚­ã‚¹ãƒˆã®å…ˆé ­ã§ã¯ã€backspaceã—ãªã„
 	if (m_edit_data->get_cur_row() == 0 && m_edit_data->get_cur_col() == 0) return;
 
 	int old_row_cnt = m_edit_data->get_row_cnt();
@@ -3611,7 +3611,7 @@ void CEditCtrl::BackSpace()
 	ClearKeywordCompletion();
 	InvalidateEditData_AllWnd(old_row_cnt, old_char_cnt, old_split_cnt, m_edit_data->get_cur_row());
 
-	// ƒRƒƒ“ƒg‚ÌF•ª‚¯‘Î‰
+	// ã‚³ãƒ¡ãƒ³ãƒˆã®è‰²åˆ†ã‘å¯¾å¿œ
 	if(IsCheckCommentChar(ch) || old_row_cnt != m_edit_data->get_row_cnt()) {
 		CheckCommentRow(m_edit_data->get_cur_row(), m_edit_data->get_cur_row());
 	}
@@ -3628,7 +3628,7 @@ void CEditCtrl::DeleteKey()
 		return;
 	}
 
-	// ƒeƒLƒXƒg‚ÌÅŒã‚Å‚ÍAdelete‚µ‚È‚¢
+	// ãƒ†ã‚­ã‚¹ãƒˆã®æœ€å¾Œã§ã¯ã€deleteã—ãªã„
 	if(m_edit_data->get_cur_row() == m_edit_data->get_row_cnt() - 1 &&
 		m_edit_data->get_cur_col() == m_edit_data->get_row_len(m_edit_data->get_cur_row())) return;
 
@@ -3644,7 +3644,7 @@ void CEditCtrl::DeleteKey()
 	ClearKeywordCompletion();
 	InvalidateEditData_AllWnd(old_row_cnt, old_char_cnt, old_split_cnt, cur_row);
 
-	// ƒRƒƒ“ƒg‚ÌF•ª‚¯‘Î‰
+	// ã‚³ãƒ¡ãƒ³ãƒˆã®è‰²åˆ†ã‘å¯¾å¿œ
 	if(IsCheckCommentChar(ch) || old_row_cnt != m_edit_data->get_row_cnt()) {
 		CheckCommentRow(cur_row, cur_row);
 	}
@@ -3887,7 +3887,7 @@ void CEditCtrl::SelectRow()
 	SelectRow(m_edit_data->get_cur_row(), FALSE);
 }
 
-// ƒf[ƒ^‚ÌˆÊ’u‚©‚çA•\¦ã‚ÌˆÊ’u‚ğæ“¾ (•¶š’PˆÊ)
+// ãƒ‡ãƒ¼ã‚¿ã®ä½ç½®ã‹ã‚‰ã€è¡¨ç¤ºä¸Šã®ä½ç½®ã‚’å–å¾— (æ–‡å­—å˜ä½)
 void CEditCtrl::GetDispDataPoint(CPoint data_pt, POINT *disp_pt, BOOL b_line_end)
 {
 	disp_pt->x = data_pt.x;
@@ -3895,15 +3895,15 @@ void CEditCtrl::GetDispDataPoint(CPoint data_pt, POINT *disp_pt, BOOL b_line_end
 
 	int		split = 0;
 	int		row = GetDispRow(disp_pt->y);
-	// YÀ•W‚ğŒvZ
+	// Yåº§æ¨™ã‚’è¨ˆç®—
 	for(; split < (GetDispRowSplitCnt(row) - 1); split++) {
 		if(disp_pt->x < GetDispOffset(disp_pt->y + 1)) break;
 		(disp_pt->y)++;
 	}
-	// XÀ•W‚ğŒvZ
+	// Xåº§æ¨™ã‚’è¨ˆç®—
 	disp_pt->x -= GetDispOffset(disp_pt->y);
 
-	// ‰E’[‚Ìˆ—
+	// å³ç«¯ã®å‡¦ç†
 	if(b_line_end && split != 0 && disp_pt->x == 0) {
 		(disp_pt->y)--;
 		disp_pt->x = data_pt.x - GetDispOffset(disp_pt->y);
@@ -3920,7 +3920,7 @@ int CEditCtrl::GetDispWidthStr(const TCHAR *str)
 	return w;
 }
 
-// •\¦ã‚Ì•¶š‚ÌˆÊ’u‚©‚çAƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚ğæ“¾
+// è¡¨ç¤ºä¸Šã®æ–‡å­—ã®ä½ç½®ã‹ã‚‰ã€ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®ã‚’å–å¾—
 void CEditCtrl::GetDispCaretPoint(CPoint disp_pt, POINT *caret_pt)
 {
 	caret_pt->y = (disp_pt.y - GetScrollPos(SB_VERT)) * m_row_height + m_col_header_height;
@@ -3935,7 +3935,7 @@ void CEditCtrl::GetDispCaretPoint(CPoint disp_pt, POINT *caret_pt)
 
 void CEditCtrl::ConvertMousePtToCharPt(CPoint mouse_pt, POINT *char_pt, BOOL enable_minus)
 {
-	// •\¦ã‚ÌˆÊ’u‚©‚çCƒf[ƒ^ã‚ÌˆÊ’u‚ğæ“¾
+	// è¡¨ç¤ºä¸Šã®ä½ç½®ã‹ã‚‰ï¼Œãƒ‡ãƒ¼ã‚¿ä¸Šã®ä½ç½®ã‚’å–å¾—
 	int mouse_row = (long)floor((double)((double)mouse_pt.y - m_col_header_height) / m_row_height);
 
 	if(enable_minus == FALSE) {
@@ -3961,7 +3961,7 @@ void CEditCtrl::ConvertMousePtToCharPt(CPoint mouse_pt, POINT *char_pt, BOOL ena
 			&dchandler, m_edit_data->get_tabstop(), mouse_x);
 		x += disp_offset;
 
-		// Ü‚è•Ô‚µ•\¦‚Ì‰E‘¤‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«A•\¦s‚ÌÅŒã‚É‚·‚é
+		// æŠ˜ã‚Šè¿”ã—è¡¨ç¤ºã®å³å´ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸã¨ãã€è¡¨ç¤ºè¡Œã®æœ€å¾Œã«ã™ã‚‹
 		if(split_idx < GetDispRowSplitCnt(row) - 1) {
 			int next_disp_offset = m_edit_data->get_edit_row_data(row)->get_split_pos(split_idx + 1);
 			if(x > next_disp_offset) x = next_disp_offset;
@@ -3984,7 +3984,7 @@ int CEditCtrl::HitTestRowHeader(CPoint point)
 	if(point.y < m_col_header_height) return -1;
 	
 	//if(point.x < 0 || point.x > m_row_header_width) return -1;
-	// s“ª‚ğ‘I‘ğ‚µ‚â‚·‚¢‚æ‚¤‚É‚·‚é
+	// è¡Œé ­ã‚’é¸æŠã—ã‚„ã™ã„ã‚ˆã†ã«ã™ã‚‹
 	if(point.x < 0 || point.x > m_row_header_width - m_char_width * 1.5) return -1;
 
 	POINT	pt;
@@ -4001,8 +4001,8 @@ void CEditCtrl::SetCaretPoint(CPoint point, BOOL extend)
 	BOOL b_line_end = FALSE;
 	if(point.x >= m_row_header_width + m_char_width * 2) b_line_end = TRUE;
 
-	// row, col‚ğ“¯‚ÉˆÚ“®‚·‚é‚ÆCcolˆÊ’u‚ª‚¸‚ê‚Ä‚µ‚Ü‚¤
-	// (colˆÊ’u‚ğ•Û‘¶‚µ‚È‚ª‚çsˆÚ“®‚·‚é‚½‚ß)
+	// row, colã‚’åŒæ™‚ã«ç§»å‹•ã™ã‚‹ã¨ï¼Œcolä½ç½®ãŒãšã‚Œã¦ã—ã¾ã†
+	// (colä½ç½®ã‚’ä¿å­˜ã—ãªãŒã‚‰è¡Œç§»å‹•ã™ã‚‹ãŸã‚)
 	{
 		PreMoveCaret(extend);
 		m_edit_data->move_cur_row(pt.y - m_edit_data->get_cur_row());
@@ -4012,7 +4012,7 @@ void CEditCtrl::SetCaretPoint(CPoint point, BOOL extend)
 
 	SetCaret(TRUE, 0, b_line_end);
 
-	// s”Ô†‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«‚Ìˆ—
+	// è¡Œç•ªå·ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸã¨ãã®å‡¦ç†
 	if(!extend && HitTestRowHeader(point) != -1) {
 		SelectRow(m_edit_data->get_cur_row(), FALSE);
 	}
@@ -4240,13 +4240,13 @@ BOOL CEditCtrl::Drop(COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint 
 				if(hData == NULL) hData = pDataObject->GetGlobalData(CF_TEXT);
 				if(hData == NULL) return FALSE;
 				
-				// •¶šƒR[ƒh•ÏŠ·
+				// æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›
 				pstr = GetCFTEXT(hData, &str_buf);
 			} else {
 				pstr = (TCHAR *)GlobalLock(hData);
 			}
 
-			// MOVEƒ‚[ƒh‚Å©•ª©g‚Éƒhƒƒbƒv‚·‚é‚Æ‚«‚ÍCƒy[ƒXƒg‘O‚Éíœ‚·‚é
+			// MOVEãƒ¢ãƒ¼ãƒ‰ã§è‡ªåˆ†è‡ªèº«ã«ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹ã¨ãã¯ï¼Œãƒšãƒ¼ã‚¹ãƒˆå‰ã«å‰Šé™¤ã™ã‚‹
 			if(m_edit_data->get_disp_data()->GetDragDrop() && dropEffect != DROPEFFECT_COPY) {
 				int box_start_x, box_end_x;
 
@@ -4257,7 +4257,7 @@ BOOL CEditCtrl::Drop(COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint 
 					m_edit_data->del(&GetSelectArea()->pos1, &GetSelectArea()->pos2, TRUE);
 				}
 
-				// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğ’²ß‚·‚é
+				// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’èª¿ç¯€ã™ã‚‹
 				if(!is_box && GetSelectArea()->pos2.y == pt1.y && GetSelectArea()->pos1.y != GetSelectArea()->pos2.y) {
 					pt1.x += (GetSelectArea()->pos1.x - GetSelectArea()->pos2.x);
 				} else if(!is_box && GetSelectArea()->pos1.y == GetSelectArea()->pos2.y &&
@@ -4321,7 +4321,7 @@ void CEditCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 	if(GetFocus() != this) SetFocus();
 	if(CompleteComposition()) return;
 
-	// FULL SCREEN MODE‚Ì‚Æ‚«A—]”’•”•ª‚Í”½‰‚µ‚È‚¢
+	// FULL SCREEN MODEã®ã¨ãã€ä½™ç™½éƒ¨åˆ†ã¯åå¿œã—ãªã„
 	if(m_ex_style & ECS_FULL_SCREEN_MODE) {
 		CRect rect;
 		GetDispRect(&rect);
@@ -4336,7 +4336,7 @@ void CEditCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 	BOOL shift = (GetKeyState(VK_SHIFT) < 0);
 	BOOL ctrl = (GetKeyState(VK_CONTROL) < 0);
 
-	// ƒgƒŠƒvƒ‹ƒNƒŠƒbƒN‚Ìˆ—
+	// ãƒˆãƒªãƒ—ãƒ«ã‚¯ãƒªãƒƒã‚¯ã®å‡¦ç†
 	if(KillTimer(IdDoubleClickTimer) == TRUE) {
 		POINT	pt;
 		GetDataPoint(point, &pt);
@@ -4360,7 +4360,7 @@ void CEditCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 
 	SetCaretPoint(point, shift);
 
-	// ƒhƒ‰ƒbƒO‘I‘ğ‚Ì€”õ
+	// ãƒ‰ãƒ©ãƒƒã‚°é¸æŠã®æº–å‚™
 	PreDragSelected();
 
 	CWnd::OnLButtonDown(nFlags, point);
@@ -4541,7 +4541,7 @@ void CEditCtrl::ToLowerWithOutCommentAndLiteral()
 {
 	if(HaveSelected() == FALSE) return;
 	if(GetSelectArea()->box_select) {
-		MessageBox(_T("‹éŒ`‘I‘ğ‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("çŸ©å½¢é¸æŠã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return;
 	}
 
@@ -4555,7 +4555,7 @@ void CEditCtrl::ToUpperWithOutCommentAndLiteral()
 {
 	if(HaveSelected() == FALSE) return;
 	if(GetSelectArea()->box_select) {
-		MessageBox(_T("‹éŒ`‘I‘ğ‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("çŸ©å½¢é¸æŠã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return;
 	}
 
@@ -4579,7 +4579,7 @@ void CEditCtrl::ZenkakuHankakuConvert(BOOL b_alpha, BOOL b_kata, BOOL b_hankaku_
 {
 	if(HaveSelected() == FALSE) return;
 	if(GetSelectArea()->box_select) {
-		MessageBox(_T("‹éŒ`‘I‘ğ‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñ"), _T("ƒƒbƒZ[ƒW"), MB_ICONINFORMATION | MB_OK);
+		MessageBox(_T("çŸ©å½¢é¸æŠã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“"), _T("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"), MB_ICONINFORMATION | MB_OK);
 		return;
 	}
 
@@ -4695,7 +4695,7 @@ void CEditCtrl::CopyMain()
 		pt2 = GetSelectArea()->pos2;
 		CopyMain(&pt1, &pt2, GetSelectArea()->box_select);
 	} else {
-		// ‘I‘ğ”ÍˆÍ‚ª‚È‚¢‚Æ‚«‚ÍCŒ»İs‚ğƒRƒs[‚·‚é
+		// é¸æŠç¯„å›²ãŒãªã„ã¨ãã¯ï¼Œç¾åœ¨è¡Œã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
 		if(m_ex_style & ECS_ROW_COPY_AT_NO_SEL) CopyRowMain();
 	}
 }
@@ -4705,7 +4705,7 @@ void CEditCtrl::Copy()
 	CopyMain();
 
 	if(HaveSelected()) {
-		// ƒRƒs[‚µ‚½‚ç‘I‘ğ‰ğœ‚Ìİ’è‚Ì“®ì
+		// ã‚³ãƒ”ãƒ¼ã—ãŸã‚‰é¸æŠè§£é™¤ã®è¨­å®šæ™‚ã®å‹•ä½œ
 		if(m_ex_style & ECS_CLEAR_AFTER_COPY) {
 			ClearSelected();
 		}
@@ -4717,7 +4717,7 @@ void CEditCtrl::ReplaceStrBox(const TCHAR *pstr)
 	ASSERT(!HaveSelected());
 
 	if(!HaveSelected()) {
-		// start_w, end_w‚ğİ’è‚·‚é
+		// start_w, end_wã‚’è¨­å®šã™ã‚‹
 		GetSelectArea()->next_box_select = TRUE;
 		StartSelect(m_edit_data->get_cur_pt());
 		EndSelect(m_edit_data->get_cur_pt(), FALSE);
@@ -4725,7 +4725,7 @@ void CEditCtrl::ReplaceStrBox(const TCHAR *pstr)
 
 	m_edit_data->replace_str_box(pstr);
 
-	// CEditCtrl::ClearSelected()‚Å‚ÍAHaveSelected()‚ªFALSE‚ğ•Ô‚·‚Ì‚Å‘I‘ğ”ÍˆÍ‚ªclear‚³‚ê‚È‚¢
+	// CEditCtrl::ClearSelected()ã§ã¯ã€HaveSelected()ãŒFALSEã‚’è¿”ã™ã®ã§é¸æŠç¯„å›²ãŒclearã•ã‚Œãªã„
 	m_edit_data->get_disp_data()->ClearSelected();
 }
 
@@ -4741,7 +4741,7 @@ void CEditCtrl::Paste(const TCHAR *pstr, BOOL is_box, BOOL set_caret_flg)
 
 	if(is_box && !HaveSelected()) {
 		ReplaceStrBox(pstr);
-		old_row_cnt = -1;	// ‘Sƒf[ƒ^‚ğÄ•`‰æ
+		old_row_cnt = -1;	// å…¨ãƒ‡ãƒ¼ã‚¿ã‚’å†æç”»
 	} else if(HaveSelected() == TRUE) {
 		if(GetSelectArea()->box_select) {
 			m_edit_data->replace_str_box(pstr);
@@ -4749,7 +4749,7 @@ void CEditCtrl::Paste(const TCHAR *pstr, BOOL is_box, BOOL set_caret_flg)
 			m_edit_data->replace_str(&GetSelectArea()->pos1, &GetSelectArea()->pos2, pstr);
 		}
 		if(HaveSelectedMultiLine()) {
-			old_row_cnt = -1; // ‘Sƒf[ƒ^‚ğÄ•`‰æ
+			old_row_cnt = -1; // å…¨ãƒ‡ãƒ¼ã‚¿ã‚’å†æç”»
 			cur_row = min(GetSelectArea()->pos1.y, GetSelectArea()->pos2.y);
 		}
 		ClearSelected();
@@ -4759,7 +4759,7 @@ void CEditCtrl::Paste(const TCHAR *pstr, BOOL is_box, BOOL set_caret_flg)
 	ClearKeywordCompletion();
 
 	InvalidateEditData_AllWnd(old_row_cnt, old_char_cnt, old_split_cnt, cur_row);
-	// ƒRƒƒ“ƒg‚ÌF•ª‚¯‘Î‰
+	// ã‚³ãƒ¡ãƒ³ãƒˆã®è‰²åˆ†ã‘å¯¾å¿œ
 	CheckCommentRow(cur_row, m_edit_data->get_cur_row());
 
 	if(set_caret_flg) {
@@ -4782,13 +4782,13 @@ void CEditCtrl::Paste(BOOL data_only, BOOL box_paste)
 	CString str_buf;
 
 	HGLOBAL hData = obj.GetGlobalData(CF_UNICODETEXT);
-	// CF_UNICODETEXT‚ªæ‚ê‚È‚¢ê‡CCF_OEMTEXT, CF_TEXT‚Ìæ“¾‚ğ‚İ‚é
+	// CF_UNICODETEXTãŒå–ã‚Œãªã„å ´åˆï¼ŒCF_OEMTEXT, CF_TEXTã®å–å¾—ã‚’è©¦ã¿ã‚‹
 	if(hData == NULL) {
 		hData = obj.GetGlobalData(CF_OEMTEXT);
 		if(hData == NULL) hData = obj.GetGlobalData(CF_TEXT);
 		if(hData == NULL) return;
 
-		// •¶šƒR[ƒh•ÏŠ·
+		// æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›
 		pstr = GetCFTEXT(hData, &str_buf);
 	} else {
 		pstr = (TCHAR *)GlobalLock(hData);
@@ -5194,8 +5194,8 @@ void CEditCtrl::RefleshCursor()
 
 void CEditCtrl::Scrolled(CSize sizeScroll, BOOL bThumbTrack)
 {
-	// ƒEƒBƒ“ƒhƒE‚ğ•ªŠ„•\¦’†‚ÉCƒJ[ƒ\ƒ‹‚ğˆÚ“®‚µ‚Ä‰¡ƒXƒNƒ[ƒ‹‚µ‚½‚Æ‚«C
-	// ƒAƒNƒeƒBƒu‚Å‚È‚¢•û‚ÌƒEƒBƒ“ƒhƒE‚ª³‚µ‚­•`‰æ‚³‚ê‚È‚¢ƒoƒO‚ğC³B
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’åˆ†å‰²è¡¨ç¤ºä¸­ã«ï¼Œã‚«ãƒ¼ã‚½ãƒ«ã‚’ç§»å‹•ã—ã¦æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ãŸã¨ãï¼Œ
+	// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã§ãªã„æ–¹ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒæ­£ã—ãæç”»ã•ã‚Œãªã„ãƒã‚°ã‚’ä¿®æ­£ã€‚
 	if(IsSplitterMode() && sizeScroll.cx != 0) {
 		m_edit_data->get_disp_data()->SendNotifyMessage(GetSafeHwnd(), EC_WM_INVALIDATE, (BOOL)TRUE, 0); 
 	}
@@ -5248,7 +5248,7 @@ void CEditCtrl::EndSelect(CPoint point, BOOL b_move_caret)
 	SelectText(point, FALSE);
 	GetSelectArea()->start_pt2 = point;
 
-	// ³‹K‰»
+	// æ­£è¦åŒ–
 	if(GetSelectArea()->start_pt1.y > GetSelectArea()->start_pt2.y ||
 		(GetSelectArea()->start_pt1.y == GetSelectArea()->start_pt2.y && 
 		GetSelectArea()->start_pt1.x > GetSelectArea()->start_pt2.x)) {
@@ -5272,14 +5272,14 @@ void CEditCtrl::ReverseSelectedRows()
 
 	int		start_row = GetSelectArea()->pos1.y;
 	int		end_row = GetSelectArea()->pos2.y;
-	// ‘I‘ğ”ÍˆÍ‚Ì––”ö‚ªs“ª‚Ìê‡C‚»‚Ìs‚Í‘ÎÛ‚É‚µ‚È‚¢
+	// é¸æŠç¯„å›²ã®æœ«å°¾ãŒè¡Œé ­ã®å ´åˆï¼Œãã®è¡Œã¯å¯¾è±¡ã«ã—ãªã„
 	if(end_row > start_row && GetSelectArea()->pos2.x == 0) end_row--;
 
 	m_edit_data->reverse_rows(start_row, end_row);
 
 	ClearSelected();
 
-	// ÅIsˆÈŠO‚Ì‚Æ‚«‚ÍCŸ‚Ìs‚Ìæ“ª‚ÉˆÚ“®
+	// æœ€çµ‚è¡Œä»¥å¤–ã®ã¨ãã¯ï¼Œæ¬¡ã®è¡Œã®å…ˆé ­ã«ç§»å‹•
 	if(end_row == m_edit_data->get_row_cnt() - 1) {
 		m_edit_data->set_cur(end_row, m_edit_data->get_row_len(end_row));
 	} else {
@@ -5322,14 +5322,14 @@ void CEditCtrl::SortSelectedRows(BOOL desc)
 
 	int		start_row = GetSelectArea()->pos1.y;
 	int		end_row = GetSelectArea()->pos2.y;
-	// ‘I‘ğ”ÍˆÍ‚Ì––”ö‚ªs“ª‚Ìê‡C‚»‚Ìs‚Í‘ÎÛ‚É‚µ‚È‚¢
+	// é¸æŠç¯„å›²ã®æœ«å°¾ãŒè¡Œé ­ã®å ´åˆï¼Œãã®è¡Œã¯å¯¾è±¡ã«ã—ãªã„
 	if(end_row > start_row && GetSelectArea()->pos2.x == 0) end_row--;
 
 	m_edit_data->sort_rows(GetSelectArea()->pos1.y, end_row, desc);
 
 	ClearSelected();
 
-	// ÅIsˆÈŠO‚Ì‚Æ‚«‚ÍCŸ‚Ìs‚Ìæ“ª‚ÉˆÚ“®
+	// æœ€çµ‚è¡Œä»¥å¤–ã®ã¨ãã¯ï¼Œæ¬¡ã®è¡Œã®å…ˆé ­ã«ç§»å‹•
 	if(end_row == m_edit_data->get_row_cnt() - 1) {
 		m_edit_data->set_cur(end_row, m_edit_data->get_row_len(end_row));
 	} else {
@@ -5478,7 +5478,7 @@ void CEditCtrl::DeleteMain(POINT *pt1, POINT *pt2, BOOL box_select, BOOL b_set_c
 	ClearSelected();
 	if(b_set_caret) SetCaret(TRUE);
 
-	// ƒRƒƒ“ƒg‚ÌF•ª‚¯‘Î‰
+	// ã‚³ãƒ¡ãƒ³ãƒˆã®è‰²åˆ†ã‘å¯¾å¿œ
 	CheckCommentRow(m_edit_data->get_cur_row(), m_edit_data->get_cur_row());
 }
 
@@ -5534,10 +5534,10 @@ BOOL CEditCtrl::GetClickablePT(POINT *pt1, POINT *pt2)
 
 	int		start, end;
 
-	// æ“ªˆÊ’u‚ğŒvZ
+	// å…ˆé ­ä½ç½®ã‚’è¨ˆç®—
 	for(start = pt.x; start > 0 && p_disp_color_data->GetClickable(start - 1);) start--;
 
-	// I‚í‚è‚ÌˆÊ’u‚ğŒvZ
+	// çµ‚ã‚ã‚Šã®ä½ç½®ã‚’è¨ˆç®—
 	for(end = pt.x; p_disp_color_data->GetClickable(end);) end++;
 
 	if(pt1 != NULL && pt2 != NULL) {
@@ -5663,21 +5663,21 @@ void CEditCtrl::InfrateSelectedArea()
 		pt1.x = 0;
 /*
 		if(m_edit_data->get_cur_row() == pt2.y - 1 && m_edit_data->get_cur_col() == 0 && pt2.x == 0) {
-			// s‘I‘ğ‚Ì‚Æ‚«C‰º‚Ìs‚Ü‚Å‘I‘ğ‚µ‚È‚¢
+			// è¡Œé¸æŠã®ã¨ãï¼Œä¸‹ã®è¡Œã¾ã§é¸æŠã—ãªã„
 			pt2.y--;
 		}
 */
 		if(pt2.x == 0) {
-			// s‚Ìæ“ª‚Ü‚Å‚ª‘I‘ğ”ÍˆÍ‚Ì‚Æ‚«C‚»‚Ìs‚Ü‚Å‘I‘ğ‚µ‚È‚¢
+			// è¡Œã®å…ˆé ­ã¾ã§ãŒé¸æŠç¯„å›²ã®ã¨ãï¼Œãã®è¡Œã¾ã§é¸æŠã—ãªã„
 			pt2.y--;
 		}
 
-		// s‘S‘Ì‚ğ‘I‘ğ‚·‚é
+		// è¡Œå…¨ä½“ã‚’é¸æŠã™ã‚‹
 		pt2.x = m_edit_data->get_row_len(pt2.y);
 
 		SetSelectedPoint(pt2, pt1);
 	} else {
-		// ‘I‘ğ”ÍˆÍ‚ª‚È‚¢‚Æ‚«CŒ»İ‚Ìs‚ğ‘I‘ğ‚·‚é
+		// é¸æŠç¯„å›²ãŒãªã„ã¨ãï¼Œç¾åœ¨ã®è¡Œã‚’é¸æŠã™ã‚‹
 		POINT	pt1, pt2;
 		pt1.x = 0;
 		pt1.y = m_edit_data->get_cur_row();
@@ -5878,7 +5878,7 @@ BOOL CSearchData::AllocTextBuf(int size)
 {
 	if(m_text_buf_size > size) return TRUE;
 
-	size += 1024 - (size % 1024);	// 1k’PˆÊ‚ÅŠm•Û‚·‚é
+	size += 1024 - (size % 1024);	// 1kå˜ä½ã§ç¢ºä¿ã™ã‚‹
 
 	m_text_buf = (TCHAR *)realloc(m_text_buf, size);
 	if(m_text_buf == NULL) return FALSE;
@@ -5935,7 +5935,7 @@ void CEditCtrl::DeleteRow()
 	if(m_read_only == TRUE) return;
 	if(m_edit_data->is_empty()) return;
 
-	// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğ•Û‘¶
+	// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’ä¿å­˜
 	CFontWidthHandler dchandler(this, &m_font);
 	int w = m_edit_data->get_disp_width_pt(m_edit_data->get_cur_pt(), &dchandler);
 
@@ -5944,7 +5944,7 @@ void CEditCtrl::DeleteRow()
 
 	DeleteRowMain();
 
-	// ƒJ[ƒ\ƒ‹ˆÊ’u‚ğŒ³‚É–ß‚·
+	// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’å…ƒã«æˆ»ã™
 	POINT pt;
 	pt.y = m_edit_data->get_cur_row();
 	pt.x = m_edit_data->get_x_from_width_pt(pt.y, w, &dchandler);
@@ -6031,7 +6031,7 @@ void CEditCtrl::CopyRowMain()
 {
 	POINT	pt1, pt2;
 
-	// ‘I‘ğ”ÍˆÍ‚ª‚È‚¢‚Æ‚«‚ÍC‘I‘ğ’†‚Ìs‚ğƒRƒs[‚·‚é
+	// é¸æŠç¯„å›²ãŒãªã„ã¨ãã¯ï¼Œé¸æŠä¸­ã®è¡Œã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
 	pt1.y = m_edit_data->get_cur_row();
 	pt1.x = 0;
 	if(pt1.y == m_edit_data->get_row_cnt() - 1) {
@@ -6050,7 +6050,7 @@ void CEditCtrl::CopyRow()
 	CopyRowMain();
 
 	if(HaveSelected()) {
-		// ƒRƒs[‚µ‚½‚ç‘I‘ğ‰ğœ‚Ìİ’è‚Ì“®ì
+		// ã‚³ãƒ”ãƒ¼ã—ãŸã‚‰é¸æŠè§£é™¤ã®è¨­å®šæ™‚ã®å‹•ä½œ
 		if(m_ex_style & ECS_CLEAR_AFTER_COPY) {
 			ClearSelected();
 		}
@@ -6067,22 +6067,22 @@ void CEditCtrl::PasteRow(BOOL b_up_flg)
 	if(HaveSelected()) ClearSelected();
 
 	if(b_up_flg) {
-		// Œ»İs‚Ìã‚És‚ğ’Ç‰Á
+		// ç¾åœ¨è¡Œã®ä¸Šã«è¡Œã‚’è¿½åŠ 
 		int row = m_edit_data->get_cur_row();
 		m_edit_data->set_cur(row, 0);
 		m_edit_data->paste(_T("\n"));
 		m_edit_data->set_cur(row, 0);
 	} else {
-		// Œ»İs‚Ì‰º‚És‚ğ’Ç‰Á
+		// ç¾åœ¨è¡Œã®ä¸‹ã«è¡Œã‚’è¿½åŠ 
 		int row = m_edit_data->get_cur_row();
 		m_edit_data->set_cur(row, m_edit_data->get_row_len(row));
 		m_edit_data->paste(_T("\n"));
 	}
 
-	// ƒNƒŠƒbƒvƒ{[ƒh‚Ì“à—e‚ğ“\‚è•t‚¯‚é
+	// ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã®å†…å®¹ã‚’è²¼ã‚Šä»˜ã‘ã‚‹
 	Paste(TRUE);
 
-	// —]Œv‚È‰üs‚ğíœ
+	// ä½™è¨ˆãªæ”¹è¡Œã‚’å‰Šé™¤
 	if(m_edit_data->get_cur_col() == 0) m_edit_data->back_space();
 
 	m_edit_data->set_cur(m_edit_data->get_cur_row(), 0);
@@ -6147,10 +6147,10 @@ void CEditCtrl::SplitEnd(BOOL extend)
 void CEditCtrl::SetEditData(CEditData *edit_data)
 {
 	m_edit_data = edit_data;
-	MakeDispData();	// CIntArray‚ªNULL‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	MakeDispData();	// CIntArrayãŒNULLã«ãªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 }
 
-// FIXME: imm.h‚É’è‹`‚µ‚Ä‚ ‚éH
+// FIXME: imm.hã«å®šç¾©ã—ã¦ã‚ã‚‹ï¼Ÿ
 /*
 typedef struct tagRECONVERTSTRING {
     DWORD dwSize;

@@ -1,7 +1,7 @@
 
 # Credits
-�{�\�t�g�E�F�A�́A�ȉ��̃\�t�g�E�F�A�̃\�[�X�R�[�h�̈ꕔ�𗘗p���ĊJ������Ă��܂��B
-�ڍׂȃ��C�Z���X���ɂ��ẮAdoc�t�H���_�ɂ���ȉ��̃t�@�C�����Q�Ƃ��Ă��������B
+本ソフトウェアは、以下のソフトウェアのソースコードの一部を利用して開発されています。
+詳細なライセンス情報については、docフォルダにある以下のファイルを参照してください。
 
 - PostgreSQL: LICENSE_PostgreSQL.txt
 - MiniSCHEME: LICENSE_MINISCHEME.txt

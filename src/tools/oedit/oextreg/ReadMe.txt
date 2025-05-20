@@ -1,89 +1,89 @@
 ========================================================================
-       MICROSOFT FOUNDATION CLASS ���C�u���� : oextreg
+       MICROSOFT FOUNDATION CLASS ライブラリ : oextreg
 ========================================================================
 
 
-AppWizard ���������� oextreg �ɂ́AMicrosoft Foundation Class �̊�{�I��
-�g������������Ă��܂��B�A�v���P�[�V�����쐬�̂ЂȌ^�Ƃ��Ă��g�����������B
+AppWizard が生成した oextreg には、Microsoft Foundation Class の基本的な
+使い方が示されています。アプリケーション作成のひな型としてお使いください。
 
-���̃t�@�C���ɂ� oextreg ���\�����Ă���e�t�@�C���̊T�v�������܂܂�Ă��܂��B
+このファイルには oextreg を構成している各ファイルの概要説明が含まれています。
 
 oextreg.dsp
-    ���̃t�@�C�� (�v���W�F�N�g �t�@�C��) �̓v���W�F�N�g ���x���̏����܂݁A
-    �V���O�� �v���W�F�N�g�܂��̓T�u �v���W�F�N�g�̃r���h�Ɏg�p����܂��B����
-    ���[�U�[�ƃv���W�F�N�g �t�@�C�� (.dsp) �����L�ł��܂����A���C�N �t�@�C��
-    �̓��[�J���ɃG�N�X�|�[�g���Ă��������B
+    このファイル (プロジェクト ファイル) はプロジェクト レベルの情報を含み、
+    シングル プロジェクトまたはサブ プロジェクトのビルドに使用されます。他の
+    ユーザーとプロジェクト ファイル (.dsp) を共有できますが、メイク ファイル
+    はローカルにエクスポートしてください。
 
 oextreg.h
-    ���̃t�@�C���̓A�v���P�[�V�����̒��S�ƂȂ�C���N���[�h�t�@�C���ł��B����
-    �t�@�C���͑��̃v���W�F�N�g�̌ŗL�̃C���N���[�h�t�@�C���iResource.h  ����
-    �݂܂��j ���C���N���[�h���A�܂� COextregApp �A�v���P�[�V�����N���X���
-    �����܂��B
+    このファイルはアプリケーションの中心となるインクルードファイルです。この
+    ファイルは他のプロジェクトの固有のインクルードファイル（Resource.h  も含
+    みます） をインクルードし、また COextregApp アプリケーションクラスを宣
+    言します。
 
 oextreg.cpp
-    ���̃t�@�C���� COextregApp �A�v���P�[�V�����N���X���܂ރA�v���P�[�V����
-    �̒��S�ƂȂ�\�[�X�t�@�C���ł��B
+    このファイルは COextregApp アプリケーションクラスを含むアプリケーション
+    の中心となるソースファイルです。
 
 oextreg.rc
-    ���̃t�@�C���̓v���O�������g�p���� Microsoft Windows �̃��\�[�X��񋓂���
-    ���B���̃t�@�C���� RES �T�u�f�B���N�g���ɕۑ�����Ă���A�C�R���A�r�b�g�}
-    �b�v�A�J�[�\�����܂݂܂��B���̃t�@�C���� Microsoft Visual C++ �Œ���
-    �ҏW�\�ł��B
+    このファイルはプログラムが使用する Microsoft Windows のリソースを列挙しま
+    す。このファイルは RES サブディレクトリに保存されているアイコン、ビットマ
+    ップ、カーソルを含みます。このファイルは Microsoft Visual C++ で直接
+    編集可能です。
 
 oextreg.clw
-    ���̃t�@�C���� ClassWizard  �������̃N���X�̕ҏW��N���X��V�K�쐬�����
-    ���Ɏg�����������Ă��܂��B�܂����̃t�@�C���́AClassWizard �ɂ�郁�b�Z
-    �[�W �}�b�v��_�C�A���O �f�[�^ �}�b�v�̕ҏW�␶���A�v���g�^�C�v �����o��
-    ���̐����ɕK�v�ȏ��������Ă��܂��B
+    このファイルは ClassWizard  が既存のクラスの編集やクラスを新規作成すると
+    きに使う情報を持っています。またこのファイルは、ClassWizard によるメッセ
+    ージ マップやダイアログ データ マップの編集や生成、プロトタイプ メンバ関
+    数の生成に必要な情報も持っています。
 
 res\oextreg.ico
-    ���̃t�@�C���́A�A�v���P�[�V�����̃A�C�R���Ƃ��Ďg�p�����A�C�R���t�@�C
-    ���ł��B���̃A�C�R���̓��\�[�X �t�@�C�� oextreg.rc �ɂ���ăC���N���[�h
-    ����܂��B
+    このファイルは、アプリケーションのアイコンとして使用されるアイコンファイ
+    ルです。このアイコンはリソース ファイル oextreg.rc によってインクルード
+    されます。
 
 res\oextreg.rc2
-    ���̃t�@�C���� Microsoft Visual C++ �ɂ���ĕҏW����Ȃ����\�[�X���܂�ł���
-    ���B���̃t�@�C���Ƀ��\�[�X �G�f�B�^�ŕҏW����Ȃ����ׂẴ��\�[�X���L�q
-    ���Ă��������B
+    このファイルは Microsoft Visual C++ によって編集されないリソースを含んでいま
+    す。このファイルにリソース エディタで編集されないすべてのリソースを記述
+    してください。
 
 
 
 
 /////////////////////////////////////////////////////////////////////////////
 
-AppWizard �� 1 �̃_�C�A���O �N���X���쐬���܂�:
+AppWizard は 1 つのダイアログ クラスを作成します:
 
-oextregDlg.h, oextregDlg.cpp - �_�C�A���O
-    �����̃t�@�C���� COextregDlg �N���X���܂݂܂��B���̃N���X�� 
-    �A�v���P�[�V�����̃��C�� �_�C�A���O�̓�����`���܂��B�_�C�A���O
-    �e���v���[�g�� Microsoft Visual C++ �ŕҏW�\�� oextreg.rc �Ɋ�
-    �܂�܂��B
+oextregDlg.h, oextregDlg.cpp - ダイアログ
+    これらのファイルは COextregDlg クラスを含みます。このクラスは 
+    アプリケーションのメイン ダイアログの動作を定義します。ダイアログ
+    テンプレートは Microsoft Visual C++ で編集可能な oextreg.rc に含
+    まれます。
 
 
 /////////////////////////////////////////////////////////////////////////////
-���̑��̕W���t�@�C��:
+その他の標準ファイル:
 
 StdAfx.h, StdAfx.cpp
-    �����̃t�@�C���̓v���R���p�C���σw�b�_�[ �t�@�C�� (PCH) oextreg.pch 
-    ��v���R���p�C���ό^�t�@�C�� StdAfx.obj ���\�z���邽�߂Ɏg����t�@�C���ł��B
+    これらのファイルはプリコンパイル済ヘッダー ファイル (PCH) oextreg.pch 
+    やプリコンパイル済型ファイル StdAfx.obj を構築するために使われるファイルです。
 
 Resource.h
-    ���̃t�@�C���͐V�K���\�[�X ID ���`����W���w�b�_�[ �t�@�C���ł��B
-    Microsoft Visual C++ �͂��̃t�@�C����ǂݍ��ݍX�V���܂��B
+    このファイルは新規リソース ID を定義する標準ヘッダー ファイルです。
+    Microsoft Visual C++ はこのファイルを読み込み更新します。
 
 /////////////////////////////////////////////////////////////////////////////
-���̑��̒���:
+その他の注意:
 
-"TODO:" �Ŏn�܂�R�����g�́A�\�[�X�R�[�h�̒ǉ���J�X�^�}�C�Y�̕K�v�ȏꏊ����
-���܂��B
+"TODO:" で始まるコメントは、ソースコードの追加やカスタマイズの必要な場所を示
+します。
 
-�A�v���P�[�V�����ŋ��L DLL ���� MFC ���g�p����ꍇ��A�A�v���P�[�V������
-�I�y���[�e�B���O �V�X�e���Ō��ݎg�p���Ă��錾��ȊO�̌�����g�p���Ă���ꍇ�́A
-Microsoft Visual C++ CD-ROM ����A���[�J���C�Y���ꂽ���\�[�X�ɑΉ�����
-MFC42XXX.DLL �� system �܂��� system32 �f�B���N�g���ɃR�s�[���āA�t�@�C������ 
-MFC42LOC.DLL �ɂ���K�v������܂��B("XXX" �͌���̏ȗ��`�������܂��B�Ⴆ�΁A
-MFC42JPN.DLL �͓��{��ɖ|�󂳂ꂽ���\�[�X���܂݂܂��B)
-���̂悤�ɂ��Ȃ������ꍇ�ɂ́A�A�v���P�[�V�������̂������� UI �v�f�̓I�y
-���[�e�B���O �V�X�e���̌���̂܂܎c��܂��B
+アプリケーションで共有 DLL 内で MFC を使用する場合や、アプリケーションが
+オペレーティング システムで現在使用している言語以外の言語を使用している場合は、
+Microsoft Visual C++ CD-ROM から、ローカライズされたリソースに対応する
+MFC42XXX.DLL を system または system32 ディレクトリにコピーして、ファイル名を 
+MFC42LOC.DLL にする必要があります。("XXX" は言語の省略形を現します。例えば、
+MFC42JPN.DLL は日本語に翻訳されたリソースを含みます。)
+このようにしなかった場合には、アプリケーション内のいくつかの UI 要素はオペ
+レーティング システムの言語のまま残ります。
 
 /////////////////////////////////////////////////////////////////////////////

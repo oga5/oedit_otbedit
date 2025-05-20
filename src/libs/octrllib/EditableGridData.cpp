@@ -149,7 +149,7 @@ BOOL CEditableGridData::CanRedo()
 
 BOOL CEditableGridData::IsNullRow(int row)
 {
-	// ‘S‚Ä‚ÌƒJƒ‰ƒ€‚ªNULL‚©’²‚×‚é
+	// å…¨ã¦ã®ã‚«ãƒ©ãƒ ãŒNULLã‹èª¿ã¹ã‚‹
 	int		col;
 	int		col_cnt = Get_ColCnt();
 
@@ -221,7 +221,7 @@ int CEditableGridData::PasteCommon(CGridData* grid_data, const TCHAR* pstr)
 		y_max = max(grid_data->GetSelectArea()->pos1.y, grid_data->GetSelectArea()->pos2.y);
 
 		if(x_max - x_start < paste_col_cnt - 1) {
-			// (x•ûŒü‚Å)‘I‘ğ”ÍˆÍ‚æ‚èƒRƒs[‚·‚éƒf[ƒ^‚Ì”ÍˆÍ‚Ì•û‚ªL‚¢ê‡A‘I‘ğ”ÍˆÍ‚ğL‚­‚·‚é
+			// (xæ–¹å‘ã§)é¸æŠç¯„å›²ã‚ˆã‚Šã‚³ãƒ”ãƒ¼ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®ç¯„å›²ã®æ–¹ãŒåºƒã„å ´åˆã€é¸æŠç¯„å›²ã‚’åºƒãã™ã‚‹
 			x_max = min(x_start + paste_col_cnt - 1, grid_data->Get_ColCnt() - 1);
 			if(grid_data->GetSelectArea()->pos1.x < grid_data->GetSelectArea()->pos2.x) {
 				grid_data->GetSelectArea()->pos2.x = x_max;
@@ -230,12 +230,12 @@ int CEditableGridData::PasteCommon(CGridData* grid_data, const TCHAR* pstr)
 			}
 		}
 
-		// ‘I‘ğ”ÍˆÍ‚ª•¡”s‚ÅAƒRƒs[‚·‚éƒeƒLƒXƒg‚ª1s‚¾‚¯‚Ìê‡AŒJ‚è•Ô‚µƒy[ƒXƒg‚·‚é
+		// é¸æŠç¯„å›²ãŒè¤‡æ•°è¡Œã§ã€ã‚³ãƒ”ãƒ¼ã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆãŒ1è¡Œã ã‘ã®å ´åˆã€ç¹°ã‚Šè¿”ã—ãƒšãƒ¼ã‚¹ãƒˆã™ã‚‹
 		if(y_start != y_max && ostr_is_tsv_single_row(pstr)) {
 			repeat_paste_mode = TRUE;
 		}
 
-		// ‘I‘ğ”ÍˆÍ‚ª•¡”ƒZƒ‹‚ÅAƒRƒs[‚·‚éƒeƒLƒXƒg‚ª1ƒZƒ‹•ª‚Ìê‡A‰E‚ÌƒZƒ‹‚É‚àŒJ‚è•Ô‚µƒy[ƒXƒg‚·‚é
+		// é¸æŠç¯„å›²ãŒè¤‡æ•°ã‚»ãƒ«ã§ã€ã‚³ãƒ”ãƒ¼ã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆãŒ1ã‚»ãƒ«åˆ†ã®å ´åˆã€å³ã®ã‚»ãƒ«ã«ã‚‚ç¹°ã‚Šè¿”ã—ãƒšãƒ¼ã‚¹ãƒˆã™ã‚‹
 		if (x_start != x_max && ostr_is_tsv_single_col(pstr)) {
 			single_col_mode = TRUE;
 		}
@@ -268,7 +268,7 @@ int CEditableGridData::PasteCommon(CGridData* grid_data, const TCHAR* pstr)
 			(pt.x)++;
 
 			if(pt.x > x_max) {
-				// ‰E’[‚ÌƒZƒ‹‚É‚«‚½‚Æ‚«CŸ‚Ìs‚Ìƒf[ƒ^‚Ü‚Å“Ç‚İ”ò‚Î‚·
+				// å³ç«¯ã®ã‚»ãƒ«ã«ããŸã¨ãï¼Œæ¬¡ã®è¡Œã®ãƒ‡ãƒ¼ã‚¿ã¾ã§èª­ã¿é£›ã°ã™
 				for(;;) {
 					p = ostr_get_tsv_data(p, buf, paste_buf_size);
 					if(*p != '\t') break;
@@ -288,10 +288,10 @@ int CEditableGridData::PasteCommon(CGridData* grid_data, const TCHAR* pstr)
 				continue;
 			}
 
-			// ƒy[ƒXƒg‚·‚éƒeƒLƒXƒg‚ª‚È‚­‚È‚Á‚½‚çI—¹
+			// ãƒšãƒ¼ã‚¹ãƒˆã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆãŒãªããªã£ãŸã‚‰çµ‚äº†
 			if (*p == '\0') break;
 
-			// ÅŒã‚Ì‰üs‚Í–³‹‚·‚é
+			// æœ€å¾Œã®æ”¹è¡Œã¯ç„¡è¦–ã™ã‚‹
 			if((*p == '\r' || *p == '\n') && *(p + 1) == '\0') break;
 		}
 
@@ -358,7 +358,7 @@ int CEditableGridData::UpdateCellsCommon(CGridData* grid_data, POINT* pos1, POIN
 			}
 		}
 	}
-	if(update == FALSE) return 0;	// •ÏX–³‚µ
+	if(update == FALSE) return 0;	// å¤‰æ›´ç„¡ã—
 
 	grid_data->StartUndoSet();
 
@@ -407,11 +407,11 @@ int CEditableGridData::UpdateCellMain(int row, int col, const TCHAR *data, int l
 	m_undo->get_cur_undo_data()->set_row(row);
 	m_undo->get_cur_undo_data()->set_col(col);
 
-	// •ÏX‘Oƒf[ƒ^‚Ìƒ|ƒCƒ“ƒ^‚ğ•Û‘¶
+	// å¤‰æ›´å‰ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¤ãƒ³ã‚¿ã‚’ä¿å­˜
 	const TCHAR *p = Get_ColData(row, col);
 	m_undo->get_cur_undo_data()->set_data((INT_PTR)p);
 
-	// •ÏXŒãƒf[ƒ^‚ğ•Û‘¶
+	// å¤‰æ›´å¾Œãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜
 	m_undo->next_undo(OPE_UPDATE_CELL_TEXT, TRUE);
 	m_undo->get_cur_undo_data()->set_row(row);
 	m_undo->get_cur_undo_data()->set_col(col);
@@ -513,7 +513,7 @@ int CEditableGridData::DeleteNullRows(BOOL all_flg)
 	for(r = Get_RowCnt() - 1; r >= 0; r--) {
 		if(IsDeleteRow(r)) continue;
 
-		// ‘}“ü‚³‚ê‚½ƒŒƒR[ƒh‚©’²‚×‚é
+		// æŒ¿å…¥ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹èª¿ã¹ã‚‹
 		if(!all_flg && !IsInsertRow(r)) continue;
 
 		if(IsNullRow(r)) {
@@ -538,7 +538,7 @@ int CEditableGridData::InsertRowMain(int row)
 	m_row_buffer.insert_row(row);
 	m_insert_row_cnt++;
 
-	// ƒtƒ‰ƒO‚ğ‰Šú‰»
+	// ãƒ•ãƒ©ã‚°ã‚’åˆæœŸåŒ–
 	InitRowData(&m_row_buffer[row], -1);
 	SetInsertFlg(row);
 
@@ -795,7 +795,7 @@ int CEditableGridData::AllocDataMemory(int row_cnt, int col_cnt)
 	}
 
 	for(i = 0; i < m_row_buffer.get_row_cnt(); i++) {
-		// ƒtƒ‰ƒO‚ğ‰Šú‰»
+		// ãƒ•ãƒ©ã‚°ã‚’åˆæœŸåŒ–
 		InitRowData(&m_row_buffer[i], i);
 	}
 
@@ -905,13 +905,13 @@ void CEditableGridData::SetCellDataMain(int row, int col, void *data)
 
 void CEditableGridData::SetCellData(int row, int col, void *data)
 {
-	// •ÏX‘Oƒf[ƒ^‚ğ•Û‘¶
+	// å¤‰æ›´å‰ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜
 	m_undo->next_undo(OPE_UPDATE_CELL_DATA1);
 	m_undo->get_cur_undo_data()->set_row(get_cur_row());
 	m_undo->get_cur_undo_data()->set_col(get_cur_col());
 	m_undo->get_cur_undo_data()->set_buf_data(GetCellData(row, col), m_cell_data_size);
 
-	// •ÏXŒãƒf[ƒ^‚ğ•Û‘¶
+	// å¤‰æ›´å¾Œãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜
 	m_undo->next_undo(OPE_UPDATE_CELL_DATA2, TRUE);
 	m_undo->get_cur_undo_data()->set_row(get_cur_row());
 	m_undo->get_cur_undo_data()->set_col(get_cur_col());
@@ -934,18 +934,18 @@ int *CEditableGridData::GetSortedUpdateFlgIndexArr()
 	const int row_cnt = Get_RowCnt();
 	if(row_cnt == 0) return NULL;
 
-	// NOTE: C6385/C6386‚ÌŒx‚ğ‰ñ”ğ‚·‚é‚½‚ß‚É­‚µ‘å‚«–Ú‚ÉŠm•Û (–{—ˆ‚Í+11‚Í•s—v)
+	// NOTE: C6385/C6386ã®è­¦å‘Šã‚’å›é¿ã™ã‚‹ãŸã‚ã«å°‘ã—å¤§ãç›®ã«ç¢ºä¿ (æœ¬æ¥ã¯+11ã¯ä¸è¦)
 	int	*idx_arr = (int *)malloc((row_cnt + 11) * sizeof(int));
 	int row;
 
 	if(idx_arr == NULL) return NULL;
 
-	// ‰Šú‰»
+	// åˆæœŸåŒ–
 	for(row = 0; row < row_cnt; row++) {
 		idx_arr[row] = row;
 	}
 
-	// ƒ\[ƒg (comb sort)
+	// ã‚½ãƒ¼ãƒˆ (comb sort)
 	{
 		int	gap = row_cnt;
 		int done = 0;
@@ -1003,7 +1003,7 @@ int CEditableGridData::FilterData(int filter_col_no, const TCHAR* search_text, B
 {
 	m_undo->start_undo_set();
 
-	// ƒtƒBƒ‹ƒ^’†‚ÉÄƒtƒBƒ‹ƒ^‚·‚éê‡Aˆê’UƒtƒBƒ‹ƒ^‚ğOFF‚É‚µ‚ÄŒ»İ‚Ìó‘Ô‚ğUNDO‚É“o˜^‚·‚é
+	// ãƒ•ã‚£ãƒ«ã‚¿ä¸­ã«å†ãƒ•ã‚£ãƒ«ã‚¿ã™ã‚‹å ´åˆã€ä¸€æ—¦ãƒ•ã‚£ãƒ«ã‚¿ã‚’OFFã«ã—ã¦ç¾åœ¨ã®çŠ¶æ…‹ã‚’UNDOã«ç™»éŒ²ã™ã‚‹
 	if(GetGridFilterMode()) {
 		FilterOff();
 	}

@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// FileFormatDlg.cpp : インプリメンテーション ファイル
+// FileFormatDlg.cpp : 繧､繝ｳ繝励Μ繝｡繝ｳ繝�繝ｼ繧ｷ繝ｧ繝ｳ 繝輔ぃ繧､繝ｫ
 //
 
 #include "stdafx.h"
@@ -20,7 +20,7 @@ static const char *THIS_FILE = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CFileFormatDlg ダイアログ
+// CFileFormatDlg 繝繧､繧｢繝ｭ繧ｰ
 
 
 CFileFormatDlg::CFileFormatDlg(CWnd* pParent /*=NULL*/)
@@ -45,7 +45,7 @@ BEGIN_MESSAGE_MAP(CFileFormatDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CFileFormatDlg メッセージ ハンドラ
+// CFileFormatDlg 繝｡繝�繧ｻ繝ｼ繧ｸ 繝上Φ繝峨Λ
 
 
 void CFileFormatDlg::InitData(int kanji_code, int line_type)

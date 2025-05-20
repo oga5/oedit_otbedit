@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // oedit.cpp : �A�v���P�[�V�����p�N���X�̋@�\��`���s���܂��B
+ // oedit.cpp : アプリケーション用クラスの機能定義を行います。
 //
 
 #include "stdafx.h"
@@ -73,10 +73,10 @@ BEGIN_MESSAGE_MAP(COeditApp, COWinApp)
 	ON_COMMAND(ID_FONT_SIZE_LARGE, OnFontSizeLarge)
 	ON_COMMAND(ID_FONT_SIZE_SMALL, OnFontSizeSmall)
 	//}}AFX_MSG_MAP
-	// �W���̃t�@�C����{�h�L�������g �R�}���h
+	// 標準のファイル基本ドキュメント コマンド
 	ON_COMMAND(ID_FILE_NEW, COWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, COWinApp::OnFileOpen)
-	// �W���̈���Z�b�g�A�b�v �R�}���h
+	// 標準の印刷セットアップ コマンド
 	ON_COMMAND(ID_FILE_PRINT_SETUP, COWinApp::OnFilePrintSetup)
 	//
 	ON_COMMAND_EX_RANGE(ID_FILE_MRU_FILE1, ID_FILE_MRU_FILE16, OnOpenRecentFile)
@@ -87,13 +87,13 @@ BEGIN_MESSAGE_MAP(COeditApp, COWinApp)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditApp �N���X�̍\�z
+// COeditApp クラスの構築
 
 COeditApp::COeditApp()
 {
-	// TODO: ���̈ʒu�ɍ\�z�p�R�[�h��ǉ����Ă��������B
-	// ������ InitInstance ���̏d�v�ȏ��������������ׂċL�q���Ă��������B
-	// �O���[�o���ϐ��̏�����
+	// TODO: この位置に構築用コードを追加してください。
+	// ここに InitInstance 中の重要な初期化処理をすべて記述してください。
+	// グローバル変数の初期化
 	g_open_kanji_code = UnknownKanjiCode;
 	g_full_screen_mode = FALSE;
 	g_sc = NULL;
@@ -105,37 +105,37 @@ COeditApp::~COeditApp()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// �B��� COeditApp �I�u�W�F�N�g
+// 唯一の COeditApp オブジェクト
 
 COeditApp theApp;
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditApp �N���X�̏�����
+// COeditApp クラスの初期化
 
 BOOL COeditApp::InitInstance()
 {
 	setlocale(LC_ALL, "Japanese");
 
-	// �W���I�ȏ���������
-	// ���������̋@�\���g�p�����A���s�t�@�C���̃T�C�Y��������
-	// ��������Έȉ��̓���̏��������[�`���̒�����s�K�v�Ȃ���
-	// ���폜���Ă��������B
+	// 標準的な初期化処理
+	// もしこれらの機能を使用せず、実行ファイルのサイズを小さく
+	// したければ以下の特定の初期化ルーチンの中から不必要なもの
+	// を削除してください。
 	if(!AfxOleInit()) {
-		MessageBox(NULL, _T("OLE�̏������Ɏ��s���܂����B"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(NULL, _T("OLEの初期化に失敗しました。"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		return FALSE;
 	}
 
-	// ���L��������������
+	// 共有メモリを初期化
 	g_share_data.Init();
 
 #ifdef _AFXDLL
-	Enable3dControls();		// ���L DLL �̒��� MFC ���g�p����ꍇ�ɂ͂������Ăяo���Ă��������B
+	Enable3dControls();		// 共有 DLL の中で MFC を使用する場合にはここを呼び出してください。
 #else
-	// �Â�MFC�p�̏����B���݂͕s�v
-	//Enable3dControlsStatic();	// MFC �ƐÓI�Ƀ����N���Ă���ꍇ�ɂ͂������Ăяo���Ă��������B
+	// 古いMFC用の処理。現在は不要
+	//Enable3dControlsStatic();	// MFC と静的にリンクしている場合にはここを呼び出してください。
 #endif
 
-	// scheme�}�N��������������
+	// schemeマクロを初期化する
 	if(init_scm_macro(&g_sc, _T("oedit.scm")) == FALSE) return FALSE;
 
 	// 
@@ -146,19 +146,19 @@ BOOL COeditApp::InitInstance()
 
 	if(!is_file_exist(ini_file_name)) {
 		if(!RegistryToIniFile(_T("OGAWA"), _T("oedit"), ini_file_name, local_ini_file_name)) {
-			MessageBox(NULL, _T("���W�X�g������INI�t�@�C���ւ̈ڍs�Ɏ��s���܂���"), 
+			MessageBox(NULL, _T("レジストリからINIファイルへの移行に失敗しました"), 
 				_T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		}
 	}
 	if(is_file_exist(ini_file_name)) {
 		SetIniFileName(ini_file_name);
 		if(!LoadIniFile()) {
-			MessageBox(NULL, _T("INI�t�@�C������ݒ���擾�ł��܂���ł����B\n�f�t�H���g�̐ݒ�ŋN�����܂��B"), 
+			MessageBox(NULL, _T("INIファイルから設定を取得できませんでした。\nデフォルトの設定で起動します。"), 
 				_T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		}
 	}
 
-	// MFC���g���ݒ��local_ini_file_name�ɕۑ�����
+	// MFCが使う設定はlocal_ini_file_nameに保存する
 	SetLocalIniFileName(local_ini_file_name);
 
 	{
@@ -171,28 +171,28 @@ BOOL COeditApp::InitInstance()
 		}
 	}
 
-	// �I�v�V�������̃��[�h
+	// オプション情報のロード
 	LoadOption();
 	LoadEditMode();
 	LoadFontOption();
 
-	LoadStdProfileSettings(g_option.max_mru);  // �W���� INI �t�@�C���̃I�v�V���������[�ނ��܂� (MRU ���܂�)
+	LoadStdProfileSettings(g_option.max_mru);  // 標準の INI ファイルのオプションをロードします (MRU を含む)
 
-	// �t�H���g�쐬
+	// フォント作成
 	CreateFont();
 
-	// �A�v���P�[�V�����p�̃h�L�������g �e���v���[�g��o�^���܂��B�h�L�������g �e���v���[�g
-	//  �̓h�L�������g�A�t���[�� �E�B���h�E�ƃr���[���������邽�߂ɋ@�\���܂��B
+	// アプリケーション用のドキュメント テンプレートを登録します。ドキュメント テンプレート
+	//  はドキュメント、フレーム ウィンドウとビューを結合するために機能します。
 
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
 		RUNTIME_CLASS(COeditDoc),
-		RUNTIME_CLASS(CMainFrame),       // ���C�� SDI �t���[�� �E�B���h�E
+		RUNTIME_CLASS(CMainFrame),       // メイン SDI フレーム ウィンドウ
 		RUNTIME_CLASS(COeditView));
 	AddDocTemplate(pDocTemplate);
 
-	// DDE�Afile open �ȂǕW���̃V�F�� �R�}���h�̃R�}���h���C������͂��܂��B
+	// DDE、file open など標準のシェル コマンドのコマンドラインを解析します。
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
@@ -201,14 +201,14 @@ BOOL COeditApp::InitInstance()
 
 	ProcessBootOption(file_names);
 
-	// �R�}���h���C���Ńf�B�X�p�b�` �R�}���h���w�肵�܂��B
+	// コマンドラインでディスパッチ コマンドを指定します。
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
 
-	// �t�@�C���̃h���b�v���󂯎��
+	// ファイルのドロップを受け取る
 	m_pMainWnd->DragAcceptFiles();
 
-	// ���C�� �E�B���h�E�����������ꂽ�̂ŁA�\���ƍX�V���s���܂��B
+	// メイン ウィンドウが初期化されたので、表示と更新を行います。
 	if(GetIniFileInt(_T("WINDOW"), _T("ZOOMED"), FALSE) != FALSE) {
 		m_pMainWnd->ShowWindow(SW_SHOWMAXIMIZED);
 	} else {
@@ -216,7 +216,7 @@ BOOL COeditApp::InitInstance()
 	}
 	m_pMainWnd->UpdateWindow();
 
-	// �A�N�Z�����[�^������������
+	// アクセラレータを初期化する
 	((CMainFrame *)m_pMainWnd)->InitAccelerator();
 
 	if(g_option.boot_on_ime) {
@@ -268,27 +268,27 @@ void COeditApp::SaveOtherSettings()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// �A�v���P�[�V�����̃o�[�W�������Ŏg���� CAboutDlg �_�C�A���O
+// アプリケーションのバージョン情報で使われる CAboutDlg ダイアログ
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// �_�C�A���O �f�[�^
+// ダイアログ データ
 	//{{AFX_DATA(CAboutDlg)
 	enum { IDD = IDD_ABOUTBOX };
 	CStatic	m_static_url;
 	CString	m_static_version;
 	//}}AFX_DATA
 
-	// ClassWizard ���z�֐��̃I�[�o�[���C�h�𐶐����܂��B
+	// ClassWizard 仮想関数のオーバーライドを生成します。
 	//{{AFX_VIRTUAL(CAboutDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV �̃T�|�[�g
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV のサポート
 	//}}AFX_VIRTUAL
 
-// �C���v�������e�[�V����
+// インプリメンテーション
 protected:
 	//{{AFX_MSG(CAboutDlg)
 	virtual BOOL OnInitDialog();
@@ -326,7 +326,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-// �_�C�A���O�����s���邽�߂̃A�v���P�[�V���� �R�}���h
+// ダイアログを実行するためのアプリケーション コマンド
 void COeditApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
@@ -334,7 +334,7 @@ void COeditApp::OnAppAbout()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// COeditApp ���b�Z�[�W �n���h��
+// COeditApp メッセージ ハンドラ
 
 int COeditApp::ExitInstance() 
 {
@@ -348,7 +348,7 @@ int COeditApp::ExitInstance()
 
 BOOL COeditApp::CreateFont()
 {
-	// �t�H���g���쐬
+	// フォントを作成
 
 	LOGFONT lf;
 	memset(&lf, 0, sizeof(lf));
@@ -365,12 +365,12 @@ void COeditApp::OnSetFont()
 {
 	CFontDialog		fontdlg;
 
-	// �_�C�A���O������
+	// ダイアログ初期化
 	fontdlg.m_cf.Flags &= ~CF_EFFECTS;
 	fontdlg.m_cf.Flags |= CF_INITTOLOGFONTSTRUCT;
 	g_font.GetLogFont(fontdlg.m_cf.lpLogFont);
 
-	// �_�C�A���O�\��
+	// ダイアログ表示
 	if(fontdlg.DoModal() != IDOK) return;
 
 	g_option.font.face_name = fontdlg.GetFaceName();
@@ -431,8 +431,8 @@ BOOL CAboutDlg::OnInitDialog()
 	m_static_version = _T("OEdit Version ") + file_version;
 	UpdateData(FALSE);
 	
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 void COeditApp::OnFileOpen() 
@@ -444,7 +444,7 @@ void COeditApp::OnFileOpen()
 		return; // open cancelled
 	}
 
-	// ���Ƀt�@�C�����J���Ă���ꍇ�C�ǂݒ���
+	// 既にファイルを開いている場合，読み直す
 	{
 		TCHAR file_name[MAX_PATH];
 		if(GetLongPath(newName.GetBuffer(0), file_name) == FALSE) return;
@@ -515,7 +515,7 @@ BOOL COeditApp::DoPromptFileName(CString& fileName, UINT nIDSTitle,
 
 	dlgFile.m_ofn.nFilterIndex = 0;
 	if(!bOpenFileDialog) {
-		// �ۑ��̂Ƃ�
+		// 保存のとき
 		dlgFile.m_ofn.nFilterIndex = g_option.edit_mode + 2;
 	}
 
@@ -539,13 +539,13 @@ HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 	
-	// TODO: ���̈ʒu�� DC �̃A�g���r���[�g��ύX���Ă�������
+	// TODO: この位置で DC のアトリビュートを変更してください
 	int id = pWnd->GetDlgCtrlID();
 	if(id == IDC_STATIC_URL) {
 		pDC->SetTextColor(RGB(0, 0, 255));
 	}
 	
-	// TODO: �f�t�H���g�̃u���V���]�݂̂��̂łȂ��ꍇ�ɂ́A�Ⴄ�u���V��Ԃ��Ă�������
+	// TODO: デフォルトのブラシが望みのものでない場合には、違うブラシを返してください
 	return hbr;
 }
 
@@ -567,7 +567,7 @@ BOOL CAboutDlg::LinkHitTest(CPoint point)
 
 void CAboutDlg::OnMouseMove(UINT nFlags, CPoint point) 
 {
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����邩�܂��̓f�t�H���g�̏������Ăяo���Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加するかまたはデフォルトの処理を呼び出してください
 	if(LinkHitTest(point) == TRUE) {
 		if(CEditCtrl::m_link_cursor != NULL) {
 			SetCursor(CEditCtrl::m_link_cursor);
@@ -617,7 +617,7 @@ void COeditApp::OnNewWindow()
 
 	TCHAR path_buffer[_MAX_PATH];
 	if(GetModuleFileName(NULL, path_buffer, _MAX_PATH) == 0) {
-		AfxMessageBox(_T("�V�����E�B���h�E�̍쐬�Ɏ��s���܂���"), MB_OK);
+		AfxMessageBox(_T("新しいウィンドウの作成に失敗しました"), MB_OK);
 		return;
 	}
 
@@ -625,7 +625,7 @@ void COeditApp::OnNewWindow()
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("�V�����E�B���h�E�̍쐬�Ɏ��s���܂���"), MB_OK);
+		AfxMessageBox(_T("新しいウィンドウの作成に失敗しました"), MB_OK);
 		return;
 	}
 
@@ -649,7 +649,7 @@ void COeditApp::SetFileBootOption(CBootParameter &file_names, int idx)
 BOOL COeditApp::OpenFiles(CBootParameter &file_names, CCommandLineInfo &cmdInfo, TCHAR *cmd_line)
 {
 	if(_tcslen(cmd_line) == 0) {
-		// �J�����g�f�B���N�g����ݒ�
+		// カレントディレクトリを設定
 		SetCurrentDirectory(g_option.initial_dir);
 		return TRUE;
 	}
@@ -661,7 +661,7 @@ BOOL COeditApp::OpenFiles(CBootParameter &file_names, CCommandLineInfo &cmdInfo,
 	}
 
 	if(file_names.GetFileCnt() > 0) {
-		// �Q�ȏ�̃t�@�C�����h���b�v���ꂽ�Ƃ��̏���
+		// ２つ以上のファイルがドロップされたときの処理
 		int idx;
 		for(idx = 1; idx < file_names.GetFileCnt(); idx++) {
 			if(file_names.GetFileName(idx) == _T("")) continue;
@@ -690,18 +690,18 @@ BOOL COeditApp::OpenFiles(CBootParameter &file_names, CCommandLineInfo &cmdInfo,
 			if(is_file_exist(fname.GetBuffer(0))) {
 				if(OpenDocumentFile(fname.GetString()) == NULL) return FALSE;
 			} else {
-				// ���݂��Ȃ��t�@�C�������w�肳�ꂽ�ꍇ�A�w�肳�ꂽ�t�@�C�����ŕҏW�J�n�ł���悤�ɂ���
-				// �t�H���_�����݂��Ȃ��ꍇ�̓G���[�ɂ���
+				// 存在しないファイル名を指定された場合、指定されたファイル名で編集開始できるようにする
+				// フォルダが存在しない場合はエラーにする
 				{
 					if(_tcslen(fname.GetString()) > _MAX_PATH - 10) {
-						AfxMessageBox(_T("�t�@�C�������������܂�"), MB_OK);
+						AfxMessageBox(_T("ファイル名が長すぎます"), MB_OK);
 						return FALSE;
 					}
 					TCHAR path[_MAX_PATH];
 					_tcscpy(path, fname.GetString());
 					make_parent_dirname(path);
 					if(!is_directory_exist(path)) {
-						AfxMessageBox(_T("�����ȃp�X���w�肳��܂���"), MB_OK);
+						AfxMessageBox(_T("無効なパスが指定されました"), MB_OK);
 						return FALSE;
 					}
 				}
@@ -735,17 +735,17 @@ BOOL COeditApp::OpenFiles(CBootParameter &file_names, CCommandLineInfo &cmdInfo,
 	return TRUE;
 }
 
-// �N���I�v�V����������
+// 起動オプションを処理
 void COeditApp::ProcessBootOption(CBootParameter &file_names)
 {
-	// �J�����g�f�B���N�g����ݒ�
+	// カレントディレクトリを設定
 	if(file_names.GetBootDir() != _T("")) {
 		SetCurrentDirectory(file_names.GetBootDir());
 	} else if(file_names.GetFileCnt() == 0) {
 		SetCurrentDirectory(g_option.initial_dir);
 	}
 
-	// �ҏW���[�h��ݒ�
+	// 編集モードを設定
 	if(file_names.GetOption(_T("m")) != _T("")) {
 		CString mode = file_names.GetOption(_T("m"));
 		SetEditMode(g_lang_setting_list.GetSettingIdx(mode));
@@ -767,7 +767,7 @@ void COeditApp::OnExtReg()
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("�N���Ɏ��s���܂���"), MB_OK);
+		AfxMessageBox(_T("起動に失敗しました"), MB_OK);
 		return;
 	}
 
@@ -809,7 +809,7 @@ void COeditApp::OnKbmacroSave()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("�L�[�{�[�h�}�N���̕ۑ�"), FALSE, _T("mac"), NULL,
+	if(DoFileDlg_SetDir(_T("キーボードマクロの保存"), FALSE, _T("mac"), NULL,
 		OFN_NOREADONLYRETURN | OFN_HIDEREADONLY | OFN_PATHMUSTEXIST | OFN_EXPLORER | OFN_OVERWRITEPROMPT,
 		_T("Keyboard Macro Files (*.mac)|*.mac|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) {
@@ -817,7 +817,7 @@ void COeditApp::OnKbmacroSave()
 	}
 		
 	if(SaveKBMacro(file_name) == FALSE) {
-		MessageBox(NULL, _T("�L�[�{�[�h�}�N���̕ۑ��Ɏ��s���܂����B"), _T("Error"),
+		MessageBox(NULL, _T("キーボードマクロの保存に失敗しました。"), _T("Error"),
 			MB_ICONEXCLAMATION | MB_OK);
 	}
 }
@@ -826,13 +826,13 @@ void COeditApp::OnKbmacroLoad()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("�L�[�{�[�h�}�N���̓Ǎ�"), TRUE, _T("mac"), NULL,
+	if(DoFileDlg_SetDir(_T("キーボードマクロの読込"), TRUE, _T("mac"), NULL,
 		OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_EXPLORER,
 		_T("Keyboard Macro Files (*.mac)|*.mac|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
 
 	if(LoadKBMacro(file_name) == FALSE) {
-		MessageBox(NULL, _T("�L�[�{�[�h�}�N���̓Ǎ��Ɏ��s���܂����B"), _T("Error"),
+		MessageBox(NULL, _T("キーボードマクロの読込に失敗しました。"), _T("Error"),
 			MB_ICONEXCLAMATION | MB_OK);
 	}
 }
@@ -841,13 +841,13 @@ void COeditApp::OnKbmacroPlay()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("�L�[�{�[�h�}�N���̎��s"), TRUE, _T("mac"), NULL,
+	if(DoFileDlg_SetDir(_T("キーボードマクロの実行"), TRUE, _T("mac"), NULL,
 		OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_EXPLORER,
 		_T("Keyboard Macro Files (*.mac)|*.mac|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
 
 	if(PlayKBMacro(file_name) == FALSE) {
-		MessageBox(NULL, _T("�L�[�{�[�h�}�N���̎��s�Ɏ��s���܂����B"), _T("Error"),
+		MessageBox(NULL, _T("キーボードマクロの実行に失敗しました。"), _T("Error"),
 			MB_ICONEXCLAMATION | MB_OK);
 	}
 }
@@ -884,7 +884,7 @@ BOOL COeditApp::OnOpenRecentFile(UINT nID)
 //	if (OpenDocumentFile((*m_pRecentFileList)[nIndex]) == NULL)
 //		m_pRecentFileList->Remove(nIndex);
 	
-	// �ۑ��m�F�_�C�A���O�ŃL�����Z�����ꂽ�Ƃ��ɁC�ŋߎg�����t�@�C�����X�g����폜���Ȃ�
+	// 保存確認ダイアログでキャンセルされたときに，最近使ったファイルリストから削除しない
 	OpenDocumentFile((*m_pRecentFileList)[nIndex]);
 
 	return TRUE;
@@ -911,7 +911,7 @@ void COeditApp::OnScmLoadFile()
 {
 	TCHAR file_name[_MAX_PATH];
 
-	if(DoFileDlg_SetDir(_T("�}�N���̎��s"), TRUE, _T("scm"), NULL,
+	if(DoFileDlg_SetDir(_T("マクロの実行"), TRUE, _T("scm"), NULL,
 		OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_EXPLORER,
 		_T("Scheme Macro Files (*.scm)|*.scm|All Files (*.*)|*.*||"),
 		AfxGetMainWnd(), file_name, g_option.kb_macro_dir) == FALSE) return;
@@ -949,11 +949,11 @@ void COeditApp::OnScmEvalClipboard()
 	if(obj.IsDataAvailable(CF_TEXT) == FALSE && obj.IsDataAvailable(CF_OEMTEXT) == FALSE ) return;
 
 	HGLOBAL hData = obj.GetGlobalData(CF_UNICODETEXT);
-	// CF_UNICODETEXT�����Ȃ��ꍇ�CCF_OEMTEXT, CF_TEXT�̎擾�����݂�
+	// CF_UNICODETEXTが取れない場合，CF_OEMTEXT, CF_TEXTの取得を試みる
 	if(hData == NULL) {
 		hData = obj.GetGlobalData(CF_OEMTEXT);
 		if(hData == NULL) hData = obj.GetGlobalData(CF_TEXT);
-		// FIXME: �����R�[�h�ϊ�
+		// FIXME: 文字コード変換
 	}
 	if(hData == NULL) return;
 

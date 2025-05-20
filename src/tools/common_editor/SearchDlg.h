@@ -12,7 +12,7 @@
 #if _MSC_VER >= 1000
 #pragma once
 #endif // _MSC_VER >= 1000
-// SearchDlg.h : ƒwƒbƒ_[ ƒtƒ@ƒCƒ‹
+// SearchDlg.h : ãƒ˜ãƒƒãƒ€ãƒ¼ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #define WM_SEARCH_TEXT	WM_USER + 100
@@ -24,13 +24,13 @@
 #include "DlgSingletonTmpl.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CSearchDlg ƒ_ƒCƒAƒƒO
+// CSearchDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 class CSearchDlg : public CDialog
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 public:
-	CSearchDlg(CWnd* pParent = NULL);   // •W€‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CSearchDlg(CWnd* pParent = NULL);   // æ¨™æº–ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	~CSearchDlg();
 
 	void ShowDialog(CWnd *wnd, int search_message, CSearchDlgData *search_data, BOOL b_close_at_found);
@@ -43,7 +43,7 @@ public:
 
 	CString		m_title;
 
-// ƒ_ƒCƒAƒƒO ƒf[ƒ^
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ‡ãƒ¼ã‚¿
 	//{{AFX_DATA(CSearchDlg)
 	enum { IDD = IDD_SEARCH_DLG };
 	CButton	m_btn_check_regexp;
@@ -56,18 +56,18 @@ public:
 	//}}AFX_DATA
 
 
-// ƒI[ƒo[ƒ‰ƒCƒh
-	// ClassWizard ‚Í‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ğ¶¬‚µ‚Ü‚·B
+// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	// ClassWizard ã¯ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 
 	//{{AFX_VIRTUAL(CSearchDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ƒTƒ|[ƒg
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ã‚µãƒãƒ¼ãƒˆ
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
 
-	// ¶¬‚³‚ê‚½ƒƒbƒZ[ƒW ƒ}ƒbƒvŠÖ”
+	// ç”Ÿæˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒƒãƒ—é–¢æ•°
 	//{{AFX_MSG(CSearchDlg)
 	afx_msg void OnBtnNext();
 	afx_msg void OnBtnPrev();
@@ -116,6 +116,6 @@ typedef DlgSingletonTmpl<CSearchDlg, IDD_SEARCH_DLG> CSearchDlgSingleton;
 
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio ‚Í‘Os‚Ì’¼‘O‚É’Ç‰Á‚ÌéŒ¾‚ğ‘}“ü‚µ‚Ü‚·B
+// Microsoft Developer Studio ã¯å‰è¡Œã®ç›´å‰ã«è¿½åŠ ã®å®£è¨€ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
 
 #endif // !defined(AFX_SEARCHDLG_H__8F6F9980_626D_11D4_B06E_00E018A83B1B__INCLUDED_)

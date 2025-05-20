@@ -8,7 +8,7 @@
 #ifndef _GAPPED_BUFFER_TMPL_H_INCLUDE
 #define _GAPPED_BUFFER_TMPL_H_INCLUDE
 
-// CEditableGridData‚Ìƒf[ƒ^ŠÇ——p
+// CEditableGridDataã®ãƒ‡ãƒ¼ã‚¿ç®¡ç†ç”¨
 
 template <class T>
 class GappedBufferTmpl
@@ -145,7 +145,7 @@ void GappedBufferTmpl<T>::make_gap(int row)
 		fill_cnt = m_gap_end - fill_start;
 	}
 
-	// ƒf[ƒ^‚ğˆÚ“®
+	// ãƒ‡ãƒ¼ã‚¿ã‚’ç§»å‹•
 	memmove(m_buffer + move_to, m_buffer + move_start, sizeof(T) * (move_rows));
 }
 

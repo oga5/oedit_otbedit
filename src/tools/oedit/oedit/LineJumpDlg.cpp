@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
- // LineJumpDlg.cpp : インプリメンテーション ファイル
+ // LineJumpDlg.cpp : 繧､繝ｳ繝励Μ繝｡繝ｳ繝�繝ｼ繧ｷ繝ｧ繝ｳ 繝輔ぃ繧､繝ｫ
 //
 
 #include "stdafx.h"
@@ -19,7 +19,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CLineJumpDlg ダイアログ
+// CLineJumpDlg 繝繧､繧｢繝ｭ繧ｰ
 
 
 CLineJumpDlg::CLineJumpDlg(CWnd* pParent /*=NULL*/)
@@ -48,7 +48,7 @@ BEGIN_MESSAGE_MAP(CLineJumpDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CLineJumpDlg メッセージ ハンドラ
+// CLineJumpDlg 繝｡繝�繧ｻ繝ｼ繧ｸ 繝上Φ繝峨Λ
 
 void CLineJumpDlg::OnChangeEditLineNo() 
 {

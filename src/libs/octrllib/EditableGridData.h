@@ -143,7 +143,7 @@ protected:
 	void SetCellData(int row, int col, void *data);
 	void SetCellDataSize(int size) { m_cell_data_size = size; }
 
-	// FIXME: privateÇ…Ç∑ÇÈ
+	// FIXME: private„Å´„Åô„Çã
 	BOOL		m_can_insert_row;
 	BOOL		m_can_delete_row;
 

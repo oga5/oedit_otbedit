@@ -126,7 +126,7 @@ __inline static void *my_malloc(OREG_DATA *reg_data, size_t size)
 {
 	void *p;
 
-	if(size % 4 != 0) { // size‚Í4‚Ì”{”‚É‚·‚é(BUSƒGƒ‰[‚É‚È‚é‚½‚ß)
+	if(size % 4 != 0) { // sizeã¯4ã®å€æ•°ã«ã™ã‚‹(BUSã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ãŸã‚)
 		size += 4 - size % 4;
 	}
 
@@ -310,17 +310,17 @@ static NFA_NODE *make_conditional(OREG_DATA *reg_data, LexWord *lex_word)
 	LexWord				tmp_word;
 	NFA_NODE			*node, *cond_node, *true_node, *false_node, *last_node;
 
-	p = lex_word->data + 2;		// (?‚ğ“Ç‚İ”ò‚Î‚·
-	p_len = lex_word->len - 3;	// (?‚Æ)‚Ì•ª‚ğƒ}ƒCƒiƒX
+	p = lex_word->data + 2;		// (?ã‚’èª­ã¿é£›ã°ã™
+	p_len = lex_word->len - 3;	// (?ã¨)ã®åˆ†ã‚’ãƒã‚¤ãƒŠã‚¹
 
-	// condition‚Ì•¶š—ñ‚ğæ“¾
+	// conditionã®æ–‡å­—åˆ—ã‚’å–å¾—
 	if(skip_comment(&p, &p_len) != 0) return NULL;
 	if(lexer(p, p_len, &cond_word) != 0) return NULL;
 	assert(cond_word.type == LEX_GROUP);
 	p += cond_word.len;
 	p_len -= cond_word.len;
 
-	// true‚ÌŒŸõ•¶š—ñ‚ğæ“¾
+	// trueæ™‚ã®æ¤œç´¢æ–‡å­—åˆ—ã‚’å–å¾—
 	true_str = p;
 	true_len = 0;
 	for(;;) {
@@ -333,7 +333,7 @@ static NFA_NODE *make_conditional(OREG_DATA *reg_data, LexWord *lex_word)
 		if(p_len == 0) break;
 	}
 
-	// false‚ÌŒŸõ•¶š—ñ‚ğæ“¾
+	// falseæ™‚ã®æ¤œç´¢æ–‡å­—åˆ—ã‚’å–å¾—
 	false_str = p;
 	false_len = p_len;
 
@@ -365,7 +365,7 @@ static NFA_NODE *make_conditional(OREG_DATA *reg_data, LexWord *lex_word)
 			if(cond_word.data[2] >= '1' && cond_word.data[2] <= '9') {
 				cond_node->data.back_ref.idx = cond_word.data[2] - '0';
 			} else {
-				// FIXME: R&NAME‚É‘Î‰‚·‚é
+				// FIXME: R&NAMEã«å¯¾å¿œã™ã‚‹
 				return NULL;
 			}
 		} else {
@@ -393,7 +393,7 @@ static NFA_NODE *make_conditional(OREG_DATA *reg_data, LexWord *lex_word)
 	node->next[0] = false_node;
 	node->next[1] = true_node;
 
-	// true, false‚ÌÅŒã‚Å‡—¬‚·‚é
+	// true, falseã®æœ€å¾Œã§åˆæµã™ã‚‹
 	last_node = alloc_nfa_node(reg_data);
 	if(last_node == NULL) return NULL;
 	get_last_node(true_node)->next[0] = last_node;
@@ -425,7 +425,7 @@ static NFA_NODE *process_reg_switch(OREG_DATA *reg_data, LexWord *lex_word)
 	int		back_reg_switch = reg_data->reg_switch;
 	unsigned int ch;
 
-	// "(?"‚ğ“Ç‚İ”ò‚Î‚·
+	// "(?"ã‚’èª­ã¿é£›ã°ã™
 	data = lex_word->data + 2;
 	len = lex_word->len - 3;
 
@@ -589,7 +589,7 @@ static NFA_NODE *make_group(OREG_DATA *reg_data, LexWord *lex_word,
 			if(get_char(data + 2) != ')') return NULL;
 			return make_recursive_node(reg_data, 0);
 		} else if(ch1 >= '0' && ch1 <= '9') {
-			/* FIXME: 0`9‚Ì‚İ‘Î‰: BACK_REF_IDX_MAX‚Ü‚ÅŠg’£‚·‚é */
+			/* FIXME: 0ã€œ9ã®ã¿å¯¾å¿œ: BACK_REF_IDX_MAXã¾ã§æ‹¡å¼µã™ã‚‹ */
 			/* recursive expression not terminated */
 			if(get_char(data + 2) != ')') return NULL;
 			return make_recursive_node(reg_data, ch1 - '0');
@@ -770,10 +770,10 @@ static void make_esc_char_class(OREG_DATA *oreg_data, CHAR_CLASS *char_class,
 		for(i = 0; i < ESC_CHAR_CLASS_TABLE_SIZE; i++) {
 			char_class->char_tbl[i] |= ~tbl[i];
 		}
-		// ‘SŠp•¶š‚Í‘S‚Äˆê’v‚·‚é
+		// å…¨è§’æ–‡å­—ã¯å…¨ã¦ä¸€è‡´ã™ã‚‹
 		char_class->all_mb_flg = 1;
 
-		// ”Û’è‚Ì‚Æ‚«‰üs•¶š‚Éƒ}ƒbƒ`‚³‚¹‚È‚¢
+		// å¦å®šã®ã¨ãæ”¹è¡Œæ–‡å­—ã«ãƒãƒƒãƒã•ã›ãªã„
 		{
 			const char ch = '\n';
 			char_class->char_tbl[ch / 8] &= ~(0x01 << (ch % 8));
@@ -920,7 +920,7 @@ static int make_char_class_data(OREG_DATA *reg_data, CHAR_CLASS *char_class,
 				make_char_class_ch_data(char_class, ch, ic_flg, iw_flg);
 				if(p_len == 0) break;
 			} else {
-				// Ÿ‚Ì•¶š‚ğæ“¾
+				// æ¬¡ã®æ–‡å­—ã‚’å–å¾—
 				ch = get_char(p);
 				p_len -= get_char_len(p);
 				p += get_char_len(p);
@@ -1014,7 +1014,7 @@ static NFA_NODE *make_char_class(OREG_DATA *reg_data,
 		return NULL;
 	}
 
-	// ”Û’è‚ÌŒŸõ‚Ì‚Æ‚«A‰üs‚Éƒ}ƒbƒ`‚³‚¹‚È‚¢
+	// å¦å®šã®æ¤œç´¢ã®ã¨ãã€æ”¹è¡Œã«ãƒãƒƒãƒã•ã›ãªã„
 	if(char_class->not) {
 		const char ch = '\n';
 		char_class->char_tbl[ch / 8] |= (0x01 << (ch % 8));
@@ -1065,8 +1065,8 @@ const TCHAR *get_back_ref_idx(const TCHAR *p, int *val, int back_ref_cnt)
 	}
 
 	if(!bracket_flg && *val >= back_ref_cnt) {
-		// 2Œ…ˆÈã‚Ì”’l‚ğ“Ç‚İ‚ñ‚¾‚Æ‚«AŒã•ûQÆ‚Ì”‚ğ’´‚¦‚éê‡‚ÍA
-		// æ“ª1Œ…‚Ìw’è‚Æ‚µ‚Äˆ—‚·‚é
+		// 2æ¡ä»¥ä¸Šã®æ•°å€¤ã‚’èª­ã¿è¾¼ã‚“ã ã¨ãã€å¾Œæ–¹å‚ç…§ã®æ•°ã‚’è¶…ãˆã‚‹å ´åˆã¯ã€
+		// å…ˆé ­1æ¡ã®æŒ‡å®šã¨ã—ã¦å‡¦ç†ã™ã‚‹
 		p = org_p;
 		*val = *p - '0' - 1;
 		p += get_char_len(p);
@@ -1174,7 +1174,7 @@ static NFA_NODE *make_escape_node(OREG_DATA *reg_data, LexWord *lex_word)
 		ch = get_char(p);
 		if(ch == '<' || ch == '\'') {
 			NFA_NODE *node;
-			INT_PTR copy_len = lex_word->len - 4;	// \\k<>‚Ì4•¶šˆÈŠO‚ğƒRƒs[
+			INT_PTR copy_len = lex_word->len - 4;	// \\k<>ã®4æ–‡å­—ä»¥å¤–ã‚’ã‚³ãƒ”ãƒ¼
 
 			node = make_type_node(reg_data, NODE_NAMED_BACK_REF);
 			if(node == NULL) return NULL;
@@ -1329,8 +1329,8 @@ static int check_loop_detect(NFA_NODE *node, int depth)
 	for(; node != NULL;) {
 		switch(node->type) {
 		case NODE_RECURSIVE:
-			// recursive pattern‚Ìê‡Aí‚É”Ô•º‚ğ“ü‚ê‚é
-			// FIXME: ”Ô•º‚ª‹@”\‚µ‚Ä‚¢‚é‚©Šm”F‚·‚é
+			// recursive patternã®å ´åˆã€å¸¸ã«ç•ªå…µã‚’å…¥ã‚Œã‚‹
+			// FIXME: ç•ªå…µãŒæ©Ÿèƒ½ã—ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹
 			return 1;
 		case NODE_WORD:
 		case NODE_ANY_CHAR:
@@ -1385,7 +1385,7 @@ static NFA_NODE *make_quantifier_plus(OREG_DATA *reg_data, NFA_NODE *node,
 	start_node->next[0] = node;
 
 	if(check_loop_detect(node, 0)) {
-		// ”Ô•º‚ğ“ü‚ê‚é
+		// ç•ªå…µã‚’å…¥ã‚Œã‚‹
 		NFA_NODE *loop_detect_node =
 			make_type_node(reg_data, NODE_LOOP_DETECT);
 		if(loop_detect_node == NULL) return NULL;
@@ -1533,7 +1533,7 @@ static NFA_NODE *make_quantifier_main(OREG_DATA *reg_data, NFA_NODE *node,
 				next_node = make_quantifier(reg_data, next_node, '?', b_short);
 				if(next_node == NULL) return NULL;
 
-				/* backtrackíŒ¸‚ÌÅ“K‰» (.{2,22}) -> (?>.{2,22}) */
+				/* backtrackå‰Šæ¸›ã®æœ€é©åŒ– (.{2,22}) -> (?>.{2,22}) */
 				next_node->type = NODE_BRANCH;
 				next_node->next[1] = end_node;
 
@@ -1543,7 +1543,7 @@ static NFA_NODE *make_quantifier_main(OREG_DATA *reg_data, NFA_NODE *node,
 		}
 
 		if(min == 0) {
-			// ğŒ‘S‘Ì‚Ìskip‚ğ‹–‰Â‚·‚é
+			// æ¡ä»¶å…¨ä½“ã®skipã‚’è¨±å¯ã™ã‚‹
 			head_node = make_quantifier(reg_data, head_node, '?', b_short);
 		}
 	}
@@ -1560,7 +1560,7 @@ static NFA_NODE *make_branch(OREG_DATA *reg_data, const TCHAR *p, INT_PTR p_len,
 	LexWord		lex_word_q;
 	int			back_ref_cnt;
 
-	// ‹ó‘JˆÚ‚ğì‚é
+	// ç©ºé·ç§»ã‚’ä½œã‚‹
 	node = alloc_nfa_node(reg_data);
 	if(node == NULL) return NULL;
 
@@ -1586,7 +1586,7 @@ static NFA_NODE *make_branch(OREG_DATA *reg_data, const TCHAR *p, INT_PTR p_len,
 			p += lex_word_q.len;
 			p_len -= lex_word_q.len;
 
-			// —Êw’èq‚Í‚±‚±‚Åˆ—‚·‚é
+			// é‡æŒ‡å®šå­ã¯ã“ã“ã§å‡¦ç†ã™ã‚‹
 			next_node = make_quantifier_main(reg_data, next_node,
 				&lex_word_q, &lex_word, back_ref_cnt, b_enable_loop);
 			if(next_node == NULL) return NULL;
@@ -1608,14 +1608,14 @@ static NFA_NODE *make_or_nfa(OREG_DATA *reg_data, NFA_NODE *node,
 	NFA_NODE *start = NULL;
 	NFA_NODE *end = NULL;
 
-	// NFA‚Ìæ“ª‚ğì‚é
+	// NFAã®å…ˆé ­ã‚’ä½œã‚‹
 	start = make_branch_node(reg_data, '|');
 	if(start == NULL) return NULL;
 
 	start->next[0] = prev_node;
 	start->next[1] = node;
 
-	// NFA‚Ì––”ö‚ğì‚é
+	// NFAã®æœ«å°¾ã‚’ä½œã‚‹
 	end = alloc_nfa_node(reg_data);
 	if(end == NULL) return NULL;
 
@@ -1737,7 +1737,7 @@ static NFA_NODE *optimize_skip_epsilon(OREG_DATA *reg_data, NFA_NODE *node)
 
 		node->next[0] = skip_epsilon_node(node->next[0]);
 
-		// ––”ö‚Ìepsiron‚ğœ‹‚·‚é(œ‹‚·‚é‚Æó—ƒm[ƒh‚ª‚Ğ‚Æ‚Â‚É‚È‚ç‚È‚¢)
+		// æœ«å°¾ã®epsironã‚’é™¤å»ã™ã‚‹(é™¤å»ã™ã‚‹ã¨å—ç†ãƒãƒ¼ãƒ‰ãŒã²ã¨ã¤ã«ãªã‚‰ãªã„)
 		//if(is_null_node(node->next[0])) node->next[0] = NULL;
 
 		if(node->next[1] != NULL) {
@@ -1749,8 +1749,8 @@ static NFA_NODE *optimize_skip_epsilon(OREG_DATA *reg_data, NFA_NODE *node)
 }
 
 /*
- ab|ac => a(?:b|c)‚Ö•ÏŠ·
- (?:a?){3}a{3} => a{3}(?:a?){3}‚É•ÏŠ·
+ ab|ac => a(?:b|c)ã¸å¤‰æ›
+ (?:a?){3}a{3} => a{3}(?:a?){3}ã«å¤‰æ›
 
  http://swtch.com/~rsc/regexp/regexp1.html
 */
@@ -1760,10 +1760,10 @@ static void optimize_merge_selective(OREG_DATA *reg_data, NFA_NODE *node)
 		if(node->optimized & OPTIMIZE_MERGE_SELECTIVE) break;
 		node->optimized |= OPTIMIZE_MERGE_SELECTIVE;
 
-		// •ªŠòƒm[ƒhˆÈŠO‚ÍƒXƒLƒbƒv
+		// åˆ†å²ãƒãƒ¼ãƒ‰ä»¥å¤–ã¯ã‚¹ã‚­ãƒƒãƒ—
 		if(node->next[1] == NULL || node->next[0] == NULL) continue;
 
-		// æ‚É‰œ‚Ìnode‚ğ‰ğŒˆ‚·‚é
+		// å…ˆã«å¥¥ã®nodeã‚’è§£æ±ºã™ã‚‹
 		optimize_merge_selective(reg_data, node->next[0]);
 
 		if(node->type == NODE_BRANCH &&
@@ -1773,18 +1773,18 @@ static void optimize_merge_selective(OREG_DATA *reg_data, NFA_NODE *node)
 		   node->next[0]->data.ch.ic_flg == node->next[1]->data.ch.ic_flg &&
 		   node->next[0]->data.ch.iw_flg == node->next[1]->data.ch.iw_flg) {
 			/*
-			 * ³‹K•\Œ»ab|ac‚Ì‚Æ‚«AˆÈ‰º‚Ì•ÏŠ·‚ğs‚¤
+			 * æ­£è¦è¡¨ç¾ab|acã®ã¨ãã€ä»¥ä¸‹ã®å¤‰æ›ã‚’è¡Œã†
 			 *
-			 * •ÏŠ·‘O
+			 * å¤‰æ›å‰
 			 * (1:branch) -> (2:a) -> (4:b)
 			 *            -> (3:a) -> (5:c)
 			 *
-			 * •ÏŠ·Œã
+			 * å¤‰æ›å¾Œ
 			 * (1:a) -> (New:branch) -> (4:b)
 			 *                       -> (5:c)
 			 *
-			 * - node1‚ğ(a)‚É‘‚«Š·‚¦‚é
-			 * - node1‚ÌŸ‚ÉV‚µ‚¢•ªŠòƒm[ƒh‚ğ‘}“ü‚µAnode2,3‚ÌŸ‚Ìnode‚ğw‚·
+			 * - node1ã‚’(a)ã«æ›¸ãæ›ãˆã‚‹
+			 * - node1ã®æ¬¡ã«æ–°ã—ã„åˆ†å²ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã—ã€node2,3ã®æ¬¡ã®nodeã‚’æŒ‡ã™
 			*/
 			unsigned int ch = node->next[0]->data.ch.c;
 			int ic_flg = node->next[0]->data.ch.ic_flg;
@@ -1812,7 +1812,7 @@ static int check_char_tbl(const unsigned char *char_tbl, unsigned int ch)
 	return 0;
 }
 
-// char_class‚ªchar_tbl‚Ìƒ`ƒFƒbƒN‚Ì‚İ‚ÅƒeƒXƒg‰Â”\‚©
+// char_classãŒchar_tblã®ãƒã‚§ãƒƒã‚¯ã®ã¿ã§ãƒ†ã‚¹ãƒˆå¯èƒ½ã‹
 static int check_char_class_is_simple(CHAR_CLASS *char_class)
 {
 	if(char_class->not) return 0;
@@ -1885,7 +1885,7 @@ static int candidate_branch_node(NFA_NODE *node, char *node_check_buf,
 		}
 	}
 
-	// I’[‚É“’B‚·‚é‚±‚Æ‚ª‚Å‚«‚éê‡A‘S‚Ä‚ÌƒP[ƒX‚ğó—‚·‚é
+	// çµ‚ç«¯ã«åˆ°é”ã™ã‚‹ã“ã¨ãŒã§ãã‚‹å ´åˆã€å…¨ã¦ã®ã‚±ãƒ¼ã‚¹ã‚’å—ç†ã™ã‚‹
 	if(node == NULL) return -1;
 	return candidate_cnt;
 }
@@ -1943,7 +1943,7 @@ static void optimize_branch_node(OREG_DATA *reg_data, NFA_NODE *node,
 	int		candidate_cnt = 0;
 	int		i;
 
-	// •ªŠòæ‚ğæ“¾
+	// åˆ†å²å…ˆã‚’å–å¾—
 	memset(node_check_buf, 0, (reg_data->cur_node_id / 8) + 1);
 	candidate_cnt = candidate_branch_node(node->next[0], node_check_buf,
 		candidate, candidate_cnt, 0);
@@ -1956,7 +1956,7 @@ static void optimize_branch_node(OREG_DATA *reg_data, NFA_NODE *node,
 	assert(candidate_cnt <= MAX_BRANCH_CANDIDATE);
 	if(candidate_cnt == 0 || candidate_cnt == -1) return;
 
-	// Œó•â‚ğƒ}[ƒW‚·‚é
+	// å€™è£œã‚’ãƒãƒ¼ã‚¸ã™ã‚‹
 	branch_tbl = (unsigned char *)my_malloc(reg_data, BRANCH_TABLE_SIZE);
 	if(branch_tbl == NULL) return;
 	memset(branch_tbl, 0, BRANCH_TABLE_SIZE);

@@ -13,9 +13,9 @@
 
 #include "wheelsplit.h"
 
-// CSplitterWnd‚ÌŠg’£
+// CSplitterWndã®æ‹¡å¼µ
 //
-// ƒ}ƒEƒX‘€ì‚Å‚ÍŠeƒyƒCƒ“‚Ì‚‚³‚Ì•ÏX‚ğ‚Å‚«‚È‚­‚·‚é
+// ãƒã‚¦ã‚¹æ“ä½œã§ã¯å„ãƒšã‚¤ãƒ³ã®é«˜ã•ã®å¤‰æ›´ã‚’ã§ããªãã™ã‚‹
 //
 class CExpSplitterWnd : public CWheelSplitterWnd
 {

@@ -13,7 +13,7 @@
 #include "ddeml.h"
 
 //
-// ƒvƒƒOƒ‰ƒ€(Exe,Dll)‚Ìƒo[ƒWƒ‡ƒ“‚ğæ“¾
+// ãƒ—ãƒ­ã‚°ãƒ©ãƒ (Exe,Dll)ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—
 //
 BOOL GetFileVersion2(TCHAR *filename, int *v1, int *v2, int *v3, int *v4)
 {
@@ -23,7 +23,7 @@ BOOL GetFileVersion2(TCHAR *filename, int *v1, int *v2, int *v3, int *v4)
 	VS_FIXEDFILEINFO	*pFixedInfo;
 	UINT	uVersionLen;
 
-	// 0‚Å‰Šú‰»
+	// 0ã§åˆæœŸåŒ–
 	*v1 = *v2 = *v3 = *v4 = 0;
 
 	dwVerInfoSize = GetFileVersionInfoSize(filename, &dwHnd);
@@ -47,7 +47,7 @@ BOOL GetFileVersion2(TCHAR *filename, int *v1, int *v2, int *v3, int *v4)
 }
 
 //
-// ƒvƒƒOƒ‰ƒ€(Exe,Dll)‚Ìƒo[ƒWƒ‡ƒ“‚ğæ“¾
+// ãƒ—ãƒ­ã‚°ãƒ©ãƒ (Exe,Dll)ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—
 //
 BOOL GetFileVersion(TCHAR *filename, CString *str, int format)
 {
@@ -55,8 +55,8 @@ BOOL GetFileVersion(TCHAR *filename, CString *str, int format)
 
 	if(!GetFileVersion2(filename, &v1, &v2, &v3, &v4)) return FALSE;
 
-	// format == 0 ‚È‚ç X,X,X,X
-	// format == 1 ‚È‚ç X.X
+	// format == 0 ãªã‚‰ X,X,X,X
+	// format == 1 ãªã‚‰ X.X
 	switch(format) {
 	case 0:
 		str->Format(_T("%u.%u.%u.%u"), v1, v2, v3, v4);
@@ -82,7 +82,7 @@ CString GetAppVersion()
 }
 
 //
-// ƒuƒ‰ƒEƒU‚ğ‹N“®‚·‚é
+// ãƒ–ãƒ©ã‚¦ã‚¶ã‚’èµ·å‹•ã™ã‚‹
 //
 static BOOL ViewBrowserExecute(TCHAR *app_path, TCHAR *file)
 {
@@ -96,8 +96,8 @@ static BOOL ViewBrowserExecute(TCHAR *app_path, TCHAR *file)
 
 	if(CreateProcess(NULL, cmd.GetBuffer(0), NULL, NULL, FALSE,
 		0, NULL, NULL, &si, &pi) == FALSE) {
-		AfxMessageBox(_T("ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì‹N“®‚É¸”s‚µ‚Ü‚µ‚½B\n")
-			_T("ƒc[ƒ‹¨ƒIƒvƒVƒ‡ƒ“¨İ’èƒ^ƒu‚ÅCƒuƒ‰ƒEƒU‚Ìİ’è‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"),
+		AfxMessageBox(_T("ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®èµ·å‹•ã«å¤±æ•—ã—ã¾ã—ãŸã€‚\n")
+			_T("ãƒ„ãƒ¼ãƒ«â†’ã‚ªãƒ—ã‚·ãƒ§ãƒ³â†’è¨­å®šã‚¿ãƒ–ã§ï¼Œãƒ–ãƒ©ã‚¦ã‚¶ã®è¨­å®šã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"),
 			MB_OK);
 		return FALSE;
 	}
@@ -123,7 +123,7 @@ static HDDEDATA CALLBACK DdeCallback(
 }
  
 //
-// DDE’ÊM‚Åƒtƒ@ƒCƒ‹‚ğ•\¦‚·‚é
+// DDEé€šä¿¡ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹
 //
 #define NS_OPENURL	_T("WWW_OpenURL")
 #define NS_ACTIVATE	_T("WWW_Activate")
@@ -135,7 +135,7 @@ BOOL ViewBrowser(TCHAR *app, TCHAR *app_path, TCHAR *file, BOOL new_window)
 
 	DWORD m_dwInstID = 0;
     if (DdeInitialize(&m_dwInstID, DdeCallback, APPCLASS_STANDARD | APPCMD_CLIENTONLY, 0L)) {
-		AfxMessageBox(_T("DDE‚Ì‰Šú‰»‚É¸”s‚µ‚Ü‚µ‚½B"), MB_OK);
+		AfxMessageBox(_T("DDEã®åˆæœŸåŒ–ã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), MB_OK);
         return FALSE;
 	}
 
@@ -149,12 +149,12 @@ BOOL ViewBrowser(TCHAR *app, TCHAR *app_path, TCHAR *file, BOOL new_window)
 		DdeFreeStringHandle(m_dwInstID, hszTopic);
 		
 		if(hConv == NULL) {
-			// DDE’ÊM‚É¸”s‚µ‚½‚Æ‚«‚ÍCƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ‹N“®‚·‚é
+			// DDEé€šä¿¡ã«å¤±æ•—ã—ãŸã¨ãã¯ï¼Œã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’èµ·å‹•ã™ã‚‹
 			DdeUninitialize(m_dwInstID);
 			return ViewBrowserExecute(app_path, file);
 		}
 
-		// FIXME: Win98‚¾‚ÆƒAƒNƒeƒBƒu‚É‚È‚ç‚È‚¢
+		// FIXME: Win98ã ã¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã‚‰ãªã„
 		HSZ hszActive = DdeCreateStringHandle(m_dwInstID, _T("0xFFFFFFFF,0x0"), CP_WINANSI);
 		DdeClientTransaction(NULL, 0, hConv, hszActive, CF_TEXT, XTYP_REQUEST, 1000, NULL);
 		DdeFreeStringHandle(m_dwInstID, hszActive);
@@ -171,7 +171,7 @@ BOOL ViewBrowser(TCHAR *app, TCHAR *app_path, TCHAR *file, BOOL new_window)
 		DdeFreeStringHandle(m_dwInstID, hszTopic);
 		
 		if(hConv == NULL) {
-			// DDE’ÊM‚É¸”s‚µ‚½‚Æ‚«‚ÍCƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ‹N“®‚·‚é
+			// DDEé€šä¿¡ã«å¤±æ•—ã—ãŸã¨ãã¯ï¼Œã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’èµ·å‹•ã™ã‚‹
 			DdeUninitialize(m_dwInstID);
 			return ViewBrowserExecute(app_path, file);
 		}
@@ -197,7 +197,7 @@ BOOL ViewBrowser(TCHAR *app, TCHAR *app_path, TCHAR *file, BOOL new_window)
 
 HWND FindWindowLoop(TCHAR *window_name)
 {
-	// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğƒtƒHƒAƒOƒ‰ƒEƒ“ƒh‚É‚·‚é
+	// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ãƒ•ã‚©ã‚¢ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã«ã™ã‚‹
 	HWND	wnd = GetTopWindow(NULL);
 	HWND	find = NULL;
 	for(; wnd != NULL; ) {
@@ -220,11 +220,11 @@ CDocument *GetActiveDocument()
 
 CString GetFullPath(const TCHAR *file_name)
 {
-	// ‘Š‘ÎƒpƒX‚ğƒtƒ‹ƒpƒX‚É‚·‚é
-	// FIXME: ƒtƒ@ƒCƒ‹‚ğƒI[ƒvƒ“‚µ‚È‚¢‚ÅC•ÏŠ·‚Å‚«‚é‚æ‚¤‚É‚·‚é
+	// ç›¸å¯¾ãƒ‘ã‚¹ã‚’ãƒ•ãƒ«ãƒ‘ã‚¹ã«ã™ã‚‹
+	// FIXME: ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã—ãªã„ã§ï¼Œå¤‰æ›ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 	CFile fff;
 	if(!fff.Open(file_name, CFile::modeRead|CFile::shareDenyNone, NULL)) {
-		// ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚È‚¢
+		// ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ãªã„
 		return file_name;
 	}
 	CString full_path_name = fff.GetFilePath();
@@ -239,7 +239,7 @@ void OpenHelpFile(const TCHAR *file_name)
 	file_path.Format(_T("%sdoc\\%s"), GetAppPath().GetBuffer(0), file_name);
 
 	if(!is_file_exist(file_path)) {
-		MessageBox(NULL, _T("ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(NULL, _T("ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		return;
 	}
 
@@ -248,7 +248,7 @@ void OpenHelpFile(const TCHAR *file_name)
 
 
 //
-// DLL‚ğƒ[ƒh‚·‚éPATH‚ğw’è‚·‚é (WindowsXP SP1ˆÈ~)
+// DLLã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹PATHã‚’æŒ‡å®šã™ã‚‹ (WindowsXP SP1ä»¥é™)
 //
 typedef BOOL (WINAPI *FP_SetDllDirectory)(LPCTSTR lpPathName);
 

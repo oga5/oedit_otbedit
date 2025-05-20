@@ -12,15 +12,15 @@
 #if !defined(WheelSplitterWnd_H_INCLUDED)
 #define WheelSplitterWnd_H_INCLUDED
 
-#define WHEEL_MODE_VSCROLL_MSG		(0x01 << 0)		// WM_MOUSEWHEEL‚ðWM_VSCROLL‚É•ÏŠ·‚µ‚ÄVIEW‚É“]‘—(ƒfƒtƒHƒ‹ƒg)
-#define WHEEL_MODE_WHEEL_MSG		(0x01 << 1)		// WM_MOUSEWHEEL‚ðWSW_WM_WHEEL_TRANSFER_MSG‚É‚µ‚ÄVIEW‚É“]‘—
+#define WHEEL_MODE_VSCROLL_MSG		(0x01 << 0)		// WM_MOUSEWHEELã‚’WM_VSCROLLã«å¤‰æ›ã—ã¦VIEWã«è»¢é€(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)
+#define WHEEL_MODE_WHEEL_MSG		(0x01 << 1)		// WM_MOUSEWHEELã‚’WSW_WM_WHEEL_TRANSFER_MSGã«ã—ã¦VIEWã«è»¢é€
 
-#define WHEEL_MODE_ACTIVE_VIEW		(0x01 << 2)		// Active View‚ÉƒƒbƒZ[ƒW‚ð“]‘—(ƒfƒtƒHƒ‹ƒg)
-#define WHEEL_MODE_ON_CURSOR_VIEW	(0x01 << 3)		// ƒ}ƒEƒXƒJ[ƒ\ƒ‹‚Ì‚ ‚éView‚ÉƒƒbƒZ[ƒW‚ð“]‘—
+#define WHEEL_MODE_ACTIVE_VIEW		(0x01 << 2)		// Active Viewã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è»¢é€(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)
+#define WHEEL_MODE_ON_CURSOR_VIEW	(0x01 << 3)		// ãƒžã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã®ã‚ã‚‹Viewã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è»¢é€
 
-// CSplitterWnd‚ÌŠg’£
+// CSplitterWndã®æ‹¡å¼µ
 //
-// ƒzƒC[ƒ‹‘€ì‚ÅASSERTƒGƒ‰[‚É‚È‚ç‚È‚¢ƒNƒ‰ƒX
+// ãƒ›ã‚¤ãƒ¼ãƒ«æ“ä½œã§ASSERTã‚¨ãƒ©ãƒ¼ã«ãªã‚‰ãªã„ã‚¯ãƒ©ã‚¹
 //
 class CWheelSplitterWnd : public CSplitterWnd
 {

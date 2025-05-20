@@ -1,4 +1,4 @@
-// ogrepDlg.cpp : �C���v�������e�[�V���� �t�@�C��
+// ogrepDlg.cpp : インプリメンテーション ファイル
 //
 
 #include "stdafx.h"
@@ -30,13 +30,13 @@ static void on_drop_files(HWND hwnd, HDROP hDropInfo)
 	UINT nFiles = ::DragQueryFile(hDropInfo, (UINT)-1, NULL, 0);
 	if(nFiles == 0) return;
 
-	// �ЂƂ߂̃t�@�C��
+	// ひとつめのファイル
 	TCHAR szFileName[_MAX_PATH];
 	::DragQueryFile(hDropInfo, 0, szFileName, _MAX_PATH);
 
 	::DragFinish(hDropInfo);
 
-	// �t�@�C�����w�肳�ꂽ��A�t�H���_���ɕϊ�
+	// ファイルが指定されたら、フォルダ名に変換
 	if(is_file_exist(szFileName)) {
 		make_parent_dirname(szFileName);
 	}
@@ -44,7 +44,7 @@ static void on_drop_files(HWND hwnd, HDROP hDropInfo)
 	SetWindowText(hwnd, szFileName);
 }
 
-// Folder���͗��̃T�u�N���X
+// Folder入力欄のサブクラス
 static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message) {
@@ -58,26 +58,26 @@ static LRESULT CALLBACK Edit_SubclassWndProc(HWND hwnd, UINT message, WPARAM wPa
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// �A�v���P�[�V�����̃o�[�W�������Ŏg���Ă��� CAboutDlg �_�C�A���O
+// アプリケーションのバージョン情報で使われている CAboutDlg ダイアログ
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// �_�C�A���O �f�[�^
+// ダイアログ データ
 	//{{AFX_DATA(CAboutDlg)
 	enum { IDD = IDD_ABOUTBOX };
 	CString	m_static_version;
 	//}}AFX_DATA
 
-	// ClassWizard �͉��z�֐��̃I�[�o�[���C�h�𐶐����܂�
+	// ClassWizard は仮想関数のオーバーライドを生成します
 	//{{AFX_VIRTUAL(CAboutDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV �̃T�|�[�g
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV のサポート
 	//}}AFX_VIRTUAL
 
-// �C���v�������e�[�V����
+// インプリメンテーション
 protected:
 	//{{AFX_MSG(CAboutDlg)
 	virtual BOOL OnInitDialog();
@@ -106,7 +106,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COgrepDlg �_�C�A���O
+// COgrepDlg ダイアログ
 
 COgrepDlg::COgrepDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(COgrepDlg::IDD, pParent)
@@ -120,7 +120,7 @@ COgrepDlg::COgrepDlg(CWnd* pParent /*=NULL*/)
 	m_search_folder = _T("");
 	m_search_text = _T("");
 	//}}AFX_DATA_INIT
-	// ����: LoadIcon �� Win32 �� DestroyIcon �̃T�u�V�[�P���X��v�����܂���B
+	// メモ: LoadIcon は Win32 の DestroyIcon のサブシーケンスを要求しません。
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_hSmallIcon = (HICON)::LoadImage(AfxGetInstanceHandle(),
 		MAKEINTRESOURCE(IDR_MAINFRAME),
@@ -174,7 +174,7 @@ BEGIN_MESSAGE_MAP(COgrepDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// COgrepDlg ���b�Z�[�W �n���h��
+// COgrepDlg メッセージ ハンドラ
 
 
 void COgrepDlg::CheckOeditMode()
@@ -198,9 +198,9 @@ BOOL COgrepDlg::OnInitDialog()
 
 	CheckOeditMode();
 
-	// "�o�[�W�������..." ���j���[���ڂ��V�X�e�� ���j���[�֒ǉ����܂��B
+	// "バージョン情報..." メニュー項目をシステム メニューへ追加します。
 
-	// IDM_ABOUTBOX �̓R�}���h ���j���[�͈̔͂łȂ���΂Ȃ�܂���B
+	// IDM_ABOUTBOX はコマンド メニューの範囲でなければなりません。
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -216,12 +216,12 @@ BOOL COgrepDlg::OnInitDialog()
 		}
 	}
 
-	// ���̃_�C�A���O�p�̃A�C�R����ݒ肵�܂��B�t���[�����[�N�̓A�v���P�[�V�����̃��C��
-	// �E�B���h�E���_�C�A���O�łȂ����͎����I�ɐݒ肵�܂���B
-	SetIcon(m_hIcon, TRUE);			// �傫���A�C�R����ݒ�
-	SetIcon(m_hSmallIcon, FALSE);		// �������A�C�R����ݒ�
+	// このダイアログ用のアイコンを設定します。フレームワークはアプリケーションのメイン
+	// ウィンドウがダイアログでない時は自動的に設定しません。
+	SetIcon(m_hIcon, TRUE);			// 大きいアイコンを設定
+	SetIcon(m_hSmallIcon, FALSE);		// 小さいアイコンを設定
 	
-	// TODO: ���ʂȏ��������s�����͂��̏ꏊ�ɒǉ����Ă��������B
+	// TODO: 特別な初期化を行う時はこの場所に追加してください。
 	CUnicodeArchive::SetKanjiCodeCombo(&m_combo_kanji_code, m_kanji_code, TRUE);
 
 	CreateEditCtrl();
@@ -258,22 +258,22 @@ BOOL COgrepDlg::OnInitDialog()
 
 	m_edit_ctrl.SetWindowText(OGREP_WINDOW_NAME);
 
-	// �T�u�N���X��
+	// サブクラス化
 	CWnd *child = m_combo_search_folder.ChildWindowFromPoint(CPoint(10, 10));
 	if(child != NULL) {
 		HWND hwnd = child->GetSafeHwnd();
-		// �Â��E�B���h�E�v���V�[�W����ۑ�����
+		// 古いウィンドウプロシージャを保存する
 		::SetWindowLongPtr(hwnd, GWLP_USERDATA, GetWindowLongPtr(hwnd, GWLP_WNDPROC));
-		// �E�B���h�E�v���V�[�W����؂�ւ���
+		// ウィンドウプロシージャを切り替える
 		::SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)Edit_SubclassWndProc);
 
-		// �t�H���_�^�t�@�C����Drag and drop���󂯕t����
+		// フォルダ／ファイルのDrag and dropを受け付ける
 		child->DragAcceptFiles(TRUE);
 	}
 
 	LoadDialogPosition();
 
-	return TRUE;  // TRUE ��Ԃ��ƃR���g���[���ɐݒ肵���t�H�[�J�X�͎����܂���B
+	return TRUE;  // TRUE を返すとコントロールに設定したフォーカスは失われません。
 }
 
 void COgrepDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -289,19 +289,19 @@ void COgrepDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// �����_�C�A���O�{�b�N�X�ɍŏ����{�^����ǉ�����Ȃ�΁A�A�C�R����`�悷��
-// �R�[�h���ȉ��ɋL�q����K�v������܂��BMFC �A�v���P�[�V������ document/view
-// ���f�����g���Ă���̂ŁA���̏����̓t���[�����[�N�ɂ�莩���I�ɏ�������܂��B
+// もしダイアログボックスに最小化ボタンを追加するならば、アイコンを描画する
+// コードを以下に記述する必要があります。MFC アプリケーションは document/view
+// モデルを使っているので、この処理はフレームワークにより自動的に処理されます。
 
 void COgrepDlg::OnPaint() 
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // �`��p�̃f�o�C�X �R���e�L�X�g
+		CPaintDC dc(this); // 描画用のデバイス コンテキスト
 
 		SendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);
 
-		// �N���C�A���g�̋�`�̈���̒���
+		// クライアントの矩形領域内の中央
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -309,7 +309,7 @@ void COgrepDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// �A�C�R����`�悵�܂��B
+		// アイコンを描画します。
 		dc.DrawIcon(x, y, m_hSmallIcon);
 	}
 	else
@@ -318,8 +318,8 @@ void COgrepDlg::OnPaint()
 	}
 }
 
-// �V�X�e���́A���[�U�[���ŏ����E�B���h�E���h���b�O���Ă���ԁA
-// �J�[�\����\�����邽�߂ɂ������Ăяo���܂��B
+// システムは、ユーザーが最小化ウィンドウをドラッグしている間、
+// カーソルを表示するためにここを呼び出します。
 HCURSOR COgrepDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hSmallIcon;
@@ -327,7 +327,7 @@ HCURSOR COgrepDlg::OnQueryDragIcon()
 
 void COgrepDlg::OnOK() 
 {
-	// TODO: ���̈ʒu�ɂ��̑��̌��ؗp�̃R�[�h��ǉ����Ă�������
+	// TODO: この位置にその他の検証用のコードを追加してください
 	
 	//CDialog::OnOK();
 }
@@ -337,7 +337,7 @@ int COgrepDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CDialog::OnCreate(lpCreateStruct) == -1)
 		return -1;
 	
-	// TODO: ���̈ʒu�ɌŗL�̍쐬�p�R�[�h��ǉ����Ă�������
+	// TODO: この位置に固有の作成用コードを追加してください
 	
 	return 0;
 }
@@ -554,14 +554,14 @@ void COgrepDlg::LoadComboData(CComboBox *combo_box, CString section)
 	CString		text;
 	CWinApp*	pApp = AfxGetApp();
 
-	// �R���{�{�b�N�X���N���A
+	// コンボボックスをクリア
 	for(; combo_box->GetCount() != 0;) {
 		combo_box->DeleteString(0);
 	}
 
-	// ���W�X�g���̃e�L�X�g���擾
+	// レジストリのテキストを取得
 	for(i = 0 ; i < SAVE_COMBO_CNT; i++) {
-		// �e�L�X�g���擾
+		// テキストを取得
 		entry.Format(_T("%d"), i);
 		text = pApp->GetProfileString(section, entry, _T(""));
 
@@ -586,7 +586,7 @@ void COgrepDlg::SetComboData(CComboBox *combo_box, CString data)
 		}
 	}
 
-	// ����g�p�����e�L�X�g��擪�ɕۑ�
+	// 今回使用したテキストを先頭に保存
 	combo_box->InsertString(0, data);
 
 	if(combo_box->GetCount() != 0) combo_box->SetCurSel(0);
@@ -607,7 +607,7 @@ void COgrepDlg::SaveComboData(CComboBox *combo_box, CString section)
 		idx++;
 	}
 
-	// �c����󔒂ɂ���
+	// 残りを空白にする
 	for(; idx < SAVE_COMBO_CNT; idx++) {
 		entry.Format(_T("%d"), idx);
 		AfxGetApp()->WriteProfileString(section, entry, NULL);
@@ -623,7 +623,7 @@ void COgrepDlg::OnBtnSearch()
 	if(m_search_text == _T("")) return;
 
 	if(is_directory_exist(m_search_folder.GetBuffer(0)) == FALSE) {
-		MessageBox(_T("�t�H���_�����݂��܂���"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(_T("フォルダが存在しません"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		return;
 	}
 
@@ -642,7 +642,7 @@ void COgrepDlg::OnBtnSearch()
 
 	TCHAR	msg_buf[1024] = _T("");
 
-	_stprintf(msg_buf, _T("'%s' ��������...\n"), search_folder);
+	_stprintf(msg_buf, _T("'%s' を検索中...\n"), search_folder);
 	m_edit_ctrl.Paste(msg_buf);
 
 	_thr_grep_st	grep_st;
@@ -661,13 +661,13 @@ void COgrepDlg::OnBtnSearch()
 
 	CCommonCancelDlg	dlg;
 
-	// �X���b�h���쐬
+	// スレッドを作成
 	uintptr_t	hThread;
 	UINT		thrdaddr;
 	hThread = _beginthreadex(NULL, 0, GrepThr,
 		&grep_st, CREATE_SUSPENDED, &thrdaddr);
 	if(hThread == NULL) {
-		MessageBox(_T("�X���b�h�쐬�G���["), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(_T("スレッド作成エラー"), _T("Error"), MB_ICONEXCLAMATION | MB_OK);
 		return;
 	}
 
@@ -703,13 +703,13 @@ void COgrepDlg::OnBtnSelectFolder()
 
 	UpdateData(TRUE);
 
-	// �f�B���N�g�����̍Ō�� \���͂���
+	// ディレクトリ名の最後の \をはずす
 	TCHAR search_folder[_MAX_PATH];
 	_tcscpy(search_folder, m_search_folder.GetBuffer(0));
 	make_dirname2(search_folder);
 
 	if(SelectFolder(GetSafeHwnd(), dir, search_folder,
-		_T("�����t�H���_�̑I��")) == TRUE) {
+		_T("検索フォルダの選択")) == TRUE) {
 		int idx = m_combo_search_folder.FindStringExact(-1, dir);
 		if(idx == CB_ERR) {
 			m_search_folder = dir;
@@ -724,7 +724,7 @@ void COgrepDlg::OnBtnSelectFolder()
 
 void COgrepDlg::OnCancel() 
 {
-	// TODO: ���̈ʒu�ɓ��ʂȌ㏈����ǉ����Ă��������B
+	// TODO: この位置に特別な後処理を追加してください。
 	UpdateData(TRUE);
 	AfxGetApp()->WriteProfileInt(_T("GREP"), _T("DISTINCT_LWR_UPR"), m_check_distinct_lwr_upr);
 	AfxGetApp()->WriteProfileInt(_T("GREP"), _T("DISTINCT_WIDTH_ASCII"), m_check_distinct_width_ascii);
@@ -738,7 +738,7 @@ void COgrepDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 	
-	// TODO: ���̈ʒu�Ƀ��b�Z�[�W �n���h���p�̃R�[�h��ǉ����Ă�������
+	// TODO: この位置にメッセージ ハンドラ用のコードを追加してください
 	if(::IsWindow(m_edit_ctrl.GetSafeHwnd()) == FALSE) return;
 
 	CRect rect;
@@ -781,8 +781,8 @@ BOOL COgrepDlg::GetSearchData(TCHAR *data, TCHAR *file_name, int *row)
 	_tcscpy(file_name, _T(""));
 	*row = 0;
 
-	// �t�@�C�������擾
-	if(_tcsncmp(p, _T("\\\\"), 2) == 0) {	// �l�b�g���[�N�R���s���[�^
+	// ファイル名を取得
+	if(_tcsncmp(p, _T("\\\\"), 2) == 0) {	// ネットワークコンピュータ
 		p = _tcschr(p, ':');
 		if(p == NULL) return FALSE;
 	} else if(_tcsncmp(p, _T("."), 1) == 0) {
@@ -803,7 +803,7 @@ BOOL COgrepDlg::GetSearchData(TCHAR *data, TCHAR *file_name, int *row)
 	_tcsncpy(file_name, data, p - data);
 	file_name[p - data] = '\0';
 
-	// �s�ԍ����擾
+	// 行番号を取得
 	TCHAR	*p1, *p2;
 	TCHAR	row_chr[100];
 
@@ -929,8 +929,8 @@ BOOL CAboutDlg::OnInitDialog()
 	m_static_version = _T("OGrep Version ") + file_version;
 	UpdateData(FALSE);
 	
-	return TRUE;  // �R���g���[���Ƀt�H�[�J�X��ݒ肵�Ȃ��Ƃ��A�߂�l�� TRUE �ƂȂ�܂�
-	              // ��O: OCX �v���p�e�B �y�[�W�̖߂�l�� FALSE �ƂȂ�܂�
+	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
+	              // 例外: OCX プロパティ ページの戻り値は FALSE となります
 }
 
 void COgrepDlg::OnDestroy() 
@@ -961,7 +961,7 @@ void COgrepDlg::LoadDialogPosition()
 
 	if(left + width >= GetSystemMetrics(SM_CXSCREEN) || 
 		top + height >= GetSystemMetrics(SM_CYSCREEN)) {
-		// �^�X�N�o�[�ɉB��Ȃ��悤�ɂ���
+		// タスクバーに隠れないようにする
 		RECT work_rect;
 		if(SystemParametersInfo(SPI_GETWORKAREA, 0, &work_rect, 0)) {
 			top = work_rect.top;

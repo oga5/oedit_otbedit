@@ -6,7 +6,7 @@
  * See the LICENSE_BSD file for details.
  */
 
-// FileTreeCtrl.cpp : ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“ ƒtƒ@ƒCƒ‹
+// FileTreeCtrl.cpp : ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ•ã‚¡ã‚¤ãƒ«
 //
 
 #include "stdafx.h"
@@ -72,7 +72,7 @@ BEGIN_MESSAGE_MAP(CFileTreeCtrl, CTreeCtrl)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CFileTreeCtrl ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CFileTreeCtrl ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©
 
 BOOL CFileTreeCtrl::GetSysImgList()
 {
@@ -99,7 +99,7 @@ BOOL CFileTreeCtrl::DisplayDrives()
 	TCHAR  szDrives[256];
 	TCHAR* pDrive;
 
-	// FIXME: ƒtƒŠ[ƒY‚·‚é‚Æ‚«‚ª‚ ‚é
+	// FIXME: ãƒ•ãƒªãƒ¼ã‚ºã™ã‚‹ã¨ããŒã‚ã‚‹
 	if(!GetLogicalDriveStrings(sizeof(szDrives), szDrives)) {
 		return FALSE;
 	}
@@ -191,7 +191,7 @@ TCHAR *CFileTreeCtrl::GetSubPath(LPCTSTR strPath)
 BOOL CFileTreeCtrl::FindSubDir(LPCTSTR strPath)
 {
 	return TRUE;
-/* ‚±‚Ìˆ—‚Í’x‚¢
+/* ã“ã®å‡¦ç†ã¯é…ã„
 	//
 	// Are there subDirs ?
 	//
