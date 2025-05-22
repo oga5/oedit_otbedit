@@ -21,6 +21,29 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
+// 色プリセット構造体
+struct EditorColorPreset {
+	LPCTSTR name;
+	COLORREF colors[EDIT_CTRL_COLOR_CNT];
+};
+
+// プリセット例（必要に応じて追加）
+static const EditorColorPreset g_color_presets[] = {
+	{
+		_T("default"), {
+			0x0, 0xcd0000, 0x7800, 0xffffff, 0x969600, 0xdc, 0xc8c8c8, 0x320000, 0x6400, 0x80, 0xc08000, 0xa000, 0xb4b4b4, 0x0, 0x0, 0x0,
+		}
+	},
+	{
+		_T("solarized"), {
+			0x756e58, 0xd28b26, 0x98a12a, 0xf9fdff, 0x164bcb, 0x2f32dc, 0xc8c8c8, 0x423607, 0x9a85, 0x8236d3, 0xc08000, 0xa000, 0xb4b4b4, 0x0, 0x0, 0x0,
+		}
+	},
+	// 他のプリセットもここに追加
+};
+static const int g_color_preset_count = sizeof(g_color_presets) / sizeof(g_color_presets[0]);
+
+
 /////////////////////////////////////////////////////////////////////////////
 // CEditorOptionPage プロパティ ページ
 
@@ -122,6 +145,7 @@ BEGIN_MESSAGE_MAP(CEditorOptionPage, CPropertyPage)
 	ON_BN_CLICKED(IDC_BTN_RULED_LINE_COLOR, OnBtnRuledLineColor)
 	ON_BN_CLICKED(IDC_CHECK_SHOW_RULED_LINE, OnCheckShowRuledLine)
 	//}}AFX_MSG_MAP
+	ON_CBN_SELENDOK(IDC_COMBO_COLOR_PRESET, &CEditorOptionPage::OnSelendokComboColorPreset)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -148,9 +172,30 @@ BOOL CEditorOptionPage::OnInitDialog()
 {
 	CPropertyPage::OnInitDialog();
 	
-	// TODO: この位置に初期化の補足処理を追加してください
-	UpdateData(FALSE);
+	/*
+	   {
+			CString msg;
+			for (int i = 0; i < EDIT_CTRL_COLOR_CNT; ++i) {
+				CString c;
+				c.Format(_T("0x%x, "), m_color[i]);
+				msg += c;
+			}
+			TRACE(_T("%s\n"), msg);
+		}
+	*/
+	// プリセット名をコンボボックスに追加
+	CComboBox* pCombo = (CComboBox*)GetDlgItem(IDC_COMBO_COLOR_PRESET);
+	if (pCombo) {
+		pCombo->ResetContent();
+		pCombo->AddString(_T(""));
 
+		for (int i = 0; i < g_color_preset_count; ++i) {
+			pCombo->AddString(g_color_presets[i].name);
+		}
+		pCombo->SetCurSel(0);
+	}
+
+	UpdateData(FALSE);
 	CreateEditCtrl();
 
 	return TRUE;  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
@@ -549,4 +594,18 @@ void CEditorOptionPage::OnBtnRuledLineColor()
 void CEditorOptionPage::OnCheckShowRuledLine() 
 {
 	SetEditorOption();
+}
+
+void CEditorOptionPage::OnSelendokComboColorPreset()
+{
+	CComboBox* pCombo = (CComboBox*)GetDlgItem(IDC_COMBO_COLOR_PRESET);
+	int sel = pCombo ? pCombo->GetCurSel() : 0;
+	sel = sel - 1;
+	if (sel < 0 || sel >= g_color_preset_count) return;
+
+	for (int i = 0; i < EDIT_CTRL_COLOR_CNT; ++i) {
+		m_color[i] = g_color_presets[sel].colors[i];
+	}
+	SetEditColor();
+	Invalidate();
 }

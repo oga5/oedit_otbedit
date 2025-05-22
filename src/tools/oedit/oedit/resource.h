@@ -143,6 +143,8 @@
 #define IDC_BUTTON_UP                   1219
 #define IDC_BUTTON_DOWN                 1220
 #define IDC_LIST_BOOKMARK               1221
+#define IDC_COMBO1                      1222
+#define IDC_COMBO_COLOR_PRESET          1222
 #define IDC_COMBO_SEARCH_TEXT           1900
 #define ID_BTN_NEXT                     1901
 #define ID_BTN_PREV                     1902
@@ -397,9 +399,9 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        173
+#define _APS_NEXT_RESOURCE_VALUE        174
 #define _APS_NEXT_COMMAND_VALUE         33658
-#define _APS_NEXT_CONTROL_VALUE         1222
+#define _APS_NEXT_CONTROL_VALUE         1223
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

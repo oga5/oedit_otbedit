@@ -119,6 +119,8 @@ private:
 	void SetEditorOption();
 	CEditData	m_edit_data;
 	CEditCtrl	m_edit_ctrl;
+public:
+	afx_msg void OnSelendokComboColorPreset();
 };
 
 //{{AFX_INSERT_LOCATION}}
