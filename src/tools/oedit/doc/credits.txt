@@ -7,5 +7,6 @@
 - MiniSCHEME: LICENSE_MINISCHEME.txt
 - TinySCHEME: LICENSE_TINYSCHEME.txt
 - CSizingControlBar: LICENSE_CSizingControlBar.txt
+- Solarized Colorscheme: LICENSE_SOLARIZED.txt
 
 

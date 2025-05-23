@@ -6,6 +6,12 @@
  * See the LICENSE_BSD file for details.
  */
 
+ /*
+ Solarized was created by Ethan Schoonover and you can find out more about 
+ the design work that went into it on his project page. 
+ https://ethanschoonover.com/solarized/
+ */
+
 #ifndef PRESET_COLOR_H_INCLUDED
 #define PRESET_COLOR_H_INCLUDED
 

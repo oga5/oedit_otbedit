@@ -462,6 +462,7 @@ copy ..\..\..\libs\common_scmlib\*.* $(OutDir)scmlib
     <Text Include="..\doc\LICENSE_CSizingControlBar.txt.txt" />
     <Text Include="..\doc\LICENSE_MINISCHEME.txt" />
     <Text Include="..\doc\LICENSE_PostgreSQL.txt" />
+    <Text Include="..\doc\LICENSE_SOLARIZED.txt" />
     <Text Include="..\doc\LICENSE_TINYSCHEME.txt" />
     <Text Include="..\doc\macro_oedit.txt" />
     <Text Include="..\doc\option.txt" />

@@ -313,6 +313,9 @@
     <Text Include="..\doc\LICENSE_BSD.txt">
       <Filter>doc</Filter>
     </Text>
+    <Text Include="..\doc\LICENSE_SOLARIZED.txt">
+      <Filter>doc</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="res\cursor1.cur">
