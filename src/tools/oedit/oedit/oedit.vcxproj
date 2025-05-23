@@ -389,6 +389,7 @@ copy ..\..\..\libs\common_scmlib\*.* $(OutDir)scmlib
     <ClInclude Include="..\..\common\ExtFileDialog.h" />
     <ClInclude Include="..\..\common\greputil.h" />
     <ClInclude Include="..\..\common\kbmacro.h" />
+    <ClInclude Include="..\..\common\PresetColor.h" />
     <ClInclude Include="..\..\common\scm_macro.h" />
     <ClInclude Include="..\..\common\scm_macro_common.h" />
     <ClInclude Include="..\..\common\TagJumpCommon.h" />

@@ -14,34 +14,13 @@
 #include "EditorOptionPage.h"
 
 #include "fileutil.h"
+#include "PresetColor.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
-
-// 色プリセット構造体
-struct EditorColorPreset {
-    LPCTSTR name;
-    COLORREF colors[EDIT_CTRL_COLOR_CNT];
-};
-
-// プリセット例（必要に応じて追加）
-static const EditorColorPreset g_color_presets[] = {
-    { 
-		_T("default"), {
-			0x0, 0xcd0000, 0x7800, 0xffffff, 0x969600, 0xdc, 0xc8c8c8, 0x320000, 0x6400, 0x80, 0xc08000, 0xa000, 0xb4b4b4, 0x0, 0x0, 0x0,
-		}
-	},
-    {
-		_T("solarized"), {
-			0x756e58, 0xd28b26, 0x98a12a, 0xf9fdff, 0x164bcb, 0x2f32dc, 0xc8c8c8, 0x423607, 0x9a85, 0x8236d3, 0xc08000, 0xa000, 0xb4b4b4, 0x0, 0x0, 0x0,
-		}
-	},
-    // 他のプリセットもここに追加
-};
-static const int g_color_preset_count = sizeof(g_color_presets) / sizeof(g_color_presets[0]);
 
 /////////////////////////////////////////////////////////////////////////////
 // CEditorOptionPage プロパティ ページ

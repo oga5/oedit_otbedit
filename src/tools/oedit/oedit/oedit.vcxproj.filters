@@ -224,6 +224,9 @@
     <ClInclude Include="..\..\common_editor\FileBookMarkDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\common\PresetColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\idr_main.ico">
