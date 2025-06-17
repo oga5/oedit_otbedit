@@ -1,5 +1,5 @@
 
-                                                         (Rev.7 2012/11/06)
+                                                         (Rev.8 2025/6/17)
 
 Schemeマクロリファレンス
 
@@ -703,6 +703,11 @@ Schemeマクロリファレンス
 
 
 18.その他
+ - (sys-getenv <name>)
+   環境変数を取得します
+   (sys-getenv "USERNAME")
+   (sys-getenv "COMPUTERNAME")
+
  - (win-exec <cmd> <args1> ...)
    cmdで指定したプログラムを起動します
    argsに引数を指定できます

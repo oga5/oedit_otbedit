@@ -319,6 +319,7 @@ static int _string_cmp_ci(TCHAR *s1, TCHAR *s2)
 	_OP_DEF(op_sys_localtime,OP_SYS_LOCALTIME,_T("sys-localtime")) \
 	_OP_DEF(op_sys_strftime,OP_SYS_STRFTIME,_T("sys-strftime")) \
 	_OP_DEF(op_sys_stat,OP_SYS_STAT,_T("sys-stat")) \
+	_OP_DEF(op_sys_getenv, OP_SYS_GETENV, _T("sys-getenv")) \
 	_OP_DEF(op_win_exec,OP_WIN_EXEC,_T("win-exec")) \
 	_OP_DEF(op_win_get_clipboard_text,OP_WIN_GET_CLIPBOARD_TEXT,_T("win-get-clipboard-text")) \
 	_OP_DEF(op_debug_info,OP_DEBUG_INFO,_T("_debug_info")) \
@@ -348,6 +349,7 @@ typedef osymbol *psymbol;
 typedef struct _st_vector {
 	INT_PTR	_item_cnt;
 	INT_PTR	_arr_size;
+	
 	pcell	_arr[1];
 } ovector;
 typedef ovector *pvector;
@@ -5585,6 +5587,21 @@ pcell op_sys_stat(oscheme *sc)
 	s_return(sc, mk_sys_stat(sc, &st));
 }
 
+#if defined(WIN32) && defined(_UNICODE)
+#define oscheme_getenv _wgetenv
+#else
+#define oscheme_getenv getenv
+#endif
+
+pcell op_sys_getenv(oscheme* sc)
+{
+	GET_ARGS(sc, 1, 1, TC_STRING);
+	const TCHAR* name = strvalue(argv[0]);
+	const TCHAR* val = oscheme_getenv(name);
+	if (!val) s_return(sc, mk_string(sc, _T("")));
+	s_return(sc, mk_string(sc, val));
+}
+
 /*-----------------------------------------------------------------*/
 
 #define CMD_BUF_SIZE	(size_t)1024
@@ -6381,7 +6398,4 @@ int main(int argc, char **argv)
 	return ret_v;
 }
 #endif
-
-
-
 
