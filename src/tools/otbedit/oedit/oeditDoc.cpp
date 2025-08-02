@@ -73,7 +73,7 @@ BOOL COeditDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	int idx = AddDocData("無題");
+	int idx = AddDocData(_T("無題"));
 	m_doc_data_arr.GetDocData(idx)->is_new_document = TRUE;
 	ChangeDocData(m_doc_data_arr.GetCurrentDocDataId());
 	SetModifiedFlag(FALSE);
@@ -277,6 +277,7 @@ BOOL COeditDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		_tcscpy(long_name, lpszPathName);
 	}
 
+	// 最初に無題のドキュメントのみで起動して、次に別のファイルを開いたとき、無題ドキュメントが未編集の場合は無題タブを削除する
 	if(m_doc_data_arr.GetCurrentDocDataId() == 1 && GetPathName() == _T("無題") &&
 		GetEditData()->is_edit_data() == FALSE) {
 		DeleteDocData();
