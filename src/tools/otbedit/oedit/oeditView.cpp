@@ -324,8 +324,11 @@ void COeditView::OnSize(UINT nType, int cx, int cy)
 void COeditView::OnSetFocus(CWnd* pOldWnd) 
 {
 	CView::OnSetFocus(pOldWnd);
-	
-	GetDocument()->GetEditCtrl()->SetFocus();	
+
+	CCodeAssistEditCtrl *edit_ctrl = GetDocument()->GetEditCtrl();
+	if(edit_ctrl != NULL && ::IsWindow(edit_ctrl->GetSafeHwnd())) {
+		edit_ctrl->SetFocus();
+	}
 }
 
 void COeditView::OnEditCopy() 
@@ -1464,17 +1467,18 @@ void COeditView::PreChangeEditData()
 
 void COeditView::PostChangeEditData(int idx)
 {
-	if(GetDocument()->GetEditCtrl()->GetSafeHwnd() != NULL) {
-		GetDocument()->GetEditCtrl()->CheckCommentRow();
+   CCodeAssistEditCtrl *edit_ctrl = GetDocument()->GetEditCtrl();
+	if(edit_ctrl != NULL && ::IsWindow(edit_ctrl->GetSafeHwnd())) {
+		edit_ctrl->CheckCommentRow();
 		SetEditorOption();
 
 		CRect	win_rect;
 		GetClientRect(&win_rect);
 
-		GetDocument()->GetEditCtrl()->MoveWindow(0, m_tab_height,
+       edit_ctrl->MoveWindow(0, m_tab_height,
 				win_rect.Width(), win_rect.Height() - m_tab_height);
 
-		GetDocument()->GetEditCtrl()->SetFocus();
+       edit_ctrl->SetFocus();
 	}
 
 	int		tab_idx = SearchTabIdx(idx);

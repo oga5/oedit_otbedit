@@ -277,10 +277,11 @@ BOOL COeditDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		_tcscpy(long_name, lpszPathName);
 	}
 
-	// 最初に無題のドキュメントのみで起動して、次に別のファイルを開いたとき、無題ドキュメントが未編集の場合は無題タブを削除する
+ // 最初に未編集の「無題」のみがある場合は、タブを削除せず再利用する
+	BOOL reuse_current_doc = FALSE;
 	if(m_doc_data_arr.GetCurrentDocDataId() == 1 && GetPathName() == _T("無題") &&
 		GetEditData()->is_edit_data() == FALSE) {
-		DeleteDocData();
+		reuse_current_doc = TRUE;
 	}
 
 	{
@@ -293,10 +294,17 @@ BOOL COeditDoc::OnOpenDocument(LPCTSTR lpszPathName)
 
 //	if (!CDocument::OnOpenDocument(long_name))
 //		return FALSE;
-	AddDocData(long_name);
+  if(reuse_current_doc == FALSE) {
+		AddDocData(long_name);
+	}
 
 	if (!OnOpenDocumentMain(long_name))
 		return FALSE;
+
+	if(reuse_current_doc) {
+		m_doc_data_arr.GetCurrentDocData()->file_name = long_name;
+		m_doc_data_arr.GetCurrentDocData()->is_new_document = FALSE;
+	}
 
 	GetEditData()->clear_cur_operation();
 

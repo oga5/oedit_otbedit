@@ -389,19 +389,58 @@ static int kanji_code_other(const BUF_BYTE *buf, int len)
 	return ret_v;
 }
 
+static int check_utf16_no_signature_pattern(const BUF_BYTE *buf, int len)
+{
+	int i;
+	int check_len;
+	int even_cnt = 0;
+	int odd_cnt = 0;
+	int even_zero_cnt = 0;
+	int odd_zero_cnt = 0;
+
+	if(len < 32) return UnknownKanjiCode;
+
+	check_len = len;
+	if(check_len > 4096) check_len = 4096;
+
+	for(i = 0; i < check_len; i++) {
+		if((i % 2) == 0) {
+			even_cnt++;
+			if(buf[i] == '\0') even_zero_cnt++;
+		} else {
+			odd_cnt++;
+			if(buf[i] == '\0') odd_zero_cnt++;
+		}
+	}
+
+	if(even_cnt == 0 || odd_cnt == 0) return UnknownKanjiCode;
+
+	if(odd_zero_cnt * 100 / odd_cnt >= 40 && even_zero_cnt * 100 / even_cnt <= 5) {
+		return KANJI_CODE_UTF16LE_NO_SIGNATURE;
+	}
+	if(even_zero_cnt * 100 / even_cnt >= 40 && odd_zero_cnt * 100 / odd_cnt <= 5) {
+		return KANJI_CODE_UTF16BE_NO_SIGNATURE;
+	}
+
+	return UnknownKanjiCode;
+}
+
 static void kanji_code_check_no_utf16(const BUF_BYTE *buf, int len, int *no_utf16_flg)
 {
-	// ASCIIが連続する場合、UTF16を否定する
+  // ASCIIが十分長く連続する場合のみ、UTF16を否定する
+	// (UTF16の日本語データでも2バイトとも0x80未満になる文字があるため、
+	//  2バイト連続だけで否定すると誤判定しやすい)
+	int ascii_run = 0;
 	for(; len > 0; len--, buf++) {
-		BUF_BYTE c1 = *buf;
-		if(c1 < 0x80 && c1 != '\0') {
-			if(len > 1) {
-				BUF_BYTE c2 = *(buf + 1);
-				if(c2 < 0x80 && c2 != '\0') {
-					*no_utf16_flg = 1;
-					return;
-				}
+		BUF_BYTE c = *buf;
+		if(c < 0x80 && c != '\0') {
+			ascii_run++;
+			if(ascii_run >= 8) {
+				*no_utf16_flg = 1;
+				return;
 			}
+		} else {
+			ascii_run = 0;
 		}
 	}
 }
@@ -433,6 +472,9 @@ int check_kanji_code(const BUF_BYTE *buf, int len, int *all_ascii)
 {
 	int		ret_v;
 	int		no_utf16_flg = 0;
+
+	ret_v = check_utf16_no_signature_pattern(buf, len);
+	if(ret_v != UnknownKanjiCode) return ret_v;
 
 	kanji_code_check_no_utf16(buf, len, &no_utf16_flg);
 
