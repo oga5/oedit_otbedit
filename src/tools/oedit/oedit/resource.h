@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ „ÅßÁîüÊàê„Åï„Çå„Åü„Ç§„É≥„ÇØ„É´„Éº„Éâ „Éï„Ç°„Ç§„É´„ÄÇ
-// oedit.rc „Åß‰ΩøÁî®
+// Microsoft Visual C++ Ç≈ê∂ê¨Ç≥ÇÍÇΩÉCÉìÉNÉãÅ[Éh ÉtÉ@ÉCÉãÅB
+// oedit.rc Ç≈égóp
 //
 #define IDR_MANIFEST                    1
 #define IDD_ABOUTBOX                    100
@@ -73,6 +73,8 @@
 #define IDC_CHECK_SHOW_ROW_NUM          1042
 #define IDC_BTN_INITIAL_DIR             1043
 #define IDC_STATIC_RESULT               1044
+#define IDC_CHECK_SHOW_ROW_NUM2         1044
+#define IDC_CHECK_SHOW_ROW_NUM_ZERO     1044
 #define IDC_CHECK_SHOW_COL_NUM          1045
 #define IDC_BTN_KEYWORD_FILE            1046
 #define IDC_CHECK_SHOW_COL_NUM_SPLIT_WINDOW 1046

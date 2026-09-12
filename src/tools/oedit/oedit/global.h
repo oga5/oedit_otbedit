@@ -50,6 +50,7 @@ struct _st_option {
 		BOOL	show_line_end{ FALSE };
 		BOOL	show_tab{ FALSE };
 		BOOL	show_row_num{ FALSE };
+		BOOL	show_row_num_zero{ FALSE };
 		BOOL	show_col_num{ FALSE };
 		BOOL	show_col_num_split_window{ FALSE };
 		BOOL	show_space{ FALSE };

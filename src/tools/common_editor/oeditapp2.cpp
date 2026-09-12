@@ -34,6 +34,7 @@ void COeditApp::LoadOption()
 	g_option.text_editor.show_space = GetIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_SPACE"), FALSE);
 	g_option.text_editor.show_2byte_space = GetIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_2BYTE_SPACE"), TRUE);
 	g_option.text_editor.show_row_num = GetIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_ROW_NUM"), TRUE);
+	g_option.text_editor.show_row_num_zero = GetIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_ROW_NUM_ZERO"), FALSE);
 	g_option.text_editor.show_col_num = GetIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_COL_NUM"), TRUE);
 #ifdef GLOBAL_H_OEDIT
 	g_option.text_editor.show_col_num_split_window = GetIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_COL_NUM_SPLIT_WINDOW"), FALSE);
@@ -152,6 +153,7 @@ void COeditApp::SaveOption()
 	WriteIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_2BYTE_SPACE"), g_option.text_editor.show_2byte_space);
 	WriteIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_TAB"), g_option.text_editor.show_tab);
 	WriteIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_ROW_NUM"), g_option.text_editor.show_row_num);
+	WriteIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_ROW_NUM_ZERO"), g_option.text_editor.show_row_num_zero);
 	WriteIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_COL_NUM"), g_option.text_editor.show_col_num);
 #ifdef GLOBAL_H_OEDIT
 	WriteIniFileInt(_T("TEXT_EDITOR"), _T("SHOW_COL_NUM_SPLIT_WINDOW"), g_option.text_editor.show_col_num_split_window);
@@ -291,6 +293,7 @@ void COeditApp::OnOption()
 	dlg.m_editor_page.m_show_space = g_option.text_editor.show_space;
 	dlg.m_editor_page.m_show_2byte_space = g_option.text_editor.show_2byte_space;
 	dlg.m_editor_page.m_show_row_num = g_option.text_editor.show_row_num;
+	dlg.m_editor_page.m_show_row_num_zero = g_option.text_editor.show_row_num_zero;
 	dlg.m_editor_page.m_show_col_num = g_option.text_editor.show_col_num;
 #ifdef GLOBAL_H_OEDIT
 	dlg.m_editor_page.m_show_col_num_split_window = g_option.text_editor.show_col_num_split_window;
@@ -393,6 +396,7 @@ void COeditApp::OnOption()
 	g_option.text_editor.show_space = dlg.m_editor_page.m_show_space;
 	g_option.text_editor.show_2byte_space = dlg.m_editor_page.m_show_2byte_space;
 	g_option.text_editor.show_row_num = dlg.m_editor_page.m_show_row_num;
+	g_option.text_editor.show_row_num_zero = dlg.m_editor_page.m_show_row_num_zero;
 	g_option.text_editor.show_col_num = dlg.m_editor_page.m_show_col_num;
 #ifdef GLOBAL_H_OEDIT
 	g_option.text_editor.show_col_num_split_window = dlg.m_editor_page.m_show_col_num_split_window;

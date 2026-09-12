@@ -163,6 +163,7 @@ CEditCtrl::CEditCtrl()
 	m_tt_flg = 0;
 
 	m_row_num_digit = 0;
+	m_show_row_num_offset = 1;
 	m_row_header_width = m_left_space;
 	m_col_header_height = m_top_space;
 
@@ -363,6 +364,17 @@ void CEditCtrl::SetExStyle2(QWORD ex_style)
 	}
 
 	SetHeaderSize();
+}
+
+void CEditCtrl::SetShowRowNumOffset(int offset)
+{
+	if(m_show_row_num_offset == offset) return;
+
+	m_show_row_num_offset = offset;
+	SetHeaderSize();
+	CheckScrollBar();
+	SetImeRect();
+	Invalidate_AllWnd();
 }
 
 void CEditCtrl::PaintColNum(CDC *pdc, CDC *p_paintdc)
@@ -1539,7 +1551,7 @@ void CEditCtrl::PaintTextSpace(CDispColorData *color_data, CDC *pdc, CDC *p_pain
 
 				// FIXME: 20バイト固定をやめる
 				TCHAR	row_num[20];
-				_stprintf(row_num, _T("%d"), row + 1);
+				_stprintf(row_num, _T("%d"), row + m_show_row_num_offset);
 				int num_len = (int)_tcslen(row_num);
 
 				bk_rect.left = m_left_space + (m_row_num_digit - num_len + 1) * (m_num_width);
@@ -2234,7 +2246,12 @@ void CEditCtrl::CreateFonts(LOGFONT *lf)
 
 void CEditCtrl::SetHeaderSize()
 {
-	m_row_num_digit = (int)ceil(log10(m_edit_data->get_row_cnt() + 1.0));
+	int max_row_num = m_edit_data->get_row_cnt() - 1 + m_show_row_num_offset;
+	if(max_row_num <= 0) {
+		m_row_num_digit = 1;
+	} else {
+		m_row_num_digit = (int)floor(log10((double)max_row_num)) + 1;
+	}
 	if(m_row_num_digit < 2) m_row_num_digit = 2;
 
 	if(m_ex_style & ECS_SHOW_ROW_NUM) {

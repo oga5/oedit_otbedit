@@ -38,6 +38,7 @@ public:
 	BOOL	m_show_tab;
 	int		m_tabstop;
 	BOOL	m_show_row_num;
+	BOOL	m_show_row_num_zero;
 	BOOL	m_show_col_num;
 	int		m_row_space;
 	int		m_char_space;
@@ -87,6 +88,7 @@ protected:
 	afx_msg void OnBtnQuoteColor();
 	afx_msg void OnCheckShowColNum();
 	afx_msg void OnCheckShowRowNum();
+	afx_msg void OnCheckShowRowNumZero();
 	afx_msg void OnChangeEditRowSpace();
 	afx_msg void OnChangeEditCharSpace();
 	afx_msg void OnChangeEditLeftSpace();

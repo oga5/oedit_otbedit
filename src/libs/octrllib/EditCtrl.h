@@ -101,6 +101,7 @@ private:
 	} m_completion_data;
 
 	int m_row_num_digit;
+	int m_show_row_num_offset;
 
 	int m_row_space;	// 行間
 	int m_row_space_top;	// 行間(上)
@@ -518,6 +519,8 @@ public:
 	void ToggleOverwrite();
 	BOOL GetOverwrite() { return m_overwrite; }
 	int GetRowNumDigit() { return m_row_num_digit; }
+	void SetRowNumOffset(int offset) { SetShowRowNumOffset(offset); }
+	void SetShowRowNumOffset(int offset);
 
 	void ResetCaret();
 

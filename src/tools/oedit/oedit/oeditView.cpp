@@ -482,6 +482,8 @@ void COeditView::SetEditorOption()
 	if(g_option.text_editor.show_row_num) {
 		option |= ECS_SHOW_ROW_NUM;
 	}
+	m_edit_ctrl.SetShowRowNumOffset(g_option.text_editor.show_row_num ?
+		(g_option.text_editor.show_row_num_zero ? 0 : 1) : 1);
 	if(g_option.text_editor.show_col_num) {
 		if(GetParent()->IsKindOf(RUNTIME_CLASS(CSplitterWnd))) {
 			CSplitterWnd *sp = (CSplitterWnd *)GetParent();

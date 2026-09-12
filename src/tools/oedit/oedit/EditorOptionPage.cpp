@@ -34,6 +34,7 @@ CEditorOptionPage::CEditorOptionPage() : CPropertyPage(CEditorOptionPage::IDD)
 	m_show_tab = FALSE;
 	m_tabstop = 0;
 	m_show_row_num = FALSE;
+	m_show_row_num_zero = FALSE;
 	m_show_col_num = FALSE;
 	m_row_space = 0;
 	m_char_space = 0;
@@ -66,6 +67,7 @@ void CEditorOptionPage::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_TABSTOP, m_tabstop);
 	DDV_MinMaxInt(pDX, m_tabstop, 1, 2147483647);
 	DDX_Check(pDX, IDC_CHECK_SHOW_ROW_NUM, m_show_row_num);
+	DDX_Check(pDX, IDC_CHECK_SHOW_ROW_NUM_ZERO, m_show_row_num_zero);
 	DDX_Check(pDX, IDC_CHECK_SHOW_COL_NUM, m_show_col_num);
 	DDX_Text(pDX, IDC_EDIT_ROW_SPACE, m_row_space);
 	DDX_Text(pDX, IDC_EDIT_CHAR_SPACE, m_char_space);
@@ -103,6 +105,7 @@ BEGIN_MESSAGE_MAP(CEditorOptionPage, CPropertyPage)
 	ON_BN_CLICKED(IDC_BTN_QUOTE_COLOR, OnBtnQuoteColor)
 	ON_BN_CLICKED(IDC_CHECK_SHOW_COL_NUM, OnCheckShowColNum)
 	ON_BN_CLICKED(IDC_CHECK_SHOW_ROW_NUM, OnCheckShowRowNum)
+	ON_BN_CLICKED(IDC_CHECK_SHOW_ROW_NUM_ZERO, OnCheckShowRowNumZero)
 	ON_EN_CHANGE(IDC_EDIT_ROW_SPACE, OnChangeEditRowSpace)
 	ON_EN_CHANGE(IDC_EDIT_CHAR_SPACE, OnChangeEditCharSpace)
 	ON_EN_CHANGE(IDC_EDIT_LEFT_SPACE, OnChangeEditLeftSpace)
@@ -281,6 +284,7 @@ void CEditorOptionPage::SetEditorOption()
 	if(m_show_row_num) {
 		option |= ECS_SHOW_ROW_NUM;
 	}
+	m_edit_ctrl.SetShowRowNumOffset(m_show_row_num && m_show_row_num_zero ? 0 : 1);
 	if(m_show_col_num) {
 		option |= ECS_SHOW_COL_NUM;
 	}
@@ -470,6 +474,11 @@ void CEditorOptionPage::OnCheckShowColNum()
 }
 
 void CEditorOptionPage::OnCheckShowRowNum() 
+{
+	SetEditorOption();	
+}
+
+void CEditorOptionPage::OnCheckShowRowNumZero() 
 {
 	SetEditorOption();	
 }
